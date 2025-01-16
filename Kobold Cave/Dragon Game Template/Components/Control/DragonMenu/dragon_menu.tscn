@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb3acgli1hwhy"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/DragonMenu/dragon_menu.gd" id="1_fkbf5"]
+
+[node name="DragonMenu" type="MarginContainer"]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.177778
+offset_right = -78.0
+offset_bottom = -78.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_fkbf5")
+metadata/_edit_use_anchors_ = true

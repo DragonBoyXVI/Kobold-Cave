@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbny43sq0lfqa"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Components/3D/Hurtbox 3D/hurtbox_3d.gd" id="1_b40oh"]
+
+[node name="ComponentHurtbox3D" type="Area3D"]
+editor_description = "This looks for and applies its event to any hitbox 3d it hits."
+collision_layer = 0
+collision_mask = 4
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("1_b40oh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

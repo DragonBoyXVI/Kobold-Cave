@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://utujl3ay3qm6"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.gd" id="1_8pn5x"]
+
+[node name="DragonSettingBase" type="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.177778
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 2
+mouse_filter = 1
+script = ExtResource("1_8pn5x")
+_property_is_valid = false
+metadata/_edit_use_anchors_ = true

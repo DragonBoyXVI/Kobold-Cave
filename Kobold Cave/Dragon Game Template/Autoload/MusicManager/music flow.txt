@@ -1,0 +1,10 @@
+
+-- Music Manager
+- Manages current music
+- can swap current music to new music
+- music can be paused / destroyed / restarted
+
+
+-- Music Scene
+- audio player syncing multiple music tracks
+- script that checks the world and changes the volume of each track as needed

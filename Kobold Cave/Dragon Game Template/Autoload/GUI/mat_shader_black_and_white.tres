@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dham7rhvy2uqu"]
+
+[ext_resource type="Shader" path="res://Dragon Game Template/Autoload/GUI/gui_canvas.gdshader" id="1_2k3fl"]
+
+[resource]
+shader = ExtResource("1_2k3fl")

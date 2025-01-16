@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0y3e3k6tk6xw"]
+
+[ext_resource type="Script" path="res://Kobold Cave/Entity/entity_base.gd" id="1_d0g12"]
+
+[node name="EntityBase" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_d0g12")

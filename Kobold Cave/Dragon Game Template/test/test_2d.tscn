@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://nitb3kylf0to"]
+
+[ext_resource type="Texture2D" uid="uid://cb5aky4h0lhe6" path="res://icon.svg" id="1_nsv7h"]
+[ext_resource type="Script" path="res://Dragon Game Template/test/test_2d.gd" id="1_y4ywp"]
+
+[node name="Test2D" type="Node2D"]
+script = ExtResource("1_y4ywp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nsv7h")

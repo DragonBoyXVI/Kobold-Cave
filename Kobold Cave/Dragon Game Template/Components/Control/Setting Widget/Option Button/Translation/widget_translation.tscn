@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c423jug3ymr5c"]
+
+[ext_resource type="PackedScene" uid="uid://c2q7cu6v6ooav" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/setting_widget_option_button.tscn" id="1_g7pvf"]
+
+[node name="WidgetTranslation" instance=ExtResource("1_g7pvf")]
+setting_property = &"translation"
+setting_signal = 3
+_property_is_valid = true
+
+[node name="Label" parent="MarginContainer/VBoxContainer/TextContainer" index="0"]
+text = "key_translation"
+
+[node name="OptionButton" parent="MarginContainer/VBoxContainer/TextContainer" index="1"]
+item_count = 7
+popup/item_0/text = "[en] English"
+popup/item_1/text = "[es] Spanish"
+popup/item_1/id = 1
+popup/item_2/text = "[js] Japanese"
+popup/item_2/id = 2
+popup/item_3/text = "[zh] Simplified Chinese"
+popup/item_3/id = 3
+popup/item_4/text = "[ru] Russian"
+popup/item_4/id = 4
+popup/item_5/text = "[de] German"
+popup/item_5/id = 5
+popup/item_6/text = "[pt] Brazil Portugese"
+popup/item_6/id = 6

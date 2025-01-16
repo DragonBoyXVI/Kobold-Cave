@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7tvfua6ssnpa"
+path="res://.godot/imported/1_soft_piano.ds.wav-ef8c00d04d53dcf28e99d15bdece29e5.sample"
+
+[deps]
+
+source_file="res://Dragon Game Template/Audio/1_soft_piano.ds.wav"
+dest_files=["res://.godot/imported/1_soft_piano.ds.wav-ef8c00d04d53dcf28e99d15bdece29e5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

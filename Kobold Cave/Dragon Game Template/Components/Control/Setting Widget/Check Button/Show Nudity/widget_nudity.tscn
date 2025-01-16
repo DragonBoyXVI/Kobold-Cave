@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0p6gtpn0lkn7"]
+
+[ext_resource type="PackedScene" uid="uid://dmv13olcilrq6" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn" id="1_1wtlj"]
+
+[node name="WidgetNudity" instance=ExtResource("1_1wtlj")]
+setting_property = &"show_nudity"
+_property_is_valid = true
+
+[node name="CheckButton" parent="MarginContainer" index="0"]
+text = "key_show_nudity"

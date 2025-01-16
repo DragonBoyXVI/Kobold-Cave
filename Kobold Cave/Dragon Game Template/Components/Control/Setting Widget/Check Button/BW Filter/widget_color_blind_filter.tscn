@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdov6t52gu0tr"]
+
+[ext_resource type="PackedScene" uid="uid://dmv13olcilrq6" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn" id="1_crnhd"]
+
+[node name="WidgetColorBlindFilter" instance=ExtResource("1_crnhd")]
+setting_property = &"color_blind_enabled"
+setting_signal = 4
+_property_is_valid = true
+
+[node name="CheckButton" parent="MarginContainer" index="0"]
+text = "- B&W Filter"

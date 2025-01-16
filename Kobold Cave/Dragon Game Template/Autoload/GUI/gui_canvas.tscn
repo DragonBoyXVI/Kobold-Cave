@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://o5w1tmecos0r"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/GUI/gui_canvas.gd" id="1_i1q6m"]
+[ext_resource type="PackedScene" uid="uid://7ija0pyj8qlc" path="res://Dragon Game Template/Menues/Pause Menu/pause_menu.tscn" id="2_t32lr"]
+[ext_resource type="Material" uid="uid://dham7rhvy2uqu" path="res://Dragon Game Template/Autoload/GUI/mat_shader_black_and_white.tres" id="3_xodq7"]
+
+[node name="GUICanvas" type="CanvasLayer"]
+process_mode = 3
+physics_interpolation_mode = 2
+editor_description = "This node holds all gui related elements."
+script = ExtResource("1_i1q6m")
+
+[node name="GUIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
+layout_mode = 1
+
+[node name="ColorBlindRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("3_xodq7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

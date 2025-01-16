@@ -1,0 +1,22 @@
+
+--- REMEMBER TO MIRROR THESE CHANGES FOR THE 3D COMPONENTS
+Hit/Hurt/Health Pipeline
+
+Current:
+1. Hurtbox finds Hitbox and calls the Hitboxes "got_hit" signal.
+2. Hitbox catches its own signal, and checks if event is damage. if it is, 
+	call a method from health and supply the event.
+3. Health parses the event and it enters the damage pipeline.
+
+
+Damage Calculation Pipeline
+
+Current
+1. Health has a parse event called from the hitbox, it recives an event.
+for this example, event is Damage.
+2. Health takes some considerations into account and acts as needed.
+3. If armour applies, armour calculation takes place and results are emitted.
+4. After armour calc, damage has its "apply_to_health" method called,
+	the health componet supplies itself as an arg.
+	( only happens if damage has amount > 0.0, else terminate here )
+5. Health takes needed after damage actions

@@ -1,0 +1,226 @@
+[gd_scene load_steps=21 format=3 uid="uid://bgan5cvx0fjap"]
+
+[ext_resource type="PackedScene" uid="uid://d2f8nyqg41ixh" path="res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn" id="1_hv408"]
+[ext_resource type="AudioStream" uid="uid://b6bja1q8f8v6v" path="res://Dragon Game Template/Audio/merp.wav" id="2_t3xsu"]
+[ext_resource type="PackedScene" uid="uid://chr4u5xvdyupn" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Unlimited FPS/widget_unlimited_fps.tscn" id="2_tnbn0"]
+[ext_resource type="PackedScene" uid="uid://c5gsidrnx6wf7" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/FPS Slider/widget_fps_slider.tscn" id="3_4vry4"]
+[ext_resource type="PackedScene" uid="uid://uentdo4kjvag" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn" id="4_2acui"]
+[ext_resource type="PackedScene" uid="uid://cs1o2bhyv4w4k" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn" id="5_gio5y"]
+[ext_resource type="PackedScene" uid="uid://lj17iuwgcxqk" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn" id="6_j0fsm"]
+[ext_resource type="PackedScene" uid="uid://ca3dgj5n3yk34" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn" id="7_prwe2"]
+[ext_resource type="PackedScene" uid="uid://b1dd4eaxxi2fj" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Master/widget_master_volume.tscn" id="8_2rxvn"]
+[ext_resource type="PackedScene" uid="uid://dxcn4xfjc67ph" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Camera Shake/widget_camera_shake.tscn" id="8_hfnuy"]
+[ext_resource type="PackedScene" uid="uid://savm6ibppnuw" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Music/widget_music_volume.tscn" id="9_f1vli"]
+[ext_resource type="PackedScene" uid="uid://d1gm0s1gehl1d" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Camera Physics/widget_camera_physics.tscn" id="9_hj0cw"]
+[ext_resource type="PackedScene" uid="uid://dh24n8kld1wbk" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume SFX/widget_volume_sfx.tscn" id="10_sebij"]
+[ext_resource type="PackedScene" uid="uid://dgn0xmwf2vjdv" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Voice/widget_volume_voice.tscn" id="11_hmhod"]
+[ext_resource type="PackedScene" uid="uid://ckhstvkm8ykhj" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause music when paused/widget_pause_music_on_pause.tscn" id="12_t0jym"]
+[ext_resource type="PackedScene" uid="uid://c423jug3ymr5c" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Translation/widget_translation.tscn" id="13_akvad"]
+[ext_resource type="PackedScene" uid="uid://cx62o0sdivja" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Flashing Lights/widget_flashing_lights.tscn" id="14_n4t02"]
+[ext_resource type="PackedScene" uid="uid://6dsk1enrk0g2" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Blood/widget_show_blood.tscn" id="15_4micn"]
+[ext_resource type="PackedScene" uid="uid://0p6gtpn0lkn7" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Nudity/widget_nudity.tscn" id="16_0avqk"]
+[ext_resource type="PackedScene" uid="uid://b1umhwe0545lg" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Politics/widget_politics.tscn" id="19_v1gy8"]
+
+[node name="SettingsPage" node_paths=PackedStringArray("audio_player") instance=ExtResource("1_hv408")]
+tab_alignment = 1
+current_tab = 4
+auto_focus = true
+trans_strings = PackedStringArray("key_game", "key_display", "key_camera", "key_audio", "key_accessibility")
+audio_player = NodePath("AudioStreamPlayer")
+pitch_enabled = true
+pitch_min = 1.0
+pitch_max = 2.0
+
+[node name="Game" type="MarginContainer" parent="." index="1"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Game" index="0"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="Game/ScrollContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "for stuff that is specific to your game"
+
+[node name="WidgetPauseUnfocused" parent="Game/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("7_prwe2")]
+layout_mode = 2
+setting_signal = 4
+
+[node name="Display" type="MarginContainer" parent="." index="2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Display" index="0"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="WidgetUnlimitedFPS" parent="Display/ScrollContainer/VBoxContainer" index="0" instance=ExtResource("2_tnbn0")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../WidgetFPSSlider")
+focus_next = NodePath("../WidgetFPSSlider")
+
+[node name="WidgetFPSSlider" parent="Display/ScrollContainer/VBoxContainer" index="1" node_paths=PackedStringArray("pass_focus_up") instance=ExtResource("3_4vry4")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetUnlimitedFPS")
+focus_neighbor_bottom = NodePath("../WidgetPhysicsSlider")
+focus_next = NodePath("../WidgetPhysicsSlider")
+focus_previous = NodePath("../WidgetUnlimitedFPS")
+pass_focus_up = [NodePath("MarginContainer/VBoxContainer/InfoContainer/SpinBox")]
+
+[node name="WidgetPhysicsSlider" parent="Display/ScrollContainer/VBoxContainer" index="2" node_paths=PackedStringArray("pass_focus_up") instance=ExtResource("4_2acui")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetFPSSlider")
+focus_neighbor_bottom = NodePath("../WidgetWindowScaling")
+focus_next = NodePath("../WidgetWindowScaling")
+focus_previous = NodePath("../WidgetFPSSlider")
+pass_focus_up = [NodePath("MarginContainer/VBoxContainer/InfoContainer/SpinBox")]
+
+[node name="WidgetWindowScaling" parent="Display/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("5_gio5y")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetPhysicsSlider")
+focus_neighbor_bottom = NodePath("../WidgetParticlesEnabled")
+focus_next = NodePath("../WidgetParticlesEnabled")
+focus_previous = NodePath("../WidgetPhysicsSlider")
+
+[node name="WidgetParticlesEnabled" parent="Display/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("6_j0fsm")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetWindowScaling")
+focus_previous = NodePath("../WidgetWindowScaling")
+setting_signal = 4
+
+[node name="Camera" type="MarginContainer" parent="." index="3"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Camera" index="0"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="WidgetCameraShake" parent="Camera/ScrollContainer/VBoxContainer" index="0" instance=ExtResource("8_hfnuy")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../WidgetCameraPhysics")
+focus_next = NodePath("../WidgetCameraPhysics")
+setting_signal = 4
+
+[node name="WidgetCameraPhysics" parent="Camera/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("9_hj0cw")]
+layout_mode = 2
+tooltip_text = "- If you run your game with high fps, setting this to \"Physics\" will reduce stutter."
+focus_neighbor_top = NodePath("../WidgetCameraShake")
+focus_previous = NodePath("../WidgetCameraShake")
+
+[node name="Audio" type="MarginContainer" parent="." index="4"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Audio" index="0"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="WidgetMasterVolume" parent="Audio/ScrollContainer/VBoxContainer" index="0" node_paths=PackedStringArray("pass_focus_up") instance=ExtResource("8_2rxvn")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../WidgetMusicVolume")
+focus_next = NodePath("../WidgetMusicVolume")
+pass_focus_up = [NodePath("MarginContainer/VBoxContainer/InfoContainer/SpinBox")]
+
+[node name="WidgetMusicVolume" parent="Audio/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("9_f1vli")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetMasterVolume")
+focus_neighbor_bottom = NodePath("../WidgetVolumeSFX")
+focus_next = NodePath("../WidgetVolumeSFX")
+focus_previous = NodePath("../WidgetMasterVolume")
+
+[node name="WidgetVolumeSFX" parent="Audio/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("10_sebij")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetMusicVolume")
+focus_neighbor_bottom = NodePath("../WidgetVolumeVoice")
+focus_next = NodePath("../WidgetVolumeVoice")
+focus_previous = NodePath("../WidgetMusicVolume")
+
+[node name="WidgetVolumeVoice" parent="Audio/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("11_hmhod")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetVolumeSFX")
+focus_neighbor_bottom = NodePath("../WidgetPauseMusicOnPause")
+focus_next = NodePath("../WidgetPauseMusicOnPause")
+focus_previous = NodePath("../WidgetVolumeSFX")
+
+[node name="WidgetPauseMusicOnPause" parent="Audio/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("12_t0jym")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetVolumeVoice")
+focus_previous = NodePath("../WidgetVolumeVoice")
+
+[node name="Acessibility" type="MarginContainer" parent="." index="5"]
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Acessibility" index="0"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Acessibility/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="WidgetTranslation" parent="Acessibility/ScrollContainer/VBoxContainer" index="0" instance=ExtResource("13_akvad")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../WidgetFlashingLights")
+focus_next = NodePath("../WidgetFlashingLights")
+
+[node name="WidgetFlashingLights" parent="Acessibility/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("14_n4t02")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetTranslation")
+focus_neighbor_bottom = NodePath("../WidgetShowBlood")
+focus_next = NodePath("../WidgetShowBlood")
+focus_previous = NodePath("../WidgetTranslation")
+
+[node name="WidgetShowBlood" parent="Acessibility/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("15_4micn")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetFlashingLights")
+focus_neighbor_bottom = NodePath("../WidgetNudity")
+focus_next = NodePath("../WidgetNudity")
+focus_previous = NodePath("../WidgetFlashingLights")
+
+[node name="WidgetNudity" parent="Acessibility/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("16_0avqk")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetShowBlood")
+focus_neighbor_bottom = NodePath("../WidgetPolitics")
+focus_next = NodePath("../WidgetPolitics")
+focus_previous = NodePath("../WidgetShowBlood")
+
+[node name="WidgetPolitics" parent="Acessibility/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("19_v1gy8")]
+layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("2_t3xsu")
+pitch_scale = 2.0
+bus = &"SFX"

@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmwh2bj21418l"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.gd" id="1_1p56u"]
+[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn" id="2_3emqc"]
+[ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/Base/state_behaviour_base.tscn" id="4_yf44x"]
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_node.gd" id="5_rhb5r"]
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/idle.gd" id="5_uagd3"]
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_point.gd" id="6_xteea"]
+[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/manual_debug.gd" id="7_73p64"]
+
+[node name="MainCamera2D" type="Camera2D"]
+editor_description = "Main camera that can follow nodes or look at a point. Can be disabled in autoload."
+light_mask = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_1p56u")
+metadata/_edit_group_ = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_3emqc")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" parent="StateMachine" instance=ExtResource("4_yf44x")]
+script = ExtResource("5_uagd3")
+
+[node name="FollowNode" parent="StateMachine" instance=ExtResource("4_yf44x")]
+script = ExtResource("5_rhb5r")
+
+[node name="FollowPoint" parent="StateMachine" instance=ExtResource("4_yf44x")]
+script = ExtResource("6_xteea")
+
+[node name="ManualDebug" parent="StateMachine" instance=ExtResource("4_yf44x")]
+script = ExtResource("7_73p64")

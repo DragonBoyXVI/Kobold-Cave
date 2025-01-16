@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://icdorteoj566"]
+
+[ext_resource type="PackedScene" uid="uid://utujl3ay3qm6" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn" id="1_06c1c"]
+[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/Color Picker/setting_widget_color_picker.gd" id="2_u6o02"]
+
+[node name="SettingWidgetColorPicker" node_paths=PackedStringArray("color_picker_button", "focus_me_node", "pass_focus_up", "pass_focus_right", "pass_focus_down", "pass_focus_left") instance=ExtResource("1_06c1c")]
+anchor_right = 0.338281
+anchor_bottom = 0.247222
+offset_right = -305.0
+offset_bottom = -49.9998
+script = ExtResource("2_u6o02")
+color_picker_button = NodePath("MarginContainer/HBoxContainer/ColorPickerButton")
+focus_me_node = NodePath("MarginContainer/HBoxContainer/ColorPickerButton")
+pass_focus_up = [NodePath("MarginContainer/HBoxContainer/ColorPickerButton"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/ButtonContainer/DefaultButton")]
+pass_focus_right = [NodePath("MarginContainer/HBoxContainer/ColorPickerButton")]
+pass_focus_down = [NodePath("MarginContainer/HBoxContainer/VBoxContainer/ButtonContainer/DefaultButton"), NodePath("MarginContainer/HBoxContainer/ColorPickerButton")]
+pass_focus_left = [NodePath("MarginContainer/HBoxContainer/VBoxContainer/ButtonContainer/DefaultButton")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "- COLORED THING"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="DefaultButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../ColorPickerButton")
+focus_next = NodePath("../../../ColorPickerButton")
+mouse_default_cursor_shape = 2
+text = "key_default"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_neighbor_left = NodePath("../VBoxContainer/ButtonContainer/DefaultButton")
+focus_previous = NodePath("../VBoxContainer/ButtonContainer/DefaultButton")
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="color_changed" from="MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

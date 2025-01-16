@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://myrkyb6dbnun"
+
+[deps]
+
+files=["res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.en.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.es.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ja.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.zh.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ru.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.de.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.pt.translation"]
+
+source_file="res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.csv"
+dest_files=["res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.en.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.es.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ja.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.zh.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ru.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.de.translation", "res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.pt.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,44 @@
+Keys,en,es,ja,zh,ru,de,pt
+key_language,English,Spanish,Japanese,Simplified Chinese,Russian,German,Bazil Portuguese
+key_resume,Resume,Reanudar,再開する,恢复,Резюме,Wieder aufnehmen,Retomar
+key_settings,Settings,Ajustes,設定,设置,Настройки,Einstellungen,Configurações
+key_exit,Exit to Main Menu,Salir al menú principal,終了してメインメニューに戻る,退出到主菜单,Выход в главное меню,Zurück zum Hauptmenü,Sair para o menu principal
+key_desktop,Exit to Desktop,Salir al escritorio,終了してデスクトップに戻る,退出到桌面,Выход на рабочий стол,Zurück zum Desktop,Sair para a área de trabalho
+,,,,,,,
+key_paused,Paused,En pausa,一時停止中,已暂停,Приостановлено,Angehalten,Pausado
+key_not_paused,Not Paused,No pausado,一時停止されていません,未暂停,Не приостановлено,Nicht pausiert,Não pausado
+,,,,,,,
+key_display,Display,Mostrar,画面,展示,Отображать,Anzeige,Mostrar
+key_audio,Audio,Audio,オーディオ,声音的,Аудио,Audio,Áudio
+key_accessibility,Accessibility,Accesibilidad,アクセシビリティ,无障碍,Доступность,Zugänglichkeit,Acessibilidade
+key_camera,Camera,Cámara,カメラ,相机,Камера,Kamera,Câmera
+key_game,Game,Juego,ゲーム,游戏,Игра,Spiel,Jogo
+,,,,,,,
+key_frame_rate,FPS: ,FPS: ,FPS: ,帧率： ,ФПС: ,FPS: ,FPS: 
+key_physics_rate,Physics rate: ,Tasa de física: ,物理レート: ,物理速率： ,Курс физики: ,Physik-Tarif: ,Taxa de física: 
+key_frame_rate_unlimited,Unlimited FPS,FPS ilimitados,無制限の FPS,无限FPS,Неограниченный ФПС,Unbegrenzte FPS,FPS ilimitado
+key_particles_enabled,Particles Enabled,Partículas habilitadas,パーティクルを有効にする,启用粒子,Частицы включены,Partikel aktiviert,Partículas habilitadas
+key_window_scaling,Window scale mode,Modo de escala de ventana,ウィンドウスケールモード,窗口比例模式,Режим масштабирования окна,Fensterskalierungsmodus,Modo de escala de janela
+key_unfocuses_pause,Pause when not focused,Pausa cuando no estás concentrado,集中していないときは一時停止する,注意力不集中时暂停,"Пауза, когда вы не сфокусированы","Machen Sie eine Pause, wenn Sie nicht konzentriert sind",Pausar quando não estiver focado
+,,,,,,,
+key_master_volume,Master volume,volumen maestro,マスターボリューム,主音量,Основной объем,Master-Lautstärke,Volume mestre
+key_music_volume,Music volume,Volumen de música,音楽の音量,音乐音量,Громкость музыки,Musiklautstärke,Volume da música
+key_sfx_volume,SFX volume,volumen de efectos especiales,効果音ボリューム,音效音量,Громкость звуковых эффектов,SFX-Lautstärke,Volume de efeitos sonoros
+key_voice_volume,Voice Volume,Volumen de voz,声の大きさ,语音音量,Громкость голоса,Sprachlautstärke,Volume de voz
+,,,,,,,
+key_pause_music_and_game,Pause music when paused,Pausar la música cuando esté en pausa,一時停止時に音楽を一時停止する,暂停时暂停音乐,Пауза музыки во время паузы,"Pausieren Sie die Musik, wenn sie angehalten ist",Pausar a música quando pausada
+key_explosion_tinnitus ,Get tinnitus from explosions,Contraer tinnitus por explosiones,爆発で耳鳴りになる,因爆炸而耳鸣,Получить шум в ушах от взрывов,Bekommen Sie Tinnitus durch Explosionen,Obtenha zumbido em explosões
+,,,,,,,
+key_translation,Translation,Traducción,翻訳,翻译,Перевод,Übersetzung,Tradução
+key_flashing_lights,Flashing lights,luces intermitentes,ライトの点滅,闪烁的灯光,Мигающие огни,Blinkende Lichter,Luzes piscando
+key_show_blood,Show Blood/Gore,Mostrar sangre/gore,血/ゴアを表示,显示血腥/血腥,Показать кровь/запекшуюся кровь,Blut/Gore zeigen,Mostrar Sangue/Gore
+key_show_nudity,Show nudity,mostrar desnudez,ヌードを見せる,展示裸体,Показать наготу,Nacktheit zeigen,Mostrar nudez
+,,,,,,,
+key_default,Default,Por defecto,デフォルト,默认,По умолчанию,Standard,Padrão
+key_yes,Yes,Sí,はい,是的,Да,Ja,Sim
+key_no,No,No,いいえ,不,Нет,NEIN,Não
+,,,,,,,
+key_camera_shake,Camera shake strength,Fuerza de vibración de la cámara,手ブレ強度,相机抖动强度,Сила дрожания камеры,Stärke der Kameraverwacklung,Força de vibração da câmera
+,,,,,,,
+key_desktop_confirm,Quit to the desktop?\n Unsaved progress will be lost.,¿Salir al escritorio?\n Se perderá el progreso no guardado.,デスクトップを終了しますか?\n 保存されていない進行状況は失われます。,退出到桌面？\n未保存的进度将丢失。,Выйти на рабочий стол?\n Несохраненный прогресс будет утерян.,Zum Desktop zurückkehren?\n Nicht gespeicherte Fortschritte gehen verloren.,Sair da área de trabalho?\n O progresso não salvo será perdido.
+key_exit_confirm,Quit to the main menu?\n Unsaved progress will be lost.,¿Salir al menú principal?\n Se perderá el progreso no guardado.,メイン メニューを終了しますか?\n 保存されていない進行状況は失われます。,退出主菜单？\n未保存的进度将丢失。,Выйти в главное меню?\n Несохраненный прогресс будет утерян.,Zum Hauptmenü zurückkehren?\n Nicht gespeicherte Fortschritte gehen verloren.,Sair do menu principal?\n O progresso não salvo será perdido.

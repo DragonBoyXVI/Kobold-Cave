@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7t8fxwv10qqd"
+path="res://.godot/imported/2_saw2.flac.ogg-72a40f67952e5c9254f2ea43b872c3fb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Dragon Game Template/Audio/2_saw2.flac.ogg"
+dest_files=["res://.godot/imported/2_saw2.flac.ogg-72a40f67952e5c9254f2ea43b872c3fb.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=140.0
+beat_count=0
+bar_beats=4
