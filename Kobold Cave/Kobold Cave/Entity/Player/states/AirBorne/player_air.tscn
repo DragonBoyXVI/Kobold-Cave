@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://brk8ciananh4q"]
+
+[ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_564h3"]
+[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd" id="2_gme20"]
+
+[node name="PlayerAir" instance=ExtResource("1_564h3")]
+script = ExtResource("2_gme20")
+ground_state = &""
+use_slow = true
+
+[node name="jumpTimer" type="Timer" parent="." index="0"]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.25
+one_shot = true

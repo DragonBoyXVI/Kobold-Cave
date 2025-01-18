@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://f0y5yutdgyx2"]
+
+[ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/Base/state_behaviour_base.tscn" id="1_suotg"]
+[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/player_state_base.gd" id="2_k2186"]
+
+[node name="PlayerStateBase" instance=ExtResource("1_suotg")]
+script = ExtResource("2_k2186")
+use_slow = false

@@ -1,4 +1,4 @@
-
+@tool
 extends ScalieResource
 class_name MovementData
 
@@ -19,9 +19,15 @@ class_name MovementData
 @export var air_gravity: float = 800.0
 
 ## when you're above max speed, get pulled by friction
-@export var air_terminal_velocity: Vector2 = Vector2( 2000.0, 2000.0 )
+@export var air_terminal_velocity: float = 2000.0 : 
+	set( value ):
+		
+		air_terminal_velocity = value
+		air_terminal_squared = pow( value, 2.0 )
+## MATH
+@export_storage var air_terminal_squared: float = pow( 2000.0, 2 )
 ## how much to get pulled when above max speed
-@export var air_friction: Vector2 = Vector2( 1000.0, 1000.0 )
+@export var air_friction: float = 1000.0
 
 @export_subgroup( "Strafe", "air_move_" )
 ## max strafe speed

@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b5t7eutiullb7" path="res://Dragon Game Template/NotoSansJP-Regular.ttf" id="1_78ief"]
 
-[sub_resource type="Image" id="Image_lqsyo"]
+[sub_resource type="Image" id="Image_c2nwu"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ALOzs5mysrKmuLi4Ev///wD///8A////AP///wC4uLgSsrKyprKyspf///8A////ALKysqaysrLZsbGxs7i4uBL///8A////ALi4uBKysrKzsrKy2bKysqX///8A////ALi4uBKxsbGzsrKy2bGxsbO4uLgSuLi4ErKysrOysrLZsbGxs7S0tBH///8A////AP///wC4uLgSsbGxs7KystmysrLFsrKyxbKystmxsbGztLS0Ef///wD///8A////AP///wD///8AuLi4ErGxsbOysrLZsrKy2bGxsbO0tLQR////AP///wD///8A////AP///wD///8A////ALi4uBKysrKlsrKypbS0tBH///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A"),
 "format": "RGBA8",
@@ -12,7 +12,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_2d5ba"]
-image = SubResource("Image_lqsyo")
+image = SubResource("Image_c2nwu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xt8p"]
 content_margin_left = 8.0

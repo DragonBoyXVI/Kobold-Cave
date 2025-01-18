@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpygy5a7d23qn"]
+
+[ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_mesg0"]
+[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.gd" id="2_w1734"]
+
+[node name="PlayerGrounded" instance=ExtResource("1_mesg0")]
+script = ExtResource("2_w1734")
+air_state = &""
+use_slow = true
+
+[node name="CyoteTimer" type="Timer" parent="." index="0"]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="CyoteTimer" to="." method="_on_cyote_timer_timeout"]

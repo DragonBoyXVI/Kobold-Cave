@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://cv22pcm2jgbaa"]
+
+[ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
+[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
+[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn" id="3_cilv7"]
+[ext_resource type="Resource" uid="uid://dsv0qgalvyih5" path="res://Kobold Cave/Entity/Player/player_movement.tres" id="3_vs55y"]
+[ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="4_hijn5"]
+[ext_resource type="PackedScene" uid="uid://dpygy5a7d23qn" path="res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn" id="6_2vjjd"]
+[ext_resource type="PackedScene" uid="uid://bcwe3apiil7su" path="res://Kobold Cave/Components/CameraFocal/camera_focal.tscn" id="6_6ygbl"]
+[ext_resource type="PackedScene" uid="uid://brk8ciananh4q" path="res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn" id="7_6youo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
+size = Vector2(80, 105)
+
+[node name="Player" instance=ExtResource("1_my4pb")]
+script = ExtResource("2_0u77g")
+movement_stats = ExtResource("3_vs55y")
+metadata/_edit_group_ = true
+
+[node name="PlayerModel" parent="." index="0" instance=ExtResource("4_hijn5")]
+
+[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state") instance=ExtResource("3_cilv7")]
+initial_state = NodePath("PlayerAir")
+
+[node name="PlayerGrounded" parent="StateMachine" index="0" node_paths=PackedStringArray("player", "model") instance=ExtResource("6_2vjjd")]
+air_state = &"PlayerAir"
+player = NodePath("../..")
+model = NodePath("../../PlayerModel")
+
+[node name="PlayerAir" parent="StateMachine" index="1" node_paths=PackedStringArray("player", "model") instance=ExtResource("7_6youo")]
+ground_state = &"PlayerGrounded"
+player = NodePath("../..")
+model = NodePath("../../PlayerModel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -52.5)
+shape = SubResource("RectangleShape2D_2fq1t")
+
+[node name="CameraFocal" parent="." index="3" instance=ExtResource("6_6ygbl")]
+position = Vector2(0, -48)
