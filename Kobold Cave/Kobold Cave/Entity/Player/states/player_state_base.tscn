@@ -6,3 +6,4 @@
 [node name="PlayerStateBase" instance=ExtResource("1_suotg")]
 script = ExtResource("2_k2186")
 use_slow = false
+movement_stats = null

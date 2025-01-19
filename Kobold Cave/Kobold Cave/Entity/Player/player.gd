@@ -14,3 +14,11 @@ func _input( event: InputEvent ) -> void:
 			KEY_SPACE:
 				
 				position = Vector2.ZERO
+			
+			KEY_1:
+				
+				Engine.time_scale = 0.05
+			
+			KEY_2:
+				
+				Engine.time_scale = 1.0

@@ -78,7 +78,7 @@ func logic_air_strafe( delta: float, direction: float ) -> void:
 	var strafe_target: float = movement_stats.air_move_speed * direction_dir
 	
 	if ( direction_dir == velocity_dir ):
-		if ( velocity.x > movement_stats.air_move_speed ):
+		if ( absf( velocity.x ) > movement_stats.air_move_speed ):
 			
 			strafe_delta = 0.0
 			return

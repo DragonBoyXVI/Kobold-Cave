@@ -15,17 +15,33 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		player = new_player
+		if ( player and player.movement_stats ):
+			
+			movement_stats = player.movement_stats
+@export var movement_stats: MovementData : 
+	set( new_stats ):
+		update_configuration_warnings.call_deferred()
+		
+		movement_stats = new_stats
 @export var model: DragonModel2D :
 	set( new_model ):
 		update_configuration_warnings.call_deferred()
 		
 		model = new_model
+@export var camera_focal: CameraFocal2D :
+	set( new_focal ):
+		update_configuration_warnings.call_deferred()
+		
+		camera_focal = new_focal
 
 
 const SLOW_NORMAL := 1.0
 const SLOW_SLOW := 0.05
 
 var slow: float = SLOW_NORMAL
+
+
+const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -48.0 )
 
 
 func enter() -> void:
@@ -52,6 +68,16 @@ func _get_configuration_warnings() -> PackedStringArray:
 		const text := "A model is needed for this state!"
 		warnings.append( text )
 	
+	if ( not camera_focal ):
+		
+		const text := "Please provide a camera focal point!"
+		warnings.append( text )
+	
+	if ( not movement_stats ):
+		
+		const text := "We want the players movement stats! Either resupply the player node or place the resource here."
+		warnings.append( text )
+	
 	return warnings
 
 func _ready() -> void:
@@ -63,6 +89,12 @@ func _ready() -> void:
 		set_process_input( false )
 		set_process_unhandled_input( false )
 		return
+	
+	Settings.loaded.connect( _on_settings_updated )
+	Settings.updated.connect( _on_settings_updated )
+	if ( Settings.data ):
+		
+		_on_settings_updated( Settings.data )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	
@@ -75,3 +107,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
+
+
+func _on_settings_updated( _recived_data: SettingsFile ) -> void:
+	pass

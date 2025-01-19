@@ -16,6 +16,9 @@ class_name PlayerStateAir
 @onready var jump_timer := %jumpTimer as Timer
 
 
+var jump_with_up := true
+
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := super()
 	
@@ -35,7 +38,12 @@ func _physics_process( delta: float ) -> void:
 	
 	var direction := Vector2.ZERO
 	direction.x = Input.get_axis( &"Move Left", &"Move Right" )
-	direction.y = Input.get_axis( &"Move Up", &"Move Down" )
+	if ( Input.is_action_pressed( &"Enter" ) ):
+		
+		direction.y = -1.0
+	else:
+		
+		direction.y = Input.get_axis( &"Move Up", &"Move Down" )
 	
 	player.logic_air_strafe( delta, direction.x )
 	player.logic_gravity( delta, direction.y )
@@ -56,7 +64,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action_pressed( &"Move Up" ) ):
+	if ( event.is_action_pressed( &"Enter" ) or ( jump_with_up and event.is_action_pressed( &"Move Up" ) ) ):
 		
 		jump_timer.start()
 		
