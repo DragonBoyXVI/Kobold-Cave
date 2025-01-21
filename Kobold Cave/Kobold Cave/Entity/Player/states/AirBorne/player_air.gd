@@ -8,12 +8,9 @@ class_name PlayerAir
 const STATE_NAME := &"PlayerAir"
 
 
-@export var ground_state: StringName = &"" : 
-	set( value ):
-		update_configuration_warnings.call_deferred()
-		
-		ground_state = value
+const AREA_PROP := &"monitoring"
 
+@export var ledge_grabber: LedgeGrabDetector
 
 @onready var jump_timer := %jumpTimer as Timer
 
@@ -21,15 +18,27 @@ const STATE_NAME := &"PlayerAir"
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := super()
 	
-	if ( ground_state.is_empty() ):
-		
-		const text := "Please provide the name of the ground state!"
-		warnings.append( text )
-	
 	return warnings
 
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	if ( ledge_grabber ):
+		
+		ledge_grabber.found_grab_ledge.connect( _on_ledge_found )
+		ledge_grabber.set_deferred( AREA_PROP, false )
+
+
+func _enter() -> void:
+	
+	ledge_grabber.set_deferred( AREA_PROP, true )
 
 func _leave() -> void:
+	
+	ledge_grabber.set_deferred( AREA_PROP, false )
 	
 	jump_timer.stop()
 	model.root.scale = Vector2.ONE
@@ -77,7 +86,7 @@ func _physics_process( delta: float ) -> void:
 			player.logic_apply_jump()
 			return
 		
-		request_state( ground_state )
+		request_state( PlayerGrounded.STATE_NAME )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
@@ -93,3 +102,11 @@ func _unhandled_input( event: InputEvent ) -> void:
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	super( recived_data )
+
+
+func _on_ledge_found( _ledge_rect: Rect2 ) -> void:
+	if ( not can_process() ): return
+	
+	if ( not player.is_on_floor() ):
+		
+		request_state( PlayerGrabbedLedge.STATE_NAME )

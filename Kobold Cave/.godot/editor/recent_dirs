@@ -1,7 +1,9 @@
+res://Kobold Cave/Entity/Player/states/Grabbed Ledge
+res://Kobold Cave/Entity/Player/states
+res://Kobold Cave/Components/LedgeGrabDetector
 res://Kobold Cave/Menu/Settings Menu Options/Check Buttons
 res://Dragon Game Template/Components/Control/Setting Widget/Check Button
 res://Kobold Cave/Entity/Player/states/Crouched
-res://Kobold Cave/Entity/Player/states
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player
 res://Kobold Cave/Entity/Player/states/Trans
 res://Kobold Cave/Entity/Player/states/Grounded

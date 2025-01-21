@@ -11,3 +11,8 @@ res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn
 res://Kobold Cave/Entity/Player/player_moveset.txt
 res://Kobold Cave/Entity/Player/player.gd
 res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd
+res://Kobold Cave/Components/LedgeGrabDetector/ledge_grab_detector.gd
+res://Kobold Cave/Components/LedgeGrabDetector/ledge_grab_detector.tscn
+res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn
+res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.gd
+res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd

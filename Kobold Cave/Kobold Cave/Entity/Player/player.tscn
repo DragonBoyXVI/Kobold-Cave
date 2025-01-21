@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=16 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
@@ -11,12 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://brk8ciananh4q" path="res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn" id="7_6youo"]
 [ext_resource type="Texture2D" uid="uid://c8yqebyrtbrt4" path="res://Dragon Game Template/Icons/temperature.png" id="9_0t3dc"]
 [ext_resource type="PackedScene" uid="uid://bbmfun1dvs7bd" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn" id="9_v25kg"]
+[ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/LedgeGrabDetector/ledge_grab_detector.tscn" id="12_g8bn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
 size = Vector2(80, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
+size = Vector2(128, 16)
 
 [node name="Player" node_paths=PackedStringArray("state_machine") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
@@ -41,8 +45,8 @@ movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerAir" parent="StateMachine" index="2" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("7_6youo")]
-ground_state = &"PlayerGrounded"
+[node name="PlayerAir" parent="StateMachine" index="2" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
+ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
@@ -70,3 +74,10 @@ position = Vector2(0, -48)
 
 [node name="Sprite2D" type="Sprite2D" parent="CameraFocal" index="0"]
 texture = ExtResource("9_0t3dc")
+
+[node name="LedgeGrabDetector" parent="." index="5" instance=ExtResource("12_g8bn5")]
+position = Vector2(0, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector" index="0"]
+shape = SubResource("RectangleShape2D_nigli")
+debug_color = Color(1, 1, 0, 0.5)

@@ -9,6 +9,8 @@ crouch - longjump ( hold forward ) x
 crouch - hold back to get a longer backflip, hold forward to long jump
 - no longer backflip, already covers massive gaps
 
+ledge grab?
+
 
 -- QoL
 pressing up to jump is toggleable x
