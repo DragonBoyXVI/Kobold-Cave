@@ -27,6 +27,13 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	return warnings
 
+func _ready() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		
+		child_entered_tree.connect( _util_child_entered_tree )
+		return
+
 
 #region ground routines
 
@@ -101,3 +108,10 @@ func logic_terminal_velocity( delta: float ) -> void:
 		velocity = velocity.move_toward( velocity_target, velocity_delta )
 
 #endregion
+
+
+func _util_child_entered_tree( node: Node ) -> void:
+	
+	if ( node is StateMachine and not state_machine ):
+		
+		state_machine = node

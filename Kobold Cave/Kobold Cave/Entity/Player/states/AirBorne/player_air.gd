@@ -33,6 +33,26 @@ func _get_configuration_warnings() -> PackedStringArray:
 func _leave() -> void:
 	
 	jump_timer.stop()
+	model.root.scale = Vector2.ONE
+	model.rotation = 0.0
+
+func _process( _delta: float ) -> void:
+	
+	# stretch
+	const stretch_max := 0.15
+	
+	var fall_amount: float = absf( player.velocity.y ) / movement_stats.air_terminal_velocity
+	
+	var stretch_y: float = 1.0 + ( stretch_max * fall_amount )
+	var stretch_x: float = 2.0 - stretch_y
+	
+	model.root.scale = Vector2( stretch_x, stretch_y )
+	
+	# rotation
+	const rotate_max := deg_to_rad( 25.0 )
+	
+	var rotate_amount: float = player.velocity.x / movement_stats.air_terminal_velocity
+	model.rotation = rotate_max * rotate_amount
 
 func _physics_process( delta: float ) -> void:
 	
