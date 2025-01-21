@@ -48,7 +48,9 @@ movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerCrouched" parent="StateMachine" index="3" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("9_v25kg")]
+[node name="PlayerCrouched" parent="StateMachine" index="3" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model", "camera_focal") instance=ExtResource("9_v25kg")]
+standing_shape = NodePath("../../ShapeStanding")
+crouched_shape = NodePath("../../ShapeCrouching")
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")

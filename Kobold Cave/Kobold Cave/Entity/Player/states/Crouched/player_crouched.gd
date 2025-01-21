@@ -8,6 +8,10 @@ class_name PlayerCrouched
 const STATE_NAME := &"PlayerCrouched"
 
 
+@export var standing_shape: CollisionShape2D
+@export var crouched_shape: CollisionShape2D
+
+
 @onready var uncrouch_timer := %UncrouchTimer as Timer
 
 var _toggle_crouch := true
@@ -20,16 +24,32 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	return warnings
 
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+
 
 func _enter() -> void:
 	
 	model.scale.y = 0.5
+	
+	if ( standing_shape and crouched_shape ):
+		
+		crouched_shape.set_deferred( &"disabled", false )
+		standing_shape.set_deferred( &"disabled", true )
 
 func _leave() -> void:
 	
 	model.scale.y = 1.0
 	
 	uncrouch_timer.stop()
+	
+	if ( standing_shape and crouched_shape ):
+		
+		crouched_shape.set_deferred( &"disabled", true )
+		standing_shape.set_deferred( &"disabled", false )
 
 func _physics_process( delta: float ) -> void:
 	
@@ -66,8 +86,21 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action_pressed( &"Enter" ) or ( _press_up_to_jump and event.is_action_pressed( &"Move Up" ) ) ):
 		
-		player.logic_apply_jump( 1.5 )
-		player.velocity.x -= ( 100.0 * model.scale.x )
+		var direction := Input.get_axis( &"Move Left", &"Move Right" )
+		direction = signf( direction )
+		
+		const focal_displacement := 256.0
+		
+		var model_dir: float = signf( model.scale.x )
+		if ( model_dir == direction ):
+			
+			player.logic_apply_longjump( direction )
+			camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
+		else:
+			
+			player.logic_apply_backflip( direction )
+		
+		#camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
 		
 		request_state( PlayerAir.STATE_NAME )
 		

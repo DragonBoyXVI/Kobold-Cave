@@ -30,3 +30,16 @@ func _input( event: InputEvent ) -> void:
 			KEY_O:
 				
 				velocity.y -= 2_000.0
+
+
+func logic_apply_backflip( direction: float ) -> void:
+	
+	logic_apply_jump( 1.5 )
+	
+	velocity.x += movement_stats.ground_speed * 0.05 * direction
+
+func logic_apply_longjump( direction: float ) -> void:
+	
+	logic_apply_jump( 0.5 )
+	
+	velocity.x += movement_stats.ground_speed * 1.5 * direction

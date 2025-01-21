@@ -3,8 +3,9 @@ walk x
 jump x
 
 -- ADVANCED
-crouch x
-crouch - backflip
+crouch ( cannot change direction while crouched )x
+crouch - backflip x
+crouch - longjump ( hold forward ) x
 crouch - hold back to get a longer backflip, hold forward to long jump
 - no longer backflip, already covers massive gaps
 
