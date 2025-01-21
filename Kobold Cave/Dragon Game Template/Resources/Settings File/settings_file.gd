@@ -29,6 +29,16 @@ var color_blind_enabled: bool = false
 @export_group( "Game" )
 @export var pause_on_lost_focus: bool = true
 
+@export var toggle_crouch: bool = true
+@export var press_up_to_jump: bool = true
+
+@export_group( "Action Timers" )
+@export var time_to_crouch: float = 0.1
+@export var time_to_uncrouch: float = 0.1
+
+@export var time_cyote: float = 0.15
+@export var time_jump: float = 0.25
+
 @export_group( "Display" )
 @export var frame_rate: int = 30
 @export var frame_rate_unlimited := false

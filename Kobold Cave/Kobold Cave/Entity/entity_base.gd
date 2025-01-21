@@ -107,6 +107,15 @@ func logic_terminal_velocity( delta: float ) -> void:
 		var velocity_delta: float = delta * movement_stats.air_friction
 		velocity = velocity.move_toward( velocity_target, velocity_delta )
 
+
+## capsule for the full air routine.
+## gravity, terminal velocity, and strafing
+func routine_airborne( delta: float, direction: Vector2 ) -> void:
+	
+	logic_air_strafe( delta, direction.x )
+	logic_gravity( delta, direction.y )
+	logic_terminal_velocity( delta )
+
 #endregion
 
 

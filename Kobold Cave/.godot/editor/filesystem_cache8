@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737417713
-test_world.tscn::PackedScene::7912763643112126471::1737249569::0::1::::<><>::uid://cv22pcm2jgbaa::::res://Kobold Cave/Entity/Player/player.tscn
-::res://Dragon Game Template/::1737245498
+::res://::1737431881
+test_world.tscn::PackedScene::7912763643112126471::1737431640::0::1::::<><>::uid://cv22pcm2jgbaa::::res://Kobold Cave/Entity/Player/player.tscn
+::res://Dragon Game Template/::1737417859
 default_bus_layout.tres::AudioBusLayout::5624296138161179179::1737417738::0::1::::<><>::
-default_theme.tres::Theme::1250676043882561973::1737245497::0::1::::<><>::uid://b5t7eutiullb7::::res://Dragon Game Template/NotoSansJP-Regular.ttf
+default_theme.tres::Theme::1250676043882561973::1737417859::0::1::::<><>::uid://b5t7eutiullb7::::res://Dragon Game Template/NotoSansJP-Regular.ttf
 Moe_kobold_adventure_128x146.PNG::CompressedTexture2D::5956812922990179317::1714335357::1737066472::1::::<><>::
 NotoSansJP-Regular.ttf::FontFile::4533260337314296774::1714867591::1737066471::1::::<><>::
 rablings of a completely sane woman.txt::TextFile::-1::1721768420::0::1::::<><>::
@@ -219,8 +219,8 @@ pause_front_page.tscn::PackedScene::4031508589358790522::1735352258::0::1::::<><
 ::res://Dragon Game Template/Menues/Pause Menu/Main Menu Confirm/::1737066335
 main_menu_confirm.gd::GDScript::-1::1735269722::0::1::::<>MarginContainer<>::
 main_menu_confirm.tscn::PackedScene::7343505122439408785::1735352662::0::1::::<><>::res://Dragon Game Template/Menues/Pause Menu/Main Menu Confirm/main_menu_confirm.gd
-::res://Dragon Game Template/Menues/Pause Menu/Settings Page/::1737066335
-settings_page.tscn::PackedScene::2808396778810629387::1736542885::0::1::::<><>::uid://d2f8nyqg41ixh::::res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn<>uid://b6bja1q8f8v6v::::res://Dragon Game Template/Audio/merp.wav<>uid://chr4u5xvdyupn::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Unlimited FPS/widget_unlimited_fps.tscn<>uid://c5gsidrnx6wf7::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/FPS Slider/widget_fps_slider.tscn<>uid://uentdo4kjvag::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn<>uid://cs1o2bhyv4w4k::::res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn<>uid://lj17iuwgcxqk::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn<>uid://ca3dgj5n3yk34::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn<>uid://b1dd4eaxxi2fj::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Master/widget_master_volume.tscn<>uid://dxcn4xfjc67ph::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Camera Shake/widget_camera_shake.tscn<>uid://savm6ibppnuw::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Music/widget_music_volume.tscn<>uid://d1gm0s1gehl1d::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Camera Physics/widget_camera_physics.tscn<>uid://dh24n8kld1wbk::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume SFX/widget_volume_sfx.tscn<>uid://dgn0xmwf2vjdv::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Voice/widget_volume_voice.tscn<>uid://ckhstvkm8ykhj::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause music when paused/widget_pause_music_on_pause.tscn<>uid://c423jug3ymr5c::::res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Translation/widget_translation.tscn<>uid://cx62o0sdivja::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Flashing Lights/widget_flashing_lights.tscn<>uid://6dsk1enrk0g2::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Blood/widget_show_blood.tscn<>uid://0p6gtpn0lkn7::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Nudity/widget_nudity.tscn<>uid://b1umhwe0545lg::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Politics/widget_politics.tscn
+::res://Dragon Game Template/Menues/Pause Menu/Settings Page/::1737431631
+settings_page.tscn::PackedScene::2808396778810629387::1737431631::0::1::::<><>::uid://d2f8nyqg41ixh::::res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn<>uid://b6bja1q8f8v6v::::res://Dragon Game Template/Audio/merp.wav<>uid://chr4u5xvdyupn::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Unlimited FPS/widget_unlimited_fps.tscn<>uid://c5gsidrnx6wf7::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/FPS Slider/widget_fps_slider.tscn<>uid://c7ic13vdjcpf1::::res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_toggle_crouch.tscn<>uid://uentdo4kjvag::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn<>uid://2lrg2h5v018h::::res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_up_to_jump.tscn<>uid://cs1o2bhyv4w4k::::res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn<>uid://lj17iuwgcxqk::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn<>uid://ca3dgj5n3yk34::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn<>uid://b1dd4eaxxi2fj::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Master/widget_master_volume.tscn<>uid://dxcn4xfjc67ph::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Camera Shake/widget_camera_shake.tscn<>uid://savm6ibppnuw::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Music/widget_music_volume.tscn<>uid://d1gm0s1gehl1d::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Camera Physics/widget_camera_physics.tscn<>uid://dh24n8kld1wbk::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume SFX/widget_volume_sfx.tscn<>uid://dgn0xmwf2vjdv::::res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Voice/widget_volume_voice.tscn<>uid://ckhstvkm8ykhj::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause music when paused/widget_pause_music_on_pause.tscn<>uid://c423jug3ymr5c::::res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Translation/widget_translation.tscn<>uid://cx62o0sdivja::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Flashing Lights/widget_flashing_lights.tscn<>uid://6dsk1enrk0g2::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Blood/widget_show_blood.tscn<>uid://0p6gtpn0lkn7::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Nudity/widget_nudity.tscn<>uid://b1umhwe0545lg::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Politics/widget_politics.tscn
 ::res://Dragon Game Template/Music/::1737066335
 music_base.gd::GDScript::-1::1736796090::0::1::::Music<>Node<>::
 music_base.tscn::PackedScene::1497396890894318916::1736796237::0::1::::<><>::res://Dragon Game Template/Music/music_base.gd
@@ -277,8 +277,8 @@ hurtbox_info_2d.gd::GDScript::-1::1735358713::0::1::::HurtboxInfo2D<>HurtboxInfo
 mass.gd::GDScript::-1::1727208969::0::1::::Mass<>ScalieResource<>res://Dragon Game Template/Icons/mass.png::
 ::res://Dragon Game Template/Resources/Random Item Weighted/::1737066338
 random_item_weighted.gd::GDScript::-1::1735514522::0::1::::RandomItemWeighted<>RefCounted<>res://Dragon Game Template/Icons/random_item_weighted.png::
-::res://Dragon Game Template/Resources/Settings File/::1737066338
-settings_file.gd::GDScript::-1::1736111638::0::1::::SettingsFile<>ScalieResource<>res://Dragon Game Template/Icons/settings_file.png::
+::res://Dragon Game Template/Resources/Settings File/::1737428896
+settings_file.gd::GDScript::-1::1737428896::0::1::::SettingsFile<>ScalieResource<>res://Dragon Game Template/Icons/settings_file.png::
 ::res://Dragon Game Template/Resources/Team Mask/::1737066338
 team_mask.gd::GDScript::-1::1735359590::0::1::::TeamMask<>ScalieResource<>::
 ::res://Dragon Game Template/Resources/Temprature/::1737066338
@@ -299,29 +299,41 @@ Pause Menu Translation Base - Sheet1.ja.translation::OptimizedTranslation::76861
 Pause Menu Translation Base - Sheet1.pt.translation::OptimizedTranslation::6666371256377279253::1737066470::0::1::::<><>::
 Pause Menu Translation Base - Sheet1.ru.translation::OptimizedTranslation::7052197272860633460::1737066470::0::1::::<><>::
 Pause Menu Translation Base - Sheet1.zh.translation::OptimizedTranslation::7441135343790797691::1737066470::0::1::::<><>::
-::res://Kobold Cave/::1737067093
+::res://Kobold Cave/::1737431335
 ::res://Kobold Cave/Components/::1737232296
 ::res://Kobold Cave/Components/CameraFocal/::1737232968
 camera_focal.gd::GDScript::-1::1737232412::0::1::::CameraFocal2D<>Marker2D<>::
 camera_focal.tscn::PackedScene::2572507575305594128::1737232968::0::1::::<><>::res://Kobold Cave/Components/CameraFocal/camera_focal.gd
-::res://Kobold Cave/Entity/::1737249572
-entity_base.gd::GDScript::-1::1737245498::0::1::::Entity<>CharacterBody2D<>::
-entity_base.tscn::PackedScene::4192395547250592256::1737249572::0::1::::<><>::res://Kobold Cave/Entity/entity_base.gd
-::res://Kobold Cave/Entity/Player/::1737249573
-player.gd::GDScript::-1::1737246024::0::1::::Player<>Entity<>::
-player.tscn::PackedScene::6304211553681137828::1737249572::0::1::::<><>::uid://b0y3e3k6tk6xw::::res://Kobold Cave/Entity/entity_base.tscn<>res://Kobold Cave/Entity/Player/player.gd<>uid://cksnwnxdury7g::::res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn<>uid://dsv0qgalvyih5::::res://Kobold Cave/Entity/Player/player_movement.tres<>uid://c2sv5wtxoty01::::res://Kobold Cave/Entity/Player/player_model.tscn<>uid://dpygy5a7d23qn::::res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn<>uid://bcwe3apiil7su::::res://Kobold Cave/Components/CameraFocal/camera_focal.tscn<>uid://brk8ciananh4q::::res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn<>uid://c8yqebyrtbrt4::::res://Dragon Game Template/Icons/temperature.png
+::res://Kobold Cave/Entity/::1737431641
+entity_base.gd::GDScript::-1::1737423832::0::1::::Entity<>CharacterBody2D<>::
+entity_base.tscn::PackedScene::4192395547250592256::1737431641::0::1::::<><>::res://Kobold Cave/Entity/entity_base.gd
+::res://Kobold Cave/Entity/Player/::1737431641
+player.gd::GDScript::-1::1737423140::0::1::::Player<>Entity<>::
+player.tscn::PackedScene::6304211553681137828::1737431641::0::1::::<><>::uid://b0y3e3k6tk6xw::::res://Kobold Cave/Entity/entity_base.tscn<>res://Kobold Cave/Entity/Player/player.gd<>uid://cksnwnxdury7g::::res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn<>uid://dsv0qgalvyih5::::res://Kobold Cave/Entity/Player/player_movement.tres<>uid://c2sv5wtxoty01::::res://Kobold Cave/Entity/Player/player_model.tscn<>uid://dpygy5a7d23qn::::res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn<>uid://bcwe3apiil7su::::res://Kobold Cave/Components/CameraFocal/camera_focal.tscn<>uid://cndqr11pkblab::::res://Kobold Cave/Entity/Player/states/Trans/player_trans.tscn<>uid://brk8ciananh4q::::res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn<>uid://c8yqebyrtbrt4::::res://Dragon Game Template/Icons/temperature.png
 player_model.tscn::PackedScene::6706428761780880996::1737238256::0::1::::<><>::uid://cwxl8687gvrdn::::res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn<>uid://cq4r3rl8yc71r::::res://Dragon Game Template/Moe_kobold_adventure_128x146.PNG
-player_movement.tres::Resource/MovementData::8467559982589687708::1737245620::0::1::::<><>::res://Kobold Cave/Resources/MovementData/movement_data.gd
-::res://Kobold Cave/Entity/Player/states/::1737249573
+player_movement.tres::Resource/MovementData::8467559982589687708::1737422659::0::1::::<><>::res://Kobold Cave/Resources/MovementData/movement_data.gd
+player_moveset.txt::TextFile::-1::1737428586::0::1::::<><>::
+::res://Kobold Cave/Entity/Player/states/::1737431642
 player_state_base.gd::GDScript::-1::1737249107::0::1::::PlayerState<>StateBehaviour<>::
-player_state_base.tscn::PackedScene::404065736009236553::1737249573::0::1::::<><>::uid://b53q2bsxhf3y1::::res://Dragon Game Template/Components/Multi/State/Behaviour/Base/state_behaviour_base.tscn<>res://Kobold Cave/Entity/Player/states/player_state_base.gd
-::res://Kobold Cave/Entity/Player/states/AirBorne/::1737249999
-player_air.gd::GDScript::-1::1737249999::0::1::::PlayerStateAir<>PlayerState<>::
-player_air.tscn::PackedScene::3602282456207334158::1737249999::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd
-::res://Kobold Cave/Entity/Player/states/Grounded/::1737249577
-focal_curve.tres::Curve::8901464183295403618::1737247315::0::1::::<><>::
-player_grounded.gd::GDScript::-1::1737249570::0::1::::PlayerStateGrounded<>PlayerState<>::
-player_grounded.tscn::PackedScene::8262048509917080869::1737249577::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.gd<>uid://dy262xwg22j43::::res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
+player_state_base.tscn::PackedScene::404065736009236553::1737431642::0::1::::<><>::uid://b53q2bsxhf3y1::::res://Dragon Game Template/Components/Multi/State/Behaviour/Base/state_behaviour_base.tscn<>res://Kobold Cave/Entity/Player/states/player_state_base.gd
+::res://Kobold Cave/Entity/Player/states/AirBorne/::1737430686
+player_air.gd::GDScript::-1::1737430686::0::1::::PlayerAir<>PlayerState<>::
+player_air.tscn::PackedScene::3602282456207334158::1737430686::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd
+::res://Kobold Cave/Entity/Player/states/Crouched/::1737430926
+player_crouched.gd::GDScript::-1::1737430871::0::1::::PlayerCrouched<>PlayerState<>::
+player_crouched.tscn::PackedScene::2481722084355361509::1737430926::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd
+::res://Kobold Cave/Entity/Player/states/Grounded/::1737431144
+focal_curve.tres::Curve::8901464183295403618::1737417859::0::1::::<><>::
+player_grounded.gd::GDScript::-1::1737431143::0::1::::PlayerGrounded<>PlayerState<>::
+player_grounded.tscn::PackedScene::8262048509917080869::1737431143::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.gd<>uid://dy262xwg22j43::::res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
+::res://Kobold Cave/Entity/Player/states/Trans/::1737431291
+player_trans.gd::GDScript::-1::1737431291::0::1::::PlayerTrans<>PlayerState<>::
+player_trans.tscn::PackedScene::5692492704790414389::1737431291::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Trans/player_trans.gd
+::res://Kobold Cave/Menu/::1737431348
+::res://Kobold Cave/Menu/Settings Menu Options/::1737431364
+::res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/::1737431563
+widget_toggle_crouch.tscn::PackedScene::7035568753705903040::1737431563::0::1::::<><>::uid://dmv13olcilrq6::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn
+widget_up_to_jump.tscn::PackedScene::1918851267498215529::1737431489::0::1::::<><>::uid://dmv13olcilrq6::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn
 ::res://Kobold Cave/Resources/::1737067149
 ::res://Kobold Cave/Resources/MovementData/::1737236634
 movement_data.gd::GDScript::-1::1737236634::0::1::::MovementData<>ScalieResource<>::

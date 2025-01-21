@@ -1,0 +1,16 @@
+-- BASICS
+walk x
+jump x
+
+-- ADVANCED
+crouch x
+crouch - backflip
+crouch - hold back to get a longer backflip, hold forward to long jump
+- no longer backflip, already covers massive gaps
+
+
+-- QoL
+pressing up to jump is toggleable x
+crouch is togglabe x
+
+settings for action timers

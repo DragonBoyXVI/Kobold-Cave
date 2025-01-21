@@ -1,9 +1,11 @@
 @tool
 extends PlayerState
-class_name PlayerStateAir
+class_name PlayerAir
 ## player air state
 ##
 ## ditto
+
+const STATE_NAME := &"PlayerAir"
 
 
 @export var ground_state: StringName = &"" : 
@@ -14,9 +16,6 @@ class_name PlayerStateAir
 
 
 @onready var jump_timer := %jumpTimer as Timer
-
-
-var jump_with_up := true
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -56,6 +55,8 @@ func _process( _delta: float ) -> void:
 
 func _physics_process( delta: float ) -> void:
 	
+	# movement feels nicer if the direction isnt normalized
+	# setting?
 	var direction := Vector2.ZERO
 	direction.x = Input.get_axis( &"Move Left", &"Move Right" )
 	if ( Input.is_action_pressed( &"Enter" ) ):
@@ -65,9 +66,7 @@ func _physics_process( delta: float ) -> void:
 		
 		direction.y = Input.get_axis( &"Move Up", &"Move Down" )
 	
-	player.logic_air_strafe( delta, direction.x )
-	player.logic_gravity( delta, direction.y )
-	player.logic_terminal_velocity( delta )
+	player.routine_airborne( delta, direction )
 	
 	player.move_and_slide()
 	
@@ -84,9 +83,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action_pressed( &"Enter" ) or ( jump_with_up and event.is_action_pressed( &"Move Up" ) ) ):
+	if ( event.is_action_pressed( &"Enter" ) or ( _press_up_to_jump and event.is_action_pressed( &"Move Up" ) ) ):
 		
 		jump_timer.start()
 		
 		get_window().set_input_as_handled()
 		return
+
+
+func _on_settings_updated( recived_data: SettingsFile ) -> void:
+	super( recived_data )

@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgan5cvx0fjap"]
+[gd_scene load_steps=23 format=3 uid="uid://bgan5cvx0fjap"]
 
 [ext_resource type="PackedScene" uid="uid://d2f8nyqg41ixh" path="res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn" id="1_hv408"]
 [ext_resource type="AudioStream" uid="uid://b6bja1q8f8v6v" path="res://Dragon Game Template/Audio/merp.wav" id="2_t3xsu"]
 [ext_resource type="PackedScene" uid="uid://chr4u5xvdyupn" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Unlimited FPS/widget_unlimited_fps.tscn" id="2_tnbn0"]
 [ext_resource type="PackedScene" uid="uid://c5gsidrnx6wf7" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/FPS Slider/widget_fps_slider.tscn" id="3_4vry4"]
+[ext_resource type="PackedScene" uid="uid://c7ic13vdjcpf1" path="res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_toggle_crouch.tscn" id="3_37lnw"]
 [ext_resource type="PackedScene" uid="uid://uentdo4kjvag" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn" id="4_2acui"]
+[ext_resource type="PackedScene" uid="uid://2lrg2h5v018h" path="res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_up_to_jump.tscn" id="4_efh8x"]
 [ext_resource type="PackedScene" uid="uid://cs1o2bhyv4w4k" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn" id="5_gio5y"]
 [ext_resource type="PackedScene" uid="uid://lj17iuwgcxqk" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn" id="6_j0fsm"]
 [ext_resource type="PackedScene" uid="uid://ca3dgj5n3yk34" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn" id="7_prwe2"]
@@ -23,7 +25,7 @@
 
 [node name="SettingsPage" node_paths=PackedStringArray("audio_player") instance=ExtResource("1_hv408")]
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 auto_focus = true
 trans_strings = PackedStringArray("key_game", "key_display", "key_camera", "key_audio", "key_accessibility")
 audio_player = NodePath("AudioStreamPlayer")
@@ -32,7 +34,6 @@ pitch_min = 1.0
 pitch_max = 2.0
 
 [node name="Game" type="MarginContainer" parent="." index="1"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -47,12 +48,19 @@ size_flags_vertical = 6
 alignment = 1
 
 [node name="Label" type="Label" parent="Game/ScrollContainer/VBoxContainer" index="0"]
+visible = false
 layout_mode = 2
 text = "for stuff that is specific to your game"
 
 [node name="WidgetPauseUnfocused" parent="Game/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("7_prwe2")]
 layout_mode = 2
 setting_signal = 4
+
+[node name="WidgetToggleCrouch" parent="Game/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("3_37lnw")]
+layout_mode = 2
+
+[node name="WidgetUpToJump" parent="Game/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("4_efh8x")]
+layout_mode = 2
 
 [node name="Display" type="MarginContainer" parent="." index="2"]
 visible = false
@@ -178,6 +186,7 @@ focus_neighbor_top = NodePath("../WidgetVolumeVoice")
 focus_previous = NodePath("../WidgetVolumeVoice")
 
 [node name="Acessibility" type="MarginContainer" parent="." index="5"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -222,5 +231,5 @@ layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("2_t3xsu")
-pitch_scale = 2.0
+pitch_scale = 1.2
 bus = &"SFX"

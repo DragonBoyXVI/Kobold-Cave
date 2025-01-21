@@ -22,3 +22,11 @@ func _input( event: InputEvent ) -> void:
 			KEY_2:
 				
 				Engine.time_scale = 1.0
+			
+			KEY_P: 
+				
+				velocity.x += 2_000.0
+			
+			KEY_O:
+				
+				velocity.y -= 2_000.0

@@ -6,7 +6,6 @@
 
 [node name="PlayerGrounded" instance=ExtResource("1_mesg0")]
 script = ExtResource("2_w1734")
-air_state = &""
 focal_curve = ExtResource("3_kr6ub")
 use_slow = true
 
@@ -16,4 +15,11 @@ process_callback = 0
 wait_time = 0.15
 one_shot = true
 
+[node name="CrouchTimer" type="Timer" parent="." index="1"]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="CyoteTimer" to="." method="_on_cyote_timer_timeout"]
+[connection signal="timeout" from="CrouchTimer" to="." method="_on_crouch_timer_timeout"]
