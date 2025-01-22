@@ -6,6 +6,10 @@ class_name Entity
 ## ditto
 
 
+signal enabled
+signal disabled
+
+
 ## data used for movement
 @export var movement_stats: MovementData :
 	set( new_movement ):
@@ -117,6 +121,25 @@ func routine_airborne( delta: float, direction: Vector2 ) -> void:
 	logic_terminal_velocity( delta )
 
 #endregion
+
+
+func enable() -> void:
+	
+	_enable()
+	enabled.emit()
+
+func disable() -> void:
+	
+	_disable()
+	disabled.emit()
+
+func _enable() -> void:
+	
+	process_mode = PROCESS_MODE_INHERIT
+
+func _disable() -> void:
+	
+	process_mode = PROCESS_MODE_DISABLED
 
 
 func _util_child_entered_tree( node: Node ) -> void:

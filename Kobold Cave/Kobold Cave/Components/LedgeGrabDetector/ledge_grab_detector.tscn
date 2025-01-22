@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Kobold Cave/Components/LedgeGrabDetector/ledge_grab_detector.gd" id="1_bjouj"]
 
 [node name="LedgeGrabDetector" type="Area2D"]
+collision_layer = 0
 input_pickable = false
 script = ExtResource("1_bjouj")
 

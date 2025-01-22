@@ -104,9 +104,11 @@ func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	super( recived_data )
 
 
-func _on_ledge_found( _ledge_rect: Rect2 ) -> void:
+func _on_ledge_found( info: LedgeGrabInfo ) -> void:
 	if ( not can_process() ): return
+	if ( player.is_on_floor() ): return
 	
-	if ( not player.is_on_floor() ):
-		
-		request_state( PlayerGrabbedLedge.STATE_NAME )
+	#player.disable.call_deferred()
+	#player.set_deferred( &"global_position", _info.object_position )
+	
+	var pos_to_grab: Vector2 = info.object_position

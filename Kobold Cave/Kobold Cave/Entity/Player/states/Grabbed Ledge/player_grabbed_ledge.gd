@@ -15,7 +15,7 @@ const STATE_NAME := &"PlayerGrabbedLedge"
 		ledge_grabber = value
 
 
-var ledge_rect: Rect2
+var ledge_info: LedgeGrabInfo
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -37,7 +37,11 @@ func _ready() -> void:
 	ledge_grabber.found_grab_ledge.connect( _on_ledge_found )
 
 
-
-func _on_ledge_found( rect: Rect2 ) -> void:
+func _enter() -> void:
 	
-	ledge_rect = rect
+	request_state.call_deferred( PlayerAir.STATE_NAME )
+
+
+func _on_ledge_found( info: LedgeGrabInfo ) -> void:
+	
+	print( info )
