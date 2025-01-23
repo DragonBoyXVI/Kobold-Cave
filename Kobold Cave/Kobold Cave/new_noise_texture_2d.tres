@@ -1,0 +1,7 @@
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://c6s1agw5mpel5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_25hmf"]
+
+[resource]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_25hmf")

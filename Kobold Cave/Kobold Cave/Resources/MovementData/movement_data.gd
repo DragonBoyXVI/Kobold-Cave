@@ -1,5 +1,5 @@
 @tool
-extends ScalieResource
+extends KCResource
 class_name MovementData
 
 

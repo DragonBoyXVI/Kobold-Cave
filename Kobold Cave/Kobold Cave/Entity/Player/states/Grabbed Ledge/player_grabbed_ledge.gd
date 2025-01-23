@@ -42,6 +42,6 @@ func _enter() -> void:
 	request_state.call_deferred( PlayerAir.STATE_NAME )
 
 
-func _on_ledge_found( info: LedgeGrabInfo ) -> void:
+func _on_ledge_found( _info: LedgeGrabInfo ) -> void:
 	
-	print( info )
+	pass

@@ -108,7 +108,9 @@ func _on_ledge_found( info: LedgeGrabInfo ) -> void:
 	if ( not can_process() ): return
 	if ( player.is_on_floor() ): return
 	
-	#player.disable.call_deferred()
-	#player.set_deferred( &"global_position", _info.object_position )
+	player.disable.call_deferred()
+	player.set_deferred( &"global_position", info.grab_position )
 	
-	var pos_to_grab: Vector2 = info.object_position
+	await get_tree().create_timer( 5.0 ).timeout
+	
+	player.enable.call_deferred()
