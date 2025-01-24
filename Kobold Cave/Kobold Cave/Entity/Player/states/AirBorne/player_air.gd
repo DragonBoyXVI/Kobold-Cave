@@ -20,17 +20,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	return warnings
 
-func _ready() -> void:
-	super()
-	
-	if ( Engine.is_editor_hint() ):
-		return
-	
-	if ( ledge_grabber ):
-		
-		ledge_grabber.found_grab_ledge.connect( _on_ledge_found, CONNECT_DEFERRED )
-		ledge_grabber.set_deferred( AREA_PROP, false )
-
 
 func _enter() -> void:
 	
@@ -68,12 +57,13 @@ func _physics_process( delta: float ) -> void:
 	# setting?
 	var direction := Vector2.ZERO
 	direction.x = Input.get_axis( &"Move Left", &"Move Right" )
-	if ( Input.is_action_pressed( &"Enter" ) ):
+	if ( Input.is_action_pressed( &"Jump" ) ):
 		
 		direction.y = -1.0
 	else:
 		
 		direction.y = Input.get_axis( &"Move Up", &"Move Down" )
+	direction.x *= slow
 	
 	player.routine_airborne( delta, direction )
 	
@@ -92,21 +82,9 @@ func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action_pressed( &"Enter" ) or ( _press_up_to_jump and event.is_action_pressed( &"Move Up" ) ) ):
+	if ( event.is_action_pressed( &"Jump" ) ):
 		
 		jump_timer.start()
 		
 		get_window().set_input_as_handled()
 		return
-
-
-func _on_settings_updated( recived_data: SettingsFile ) -> void:
-	super( recived_data )
-
-
-func _on_ledge_found( grab_position: Vector2, grabbed_right_side: bool ) -> void:
-	if ( not can_process() ): return
-	if ( player.is_on_floor() ): return
-	
-	print( "pos: ", grab_position, " right: ", grabbed_right_side )
-	request_state( PlayerGrabbedLedge.STATE_NAME )

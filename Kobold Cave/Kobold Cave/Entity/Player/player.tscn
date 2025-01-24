@@ -21,7 +21,7 @@ size = Vector2(80, 105)
 size = Vector2(76, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
-size = Vector2(128, 4)
+size = Vector2(112, 4)
 
 [node name="Player" node_paths=PackedStringArray("state_machine") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")

@@ -43,10 +43,6 @@ var slow: float = SLOW_NORMAL
 
 const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -48.0 )
 
-
-var _press_up_to_jump := true
-
-
 func enter() -> void:
 	super()
 	
@@ -112,6 +108,5 @@ func _unhandled_input( event: InputEvent ) -> void:
 		return
 
 
-func _on_settings_updated( recived_data: SettingsFile ) -> void:
-	
-	_press_up_to_jump = recived_data.press_up_to_jump
+func _on_settings_updated( _recived_data: SettingsFile ) -> void:
+	pass

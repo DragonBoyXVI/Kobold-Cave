@@ -52,29 +52,33 @@ func _enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.global_position.y = grabbed_position.y
 	
+	if ( grabbed_right_side ):
+		
+		model.scale.x = 1.0
+	else:
+		
+		model.scale.x = -1.0
+	
 	camera_focal.global_position = grabbed_position
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action_pressed( &"Move Up" ) ):
+	if ( event.is_action_pressed( &"Jump" ) ):
 		
 		player.logic_apply_jump(  )
 		request_state( PlayerAir.STATE_NAME )
 		
 		get_window().set_input_as_handled()
 		return 
-	
-	if ( event.is_action_pressed( &"Move Down" ) ):
-		
-		request_state( PlayerCrouched.STATE_NAME )
-		
-		get_window().set_input_as_handled()
-		return
 
 
 func _on_ledge_found( grab_position: Vector2, grab_right_side: bool ) -> void:
 	
 	grabbed_position = grab_position
 	grabbed_right_side = grab_right_side
+	
+	if ( not can_process() ):
+		
+		request_state( STATE_NAME )

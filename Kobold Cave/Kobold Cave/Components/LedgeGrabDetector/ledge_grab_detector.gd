@@ -89,6 +89,11 @@ func _on_body_entered( body: Node2D ) -> void:
 		var tile_body := body as TileMapLayer
 		var my_tile_position: Vector2i = tile_body.local_to_map( tile_body.to_local( tile_ref.global_position ) )
 		
+		if ( tile_body.get_cell_tile_data( my_tile_position + Vector2i.UP ) ):
+			return
+		if ( tile_body.get_cell_tile_data( my_tile_position + Vector2i.DOWN ) ):
+			return
+		
 		var left_tile: Vector2i = my_tile_position + Vector2i( -1, 0 )
 		var right_tile: Vector2i = my_tile_position + Vector2i( 1, 0 )
 		

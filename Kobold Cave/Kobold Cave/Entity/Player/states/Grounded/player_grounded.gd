@@ -68,7 +68,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action( &"Move Down" ) ):
+	if ( event.is_action( &"Crouch" ) ):
 		
 		if ( event.is_pressed() ):
 			
@@ -80,7 +80,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		get_window().set_input_as_handled()
 		return
 	
-	if ( event.is_action_pressed( &"Enter" ) or ( _press_up_to_jump and event.is_action_pressed( &"Move Up" ) ) ):
+	if ( event.is_action_pressed( &"Jump" ) ):
 		
 		player.logic_apply_jump()
 		request_state( PlayerAir.STATE_NAME )

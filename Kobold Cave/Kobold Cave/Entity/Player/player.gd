@@ -34,12 +34,12 @@ func _input( event: InputEvent ) -> void:
 
 func logic_apply_backflip( direction: float ) -> void:
 	
-	logic_apply_jump( 1.5 )
+	logic_apply_jump( 1.25 )
 	
 	velocity.x += movement_stats.ground_speed * 0.05 * direction
 
 func logic_apply_longjump( direction: float ) -> void:
 	
-	logic_apply_jump( 0.5 )
+	logic_apply_jump( 0.75 )
 	
 	velocity.x += movement_stats.ground_speed * 2.0 * direction
