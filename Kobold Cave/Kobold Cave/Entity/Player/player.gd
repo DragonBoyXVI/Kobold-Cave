@@ -43,3 +43,8 @@ func logic_apply_longjump( direction: float ) -> void:
 	logic_apply_jump( 0.75 )
 	
 	velocity.x += movement_stats.ground_speed * 2.0 * direction
+
+
+func _hurt( damage: BaseDamage ) -> void:
+	
+	print( "took: ", damage.amount, " HP: ", health_node.health.current )

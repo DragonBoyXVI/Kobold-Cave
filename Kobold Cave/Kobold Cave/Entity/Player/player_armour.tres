@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmourGuts" load_steps=2 format=3 uid="uid://3hh6isr61bfi"]
+
+[ext_resource type="Script" path="res://Dragon Game Template/Resources/Armour/Basic/Guts/armour_basic_guts.gd" id="1_foy2o"]
+
+[resource]
+script = ExtResource("1_foy2o")
+guts_mode = 1
+guts_absolute_limit = 1.0
+guts_absolute_set_to = 1.0
+value = 0.0
+element_value = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0])

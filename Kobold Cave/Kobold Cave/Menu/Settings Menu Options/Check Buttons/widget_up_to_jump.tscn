@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dmv13olcilrq6" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn" id="1_coh8w"]
 
 [node name="WidgetUpToJump" instance=ExtResource("1_coh8w")]
-setting_property = &"press_up_to_jump"
+setting_property = &"dummy_property"
 _property_is_valid = true
 
 [node name="CheckButton" parent="MarginContainer" index="0"]

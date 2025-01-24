@@ -49,6 +49,9 @@ func apply( node_health: NodeHealth ) -> void:
 	if ( did_damage ):
 		
 		node_health.hurt.emit( self )
+		if ( node_health.health.current <= 0.0 ):
+			
+			node_health.died.emit()
 
 
 ## used to turn this into a heal object

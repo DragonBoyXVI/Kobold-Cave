@@ -18,3 +18,11 @@ res://Kobold Cave/Entity/Player/states/player_state_base.tscn
 res://Kobold Cave/Entity/Player/states/player_state_base.gd
 res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn
 res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd
+res://Dragon Game Template/Resources/Settings File/settings_file.gd
+res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_up_to_jump.tscn
+res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_toggle_crouch.tscn
+res://Kobold Cave/Entity/Player/player_moveset.txt
+res://Kobold Cave/Entity/entity_base.gd
+res://Kobold Cave/Entity/Player/player_hp.tres
+res://Kobold Cave/Entity/Player/player_armour.tres
+res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd

@@ -1,8 +1,8 @@
+CollisionShape2D
 Marker2D
 Sprite2D
 TileMapLayer
 Area2D
-CollisionShape2D
 Timer
 AnimationPlayer
 Node2D

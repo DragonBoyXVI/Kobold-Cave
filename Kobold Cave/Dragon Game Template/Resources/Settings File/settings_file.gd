@@ -30,7 +30,6 @@ var color_blind_enabled: bool = false
 @export var pause_on_lost_focus: bool = true
 
 @export var toggle_crouch: bool = true
-@export var press_up_to_jump: bool = true
 
 @export_group( "Action Timers" )
 @export var time_to_crouch: float = 0.1

@@ -1,37 +1,22 @@
-[gd_scene load_steps=7 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=8 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_6lgpp"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_gjs3b"]
+[ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="4_tld2m"]
+[ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd" id="5_8j3bj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akqnn"]
-size = Vector2(768, 128)
+[sub_resource type="Resource" id="Resource_4xpg4"]
+script = ExtResource("5_8j3bj")
+amount = 5.0
+peirce = 0.0
+element = 5
+rounded = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cfo2"]
-size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkbum"]
-size = Vector2(128, 256)
+[sub_resource type="CircleShape2D" id="CircleShape2D_f8hwg"]
+radius = 128.0
 
 [node name="Test World" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(205, 322)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(307, 126)
-shape = SubResource("RectangleShape2D_akqnn")
-disabled = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-141, -2)
-shape = SubResource("RectangleShape2D_5cfo2")
-disabled = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-269, -194)
-shape = SubResource("RectangleShape2D_fkbum")
-disabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ty4y6")]
 position = Vector2(512, 256)
@@ -43,3 +28,11 @@ use_kinematic_bodies = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_gjs3b")
+
+[node name="Hurtbox2D" parent="." instance=ExtResource("4_tld2m")]
+event = SubResource("Resource_4xpg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(-256, 512)
+shape = SubResource("CircleShape2D_f8hwg")
+debug_color = Color(1, 0, 0, 0.4)

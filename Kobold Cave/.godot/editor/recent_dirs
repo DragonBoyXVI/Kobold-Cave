@@ -1,3 +1,5 @@
+res://Kobold Cave/Saved Resources
+res://Kobold Cave/Entity/Player
 res://Kobold Cave
 res://Kobold Cave/Entity/Player/states/Grabbed Ledge
 res://Kobold Cave/Entity/Player/states
@@ -8,7 +10,6 @@ res://Kobold Cave/Entity/Player/states/Crouched
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player
 res://Kobold Cave/Entity/Player/states/Trans
 res://Kobold Cave/Entity/Player/states/Grounded
-res://Kobold Cave/Entity/Player
 res://Dragon Game Template/Components/2D/Dragon Model 2D
 res://Kobold Cave/Entity/Player/states/AirBorne
 res://Dragon Game Template/Components/Multi/State/Behaviour/Base
