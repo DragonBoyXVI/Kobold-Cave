@@ -21,7 +21,7 @@ size = Vector2(80, 105)
 size = Vector2(76, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
-size = Vector2(128, 16)
+size = Vector2(128, 4)
 
 [node name="Player" node_paths=PackedStringArray("state_machine") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
@@ -83,9 +83,14 @@ position = Vector2(0, -48)
 [node name="Sprite2D" type="Sprite2D" parent="CameraFocal" index="0"]
 texture = ExtResource("9_0t3dc")
 
-[node name="LedgeGrabDetector" parent="." index="5" instance=ExtResource("12_g8bn5")]
+[node name="LedgeGrabDetector" parent="." index="5" node_paths=PackedStringArray("tile_ref") instance=ExtResource("12_g8bn5")]
 position = Vector2(0, -96)
+tile_ref = NodePath("../TileRefPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector" index="0"]
 shape = SubResource("RectangleShape2D_nigli")
 debug_color = Color(1, 1, 0, 0.5)
+
+[node name="TileRefPosition" type="Marker2D" parent="." index="6"]
+editor_description = "Use the position of this node when checking what tile we are in."
+position = Vector2(0, -64)

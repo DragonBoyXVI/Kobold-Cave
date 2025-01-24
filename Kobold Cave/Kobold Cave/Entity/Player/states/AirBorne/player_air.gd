@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 	if ( ledge_grabber ):
 		
-		ledge_grabber.found_grab_ledge.connect( _on_ledge_found )
+		ledge_grabber.found_grab_ledge.connect( _on_ledge_found, CONNECT_DEFERRED )
 		ledge_grabber.set_deferred( AREA_PROP, false )
 
 
@@ -104,13 +104,9 @@ func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	super( recived_data )
 
 
-func _on_ledge_found( info: LedgeGrabInfo ) -> void:
+func _on_ledge_found( grab_position: Vector2, grabbed_right_side: bool ) -> void:
 	if ( not can_process() ): return
 	if ( player.is_on_floor() ): return
 	
-	player.disable.call_deferred()
-	player.set_deferred( &"global_position", info.grab_position )
-	
-	await get_tree().create_timer( 5.0 ).timeout
-	
-	player.enable.call_deferred()
+	print( "pos: ", grab_position, " right: ", grabbed_right_side )
+	request_state( PlayerGrabbedLedge.STATE_NAME )

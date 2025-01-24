@@ -42,4 +42,4 @@ func logic_apply_longjump( direction: float ) -> void:
 	
 	logic_apply_jump( 0.5 )
 	
-	velocity.x += movement_stats.ground_speed * 1.5 * direction
+	velocity.x += movement_stats.ground_speed * 2.0 * direction

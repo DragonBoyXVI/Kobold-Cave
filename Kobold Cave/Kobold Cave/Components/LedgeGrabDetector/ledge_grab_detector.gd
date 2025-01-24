@@ -10,7 +10,10 @@ class_name LedgeGrabDetector
 const DEBUG_COLOR := Color( "YELLOW", 0.5 )
 
 
-signal found_grab_ledge( found_ledge_info: LedgeGrabInfo )
+signal found_grab_ledge( grab_position: Vector2, right_side: bool )
+
+
+@export var tile_ref: Marker2D
 
 
 func _ready() -> void:
@@ -24,8 +27,8 @@ func _ready() -> void:
 func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int ) -> void:
 	
 	
-	#return
-	#@warning_ignore("unreachable_code")
+	return
+	@warning_ignore("unreachable_code")
 	
 	var ledge_info := LedgeGrabInfo.new()
 	
@@ -50,7 +53,7 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int,
 		
 		print( tile_body.has_body_rid( body_shape_rid ) )
 		
-		# no tile on top, grab this tile
+		# no uppies if tile on top
 		if ( tile_body.get_cell_tile_data( top_tile_coords ) ): 
 			return
 		
@@ -81,4 +84,29 @@ func _util_on_child_entered_tree( node: Node ) -> void:
 
 func _on_body_entered( body: Node2D ) -> void:
 	
-	print( body.name )
+	if ( body is TileMapLayer ):
+		
+		var tile_body := body as TileMapLayer
+		var my_tile_position: Vector2i = tile_body.local_to_map( tile_body.to_local( tile_ref.global_position ) )
+		
+		var left_tile: Vector2i = my_tile_position + Vector2i( -1, 0 )
+		var right_tile: Vector2i = my_tile_position + Vector2i( 1, 0 )
+		
+		var grabbed_tile: Vector2i
+		var grabbed_right_side: bool
+		if ( tile_body.get_cell_tile_data( left_tile ) ):
+			
+			grabbed_tile = left_tile
+			grabbed_right_side = false
+		elif( tile_body.get_cell_tile_data( right_tile ) ):
+			
+			grabbed_tile = right_tile
+			grabbed_right_side = true
+		
+		if ( grabbed_tile ):
+			
+			if ( tile_body.get_cell_tile_data( grabbed_tile + Vector2i.UP ) ):
+				return
+			
+			var grab_position: Vector2 = tile_body.to_global( tile_body.map_to_local( grabbed_tile ) )
+			found_grab_ledge.emit( grab_position, grabbed_right_side )
