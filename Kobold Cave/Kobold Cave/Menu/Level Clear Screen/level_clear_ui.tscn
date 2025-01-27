@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqc6s2gu0o6lh"]
+
+[ext_resource type="Script" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd" id="1_hyvse"]
+
+[node name="LevelClearUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hyvse")
+
+[node name="WinLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.0972222
+offset_bottom = -26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "- Level Cleared!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PBContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.644444
+anchor_right = 0.2
+anchor_bottom = 1.0
+offset_right = 45.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PBContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PBContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="NewRecordLabel" type="Label" parent="PBContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "- New Record!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PBContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "- Personal Best:
+00:00.00"
+horizontal_alignment = 1
+
+[node name="CurrentTimeContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.644444
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CurrentTimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CurrentTimeContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="Label" type="Label" parent="CurrentTimeContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "- Current Time:
+00:00.00"
+horizontal_alignment = 1

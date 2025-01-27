@@ -1,0 +1,7 @@
+-- Top Priority
+- Establish a gameplay loop! How do you win? How do you lose?
+You platform through a room with the goal of reaching the end as 
+fast as possible. The only time limit being a self imposed one.
+You lose if the player hits 0 hp, as there will be many hazards
+to consider.
+Exploration is rewarded with heals. ( perma collectable? )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=24 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
@@ -6,13 +6,14 @@
 [ext_resource type="Resource" uid="uid://dsv0qgalvyih5" path="res://Kobold Cave/Entity/Player/player_movement.tres" id="3_vs55y"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="4_hijn5"]
 [ext_resource type="PackedScene" uid="uid://dpygy5a7d23qn" path="res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn" id="6_2vjjd"]
-[ext_resource type="PackedScene" uid="uid://bcwe3apiil7su" path="res://Kobold Cave/Components/CameraFocal/camera_focal.tscn" id="6_6ygbl"]
+[ext_resource type="PackedScene" uid="uid://bcwe3apiil7su" path="res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn" id="6_6ygbl"]
 [ext_resource type="PackedScene" uid="uid://cndqr11pkblab" path="res://Kobold Cave/Entity/Player/states/Trans/player_trans.tscn" id="6_v7y7c"]
 [ext_resource type="PackedScene" uid="uid://brk8ciananh4q" path="res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn" id="7_6youo"]
 [ext_resource type="Texture2D" uid="uid://c8yqebyrtbrt4" path="res://Dragon Game Template/Icons/temperature.png" id="9_0t3dc"]
 [ext_resource type="PackedScene" uid="uid://bbmfun1dvs7bd" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn" id="9_v25kg"]
 [ext_resource type="PackedScene" uid="uid://doe6toohpuk3t" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn" id="10_1cxb3"]
-[ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/LedgeGrabDetector/ledge_grab_detector.tscn" id="12_g8bn5"]
+[ext_resource type="PackedScene" uid="uid://cv04tdlilp0fm" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn" id="11_ypnxr"]
+[ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn" id="12_g8bn5"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="14_er2h2"]
 [ext_resource type="Resource" uid="uid://cyfyp43i4ff3t" path="res://Kobold Cave/Entity/Player/player_hp.tres" id="15_r27m4"]
 [ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="16_84pue"]
@@ -74,6 +75,12 @@ camera_focal = NodePath("../../CameraFocal")
 
 [node name="PlayerGrabbedLedge" parent="StateMachine" index="4" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("10_1cxb3")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
+player = NodePath("../..")
+movement_stats = ExtResource("3_vs55y")
+model = NodePath("../../PlayerModel")
+camera_focal = NodePath("../../CameraFocal")
+
+[node name="PlayerDead" parent="StateMachine" index="5" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")

@@ -31,6 +31,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _enter() -> void:
 	
+	camera_focal.position = CAMERA_FOCAL_OFFSET
 	player.velocity.y = 1.0
 	update_model_direction()
 

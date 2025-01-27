@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsclik3anepif"]
+
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/triggger_base.tscn" id="1_y6drh"]
+[ext_resource type="Script" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.gd" id="2_rm3eg"]
+[ext_resource type="Texture2D" uid="uid://byu4tqfn8ufvq" path="res://Dragon Game Template/Icons/Element/life.png" id="3_1gupx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1d4ey"]
+radius = 64.0
+
+[node name="TrigggerGoal" instance=ExtResource("1_y6drh")]
+script = ExtResource("2_rm3eg")
+run_enter = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -64)
+scale = Vector2(2, 5)
+texture = ExtResource("3_1gupx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -64)
+shape = SubResource("CircleShape2D_1d4ey")

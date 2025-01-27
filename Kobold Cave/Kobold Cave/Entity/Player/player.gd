@@ -48,3 +48,17 @@ func logic_apply_longjump( direction: float ) -> void:
 func _hurt( damage: BaseDamage ) -> void:
 	
 	print( "took: ", damage.amount, " HP: ", health_node.health.current )
+
+func _death() -> void:
+	
+	KoboldRadio.player_died.emit()
+	# enter a dead state here ig
+	
+	# simulate reciving the dead signal
+	var input := InputEventAction.new()
+	input.action = &"Pause"
+	input.pressed = true
+	Input.parse_input_event( input )
+	
+	state_machine.change_state( PlayerDead.STATE_NAME )
+	model.scale.y = 0.1

@@ -1,9 +1,17 @@
+res://Kobold Cave/Saved Resources/Style Boxes
+res://Kobold Cave/Menu/Level Clear Screen
+res://Kobold Cave/Entity/Player/states/Dead
+res://Kobold Cave/Entity/Player/states
+res://Kobold Cave/Components/2D/Trigger/Goal
+res://Kobold Cave/Components/2D/Trigger
+res://Kobold Cave/AutoLoad/Kobold Radio
+res://Kobold Cave/Levels
+C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
+res://Dragon Game Template/Components/Control/Setting Widget
 res://Kobold Cave/Saved Resources
 res://Kobold Cave/Entity/Player
 res://Kobold Cave
 res://Kobold Cave/Entity/Player/states/Grabbed Ledge
-res://Kobold Cave/Entity/Player/states
-res://Kobold Cave/Components/LedgeGrabDetector
 res://Kobold Cave/Menu/Settings Menu Options/Check Buttons
 res://Dragon Game Template/Components/Control/Setting Widget/Check Button
 res://Kobold Cave/Entity/Player/states/Crouched
@@ -12,7 +20,3 @@ res://Kobold Cave/Entity/Player/states/Trans
 res://Kobold Cave/Entity/Player/states/Grounded
 res://Dragon Game Template/Components/2D/Dragon Model 2D
 res://Kobold Cave/Entity/Player/states/AirBorne
-res://Dragon Game Template/Components/Multi/State/Behaviour/Base
-res://Kobold Cave/Components/CameraFocal
-res://Kobold Cave/Entity
-res://

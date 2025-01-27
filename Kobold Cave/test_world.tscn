@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=10 format=4 uid="uid://dk0accw08uxn8"]
 
+[ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_6lgpp"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_gjs3b"]
 [ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="4_tld2m"]
 [ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd" id="5_8j3bj"]
+[ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="6_5gait"]
 
 [sub_resource type="Resource" id="Resource_4xpg4"]
 script = ExtResource("5_8j3bj")
@@ -17,6 +19,7 @@ rounded = true
 radius = 128.0
 
 [node name="Test World" type="Node2D"]
+script = ExtResource("1_rbnmu")
 
 [node name="Player" parent="." instance=ExtResource("1_ty4y6")]
 position = Vector2(512, 256)
@@ -27,7 +30,10 @@ tile_set = ExtResource("2_6lgpp")
 use_kinematic_bodies = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
 texture = ExtResource("3_gjs3b")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="Hurtbox2D" parent="." instance=ExtResource("4_tld2m")]
 event = SubResource("Resource_4xpg4")
@@ -36,3 +42,6 @@ event = SubResource("Resource_4xpg4")
 position = Vector2(-256, 512)
 shape = SubResource("CircleShape2D_f8hwg")
 debug_color = Color(1, 0, 0, 0.4)
+
+[node name="TrigggerGoal" parent="." instance=ExtResource("6_5gait")]
+position = Vector2(2560, 128)
