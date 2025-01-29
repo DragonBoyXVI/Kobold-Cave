@@ -1,17 +1,17 @@
+res://Kobold Cave/Levels/level_base.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 res://Kobold Cave/Entity/Player/player_armour.tres
 res://Kobold Cave/new_tile_set.tres
+res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
 res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.tscn
+res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd
+res://Kobold Cave/Levels/level_base.gd
 res://test_world.tscn
 res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Levels/level_base.tscn
-res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd
-res://Kobold Cave/Saved Resources/Style Boxes/box_gray.tres
-res://Kobold Cave/Saved Resources/Style Boxes/box_black.tres
-res://Dragon Game Template/default_bus_layout.tres
-res://Kobold Cave/Levels/level_base.gd
-res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn
-res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.gd
 res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn
+res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn
+res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd
+res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.gd
+res://Kobold Cave/Entity/entity_base.tscn

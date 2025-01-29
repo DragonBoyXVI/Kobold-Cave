@@ -12,3 +12,9 @@ func _ready() -> void:
 func _on_radio_goal_touched() -> void:
 	
 	show()
+
+
+func _on_next_button_pressed() -> void:
+	
+	hide()
+	KoboldRadio.level_clear_next_pressed.emit()

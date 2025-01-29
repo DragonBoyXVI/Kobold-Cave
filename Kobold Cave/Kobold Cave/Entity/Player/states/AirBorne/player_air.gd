@@ -8,8 +8,6 @@ class_name PlayerAir
 const STATE_NAME := &"PlayerAir"
 
 
-const AREA_PROP := &"monitoring"
-
 @export var ledge_grabber: LedgeGrabDetector
 
 @onready var jump_timer := %jumpTimer as Timer
@@ -23,11 +21,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _enter() -> void:
 	
-	ledge_grabber.set_deferred( AREA_PROP, true )
+	ledge_grabber.enable.call_deferred()
 
 func _leave() -> void:
 	
-	ledge_grabber.set_deferred( AREA_PROP, false )
+	ledge_grabber.disable.call_deferred()
 	
 	jump_timer.stop()
 	model.root.scale = Vector2.ONE
@@ -76,7 +74,12 @@ func _physics_process( delta: float ) -> void:
 			player.logic_apply_jump()
 			return
 		
-		request_state( PlayerGrounded.STATE_NAME )
+		if ( Input.is_action_pressed( &"Crouch" ) ):
+			
+			request_state( PlayerCrouched.STATE_NAME )
+		else:
+			
+			request_state( PlayerGrounded.STATE_NAME )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )

@@ -1,7 +1,8 @@
-Level
-VBoxContainer
 MarginContainer
+Button
+VBoxContainer
 PanelContainer
+Level
 Panel
 Label
 CollisionShape2D
@@ -11,5 +12,3 @@ LightOccluder2D
 Marker2D
 TileMapLayer
 Timer
-AnimationPlayer
-Node2D

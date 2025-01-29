@@ -12,6 +12,7 @@ func _ready() -> void:
 		return
 	
 	KoboldRadio.goal_touched.connect( _on_radio_goal_touched, CONNECT_DEFERRED )
+	KoboldRadio.level_clear_next_pressed.connect( get_tree().quit, CONNECT_DEFERRED )
 
 
 

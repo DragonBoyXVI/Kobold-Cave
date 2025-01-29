@@ -24,6 +24,17 @@ func _ready() -> void:
 		return
 
 
+func enable() -> void:
+	
+	process_mode = PROCESS_MODE_INHERIT
+	show()
+
+func disable() -> void:
+	
+	process_mode = PROCESS_MODE_DISABLED
+	hide()
+
+
 func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int ) -> void:
 	
 	
