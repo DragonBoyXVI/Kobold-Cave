@@ -170,6 +170,7 @@ func _on_node_health_hurt( damage: BaseDamage ) -> void:
 
 func _on_node_health_pre_healed( heal: BaseHeal ) -> void:
 	
+	model.flash_color( heal.to_color(), heal.amount / 1.25 )
 	_pre_healed( heal )
 
 func _on_node_health_healed( heal: BaseHeal ) -> void:

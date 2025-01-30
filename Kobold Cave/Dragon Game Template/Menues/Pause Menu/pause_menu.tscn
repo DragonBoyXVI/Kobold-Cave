@@ -10,6 +10,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ufba"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("tab_container")]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

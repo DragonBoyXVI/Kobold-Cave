@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_4xpg4"]
 script = ExtResource("5_8j3bj")
-amount = 5.0
+amount = 1.0
 peirce = 0.0
 element = 5
 rounded = true
@@ -22,6 +22,7 @@ radius = 128.0
 script = ExtResource("1_rbnmu")
 
 [node name="Player" parent="." instance=ExtResource("1_ty4y6")]
+z_index = 0
 position = Vector2(512, 256)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -35,8 +35,8 @@ func apply( health_node: NodeHealth ) -> void:
 ## virtual[br]
 ## used so the heal object can modify itself before healing
 func _calculate( _health_node: NodeHealth ) -> void:
-	
-	push_error( "NOT IMPLIENTED: Heal._caculate()", self )
+	pass
+	#push_error( "NOT IMPLIENTED: Heal._caculate()", self )
 
 ## Virtual[br]
 ## Used to heal the health node.[br]

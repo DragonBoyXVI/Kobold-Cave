@@ -19,11 +19,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
+[node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("3_5ivoj")]
 visible = false
 layout_mode = 1
 
-[node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("3_5ivoj")]
+[node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
 visible = false
 layout_mode = 1
 
