@@ -1,3 +1,4 @@
+TileMapLayer
 ColorRect
 Timer
 MarginContainer
@@ -12,4 +13,3 @@ Sprite2D
 Area2D
 LightOccluder2D
 Marker2D
-TileMapLayer

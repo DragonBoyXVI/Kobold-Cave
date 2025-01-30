@@ -9,6 +9,7 @@ class_name LedgeGrabDetector
 
 const DEBUG_COLOR := Color( "YELLOW", 0.5 )
 
+const DATA_GRAB_PASS := "Grab Pass"
 
 signal found_grab_ledge( grab_position: Vector2, right_side: bool )
 
@@ -33,6 +34,22 @@ func disable() -> void:
 	
 	process_mode = PROCESS_MODE_DISABLED
 	hide()
+
+
+func tile_blocks_grab( tile_body: TileMapLayer, coords: Vector2i ) -> bool:
+	
+	var tile_data: TileData = tile_body.get_cell_tile_data( coords )
+	
+	if ( tile_data ):
+		
+		if ( tile_data.get_custom_data( DATA_GRAB_PASS ) ):
+			
+			return false
+		else:
+			
+			return true
+	
+	return false
 
 
 func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int ) -> void:
@@ -85,7 +102,6 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int,
 	found_grab_ledge.emit( ledge_info )
 
 
-
 func _util_on_child_entered_tree( node: Node ) -> void:
 	
 	if ( node is CollisionShape2D ):
@@ -100,9 +116,10 @@ func _on_body_entered( body: Node2D ) -> void:
 		var tile_body := body as TileMapLayer
 		var my_tile_position: Vector2i = tile_body.local_to_map( tile_body.to_local( tile_ref.global_position ) )
 		
-		if ( tile_body.get_cell_tile_data( my_tile_position + Vector2i.UP ) ):
+		
+		if ( tile_blocks_grab( tile_body, my_tile_position + Vector2i.UP ) ):
 			return
-		if ( tile_body.get_cell_tile_data( my_tile_position + Vector2i.DOWN ) ):
+		if ( tile_blocks_grab( tile_body, my_tile_position + Vector2i.DOWN ) ):
 			return
 		
 		var left_tile: Vector2i = my_tile_position + Vector2i( -1, 0 )
@@ -121,7 +138,7 @@ func _on_body_entered( body: Node2D ) -> void:
 		
 		if ( grabbed_tile ):
 			
-			if ( tile_body.get_cell_tile_data( grabbed_tile + Vector2i.UP ) ):
+			if ( tile_blocks_grab( tile_body, grabbed_tile + Vector2i.UP ) ):
 				return
 			
 			var grab_position: Vector2 = tile_body.to_global( tile_body.map_to_local( grabbed_tile ) )

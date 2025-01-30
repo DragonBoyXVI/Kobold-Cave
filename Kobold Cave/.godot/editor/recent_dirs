@@ -1,3 +1,5 @@
+res://Kobold Cave/Levels/Sketch/0
+res://Kobold Cave/Levels
 res://Kobold Cave/AutoLoad/Game Manager
 res://Kobold Cave/Saved Resources/Style Boxes
 res://Kobold Cave/Menu/Level Clear Screen
@@ -6,7 +8,6 @@ res://Kobold Cave/Entity/Player/states
 res://Kobold Cave/Components/2D/Trigger/Goal
 res://Kobold Cave/Components/2D/Trigger
 res://Kobold Cave/AutoLoad/Kobold Radio
-res://Kobold Cave/Levels
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
 res://Dragon Game Template/Components/Control/Setting Widget
 res://Kobold Cave/Saved Resources
@@ -19,4 +20,3 @@ res://Kobold Cave/Entity/Player/states/Crouched
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player
 res://Kobold Cave/Entity/Player/states/Trans
 res://Kobold Cave/Entity/Player/states/Grounded
-res://Dragon Game Template/Components/2D/Dragon Model 2D
