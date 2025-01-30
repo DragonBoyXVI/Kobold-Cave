@@ -1,3 +1,4 @@
+res://Kobold Cave/AutoLoad/Game Manager
 res://Kobold Cave/Saved Resources/Style Boxes
 res://Kobold Cave/Menu/Level Clear Screen
 res://Kobold Cave/Entity/Player/states/Dead
@@ -19,4 +20,3 @@ C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Ent
 res://Kobold Cave/Entity/Player/states/Trans
 res://Kobold Cave/Entity/Player/states/Grounded
 res://Dragon Game Template/Components/2D/Dragon Model 2D
-res://Kobold Cave/Entity/Player/states/AirBorne

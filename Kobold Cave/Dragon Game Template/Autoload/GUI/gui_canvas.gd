@@ -6,6 +6,9 @@ extends CanvasLayer
 @onready var gui_root := $GUIRoot as Control
 
 
+@onready var fade_rect := %FadeRect as ColorRect
+
+
 func _ready() -> void:
 	
 	Settings.loaded.connect( _on_settings_updated )
@@ -58,6 +61,28 @@ func remove_gui_element( removed_gui: Control, free_it: bool = false ) -> void:
 		
 		removed_gui.queue_free()
 
+
+func fade_out( time: float = 1.0, color: Color = Color.BLACK ) -> void:
+	
+	var tween := create_tween()
+	
+	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
+	
+	tween.tween_property( fade_rect, ^"color", color, time )
+	
+	await tween.finished
+	return
+
+func fade_in( time: float = 1.0 ) -> void:
+	
+	var tween := get_tree().create_tween()
+	
+	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
+	
+	tween.tween_property( fade_rect, ^"color", Color.TRANSPARENT, time )
+	
+	await tween.finished
+	return
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

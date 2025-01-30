@@ -26,7 +26,6 @@ buses/default_bus_layout="res://Dragon Game Template/default_bus_layout.tres"
 
 [autoload]
 
-KoboldRadio="*res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd"
 DragonRadio="*res://Dragon Game Template/Autoload/DragonRadio/dragon_radio.tscn"
 Settings="*res://Dragon Game Template/Autoload/Settings/settings.gd"
 MusicBand="*res://Dragon Game Template/Autoload/MusicManager/music_manager.tscn"
@@ -35,6 +34,8 @@ GUI="*res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn"
 TimeManager="*res://Dragon Game Template/Autoload/Time Manager/time_manager.tscn"
 DragonControler="*res://Dragon Game Template/Autoload/Dragon Controler/dragon_controler.tscn"
 _InfoDragonTemplate="*res://Dragon Game Template/Autoload/al_template_info.gd"
+KoboldRadio="*res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd"
+GameManager="*res://Kobold Cave/AutoLoad/Game Manager/game_manager.gd"
 
 [debug]
 

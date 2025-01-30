@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd" id="1_hyvse"]
 
-[node name="LevelClearUI" type="Control"]
+[node name="LevelClearUI" type="Control" node_paths=PackedStringArray("focus_me")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_hyvse")
+focus_me = NodePath("ButtonContainer/MarginContainer/VBoxContainer/NextButton")
 
 [node name="WinLabel" type="Label" parent="."]
 layout_mode = 1

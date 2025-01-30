@@ -56,7 +56,8 @@ func start_i_frames() -> void:
 		
 		_i_frame_tween.kill()
 	
-	var tween := get_tree().create_tween()
+	var tween := create_tween()
+	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
 	tween.set_loops(  )
 	
 	if ( Settings.data.flashing_lights ):

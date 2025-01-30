@@ -12,12 +12,14 @@ editor_description = "This node holds all gui related elements."
 script = ExtResource("1_i1q6m")
 
 [node name="GUIRoot" type="Control" parent="."]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("3_5ivoj")]
 visible = false
@@ -26,6 +28,16 @@ layout_mode = 1
 [node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
 visible = false
 layout_mode = 1
+
+[node name="FadeRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="ColorBlindRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
