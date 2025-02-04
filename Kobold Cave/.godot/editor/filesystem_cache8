@@ -1,10 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738643866
+::res://::1738693373
 goals.txt::TextFile::-1::1737953754::0::1::::<><>::
 icon.svg::CompressedTexture2D::8737085210953338879::1711729615::1737662120::1::::<><>::
 test_world.tscn::PackedScene::7912763643112126471::1738643866::0::1::::<><>::res://Kobold Cave/Levels/level_base.gd<>uid://cv22pcm2jgbaa::::res://Kobold Cave/Entity/Player/player.tscn<>uid://ckjnad62i6j0w::::res://Kobold Cave/new_tile_set.tres<>uid://dwqkrttbf7gqx::::res://icon.svg<>uid://dnq4sc0morxxn::::res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn<>res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd<>uid://dsclik3anepif::::res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn<>uid://cn8dbjksgpxgc::::res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn
 ::res://Dragon Game Template/::1738638216
-default_bus_layout.tres::AudioBusLayout::5624296138161179179::1738637977::0::1::::<><>::
+default_bus_layout.tres::AudioBusLayout::5624296138161179179::1738693391::0::1::::<><>::
 default_theme.tres::Theme::1250676043882561973::1738638216::0::1::::<><>::uid://b5t7eutiullb7::::res://Dragon Game Template/NotoSansJP-Regular.ttf
 Moe_kobold_adventure_128x146.PNG::CompressedTexture2D::5956812922990179317::1714335357::1737066472::1::::<><>::
 NotoSansJP-Regular.ttf::FontFile::4533260337314296774::1714867591::1737066471::1::::<><>::
@@ -312,7 +312,10 @@ kobold_radio.gd::GDScript::-1::1738639683::0::1::::<>Node<>::
 ::res://Kobold Cave/AutoLoad/Utility/::1738641883
 utility.gd::GDScript::-1::1738641883::0::1::::<>Node<>::
 ::res://Kobold Cave/Components/::1738177689
-::res://Kobold Cave/Components/2D/::1738640734
+::res://Kobold Cave/Components/2D/::1738644246
+::res://Kobold Cave/Components/2D/Camera Boundry/::1738646130
+camera_boundry.gd::GDScript::-1::1738646130::0::1::::CameraBoundry<>Marker2D<>::
+camera_boundry.tscn::PackedScene::4847282277106187624::1738646130::0::1::::<><>::res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd
 ::res://Kobold Cave/Components/2D/CameraFocal/::1737751116
 camera_focal.gd::GDScript::-1::1737232412::0::1::::CameraFocal2D<>Marker2D<>::
 camera_focal.tscn::PackedScene::2572507575305594128::1737751116::0::1::::<><>::res://Kobold Cave/Components/2D/CameraFocal/camera_focal.gd
@@ -320,8 +323,8 @@ camera_focal.tscn::PackedScene::2572507575305594128::1737751116::0::1::::<><>::r
 ledge_grab_detector.gd::GDScript::-1::1738271141::0::1::::LedgeGrabDetector<>Area2D<>::
 ledge_grab_detector.tscn::PackedScene::8416903787229465691::1738272417::0::1::::<><>::res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.gd
 ::res://Kobold Cave/Components/2D/Level Boundry/::1738643219
-level_boundry.tscn::PackedScene::5753605226321467458::1738643219::0::1::::<><>::res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd
 level_boundry.gd::GDScript::-1::1738641316::0::1::::LevelBoundry2D<>Area2D<>::
+level_boundry.tscn::PackedScene::5753605226321467458::1738643219::0::1::::<><>::res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd
 ::res://Kobold Cave/Components/2D/Trigger/::1737956698
 triggger_base.gd::GDScript::-1::1737956686::0::1::::AreaTrigger2D<>Area2D<>::
 triggger_base.tscn::PackedScene::4678749905453209691::1737956698::0::1::::<><>::res://Kobold Cave/Components/2D/Trigger/triggger_base.gd

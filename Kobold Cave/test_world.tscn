@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=13 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd" id="5_8j3bj"]
 [ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="6_5gait"]
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
+[ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
 
 [sub_resource type="Resource" id="Resource_4xpg4"]
 script = ExtResource("5_8j3bj")
@@ -55,3 +56,15 @@ position = Vector2(0, 896)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry"]
 shape = SubResource("WorldBoundaryShape2D_dh156")
+
+[node name="CamLeftBottom" parent="." instance=ExtResource("9_w82gg")]
+position = Vector2(-1536, 1024)
+auto_activate = true
+vert_boundry = 1
+horz_boundry = 0
+
+[node name="CamRightTop" parent="." instance=ExtResource("9_w82gg")]
+position = Vector2(2560, -2048)
+auto_activate = true
+vert_boundry = 0
+horz_boundry = 1
