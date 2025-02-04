@@ -1,6 +1,8 @@
+CollisionShape2D
+Area2D
+Timer
 TileMapLayer
 ColorRect
-Timer
 MarginContainer
 Button
 VBoxContainer
@@ -8,8 +10,5 @@ PanelContainer
 Level
 Panel
 Label
-CollisionShape2D
 Sprite2D
-Area2D
 LightOccluder2D
-Marker2D

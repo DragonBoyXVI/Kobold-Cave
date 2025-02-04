@@ -11,6 +11,7 @@ const STATE_NAME := &"PlayerAir"
 @export var ledge_grabber: LedgeGrabDetector
 
 @onready var jump_timer := %jumpTimer as Timer
+@onready var stuck_timer := %StuckTimer as Timer
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -22,12 +23,14 @@ func _get_configuration_warnings() -> PackedStringArray:
 func _enter() -> void:
 	
 	ledge_grabber.enable.call_deferred()
+	stuck_timer.start()
 
 func _leave() -> void:
 	
 	ledge_grabber.disable.call_deferred()
 	
 	jump_timer.stop()
+	stuck_timer.stop()
 	model.root.scale = Vector2.ONE
 	model.rotation = 0.0
 
@@ -91,3 +94,8 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
+
+
+func _on_stuck_timer_timeout() -> void:
+	
+	KoboldRadio.player_reset_needed.emit( player )

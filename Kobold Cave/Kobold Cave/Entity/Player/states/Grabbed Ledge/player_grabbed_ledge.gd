@@ -61,6 +61,12 @@ func _enter() -> void:
 	
 	camera_focal.global_position = grabbed_position
 
+func _physics_process( _delta: float ) -> void:
+	
+	if ( player.velocity.length_squared() > 0.0 ):
+		
+		request_state( PlayerAir.STATE_NAME )
+
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return

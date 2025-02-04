@@ -56,8 +56,7 @@ func start_i_frames() -> void:
 		
 		_i_frame_tween.kill()
 	
-	var tween := create_tween()
-	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
+	var tween := KoboldUtility.create_tween_style( self )
 	tween.set_loops(  )
 	
 	if ( Settings.data.flashing_lights ):
@@ -82,6 +81,17 @@ func end_i_frames() -> void:
 	
 	show()
 	modulate = Color.WHITE
+
+
+func out_of_bounds() -> void:
+	
+	KoboldRadio.player_reset_needed.emit( self )
+	# the wolrd pausing causes this to happen twice
+	#await get_tree().create_timer( 0.5 ).timeout
+	
+	if ( _i_frame_timer.is_stopped() ):
+		
+		health_node.recive_event( Damage.new( 1.0 ) )
 
 
 func _hurt( damage: BaseDamage ) -> void:

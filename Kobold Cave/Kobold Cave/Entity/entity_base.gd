@@ -134,8 +134,14 @@ func routine_airborne( delta: float, direction: Vector2 ) -> void:
 #endregion
 
 
-func logic_wind( _delta: float ) -> void:
-	pass
+func logic_wind( delta: float, force: Vector2 ) -> void:
+	
+	velocity += force * delta
+
+
+func out_of_bounds() -> void:
+	
+	queue_free()
 
 
 func enable() -> void:

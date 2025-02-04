@@ -12,3 +12,12 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.25
 one_shot = true
+
+[node name="StuckTimer" type="Timer" parent="." index="1"]
+unique_name_in_owner = true
+editor_description = "Incase you end up falling forever, this timer will force you to respawn"
+process_callback = 0
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="StuckTimer" to="." method="_on_stuck_timer_timeout"]

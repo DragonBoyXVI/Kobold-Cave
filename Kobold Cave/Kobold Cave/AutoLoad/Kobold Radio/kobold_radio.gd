@@ -3,9 +3,10 @@ extends Node
 ## place for a signals related to Kobold Cave
 
 
+## emitted when the player needs to be reset
+signal player_reset_needed( player: Player )
 ## emitted when the player runs out of health
 signal player_died
-
 ## emitted when we want to pause the room for hitstun
 signal player_hitstun( damage: BaseDamage )
 
