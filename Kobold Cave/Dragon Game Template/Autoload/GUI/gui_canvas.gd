@@ -79,7 +79,7 @@ func fade_in( time: float = 1.0 ) -> void:
 	
 	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
 	
-	tween.tween_property( fade_rect, ^"color", Color.TRANSPARENT, time )
+	tween.tween_property( fade_rect, ^"color", Color( "BLACK", 0.0 ), time )
 	
 	await tween.finished
 	return

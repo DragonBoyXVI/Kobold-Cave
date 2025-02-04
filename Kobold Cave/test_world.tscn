@@ -58,7 +58,7 @@ position = Vector2(0, 896)
 shape = SubResource("WorldBoundaryShape2D_dh156")
 
 [node name="CamLeftBottom" parent="." instance=ExtResource("9_w82gg")]
-position = Vector2(-1536, 1024)
+position = Vector2(-1536, 896)
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0

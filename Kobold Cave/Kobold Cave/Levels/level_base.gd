@@ -7,7 +7,7 @@ class_name Level
 
 
 ## where to respawn the player
-var respawn_point: Marker2D
+@export var respawn_point: Marker2D
 
 
 func _ready() -> void:
@@ -15,30 +15,16 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	KoboldRadio.room_pause.connect( pause, CONNECT_DEFERRED )
+	KoboldRadio.room_unpause.connect( unpause, CONNECT_DEFERRED )
+	
 	KoboldRadio.goal_touched.connect( _on_radio_goal_touched, CONNECT_DEFERRED )
-	KoboldRadio.level_clear_next_pressed.connect( get_tree().quit, CONNECT_DEFERRED )
 	KoboldRadio.player_hitstun.connect( _on_radio_player_hitstun, CONNECT_DEFERRED )
 	KoboldRadio.player_reset_needed.connect( _on_radio_player_needs_reset )
-
-func _input( event: InputEvent ) -> void:
 	
-	if ( event is InputEventKey and event.is_pressed() ):
+	if ( KoboldUtility.in_level_trans ):
 		
-		match event.keycode:
-			
-			KEY_1:
-				
-				Engine.time_scale = 0.05
-			
-			KEY_2:
-				
-				Engine.time_scale = 1.0
-			
-			KEY_3:
-				
-				pause()
-				await get_tree().create_timer( 5.0 ).timeout
-				unpause()
+		pause.call_deferred()
 
 
 func pause() -> void:

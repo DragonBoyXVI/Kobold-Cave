@@ -9,3 +9,9 @@ res://test_world.tscn
 res://Kobold Cave/Entity/Player/player.tscn
 res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
 res://Kobold Cave/Levels/level_base.tscn
+res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn
+res://Kobold Cave/Levels/level_base.gd
+res://Kobold Cave/AutoLoad/Game Manager/game_manager.gd
+res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
+res://Kobold Cave/AutoLoad/Utility/utility.gd
+res://Dragon Game Template/Autoload/GUI/gui_canvas.gd

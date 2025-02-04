@@ -6,3 +6,5 @@
 rotation = 0.785398
 gizmo_extents = 25.0
 script = ExtResource("1_ye6s7")
+vert_boundry = 2
+horz_boundry = 2

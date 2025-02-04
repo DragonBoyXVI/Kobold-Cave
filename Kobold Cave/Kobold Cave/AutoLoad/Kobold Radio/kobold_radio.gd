@@ -13,6 +13,9 @@ signal player_hitstun( damage: BaseDamage )
 ## emitted when the player touches the goal trigger
 signal goal_touched
 
+signal room_pause
+signal room_unpause
+
 ## emitted when the "next" button is pressed on the
 ## level clear screen
 signal level_clear_next_pressed

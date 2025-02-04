@@ -5,13 +5,14 @@ class_name CameraBoundry
 ##
 ## you can rename the node for quick set up,
 ## here are the names that work:[br]
-## L, R, T, B, LT, LB, RT, RB
+## L, R, T, B, LT, LB, RT, RB, RESET
 
 
 enum VERT_MODE {
 	TOP,
 	BOTTOM,
 	
+	RESET,
 	NONE
 }
 
@@ -19,6 +20,7 @@ enum HORZ_MODE {
 	LEFT,
 	RIGHT,
 	
+	RESET,
 	NONE
 }
 
@@ -61,6 +63,8 @@ func _ready() -> void:
 
 func activate() -> void:
 	
+	const reset_value := 10_000.0
+	
 	match vert_boundry:
 		
 		VERT_MODE.TOP:
@@ -70,6 +74,11 @@ func activate() -> void:
 		VERT_MODE.BOTTOM:
 			
 			_tween_cam_limit( ^"limit_bottom", global_position.y )
+		
+		VERT_MODE.RESET:
+			
+			_tween_cam_limit( ^"limit_bottom", reset_value )
+			_tween_cam_limit( ^"limit_top", -reset_value )
 	
 	match horz_boundry:
 		HORZ_MODE.LEFT:
@@ -79,6 +88,11 @@ func activate() -> void:
 		HORZ_MODE.RIGHT:
 			
 			_tween_cam_limit( ^"limit_right", global_position.x )
+		
+		HORZ_MODE.RESET:
+			
+			_tween_cam_limit( ^"limit_right", reset_value )
+			_tween_cam_limit( ^"limit_left", -reset_value )
 
 
 func _tween_cam_limit( limit: NodePath, value: float ) -> void:
@@ -133,6 +147,11 @@ func _util_on_renamed() -> void:
 			name = "CamLeftBottom"
 			vert_boundry = VERT_MODE.BOTTOM
 			horz_boundry = HORZ_MODE.RIGHT
+		
+		"reset":
+			name = "CamReset"
+			vert_boundry = VERT_MODE.RESET
+			horz_boundry = HORZ_MODE.RESET
 	
 	
 	_name_update = true
