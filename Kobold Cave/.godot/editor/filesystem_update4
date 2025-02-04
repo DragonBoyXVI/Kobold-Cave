@@ -17,3 +17,6 @@ res://Kobold Cave/AutoLoad/Utility/utility.gd
 res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn
 res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd
 res://Kobold Cave/Entity/Player/player.gd
+res://Dragon Game Template/Resources/Settings File/settings_file.gd
+res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn
+res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd
