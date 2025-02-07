@@ -18,7 +18,7 @@
 [ext_resource type="Resource" uid="uid://cyfyp43i4ff3t" path="res://Kobold Cave/Entity/Player/player_hp.tres" id="15_r27m4"]
 [ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="16_84pue"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="17_2ulmg"]
-[ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/player_mask.tres" id="18_ikaeu"]
+[ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres" id="18_ikaeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
 size = Vector2(80, 105)

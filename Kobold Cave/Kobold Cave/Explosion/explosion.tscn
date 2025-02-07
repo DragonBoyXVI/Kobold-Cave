@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfldtea8syo2o"]
+
+[ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="1_2jui1"]
+[ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_cvft8"]
+
+[sub_resource type="Gradient" id="Gradient_cdn5u"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_gj23r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.490196, 1)
+
+[node name="Explosion" instance=ExtResource("1_2jui1")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
+amount = 5
+texture = ExtResource("2_cvft8")
+emission_shape = 1
+emission_sphere_radius = 32.0
+spread = 180.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.95
+scale_amount_max = 1.05
+color_ramp = SubResource("Gradient_cdn5u")
+color_initial_ramp = SubResource("Gradient_gj23r")

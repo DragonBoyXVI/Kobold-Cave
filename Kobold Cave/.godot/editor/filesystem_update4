@@ -8,3 +8,10 @@ res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.gd
 res://test_world.tscn
 res://Kobold Cave/Entity/Player/player.tscn
 res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
+res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
+res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
+res://Kobold Cave/Bomb/bomb.tscn
+res://Kobold Cave/Bomb/bomb.gd
+res://Kobold Cave/Bomb/States/moving.gd
+res://Kobold Cave/Bomb/States/exploding.gd
+res://Kobold Cave/Explosion/explosion.tscn

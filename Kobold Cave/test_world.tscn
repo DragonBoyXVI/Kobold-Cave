@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=16 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
 [ext_resource type="PackedScene" uid="uid://1kon0y4rhb47" path="res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.tscn" id="10_lejl2"]
+[ext_resource type="PackedScene" uid="uid://jhp4a7c1ahg8" path="res://Kobold Cave/Bomb/bomb.tscn" id="11_qowwv"]
 
 [sub_resource type="Resource" id="Resource_4xpg4"]
 script = ExtResource("5_8j3bj")
@@ -88,3 +89,9 @@ shape = SubResource("RectangleShape2D_yfbas")
 position = Vector2(-256, 256)
 vert_boundry = 0
 horz_boundry = 1
+
+[node name="Bomb" parent="." instance=ExtResource("11_qowwv")]
+position = Vector2(256, 0)
+
+[node name="Bomb2" parent="." instance=ExtResource("11_qowwv")]
+position = Vector2(512, -768)

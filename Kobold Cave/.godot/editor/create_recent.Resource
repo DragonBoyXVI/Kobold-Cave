@@ -1,3 +1,4 @@
+TeamMask
 StyleBoxFlat
 TileSet
 NoiseTexture2D

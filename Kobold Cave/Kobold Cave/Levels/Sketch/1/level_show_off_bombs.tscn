@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqmjs5nf5k3lg"]
+
+[ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_dbpff"]
+
+[node name="LevelShowOffBombs" instance=ExtResource("1_dbpff")]
