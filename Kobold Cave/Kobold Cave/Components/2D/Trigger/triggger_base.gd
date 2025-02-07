@@ -13,19 +13,36 @@ signal player_entered
 signal player_left
 
 
+## modes for auto disable
 enum DISABLE_AT {
+	## disable when entered
 	ENTER,
+	## disable when left
 	LEAVE,
+	## never disable
 	NEVER
 }
 
 
 ## if true, run the enter callback
-@export var run_enter: bool
+@export var run_enter: bool : 
+	set( value ):
+		notify_property_list_changed.call_deferred()
+		
+		run_enter = value
 ## if true, run the left callback
-@export var run_leave: bool
+@export var run_leave: bool : 
+	set( value ):
+		notify_property_list_changed.call_deferred()
+		
+		run_leave = value
 
-@export var auto_disable: DISABLE_AT = DISABLE_AT.NEVER
+## when to auto disable this trigger
+@export var auto_disable: DISABLE_AT = DISABLE_AT.NEVER : 
+	set( value ):
+		notify_property_list_changed.call_deferred()
+		
+		auto_disable = value
 
 
 func _ready() -> void:

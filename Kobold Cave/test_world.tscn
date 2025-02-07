@@ -77,6 +77,7 @@ horz_boundry = 1
 position = Vector2(-640, 256)
 enter_bounds = [NodePath("../CamRightTop2")]
 leave_bounds = [NodePath("../CamLeftBottom"), NodePath("../CamRightTop")]
+run_enter = true
 run_leave = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerCameraBounds"]

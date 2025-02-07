@@ -6,5 +6,4 @@
 [node name="TrigggerCameraBounds" node_paths=PackedStringArray("enter_bounds", "leave_bounds") instance=ExtResource("1_y0xyp")]
 script = ExtResource("2_jju88")
 enter_bounds = []
-leave_bounds = []
-run_enter = true
+leave_bounds = [null]
