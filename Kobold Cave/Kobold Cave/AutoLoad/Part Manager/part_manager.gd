@@ -45,7 +45,6 @@ class PoolManager:
 		particles.process_mode = Node.PROCESS_MODE_DISABLED
 		particles.restart()
 		avaliable_nodes.append( particles )
-		print( avaliable_nodes.size() )
 
 
 func _init() -> void:

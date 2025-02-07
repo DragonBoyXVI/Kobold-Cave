@@ -1,8 +1,9 @@
+CollisionShape2D
+AreaTrigger2D
 GPUParticles2D
 CPUParticles2D
 Marker2D
 Sprite2D
-CollisionShape2D
 Area2D
 Timer
 TileMapLayer
@@ -11,5 +12,3 @@ MarginContainer
 Button
 VBoxContainer
 PanelContainer
-Level
-Panel

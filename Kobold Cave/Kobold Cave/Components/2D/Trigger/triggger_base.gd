@@ -6,6 +6,9 @@ class_name AreaTrigger2D
 ## ditto
 
 
+signal enabled
+signal disabled
+
 signal player_entered
 signal player_left
 
@@ -51,11 +54,13 @@ func enable() -> void:
 	
 	_enable()
 	show()
+	enabled.emit()
 
 func disable() -> void:
 	
 	_disable()
 	hide()
+	disabled.emit()
 
 ## virtual[br]
 func _enable() -> void:

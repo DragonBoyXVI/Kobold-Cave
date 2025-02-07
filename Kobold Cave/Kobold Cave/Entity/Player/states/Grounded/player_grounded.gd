@@ -34,8 +34,6 @@ func _enter() -> void:
 	camera_focal.position = CAMERA_FOCAL_OFFSET
 	player.velocity.y = 1.0
 	update_model_direction()
-	
-	PartManager.spawn_dust( player.position )
 
 func _leave() -> void:
 	
@@ -66,10 +64,15 @@ func _physics_process( delta: float ) -> void:
 		elif( cyote_timer.is_stopped() ):
 			
 			cyote_timer.start()
+			PartManager.spawn_dust( player.position )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
+	
+	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
+		
+		update_model_direction()
 	
 	if ( event.is_action( &"Crouch" ) ):
 		
@@ -88,13 +91,10 @@ func _unhandled_input( event: InputEvent ) -> void:
 		player.logic_apply_jump()
 		request_state( PlayerAir.STATE_NAME )
 		
+		PartManager.spawn_dust( player.position )
+		
 		get_window().set_input_as_handled()
 		return
-	
-	
-	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
-		
-		update_model_direction()
 
 
 ## used to make the model face the right way

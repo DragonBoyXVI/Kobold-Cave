@@ -52,6 +52,8 @@ func _enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.global_position.y = grabbed_position.y
 	
+	PartManager.spawn_dust( grabbed_position )
+	
 	if ( grabbed_right_side ):
 		
 		model.scale.x = 1.0
