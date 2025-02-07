@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://7veprv3g856n"]
+
+[ext_resource type="Texture2D" uid="uid://dyvnmve2g8bdx" path="res://Dragon Game Template/Icons/Armor/armour.png" id="1_tvh87"]
+
+[sub_resource type="Gradient" id="Gradient_0wrie"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.784314, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 5
+
+[node name="TestDustParticles" type="CPUParticles2D"]
+emitting = false
+amount = 5
+lifetime = 2.25
+one_shot = true
+explosiveness = 0.95
+draw_order = 1
+texture = ExtResource("1_tvh87")
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+linear_accel_min = -5.0
+linear_accel_max = -5.0
+angle_max = 360.0
+color_ramp = SubResource("Gradient_0wrie")

@@ -34,6 +34,8 @@ func _enter() -> void:
 	camera_focal.position = CAMERA_FOCAL_OFFSET
 	player.velocity.y = 1.0
 	update_model_direction()
+	
+	PartManager.spawn_dust( player.position )
 
 func _leave() -> void:
 	

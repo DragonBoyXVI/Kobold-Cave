@@ -37,6 +37,7 @@ _InfoDragonTemplate="*res://Dragon Game Template/Autoload/al_template_info.gd"
 KoboldUtility="*res://Kobold Cave/AutoLoad/Utility/utility.gd"
 KoboldRadio="*res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd"
 GameManager="*res://Kobold Cave/AutoLoad/Game Manager/game_manager.gd"
+PartManager="*res://Kobold Cave/AutoLoad/Part Manager/part_manager.gd"
 
 [debug]
 

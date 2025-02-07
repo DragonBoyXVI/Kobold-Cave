@@ -1,3 +1,5 @@
+res://Kobold Cave/AutoLoad/Part Manager
+res://Kobold Cave/Particles/Test Dust
 res://Kobold Cave/Components/2D/Camera Boundry
 res://Kobold Cave/AutoLoad/Utility
 res://Kobold Cave/Components/2D/Level Boundry
@@ -18,6 +20,4 @@ res://Kobold Cave/Entity/Player
 res://Kobold Cave
 res://Kobold Cave/Entity/Player/states/Grabbed Ledge
 res://Kobold Cave/Menu/Settings Menu Options/Check Buttons
-res://Dragon Game Template/Components/Control/Setting Widget/Check Button
-res://Kobold Cave/Entity/Player/states/Crouched
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player
