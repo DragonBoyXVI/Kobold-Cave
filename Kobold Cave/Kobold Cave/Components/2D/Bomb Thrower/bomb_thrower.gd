@@ -11,6 +11,8 @@ signal bomb_thrown
 
 ## if true, throw infinite bombs
 @export var bomb_infinite: bool = false
+## if true, start with no bombs
+@export var starts_empty := false
 ## how many bombs you can throw
 @export var bomb_max: int = 5
 var bomb_amount: int = 5
@@ -27,14 +29,33 @@ const bomb_scene := preload( "res://Kobold Cave/Bomb/bomb.tscn" ) as PackedScene
 const throw_force := 800.0
 
 
+func _ready() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	if ( starts_empty ):
+		
+		bomb_amount = 0
+
+
 func refill() -> void:
 	
 	bomb_amount = bomb_max
 
-func throw_bomb( direction: Vector2 ) -> void:
+func throw_bomb( direction: Vector2, initial_velocity := Vector2.ZERO ) -> void:
+	
+	if ( not bomb_infinite ):
+		
+		if ( bomb_amount > 0 ):
+			
+			bomb_amount -= 1
+		else:
+			
+			return
 	
 	var spawn_position := global_position + ( direction * throw_radius )
-	var spawn_velocity := direction * throw_force
+	var spawn_velocity := ( direction * throw_force ) + initial_velocity
 	
 	var bomb := bomb_scene.instantiate() as Bomb
 	bomb.global_position = spawn_position

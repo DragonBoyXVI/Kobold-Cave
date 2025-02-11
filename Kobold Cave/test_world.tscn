@@ -61,16 +61,15 @@ position = Vector2(0, 896)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry"]
 shape = SubResource("WorldBoundaryShape2D_dh156")
+disabled = true
 
 [node name="CamLeftBottom" parent="." instance=ExtResource("9_w82gg")]
 position = Vector2(-1536, 896)
-auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
 [node name="CamRightTop" parent="." instance=ExtResource("9_w82gg")]
 position = Vector2(2560, -2048)
-auto_activate = true
 vert_boundry = 0
 horz_boundry = 1
 
@@ -84,6 +83,7 @@ run_leave = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerCameraBounds"]
 position = Vector2(192, 256)
 shape = SubResource("RectangleShape2D_yfbas")
+disabled = true
 
 [node name="CamRightTop2" parent="." instance=ExtResource("9_w82gg")]
 position = Vector2(-256, 256)

@@ -30,6 +30,18 @@ func _input( event: InputEvent ) -> void:
 			KEY_9:
 				
 				health_node.recive_event( Heal.new( 5.0 ) )
+			
+			KEY_1:
+				
+				Engine.time_scale = 0.05
+			
+			KEY_2:
+				
+				Engine.time_scale = 1.0
+
+func _exit_tree() -> void:
+	
+	Engine.time_scale = 1.0
 
 
 func logic_apply_backflip( direction: float ) -> void:
@@ -94,6 +106,10 @@ func out_of_bounds() -> void:
 		health_node.recive_event( Damage.new( 1.0 ) )
 
 
+func _pre_hurt( damage: BaseDamage ) -> void:
+	
+	print( damage.to_string() )
+
 func _hurt( damage: BaseDamage ) -> void:
 	
 	start_i_frames()
@@ -112,6 +128,7 @@ func _death() -> void:
 	
 	KoboldRadio.player_died.emit()
 	# enter a dead state here ig
+	state_machine.change_state( PlayerDead.STATE_NAME )
 	
 	# simulate reciving the dead signal
 	var input := InputEventAction.new()
@@ -119,7 +136,6 @@ func _death() -> void:
 	input.pressed = true
 	Input.parse_input_event( input )
 	
-	state_machine.change_state( PlayerDead.STATE_NAME )
 	model.scale.y = 0.1
 
 

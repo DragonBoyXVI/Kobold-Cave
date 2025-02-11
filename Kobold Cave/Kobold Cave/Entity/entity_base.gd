@@ -23,6 +23,8 @@ signal disabled
 
 @export var state_machine: StateMachine
 
+@export var bomb_thrower: BombThrower
+
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
@@ -219,3 +221,6 @@ func _util_child_entered_tree( node: Node ) -> void:
 	elif ( node is Hitbox2D and not hitbox ):
 		
 		hitbox = node
+	elif( node is BombThrower and not bomb_thrower ):
+		
+		bomb_thrower = node

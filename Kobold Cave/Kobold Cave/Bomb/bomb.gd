@@ -15,7 +15,13 @@ func logic_gravity( delta: float ) -> void:
 
 func explode() -> void:
 	
-	pass
+	const explosion_scene := preload( "res://Kobold Cave/Explosion/explosion.tscn" )
+	
+	var explosion := explosion_scene.instantiate() as Explosion
+	explosion.global_position = global_position
+	
+	get_tree().current_scene.add_child( explosion )
+	queue_free()
 
 
 func _on_hitbox_2d_recived_event( event: HurtboxEvent ) -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Dragon Game Template/Resources/Health/health.gd" id="1_p73ri"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_p73ri")
 rounded = true
 ignore_max = true

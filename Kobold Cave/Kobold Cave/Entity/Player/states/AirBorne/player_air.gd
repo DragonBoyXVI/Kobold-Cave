@@ -96,6 +96,17 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
+	
+	if ( event.is_action_pressed( &"Throw" ) ):
+		
+		var dir := Vector2.ZERO
+		dir.x = model.scale.x
+		dir.y -= 0.8
+		
+		player.bomb_thrower.throw_bomb( dir.normalized(), player.get_real_velocity() )
+		
+		get_window().set_input_as_handled()
+		return
 
 
 func _on_stuck_timer_timeout() -> void:

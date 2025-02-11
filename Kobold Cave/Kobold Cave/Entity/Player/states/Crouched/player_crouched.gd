@@ -108,6 +108,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
+	
+	if ( event.is_action_pressed( &"Throw" ) ):
+		
+		player.bomb_thrower.throw_bomb( Vector2.DOWN, player.get_real_velocity() )
+		
+		get_window().set_input_as_handled()
+		return
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

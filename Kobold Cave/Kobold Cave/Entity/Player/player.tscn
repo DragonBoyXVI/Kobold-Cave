@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=26 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
@@ -15,10 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://cv04tdlilp0fm" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn" id="11_ypnxr"]
 [ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn" id="12_g8bn5"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="14_er2h2"]
-[ext_resource type="Resource" uid="uid://cyfyp43i4ff3t" path="res://Kobold Cave/Entity/Player/player_hp.tres" id="15_r27m4"]
 [ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="16_84pue"]
+[ext_resource type="Script" path="res://Dragon Game Template/Resources/Health/health.gd" id="16_g8os4"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="17_2ulmg"]
 [ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres" id="18_ikaeu"]
+[ext_resource type="PackedScene" uid="uid://b1ibt3fjhtfvd" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn" id="20_7lm0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
 size = Vector2(80, 105)
@@ -29,16 +30,27 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
 size = Vector2(112, 4)
 
+[sub_resource type="Resource" id="Resource_mlk7g"]
+resource_local_to_scene = true
+script = ExtResource("16_g8os4")
+rounded = true
+ignore_max = true
+maximum = 5.0
+current = 5.0
+percent = 1.0
+element_heal_flag = 4
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylnya"]
 radius = 48.0
 
-[node name="Player" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine") instance=ExtResource("1_my4pb")]
+[node name="Player" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine", "bomb_thrower") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("PlayerModel")
 health_node = NodePath("NodeHealth")
 hitbox = NodePath("Hitbox2D")
 state_machine = NodePath("StateMachine")
+bomb_thrower = NodePath("BombThrower")
 metadata/_edit_group_ = true
 
 [node name="PlayerModel" parent="." index="0" instance=ExtResource("4_hijn5")]
@@ -114,7 +126,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="7" instance=ExtResource("14_er2h2")]
-health = ExtResource("15_r27m4")
+health = SubResource("Resource_mlk7g")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="8" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
@@ -131,5 +143,10 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 1.25
 one_shot = true
+
+[node name="BombThrower" parent="." index="10" instance=ExtResource("20_7lm0b")]
+position = Vector2(0, -64)
+bomb_infinite = true
+throw_radius = 96.0
 
 [connection signal="timeout" from="IFramesTimer" to="." method="_on_i_frames_timer_timeout"]

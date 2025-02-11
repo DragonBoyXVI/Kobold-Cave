@@ -74,6 +74,27 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		update_model_direction()
 	
+	if ( event.is_action_pressed( &"Jump" ) ):
+		
+		player.logic_apply_jump()
+		request_state( PlayerAir.STATE_NAME )
+		
+		PartManager.spawn_dust( player.position )
+		
+		get_window().set_input_as_handled()
+		return
+	
+	if ( event.is_action_pressed( &"Throw" ) ):
+		
+		var dir := Vector2.ZERO
+		dir.x = model.scale.x
+		dir.y -= 0.2
+		
+		player.bomb_thrower.throw_bomb( dir.normalized(), player.get_real_velocity() )
+		
+		get_window().set_input_as_handled()
+		return
+	
 	if ( event.is_action( &"Crouch" ) ):
 		
 		if ( event.is_pressed() ):
@@ -82,16 +103,6 @@ func _unhandled_input( event: InputEvent ) -> void:
 		elif ( not _toggle_crouch ):
 			
 			crouch_timer.stop()
-		
-		get_window().set_input_as_handled()
-		return
-	
-	if ( event.is_action_pressed( &"Jump" ) ):
-		
-		player.logic_apply_jump()
-		request_state( PlayerAir.STATE_NAME )
-		
-		PartManager.spawn_dust( player.position )
 		
 		get_window().set_input_as_handled()
 		return
