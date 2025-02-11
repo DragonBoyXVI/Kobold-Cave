@@ -190,18 +190,23 @@ func _on_node_health_died() -> void:
 	_death()
 
 
+## virtual
 func _pre_hurt( _damage: BaseDamage ) -> void:
 	pass
 
+## virtual
 func _hurt( _damage: BaseDamage ) -> void:
 	pass
 
+## virtual
 func _pre_healed( _heal: BaseHeal ) -> void:
 	pass
 
+## virtual
 func _healed( _heal: BaseHeal ) -> void:
 	pass
 
+## virtual
 func _death() -> void:
 	
 	queue_free()

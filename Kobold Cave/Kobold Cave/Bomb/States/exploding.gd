@@ -9,7 +9,10 @@ extends StateBehaviour
 func _enter() -> void:
 	
 	timer.start()
-	create_tween().tween_property( bomb, ^"modulate", Color.RED, timer.wait_time )
+	
+	var tween := create_tween()
+	tween.tween_property( sprite, ^"modulate", Color.RED, timer.wait_time )
+	tween.tween_property( sprite, ^"scale", Vector2( 0.95, 0.95 ), timer.wait_time )
 
 
 func _on_timer_timeout() -> void:

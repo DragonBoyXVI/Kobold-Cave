@@ -91,7 +91,7 @@ vert_boundry = 0
 horz_boundry = 1
 
 [node name="Bomb" parent="." instance=ExtResource("11_qowwv")]
-position = Vector2(256, 0)
+position = Vector2(-384, -1024)
 
 [node name="Bomb2" parent="." instance=ExtResource("11_qowwv")]
 position = Vector2(512, -768)
