@@ -49,4 +49,5 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
+[connection signal="recived_event" from="Hitbox2D" to="." method="_on_hitbox_2d_recived_event"]
 [connection signal="timeout" from="StateMachine/Exploding/Timer" to="StateMachine/Exploding" method="_on_timer_timeout"]

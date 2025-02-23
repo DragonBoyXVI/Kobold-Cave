@@ -38,6 +38,11 @@ func _input( event: InputEvent ) -> void:
 			KEY_2:
 				
 				Engine.time_scale = 1.0
+			
+			KEY_F1:
+				
+				print( "orphans: " )
+				print_orphan_nodes()
 
 func _exit_tree() -> void:
 	
@@ -103,7 +108,9 @@ func out_of_bounds() -> void:
 	
 	if ( _i_frame_timer.is_stopped() ):
 		
-		health_node.recive_event( Damage.new( 1.0 ) )
+		var damage := Damage.new()
+		damage.amount = 1.0
+		health_node.recive_event( damage )
 
 
 func _pre_hurt( damage: BaseDamage ) -> void:

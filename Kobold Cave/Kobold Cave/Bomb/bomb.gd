@@ -20,7 +20,7 @@ func explode() -> void:
 	var explosion := explosion_scene.instantiate() as Explosion
 	explosion.global_position = global_position
 	
-	get_tree().current_scene.add_child( explosion )
+	get_tree().current_scene.add_child.call_deferred( explosion )
 	queue_free()
 
 

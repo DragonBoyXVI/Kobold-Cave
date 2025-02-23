@@ -5,11 +5,6 @@ class_name Damage
 ## A simple damage object, created from the overcomplicated base =3
 
 
-func _init( amt := 0.0, elem := ELEMENT.NONE, peir := 0.0 ) -> void:
-	
-	amount = amt
-	peirce = peir
-	element = elem
 
 func _to_color() -> Color:
 	

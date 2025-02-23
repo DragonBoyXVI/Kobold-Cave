@@ -1,36 +1,89 @@
-@tool
-extends Hurtbox2D
+extends Node2D
 class_name Explosion
+## An explosion in the wolrd
+##
+## ditto
+## WARNING: for some reason, the [Hurtbox2D] spawns
+## without an event, even though in the editor it has one.
+## if you make the editor resource unique, all its values 
+## are set to the defaults instead of the expected. why
+# not the init method of damage
 
 
-@export var shape: CollisionShape2D
+@export var hurtbox: Hurtbox2D
+@export var push_area: Area2D
+@export var animation_player: AnimationPlayer
+@export var particles: CPUParticles2D
 
-@onready var anim_player := %AnimationPlayer as AnimationPlayer
+@export var shapes_to_disable: Array[ CollisionShape2D ]
+
+
+var _particles_enabled := true
+
+const explode_anim := &"Explode"
+
 
 func _ready() -> void:
-	super()
 	
-	if ( Engine.is_editor_hint() ): return
+	if ( Engine.is_editor_hint() ):
+		return
 	
-	anim_player.play( &"Explode" )
-
-
-func _disable_shape() -> void:
+	animation_player.animation_finished.connect( _on_animation_player_animation_finished )
+	push_area.body_entered.connect( _on_push_area_body_entered )
+	particles.finished.connect( _on_particles_finished )
 	
-	shape.set_deferred( &"disabled", true )
-
-
-func _util_child_entered_tree( node: Node ) -> void:
-	super( node )
+	hurtbox.pre_send.connect( _hurtbox_workaround )
 	
-	if ( node is CollisionShape2D ):
+	Settings.updated.connect( _on_settings_updated )
+	if ( Settings.data ):
 		
-		shape = node
-
-
-func _on_cpu_particles_dust_finished() -> void:
+		_on_settings_updated( Settings.data )
 	
-	# oops =3
-	if ( Engine.is_editor_hint() ): return
+	
+	animation_player.play( explode_anim )
+
+
+func _trigger_particles() -> void:
+	
+	if ( _particles_enabled ):
+		
+		particles.emitting = true
+
+func _disable_shapes() -> void:
+	
+	for shape: CollisionShape2D in shapes_to_disable:
+		
+		shape.set_deferred( &"disabled", true )
+
+
+func _on_push_area_body_entered( body: Node2D ) -> void:
+	
+	if ( body is not CharacterBody2D ): return
+	var entity := body as CharacterBody2D
+	
+	const push_force: float = 1200.0
+	var push_direction: float = global_position.angle_to_point( entity.global_position )
+	
+	entity.velocity += Vector2.from_angle( push_direction ) * push_force
+
+func _on_animation_player_animation_finished( anim_name: StringName ) -> void:
+	
+	if ( anim_name != explode_anim ): return
+	if ( _particles_enabled ): return
 	
 	queue_free()
+
+func _on_particles_finished() -> void:
+	
+	queue_free()
+
+func _on_settings_updated( recived_data: SettingsFile ) -> void:
+	
+	_particles_enabled = recived_data.particles_enabled
+
+
+# catch the junk data and make it useful data
+func _hurtbox_workaround( damage: Damage ) -> void:
+	
+	damage.amount = 2
+	damage.element = ScalieResource.ELEMENT.FIRE
