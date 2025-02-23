@@ -32,7 +32,7 @@ func _ready() -> void:
 	push_area.body_entered.connect( _on_push_area_body_entered )
 	particles.finished.connect( _on_particles_finished )
 	
-	hurtbox.pre_send.connect( _hurtbox_workaround )
+	#hurtbox.pre_send.connect( _hurtbox_workaround )
 	
 	Settings.updated.connect( _on_settings_updated )
 	if ( Settings.data ):
@@ -83,6 +83,10 @@ func _on_settings_updated( recived_data: SettingsFile ) -> void:
 
 
 # catch the junk data and make it useful data
+# despite this function not even being called, and the line
+# connecting it is disabled, having this function makes the resource work???
+# its not being called, changing this code does nothing.
+# dont delete ig???????
 func _hurtbox_workaround( damage: Damage ) -> void:
 	
 	damage.amount = 2
