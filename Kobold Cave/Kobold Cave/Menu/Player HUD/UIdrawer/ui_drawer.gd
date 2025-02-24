@@ -32,16 +32,24 @@ func _draw() -> void:
 		else:
 			
 			current_position.x += pip_spacing.x
+	
+	var new_panel_length: int = ceili( pip_amount / 5.0 )
+	if ( panel_length != new_panel_length ):
+		panel_length = new_panel_length
 		
-		var new_panel_length: int = ceili( pip_amount / 5.0 )
-		if ( panel_length != new_panel_length ):
-			panel_length = new_panel_length
+		var tween := create_tween()
+		tween.set_parallel()
+		tween.set_trans( Tween.TRANS_ELASTIC )
+		tween.set_ease( Tween.EASE_OUT )
+		
+		const time := 0.5
+		tween.tween_property( self, ^"size:y", 64.0 * panel_length, time )
+		if ( panel_length <= 0 ):
 			
-			var tween := create_tween()
-			tween.set_trans( Tween.TRANS_ELASTIC )
-			tween.set_ease( Tween.EASE_OUT )
+			tween.tween_property( self, ^"modulate:a", 0.0, time )
+		else:
 			
-			tween.tween_property( self, ^"size:y", 64.0 * panel_length, 0.5 )
+			tween.tween_property( self, ^"modulate:a", 1.0, time )
 
 func _draw_pip( pos: Vector2 ) -> void:
 	

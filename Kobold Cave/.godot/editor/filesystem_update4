@@ -1,23 +1,23 @@
-res://test_world.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 res://Kobold Cave/Entity/Player/player_armour.tres
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Explosion/explosion.gd
-res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
-res://Kobold Cave/Bomb/bomb.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.gd
 res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Explosion/explosion.tscn
-res://Kobold Cave/Entity/Player/player.gd
-res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.tscn
-res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.gd
-res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn
-res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
+res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.gd
 res://Kobold Cave/Menu/Player HUD/hud.tscn
 res://Kobold Cave/Menu/Player HUD/hud.gd
-res://Kobold Cave/Menu/Player HUD/UIHealth/ui_health.tscn
-res://Kobold Cave/Menu/Player HUD/UIHealth/ui_health.gd
-res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_health.tscn
-res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn
+res://Dragon Game Template/Resources/Settings File/settings_file.gd
+res://Kobold Cave/Entity/Player/player.gd
+res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn
+res://test_world.tscn
+res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
+res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
+res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement/widget_ui_placement.tscn
+res://Dragon Game Template/Menues/Pause Menu/Settings Page/settings_page.tscn
 res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd

@@ -31,6 +31,8 @@ var color_blind_enabled: bool = false
 
 @export var toggle_crouch: bool = true
 
+@export var ui_placement: int = 0
+
 @export_group( "Action Timers" )
 @export var time_to_crouch: float = 0.1
 @export var time_to_uncrouch: float = 0.1

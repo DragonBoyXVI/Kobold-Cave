@@ -1,4 +1,8 @@
-res://Kobold Cave/Menu/Player HUD/UIHealth
+res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement
+res://Dragon Game Template/Components/Control/Setting Widget/Option Button
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs
+res://Kobold Cave/Menu/Player HUD/UIdrawer
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth
 res://Kobold Cave/Menu/Player HUD
 res://Kobold Cave/Level Objects/Bomb Pile
 res://Kobold Cave/Components/2D/Trigger/Give Bombs
@@ -16,9 +20,5 @@ res://Kobold Cave/AutoLoad/Part Manager
 res://Kobold Cave/Particles/Test Dust
 res://Kobold Cave/Components/2D/Camera Boundry
 res://Kobold Cave/AutoLoad/Utility
-res://Kobold Cave/Components/2D/Level Boundry
-res://Kobold Cave/Levels/Sketch/0
-res://Kobold Cave/AutoLoad/Game Manager
-res://Kobold Cave/Saved Resources/Style Boxes
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player

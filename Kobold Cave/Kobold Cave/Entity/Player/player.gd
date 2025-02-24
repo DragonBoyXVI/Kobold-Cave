@@ -48,6 +48,15 @@ func _exit_tree() -> void:
 	
 	Engine.time_scale = 1.0
 
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	KoboldRadio.ui_connect_health.emit( health_node.health )
+	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
+
 
 func logic_apply_backflip( direction: float ) -> void:
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgan5cvx0fjap"]
+[gd_scene load_steps=24 format=3 uid="uid://bgan5cvx0fjap"]
 
 [ext_resource type="PackedScene" uid="uid://d2f8nyqg41ixh" path="res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn" id="1_hv408"]
 [ext_resource type="AudioStream" uid="uid://b6bja1q8f8v6v" path="res://Dragon Game Template/Audio/merp.wav" id="2_t3xsu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uentdo4kjvag" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn" id="4_2acui"]
 [ext_resource type="PackedScene" uid="uid://2lrg2h5v018h" path="res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_up_to_jump.tscn" id="4_efh8x"]
 [ext_resource type="PackedScene" uid="uid://cs1o2bhyv4w4k" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn" id="5_gio5y"]
+[ext_resource type="PackedScene" uid="uid://crrfxc3hyp77i" path="res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement/widget_ui_placement.tscn" id="5_vbql1"]
 [ext_resource type="PackedScene" uid="uid://lj17iuwgcxqk" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn" id="6_j0fsm"]
 [ext_resource type="PackedScene" uid="uid://ca3dgj5n3yk34" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn" id="7_prwe2"]
 [ext_resource type="PackedScene" uid="uid://b1dd4eaxxi2fj" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Master/widget_master_volume.tscn" id="8_2rxvn"]
@@ -54,13 +55,23 @@ text = "for stuff that is specific to your game"
 
 [node name="WidgetPauseUnfocused" parent="Game/ScrollContainer/VBoxContainer" index="1" instance=ExtResource("7_prwe2")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../WidgetToggleCrouch")
 setting_signal = 4
 
 [node name="WidgetToggleCrouch" parent="Game/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("3_37lnw")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetPauseUnfocused")
+focus_neighbor_bottom = NodePath("../WidgetUpToJump")
 
 [node name="WidgetUpToJump" parent="Game/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("4_efh8x")]
+visible = false
 layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetToggleCrouch")
+focus_neighbor_bottom = NodePath("../WidgetUIPlacement")
+
+[node name="WidgetUIPlacement" parent="Game/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("5_vbql1")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetUpToJump")
 
 [node name="Display" type="MarginContainer" parent="." index="2"]
 visible = false

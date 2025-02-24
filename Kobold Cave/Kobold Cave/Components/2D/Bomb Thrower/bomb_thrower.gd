@@ -7,6 +7,7 @@ class_name BombThrower
 
 
 signal bomb_thrown
+signal updated
 
 
 ## if true, throw infinite bombs
@@ -19,7 +20,11 @@ signal bomb_thrown
 var starts_empty := false
 ## how many bombs you can throw
 var bomb_max: int = 5
-var bomb_amount: int = 5
+var bomb_amount: int = 5 :
+	set( value ):
+		bomb_amount = value
+		
+		updated.emit()
 
 ## how far away to spawn the bomb, to prevent self collision
 @export_range( 0.0, 125.0, 1.0, "or_greater" ) var throw_radius: float = 64.0 : 

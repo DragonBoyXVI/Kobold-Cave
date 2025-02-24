@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://crrfxc3hyp77i"]
+
+[ext_resource type="PackedScene" uid="uid://c2q7cu6v6ooav" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/setting_widget_option_button.tscn" id="1_klrea"]
+
+[node name="WidgetUIPlacement" instance=ExtResource("1_klrea")]
+setting_property = &"ui_placement"
+setting_signal = 5
+_property_is_valid = true
+
+[node name="Label" parent="MarginContainer/VBoxContainer/TextContainer" index="0"]
+text = "- UI Placement"
+
+[node name="OptionButton" parent="MarginContainer/VBoxContainer/TextContainer" index="1"]
+item_count = 2
+popup/item_0/text = "Top"
+popup/item_1/text = "Bottom"
+popup/item_1/id = 1

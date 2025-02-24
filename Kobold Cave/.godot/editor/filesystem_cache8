@@ -1,11 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740425665
+::res://::1740432179
 goals.txt::TextFile::-1::1737953754::0::1::::<><>::
 icon.svg::CompressedTexture2D::8737085210953338879::1711729615::1737662120::1::::<><>::
-test_world.tscn::PackedScene::7912763643112126471::1740425665::0::1::::<><>::res://Kobold Cave/Levels/level_base.gd<>uid://cv22pcm2jgbaa::::res://Kobold Cave/Entity/Player/player.tscn<>uid://ckjnad62i6j0w::::res://Kobold Cave/new_tile_set.tres<>uid://dwqkrttbf7gqx::::res://icon.svg<>uid://dsclik3anepif::::res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn<>uid://cwk6n2uejntni::::res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn<>uid://cn8dbjksgpxgc::::res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn<>uid://cbccbby1k133q::::res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn
-::res://Dragon Game Template/::1740421073
+test_world.tscn::PackedScene::7912763643112126471::1740432179::0::1::::<><>::res://Kobold Cave/Levels/level_base.gd<>uid://cv22pcm2jgbaa::::res://Kobold Cave/Entity/Player/player.tscn<>uid://ckjnad62i6j0w::::res://Kobold Cave/new_tile_set.tres<>uid://dwqkrttbf7gqx::::res://icon.svg<>uid://dsclik3anepif::::res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn<>uid://cwk6n2uejntni::::res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn<>uid://cn8dbjksgpxgc::::res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn<>uid://cbccbby1k133q::::res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn
+::res://Dragon Game Template/::1740429194
 default_bus_layout.tres::AudioBusLayout::5624296138161179179::1740420611::0::1::::<><>::
-default_theme.tres::Theme::1250676043882561973::1740421073::0::1::::<><>::uid://b5t7eutiullb7::::res://Dragon Game Template/NotoSansJP-Regular.ttf
+default_theme.tres::Theme::1250676043882561973::1740429194::0::1::::<><>::uid://b5t7eutiullb7::::res://Dragon Game Template/NotoSansJP-Regular.ttf
 Moe_kobold_adventure_128x146.PNG::CompressedTexture2D::5956812922990179317::1714335357::1737066472::1::::<><>::
 NotoSansJP-Regular.ttf::FontFile::4533260337314296774::1714867591::1737066471::1::::<><>::
 rablings of a completely sane woman.txt::TextFile::-1::1721768420::0::1::::<><>::
@@ -36,10 +36,10 @@ dragon_controler.tscn::PackedScene::5101643451829639182::1736982746::0::1::::<><
 ::res://Dragon Game Template/Autoload/DragonRadio/::1737066326
 dragon_radio.gd::GDScript::-1::1736793903::0::1::::<>Node<>::
 dragon_radio.tscn::PackedScene::7578564427258107709::1737063096::0::1::::<><>::res://Dragon Game Template/Autoload/DragonRadio/dragon_radio.gd
-::res://Dragon Game Template/Autoload/GUI/::1738697207
+::res://Dragon Game Template/Autoload/GUI/::1740432181
 gui_canvas.gd::GDScript::-1::1738697207::0::1::::<>CanvasLayer<>::
 gui_canvas.gdshader::Shader::-1::1737065719::0::1::::<><>::
-gui_canvas.tscn::PackedScene::1045958364702928187::1738270288::0::1::::<><>::res://Dragon Game Template/Autoload/GUI/gui_canvas.gd<>uid://7ija0pyj8qlc::::res://Dragon Game Template/Menues/Pause Menu/pause_menu.tscn<>uid://bqc6s2gu0o6lh::::res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.tscn<>uid://dham7rhvy2uqu::::res://Dragon Game Template/Autoload/GUI/mat_shader_black_and_white.tres
+gui_canvas.tscn::PackedScene::1045958364702928187::1740432181::0::1::::<><>::res://Dragon Game Template/Autoload/GUI/gui_canvas.gd<>uid://5hlu3metayiq::::res://Kobold Cave/Menu/Player HUD/hud.tscn<>uid://7ija0pyj8qlc::::res://Dragon Game Template/Menues/Pause Menu/pause_menu.tscn<>uid://bqc6s2gu0o6lh::::res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.tscn<>uid://dham7rhvy2uqu::::res://Dragon Game Template/Autoload/GUI/mat_shader_black_and_white.tres
 mat_shader_black_and_white.tres::ShaderMaterial::7651370610561568316::1735240996::0::1::::<><>::res://Dragon Game Template/Autoload/GUI/gui_canvas.gdshader
 ::res://Dragon Game Template/Autoload/MusicManager/::1737066326
 music flow.txt::TextFile::-1::1723747984::0::1::::<><>::
@@ -279,8 +279,8 @@ hurtbox_info_2d.gd::GDScript::-1::1735358713::0::1::::HurtboxInfo2D<>HurtboxInfo
 mass.gd::GDScript::-1::1727208969::0::1::::Mass<>ScalieResource<>res://Dragon Game Template/Icons/mass.png::
 ::res://Dragon Game Template/Resources/Random Item Weighted/::1737066338
 random_item_weighted.gd::GDScript::-1::1735514522::0::1::::RandomItemWeighted<>RefCounted<>res://Dragon Game Template/Icons/random_item_weighted.png::
-::res://Dragon Game Template/Resources/Settings File/::1738643859
-settings_file.gd::GDScript::-1::1738643858::0::1::::SettingsFile<>ScalieResource<>res://Dragon Game Template/Icons/settings_file.png::
+::res://Dragon Game Template/Resources/Settings File/::1740432177
+settings_file.gd::GDScript::-1::1740432177::0::1::::SettingsFile<>ScalieResource<>res://Dragon Game Template/Icons/settings_file.png::
 ::res://Dragon Game Template/Resources/Team Mask/::1737066338
 team_mask.gd::GDScript::-1::1735359590::0::1::::TeamMask<>ScalieResource<>::
 ::res://Dragon Game Template/Resources/Temprature/::1737066338
@@ -301,14 +301,14 @@ Pause Menu Translation Base - Sheet1.ja.translation::OptimizedTranslation::76861
 Pause Menu Translation Base - Sheet1.pt.translation::OptimizedTranslation::6666371256377279253::1737066470::0::1::::<><>::
 Pause Menu Translation Base - Sheet1.ru.translation::OptimizedTranslation::7052197272860633460::1737066470::0::1::::<><>::
 Pause Menu Translation Base - Sheet1.zh.translation::OptimizedTranslation::7441135343790797691::1737066470::0::1::::<><>::
-::res://Kobold Cave/::1740422290
+::res://Kobold Cave/::1740429195
 new_noise_texture_2d.tres::NoiseTexture2D::6987433312055701404::1737657969::0::1::::<><>::
-new_tile_set.tres::TileSet::5494098731156692132::1740421074::0::1::::<><>::uid://c6s1agw5mpel5::::res://Kobold Cave/new_noise_texture_2d.tres
+new_tile_set.tres::TileSet::5494098731156692132::1740429195::0::1::::<><>::uid://c6s1agw5mpel5::::res://Kobold Cave/new_noise_texture_2d.tres
 ::res://Kobold Cave/AutoLoad/::1738697891
 ::res://Kobold Cave/AutoLoad/Game Manager/::1738697207
 game_manager.gd::GDScript::-1::1738697207::0::1::::<>Node<>::
-::res://Kobold Cave/AutoLoad/Kobold Radio/::1738695833
-kobold_radio.gd::GDScript::-1::1738695833::0::1::::<>Node<>::
+::res://Kobold Cave/AutoLoad/Kobold Radio/::1740429538
+kobold_radio.gd::GDScript::-1::1740429538::0::1::::<>Node<>::
 ::res://Kobold Cave/AutoLoad/Part Manager/::1738955851
 part_manager.gd::GDScript::-1::1738955851::0::1::::<>Node2D<>::
 ::res://Kobold Cave/AutoLoad/Utility/::1738697011
@@ -321,9 +321,9 @@ exploding.gd::GDScript::-1::1739235438::0::1::::<>StateBehaviour<>::
 moving.gd::GDScript::-1::1738963283::0::1::::<>StateBehaviour<>::
 ::res://Kobold Cave/Components/::1738177689
 ::res://Kobold Cave/Components/2D/::1738958652
-::res://Kobold Cave/Components/2D/Bomb Thrower/::1740423729
-bomb_thrower.gd::GDScript::-1::1740423669::0::1::::BombThrower<>Node2D<>::
-bomb_thrower.tscn::PackedScene::4227941766188233289::1740423729::0::1::::<><>::res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
+::res://Kobold Cave/Components/2D/Bomb Thrower/::1740432095
+bomb_thrower.gd::GDScript::-1::1740432095::0::1::::BombThrower<>Node2D<>::
+bomb_thrower.tscn::PackedScene::4227941766188233289::1740432095::0::1::::<><>::res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
 ::res://Kobold Cave/Components/2D/Camera Boundry/::1738957311
 camera_boundry.gd::GDScript::-1::1738957311::0::1::::CameraBoundry<>Marker2D<>::
 camera_boundry.tscn::PackedScene::4847282277106187624::1738957311::0::1::::<><>::res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd
@@ -353,13 +353,13 @@ triggger_goal.tscn::PackedScene::8427472733849248193::1738695108::0::1::::<><>::
 ::res://Kobold Cave/Entity/::1739236046
 entity_base.gd::GDScript::-1::1739236046::0::1::::Entity<>CharacterBody2D<>::
 entity_base.tscn::PackedScene::4192395547250592256::1739231705::0::1::::<><>::res://Kobold Cave/Entity/entity_base.gd
-::res://Kobold Cave/Entity/Player/::1740425665
-player.gd::GDScript::-1::1740422069::0::1::::Player<>Entity<>::
-player.tscn::PackedScene::6304211553681137828::1740425665::0::1::::<><>::uid://b0y3e3k6tk6xw::::res://Kobold Cave/Entity/entity_base.tscn<>res://Kobold Cave/Entity/Player/player.gd<>uid://cksnwnxdury7g::::res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn<>uid://dsv0qgalvyih5::::res://Kobold Cave/Entity/Player/player_movement.tres<>uid://c2sv5wtxoty01::::res://Kobold Cave/Entity/Player/player_model.tscn<>uid://dpygy5a7d23qn::::res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn<>uid://bcwe3apiil7su::::res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn<>uid://cndqr11pkblab::::res://Kobold Cave/Entity/Player/states/Trans/player_trans.tscn<>uid://brk8ciananh4q::::res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn<>uid://c8yqebyrtbrt4::::res://Dragon Game Template/Icons/temperature.png<>uid://bbmfun1dvs7bd::::res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn<>uid://doe6toohpuk3t::::res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn<>uid://cv04tdlilp0fm::::res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn<>uid://dr6hf8b1jeeet::::res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn<>uid://c8x5xrtyya5nj::::res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn<>uid://3hh6isr61bfi::::res://Kobold Cave/Entity/Player/player_armour.tres<>res://Dragon Game Template/Resources/Health/health.gd<>uid://dlqiqpp6c50k6::::res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn<>uid://cjmshqqc2q2n2::::res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres<>uid://b1ibt3fjhtfvd::::res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
-player_armour.tres::Resource/ArmourGuts::1980219093511874710::1740421074::0::1::::<><>::res://Dragon Game Template/Resources/Armour/Basic/Guts/armour_basic_guts.gd
+::res://Kobold Cave/Entity/Player/::1740432179
+player.gd::GDScript::-1::1740431834::0::1::::Player<>Entity<>::
+player.tscn::PackedScene::6304211553681137828::1740432179::0::1::::<><>::uid://b0y3e3k6tk6xw::::res://Kobold Cave/Entity/entity_base.tscn<>res://Kobold Cave/Entity/Player/player.gd<>uid://cksnwnxdury7g::::res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn<>uid://dsv0qgalvyih5::::res://Kobold Cave/Entity/Player/player_movement.tres<>uid://c2sv5wtxoty01::::res://Kobold Cave/Entity/Player/player_model.tscn<>uid://dpygy5a7d23qn::::res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn<>uid://bcwe3apiil7su::::res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn<>uid://cndqr11pkblab::::res://Kobold Cave/Entity/Player/states/Trans/player_trans.tscn<>uid://brk8ciananh4q::::res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn<>uid://c8yqebyrtbrt4::::res://Dragon Game Template/Icons/temperature.png<>uid://bbmfun1dvs7bd::::res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn<>uid://doe6toohpuk3t::::res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn<>uid://cv04tdlilp0fm::::res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn<>uid://dr6hf8b1jeeet::::res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn<>uid://c8x5xrtyya5nj::::res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn<>uid://3hh6isr61bfi::::res://Kobold Cave/Entity/Player/player_armour.tres<>res://Dragon Game Template/Resources/Health/health.gd<>uid://dlqiqpp6c50k6::::res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn<>uid://cjmshqqc2q2n2::::res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres<>uid://b1ibt3fjhtfvd::::res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
+player_armour.tres::Resource/ArmourGuts::1980219093511874710::1740429195::0::1::::<><>::res://Dragon Game Template/Resources/Armour/Basic/Guts/armour_basic_guts.gd
 player_hp.tres::Resource/Health::6469181065038365015::1739219513::0::1::::<><>::res://Dragon Game Template/Resources/Health/health.gd
 player_model.tscn::PackedScene::6706428761780880996::1737238256::0::1::::<><>::uid://cwxl8687gvrdn::::res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn<>uid://cq4r3rl8yc71r::::res://Dragon Game Template/Moe_kobold_adventure_128x146.PNG
-player_movement.tres::Resource/MovementData::8467559982589687708::1740421073::0::1::::<><>::res://Kobold Cave/Resources/MovementData/movement_data.gd
+player_movement.tres::Resource/MovementData::8467559982589687708::1740429194::0::1::::<><>::res://Kobold Cave/Resources/MovementData/movement_data.gd
 player_moveset.txt::TextFile::-1::1737748034::0::1::::<><>::
 ::res://Kobold Cave/Entity/Player/states/::1737958025
 player_state_base.gd::GDScript::-1::1737746852::0::1::::PlayerState<>StateBehaviour<>::
@@ -376,8 +376,8 @@ player_dead.tscn::PackedScene::6300211425452497794::1737958600::0::1::::<><>::ui
 ::res://Kobold Cave/Entity/Player/states/Grabbed Ledge/::1739236048
 player_grabbed_ledge.gd::GDScript::-1::1739236048::0::1::::PlayerGrabbedLedge<>PlayerState<>::
 player_grabbed_ledge.tscn::PackedScene::8152080287181004515::1738955976::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.gd
-::res://Kobold Cave/Entity/Player/states/Grounded/::1740421074
-focal_curve.tres::Curve::8901464183295403618::1740421074::0::1::::<><>::
+::res://Kobold Cave/Entity/Player/states/Grounded/::1740429194
+focal_curve.tres::Curve::8901464183295403618::1740429194::0::1::::<><>::
 player_grounded.gd::GDScript::-1::1739236048::0::1::::PlayerGrounded<>PlayerState<>::
 player_grounded.tscn::PackedScene::8262048509917080869::1739234246::0::1::::<><>::uid://f0y5yutdgyx2::::res://Kobold Cave/Entity/Player/states/player_state_base.tscn<>res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.gd<>uid://dy262xwg22j43::::res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 ::res://Kobold Cave/Entity/Player/states/Trans/::1737435593
@@ -404,13 +404,18 @@ level_show_off_bombs.tscn::PackedScene::5921215591919278588::1738958573::0::1:::
 ::res://Kobold Cave/Menu/Level Clear Screen/::1738270288
 level_clear_ui.gd::GDScript::-1::1738268223::0::1::::<>Control<>::
 level_clear_ui.tscn::PackedScene::3515486736817771001::1738270288::0::1::::<><>::res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd
-::res://Kobold Cave/Menu/Player HUD/::1740425665
-hud.gd::GDScript::-1::1740424638::0::1::::HUD<>Control<>::
-hud.tscn::PackedScene::2120821045616536112::1740425665::0::1::::<><>::res://Kobold Cave/Menu/Player HUD/hud.gd
-::res://Kobold Cave/Menu/Player HUD/UIdrawer/::1740426339
-ui_drawer.gd::GDScript::-1::1740426244::0::1::::UIDrawer<>Panel<>::
-ui_drawer.tscn::PackedScene::2143281855844528038::1740426309::0::1::::<><>::res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd
-::res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/::1740426339
+::res://Kobold Cave/Menu/Player HUD/::1740432180
+hud.gd::GDScript::-1::1740431762::0::1::::HUD<>Control<>::
+hud.tscn::PackedScene::2120821045616536112::1740432179::0::1::::<><>::res://Kobold Cave/Menu/Player HUD/hud.gd<>uid://clwf28du2k170::::res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.tscn<>uid://dvrqv2drtu5tp::::res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.tscn
+::res://Kobold Cave/Menu/Player HUD/UIdrawer/::1740429194
+ui_drawer.gd::GDScript::-1::1740426473::0::1::::UIDrawer<>Panel<>::
+ui_drawer.tscn::PackedScene::2143281855844528038::1740429194::0::1::::<><>::res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd
+::res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/::1740432147
+ui_bombs.gd::GDScript::-1::1740432147::0::1::::UIBombs<>UIDrawer<>::
+ui_bombs.tscn::PackedScene::8669332586416746813::1740432147::0::1::::<><>::uid://5shsld8ae6i1::::res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn<>res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.gd
+::res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/::1740432148
+ui_health.gd::GDScript::-1::1740432148::0::1::::UIHealth<>UIDrawer<>::
+ui_health.tscn::PackedScene::5590688498243319681::1740430403::0::1::::<><>::uid://5shsld8ae6i1::::res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn<>res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.gd
 ::res://Kobold Cave/Menu/Settings Menu Options/::1737431364
 ::res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/::1737747484
 widget_toggle_crouch.tscn::PackedScene::7035568753705903040::1737747481::0::1::::<><>::uid://dmv13olcilrq6::::res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn
