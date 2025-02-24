@@ -1,15 +1,19 @@
-[gd_scene load_steps=10 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=12 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_6lgpp"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_gjs3b"]
-[ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="6_5gait"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="8_8ixqh"]
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
+[ext_resource type="PackedScene" uid="uid://d0vlefq1ki1db" path="res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn" id="9_7c6lc"]
+[ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6usxr"]
+size = Vector2(256, 246)
 
 [node name="Test World" type="Node2D"]
 script = ExtResource("1_rbnmu")
@@ -29,9 +33,6 @@ texture = ExtResource("3_gjs3b")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="TrigggerGoal" parent="." instance=ExtResource("6_5gait")]
-position = Vector2(384, -1280)
-
 [node name="LevelBoundry" parent="." instance=ExtResource("8_x5arx")]
 position = Vector2(0, 896)
 
@@ -50,3 +51,18 @@ horz_boundry = 1
 
 [node name="BombPile" parent="." instance=ExtResource("8_8ixqh")]
 position = Vector2(128, 384)
+
+[node name="TrigggerPush" parent="." node_paths=PackedStringArray("ref_marker") instance=ExtResource("9_7c6lc")]
+position = Vector2(-1280, 256)
+ref_marker = NodePath("Marker2D")
+push_force = 9000.0
+auto_disable = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerPush"]
+shape = SubResource("RectangleShape2D_6usxr")
+
+[node name="Marker2D" type="Marker2D" parent="TrigggerPush"]
+position = Vector2(256, -256)
+
+[node name="GoalFlag" parent="." instance=ExtResource("9_m10ai")]
+position = Vector2(384, -1280)

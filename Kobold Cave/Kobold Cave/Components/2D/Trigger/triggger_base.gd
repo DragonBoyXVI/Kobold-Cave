@@ -4,6 +4,7 @@ class_name AreaTrigger2D
 ## An area that triggers something when the player enters it
 ## 
 ## ditto
+# how long has that "ggg" been in teh filename? fuck sake
 
 
 signal enabled

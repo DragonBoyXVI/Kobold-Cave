@@ -1,0 +1,12 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://bolir76nd2dbc"]
+
+[sub_resource type="Gradient" id="Gradient_ywhbx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0, 0.6, 0, 0, 0, 0.2, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 5
+
+[resource]
+gradient = SubResource("Gradient_ywhbx")
+fill_from = Vector2(1, 1)

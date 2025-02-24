@@ -1,3 +1,5 @@
+GradientTexture2D
+GradientTexture1D
 World2D
 TeamMask
 StyleBoxFlat

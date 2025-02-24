@@ -22,8 +22,9 @@ func _ready() -> void:
 #region story
 
 const story_levels: PackedStringArray = [
-	"res://test_world.tscn",
-	"res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn"
+	#"res://test_world.tscn",
+	"res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn",
+	"res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn",
 ]
 var story_position: int = -1
 

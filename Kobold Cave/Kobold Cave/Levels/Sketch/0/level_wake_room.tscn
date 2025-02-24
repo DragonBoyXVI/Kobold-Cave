@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_h2574"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_abrwm"]
-[ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="3_inkua"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="4_cjdwe"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="5_owt3g"]
+[ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="6_xr5mw"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="6_ykb0b"]
 
 [node name="LevelWakeRoom" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_h2574")]
@@ -14,29 +14,29 @@ respawn_point = NodePath("MarkerSpawn")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAALAAIAAAAAAAAAAAALAAEAAAAAAAAAAAALAAAAAAAAAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAHAP//AAAAAAAAAAAGAP//AAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
 tile_set = ExtResource("2_abrwm")
 
-[node name="TrigggerGoal" parent="." index="1" instance=ExtResource("3_inkua")]
-position = Vector2(1280, 256)
-
-[node name="SpriteBlood" type="Sprite2D" parent="." index="2"]
+[node name="SpriteBlood" type="Sprite2D" parent="." index="1"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(896, 640)
 scale = Vector2(3.62297, 0.274921)
 texture = ExtResource("4_cjdwe")
 
-[node name="MarkerSpawn" type="Marker2D" parent="." index="3"]
+[node name="MarkerSpawn" type="Marker2D" parent="." index="2"]
 position = Vector2(896, 512)
 
-[node name="Player" parent="." index="4" instance=ExtResource("5_owt3g")]
+[node name="Player" parent="." index="3" instance=ExtResource("5_owt3g")]
 position = Vector2(896, 640)
 
-[node name="CamLeftBottom" parent="." index="5" instance=ExtResource("6_ykb0b")]
+[node name="CamLeftBottom" parent="." index="4" instance=ExtResource("6_ykb0b")]
 position = Vector2(0, 768)
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
-[node name="CamRightTop" parent="." index="6" instance=ExtResource("6_ykb0b")]
+[node name="CamRightTop" parent="." index="5" instance=ExtResource("6_ykb0b")]
 position = Vector2(1536, -128)
 auto_activate = true
 vert_boundry = 0
 horz_boundry = 1
+
+[node name="GoalFlag" parent="." index="6" instance=ExtResource("6_xr5mw")]
+position = Vector2(1280, 256)

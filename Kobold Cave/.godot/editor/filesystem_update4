@@ -21,3 +21,11 @@ res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
 res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement/widget_ui_placement.tscn
 res://Dragon Game Template/Menues/Pause Menu/Settings Page/settings_page.tscn
 res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd
+res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn
+res://Kobold Cave/Components/2D/Trigger/triggger_base.gd
+res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.gd
+res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
+res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn
+res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn
+res://Kobold Cave/AutoLoad/Game Manager/game_manager.gd

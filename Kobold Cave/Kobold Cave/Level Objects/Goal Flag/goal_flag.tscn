@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://diy121fampbk4"]
+
+[ext_resource type="Texture2D" uid="uid://byu4tqfn8ufvq" path="res://Dragon Game Template/Icons/Element/life.png" id="1_l61ms"]
+[ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="2_x442j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysou2"]
+radius = 64.0
+
+[node name="GoalFlag" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+scale = Vector2(2.96577, 7.94168)
+texture = ExtResource("1_l61ms")
+
+[node name="TriggerGoal" parent="." instance=ExtResource("2_x442j")]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerGoal"]
+shape = SubResource("CircleShape2D_ysou2")
