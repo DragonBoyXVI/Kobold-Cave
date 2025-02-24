@@ -15,7 +15,8 @@ var lerp_speed: float = 0.25
 
 
 ## a list of currently active camera effects
-var active_effects: Array[ CameraEffect2D ] = []
+var active_effects: Dictionary = {}
+var next_effect_id: int = 0
 
 
 ## changed by settings to weaken camera shake
@@ -37,13 +38,14 @@ func _ready() -> void:
 func add_effect( effect: CameraEffect2D ) -> void:
 	
 	effect.apply( self )
-	active_effects.append( effect )
+	active_effects[ next_effect_id ] = effect
+	
+	next_effect_id += 1
 
 ## removes an effect from the camera, mostly used internally
 func remove_effect( index: int ) -> void:
 	
 	active_effects[ index ].remove( self )
-	active_effects.pop_at( index )
 
 
 ## routine for hanlding camera effects
@@ -52,7 +54,7 @@ func logic_camera_effects( delta: float ) -> void:
 	var effect: CameraEffect2D
 	for index: int in active_effects.size():
 		
-		effect = active_effects[ index ]
+		effect = active_effects[ index ] as CameraEffect2D
 		
 		var expired := effect.tick_duration( delta )
 		effect.update( self, delta )

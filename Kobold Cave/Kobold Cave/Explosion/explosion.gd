@@ -30,9 +30,8 @@ func _ready() -> void:
 	
 	animation_player.animation_finished.connect( _on_animation_player_animation_finished )
 	push_area.body_entered.connect( _on_push_area_body_entered )
+	push_area.body_shape_entered.connect( _on_push_area_body_shape_entered )
 	particles.finished.connect( _on_particles_finished )
-	
-	#hurtbox.pre_send.connect( _hurtbox_workaround )
 	
 	Settings.updated.connect( _on_settings_updated )
 	if ( Settings.data ):
@@ -65,6 +64,19 @@ func _on_push_area_body_entered( body: Node2D ) -> void:
 	var push_direction: float = global_position.angle_to_point( entity.global_position )
 	
 	entity.velocity += Vector2.from_angle( push_direction ) * push_force
+
+func _on_push_area_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int ) -> void:
+	
+	if ( body is TileMapLayer ):
+		var body_tilemap := body as TileMapLayer
+		
+		var cell_coords: Vector2i = body_tilemap.get_coords_for_body_rid( body_rid )
+		var cell_data: TileData = body_tilemap.get_cell_tile_data( cell_coords )
+		
+		const data_breakable := "Breakable"
+		if ( cell_data.get_custom_data( data_breakable ) ):
+			
+			body_tilemap.set_cell( cell_coords )
 
 func _on_animation_player_animation_finished( anim_name: StringName ) -> void:
 	

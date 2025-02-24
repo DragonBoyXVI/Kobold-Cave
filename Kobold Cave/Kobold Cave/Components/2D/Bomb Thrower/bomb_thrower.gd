@@ -25,6 +25,10 @@ var bomb_amount: int = 5
 		throw_radius = value
 
 
+## use to limit how quickly bombs can be thrown
+@export var cooldown_timer: Timer
+
+
 const bomb_scene := preload( "res://Kobold Cave/Bomb/bomb.tscn" ) as PackedScene
 const throw_force := 800.0
 
@@ -32,11 +36,19 @@ const throw_force := 800.0
 func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):
+		
+		child_entered_tree.connect( _util_child_entered_tree )
 		return
 	
 	if ( starts_empty ):
 		
 		bomb_amount = 0
+
+func _draw() -> void:
+	
+	if ( not Engine.is_editor_hint() ): return
+	
+	draw_circle( Vector2.ZERO, throw_radius, Color.RED, false )
 
 
 func refill() -> void:
@@ -44,6 +56,15 @@ func refill() -> void:
 	bomb_amount = bomb_max
 
 func throw_bomb( direction: Vector2, initial_velocity := Vector2.ZERO ) -> void:
+	
+	if ( cooldown_timer ):
+		
+		if ( cooldown_timer.is_stopped() ):
+			
+			cooldown_timer.start()
+		else:
+			
+			return
 	
 	if ( not bomb_infinite ):
 		
@@ -65,8 +86,8 @@ func throw_bomb( direction: Vector2, initial_velocity := Vector2.ZERO ) -> void:
 	bomb_thrown.emit()
 
 
-func _draw() -> void:
+func _util_child_entered_tree( node: Node ) -> void:
 	
-	if ( not Engine.is_editor_hint() ): return
-	
-	draw_circle( Vector2.ZERO, throw_radius, Color.RED, false )
+	if ( node is Timer and not cooldown_timer ):
+		
+		cooldown_timer = node

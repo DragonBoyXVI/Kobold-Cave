@@ -30,7 +30,7 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
 size = Vector2(112, 4)
 
-[sub_resource type="Resource" id="Resource_cyc82"]
+[sub_resource type="Resource" id="Resource_mraq2"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 rounded = true
@@ -126,7 +126,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="7" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_cyc82")
+health = SubResource("Resource_mraq2")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="8" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
@@ -144,9 +144,15 @@ process_callback = 0
 wait_time = 1.25
 one_shot = true
 
-[node name="BombThrower" parent="." index="10" instance=ExtResource("20_7lm0b")]
+[node name="BombThrower" parent="." index="10" node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
 position = Vector2(0, -64)
 bomb_infinite = true
 throw_radius = 96.0
+cooldown_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="BombThrower" index="0"]
+process_callback = 0
+wait_time = 0.25
+one_shot = true
 
 [connection signal="timeout" from="IFramesTimer" to="." method="_on_i_frames_timer_timeout"]

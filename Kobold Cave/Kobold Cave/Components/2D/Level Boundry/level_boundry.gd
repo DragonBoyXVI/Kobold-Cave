@@ -13,3 +13,7 @@ func _on_body_entered( body: Node2D ) -> void:
 		var body_entity := body as Entity
 		
 		body_entity.out_of_bounds()
+	elif( body is Bomb ):
+		var bomb_body := body as Bomb
+		
+		bomb_body.explode()

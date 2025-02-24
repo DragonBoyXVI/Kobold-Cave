@@ -226,7 +226,7 @@ debug_color = Color(1, 0, 0, 0.4)
 
 [node name="PushArea2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 19
 input_pickable = false
 monitorable = false
 

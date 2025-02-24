@@ -1,11 +1,11 @@
-res://Kobold Cave/Explosion/explosion.tscn
+res://test_world.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 res://Kobold Cave/Entity/Player/player_armour.tres
 res://Kobold Cave/new_tile_set.tres
-res://test_world.tscn
+res://Kobold Cave/Explosion/explosion.gd
 res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
 res://Kobold Cave/Bomb/bomb.tscn
 res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Explosion/explosion.gd
+res://Kobold Cave/Explosion/explosion.tscn
