@@ -1,3 +1,5 @@
+res://Kobold Cave/Menu/Player HUD/UIHealth
+res://Kobold Cave/Menu/Player HUD
 res://Kobold Cave/Level Objects/Bomb Pile
 res://Kobold Cave/Components/2D/Trigger/Give Bombs
 res://Kobold Cave/Components/2D/Trigger
@@ -18,7 +20,5 @@ res://Kobold Cave/Components/2D/Level Boundry
 res://Kobold Cave/Levels/Sketch/0
 res://Kobold Cave/AutoLoad/Game Manager
 res://Kobold Cave/Saved Resources/Style Boxes
-res://Kobold Cave/Menu/Level Clear Screen
-res://Kobold Cave/Entity/Player/states/Dead
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player

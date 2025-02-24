@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://5shsld8ae6i1"]
+
+[ext_resource type="Script" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd" id="1_6hkpl"]
+
+[node name="UIDrawer" type="Panel"]
+custom_minimum_size = Vector2(320, 64)
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.0888889
+offset_bottom = 128.0
+mouse_filter = 2
+script = ExtResource("1_6hkpl")
+metadata/_edit_use_anchors_ = true

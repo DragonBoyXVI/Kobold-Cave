@@ -14,3 +14,10 @@ res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.tscn
 res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.gd
 res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn
 res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
+res://Kobold Cave/Menu/Player HUD/hud.tscn
+res://Kobold Cave/Menu/Player HUD/hud.gd
+res://Kobold Cave/Menu/Player HUD/UIHealth/ui_health.tscn
+res://Kobold Cave/Menu/Player HUD/UIHealth/ui_health.gd
+res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_health.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd
