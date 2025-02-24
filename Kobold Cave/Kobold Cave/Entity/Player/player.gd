@@ -63,7 +63,7 @@ func logic_apply_longjump( direction: float ) -> void:
 
 
 var _i_frame_tween: Tween
-@onready var _i_frame_timer := %IFramesTimer as Timer
+@export var _i_frame_timer: Timer
 func start_i_frames() -> void:
 	
 	hitbox.disable.call_deferred()

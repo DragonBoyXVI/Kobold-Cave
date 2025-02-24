@@ -10,15 +10,19 @@ signal bomb_thrown
 
 
 ## if true, throw infinite bombs
-@export var bomb_infinite: bool = false
+@export var bomb_infinite: bool = false : 
+	set( value ):
+		notify_property_list_changed.call_deferred()
+		
+		bomb_infinite = value
 ## if true, start with no bombs
-@export var starts_empty := false
+var starts_empty := false
 ## how many bombs you can throw
-@export var bomb_max: int = 5
+var bomb_max: int = 5
 var bomb_amount: int = 5
 
 ## how far away to spawn the bomb, to prevent self collision
-@export_range( 0.0, 125.0, 1.0, "or_greater" ) var throw_radius: float = 25.0 : 
+@export_range( 0.0, 125.0, 1.0, "or_greater" ) var throw_radius: float = 64.0 : 
 	set( value ):
 		queue_redraw()
 		
@@ -31,6 +35,40 @@ var bomb_amount: int = 5
 
 const bomb_scene := preload( "res://Kobold Cave/Bomb/bomb.tscn" ) as PackedScene
 const throw_force := 800.0
+
+
+func _get_property_list() -> Array[ Dictionary ]:
+	var properties: Array[ Dictionary ] = []
+	
+	if ( not bomb_infinite ):
+		
+		properties.append( {
+			"name": "starts_empty",
+			"type": TYPE_BOOL
+		} )
+		
+		properties.append( {
+			"name": "bomb_max",
+			"type": TYPE_INT
+		} )
+	
+	return properties
+
+func _property_can_revert( property: StringName ) -> bool:
+	const revertable: PackedStringArray = [
+		"starts_empty",
+		"bomb_max",
+	]
+	
+	return revertable.has( property )
+
+func _property_get_revert( property: StringName ) -> Variant:
+	
+	match property:
+		&"starts_empty": return false
+		&"bomb_max": return 5
+	
+	return null
 
 
 func _ready() -> void:

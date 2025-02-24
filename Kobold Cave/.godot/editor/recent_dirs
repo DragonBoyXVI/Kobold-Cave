@@ -1,3 +1,6 @@
+res://Kobold Cave/Level Objects/Bomb Pile
+res://Kobold Cave/Components/2D/Trigger/Give Bombs
+res://Kobold Cave/Components/2D/Trigger
 res://Kobold Cave/Explosion
 res://Dragon Game Template/Components/2D/Hurtbox 2D
 res://Kobold Cave/Bomb/States
@@ -7,7 +10,6 @@ res://Kobold Cave/Components/2D/Bomb Thrower
 res://Kobold Cave/Levels/Sketch/1
 res://Kobold Cave/Levels
 res://Kobold Cave/Components/2D/Trigger/Camera Bounds
-res://Kobold Cave/Components/2D/Trigger
 res://Kobold Cave/AutoLoad/Part Manager
 res://Kobold Cave/Particles/Test Dust
 res://Kobold Cave/Components/2D/Camera Boundry
@@ -18,7 +20,5 @@ res://Kobold Cave/AutoLoad/Game Manager
 res://Kobold Cave/Saved Resources/Style Boxes
 res://Kobold Cave/Menu/Level Clear Screen
 res://Kobold Cave/Entity/Player/states/Dead
-res://Kobold Cave/Entity/Player/states
-res://Kobold Cave/Components/2D/Trigger/Goal
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player

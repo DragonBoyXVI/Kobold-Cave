@@ -1,8 +1,8 @@
-Timer
 CollisionShape2D
+Sprite2D
+Timer
 AnimationPlayer
 Area2D
-Sprite2D
 CPUParticles2D
 Node
 StateBehaviour

@@ -1,39 +1,15 @@
-[gd_scene load_steps=19 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=10 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_6lgpp"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_gjs3b"]
-[ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="4_tld2m"]
-[ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd" id="5_8j3bj"]
 [ext_resource type="PackedScene" uid="uid://dsclik3anepif" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn" id="6_5gait"]
+[ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="8_8ixqh"]
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
-[ext_resource type="PackedScene" uid="uid://1kon0y4rhb47" path="res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.tscn" id="10_lejl2"]
-[ext_resource type="PackedScene" uid="uid://jhp4a7c1ahg8" path="res://Kobold Cave/Bomb/bomb.tscn" id="11_qowwv"]
-[ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Heal/Template/heal.gd" id="12_k8q8g"]
-
-[sub_resource type="Resource" id="Resource_fx0dm"]
-script = ExtResource("5_8j3bj")
-amount = 1.0
-peirce = 0.0
-element = 3
-rounded = true
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f8hwg"]
-radius = 128.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfbas"]
-size = Vector2(384, 512)
-
-[sub_resource type="Resource" id="Resource_wd321"]
-script = ExtResource("12_k8q8g")
-amount = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjlgp"]
-size = Vector2(256, 256)
 
 [node name="Test World" type="Node2D"]
 script = ExtResource("1_rbnmu")
@@ -52,14 +28,6 @@ texture_repeat = 2
 texture = ExtResource("3_gjs3b")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
-
-[node name="Hurtbox2D" parent="." instance=ExtResource("4_tld2m")]
-event = SubResource("Resource_fx0dm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
-position = Vector2(-256, 512)
-shape = SubResource("CircleShape2D_f8hwg")
-debug_color = Color(1, 0, 0, 0.4)
 
 [node name="TrigggerGoal" parent="." instance=ExtResource("6_5gait")]
 position = Vector2(384, -1280)
@@ -80,29 +48,5 @@ position = Vector2(2560, -2048)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="TrigggerCameraBounds" parent="." node_paths=PackedStringArray("enter_bounds", "leave_bounds") instance=ExtResource("10_lejl2")]
-position = Vector2(-640, 256)
-enter_bounds = [NodePath("../CamRightTop2")]
-leave_bounds = [NodePath("../CamLeftBottom"), NodePath("../CamRightTop")]
-run_enter = true
-run_leave = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerCameraBounds"]
-position = Vector2(192, 256)
-shape = SubResource("RectangleShape2D_yfbas")
-disabled = true
-
-[node name="CamRightTop2" parent="." instance=ExtResource("9_w82gg")]
-position = Vector2(-256, 256)
-vert_boundry = 0
-horz_boundry = 1
-
-[node name="Bomb" parent="." instance=ExtResource("11_qowwv")]
-position = Vector2(-384, -1024)
-
-[node name="Hurtbox2D2" parent="." instance=ExtResource("4_tld2m")]
-event = SubResource("Resource_wd321")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D2"]
-shape = SubResource("RectangleShape2D_cjlgp")
-debug_color = Color(1, 0, 0, 0.4)
+[node name="BombPile" parent="." instance=ExtResource("8_8ixqh")]
+position = Vector2(128, 384)

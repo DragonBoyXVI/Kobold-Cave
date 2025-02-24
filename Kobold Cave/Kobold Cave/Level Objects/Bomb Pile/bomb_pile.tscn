@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwk6n2uejntni"]
+
+[ext_resource type="Texture2D" uid="uid://d2kg6pgd007bo" path="res://Dragon Game Template/Icons/3D/hurtbox_3d.png" id="1_gl1rn"]
+[ext_resource type="PackedScene" uid="uid://ct46p6sx4kxn1" path="res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.tscn" id="2_kivyo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ch6b"]
+radius = 80.0
+
+[node name="BombPile" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(8, 8)
+texture = ExtResource("1_gl1rn")
+
+[node name="TrigggerGiveBombs" parent="." instance=ExtResource("2_kivyo")]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerGiveBombs"]
+shape = SubResource("CircleShape2D_5ch6b")

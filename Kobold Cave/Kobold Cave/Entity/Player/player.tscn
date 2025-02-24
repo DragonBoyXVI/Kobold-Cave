@@ -30,7 +30,7 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
 size = Vector2(112, 4)
 
-[sub_resource type="Resource" id="Resource_mraq2"]
+[sub_resource type="Resource" id="Resource_tsfxi"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 rounded = true
@@ -43,8 +43,9 @@ element_heal_flag = 4
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylnya"]
 radius = 48.0
 
-[node name="Player" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine", "bomb_thrower") instance=ExtResource("1_my4pb")]
+[node name="Player" node_paths=PackedStringArray("_i_frame_timer", "model", "health_node", "hitbox", "state_machine", "bomb_thrower") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
+_i_frame_timer = NodePath("IFramesTimer")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("PlayerModel")
 health_node = NodePath("NodeHealth")
@@ -126,7 +127,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="7" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_mraq2")
+health = SubResource("Resource_tsfxi")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="8" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
@@ -139,16 +140,16 @@ shape = SubResource("CircleShape2D_ylnya")
 debug_color = Color(0, 0, 1, 0.4)
 
 [node name="IFramesTimer" type="Timer" parent="." index="9"]
-unique_name_in_owner = true
 process_callback = 0
 wait_time = 1.25
 one_shot = true
 
 [node name="BombThrower" parent="." index="10" node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
 position = Vector2(0, -64)
-bomb_infinite = true
 throw_radius = 96.0
 cooldown_timer = NodePath("Timer")
+starts_empty = true
+bomb_max = 5
 
 [node name="Timer" type="Timer" parent="BombThrower" index="0"]
 process_callback = 0
