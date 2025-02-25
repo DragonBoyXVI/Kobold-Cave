@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cqmjs5nf5k3lg"]
+[gd_scene load_steps=18 format=4 uid="uid://cqmjs5nf5k3lg"]
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_dbpff"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="2_25ypc"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="8_ecrwt"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="9_mi7dm"]
 [ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="10_nbks7"]
+[ext_resource type="PackedScene" uid="uid://1kon0y4rhb47" path="res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.tscn" id="11_gwmin"]
+[ext_resource type="PackedScene" uid="uid://1bjyx3yys523" path="res://Kobold Cave/Explosion/explosion.tscn" id="12_tkaep"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfmjp"]
 radius = 32.0
@@ -19,11 +21,18 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k04qy"]
 size = Vector2(4224, 256)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yh31"]
+size = Vector2(384, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llfla"]
+size = Vector2(896, 384)
+
 [node name="LevelShowOffBombs" instance=ExtResource("1_dbpff")]
 editor_description = "actually  more like a big starting room that lets the player fuck around and learn without being in too much danger."
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." index="0" instance=ExtResource("2_25ypc")]
+position = Vector2(896, 384)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." index="1"]
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAALAAMAAAABAAAAAAALAAQAAAABAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP//AAAAAAAAAAD+//7/AAAAAAAAAAD8//r/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD8//z/AAAAAAAAAAD8//v/AAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAATAAsAAAAAAAAAAAASAAsAAAAAAAAAAAARAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAD9//r/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAD9//v/AAAAAAAAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAAAAAAAAD3//7/AAAAAAAAAAD2//7/AAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAXAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAZAP//AAAAAAAAAAAYAP//AAAAAAAAAAAfAAkAAAAAAAAAAAAgAAkAAAAAAAAAAAAhAAkAAAAAAAAAAAAiAAkAAAAAAAAAAAAjAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAlAAkAAAAAAAAAAAAmAAkAAAAAAAAAAAAmAAgAAAAAAAAAAAAlAAcAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAmAAUAAAAAAAAAAAAmAAQAAAAAAAAAAAAmAAMAAAAAAAAAAAAmAAIAAAAAAAAAAAAmAAEAAAAAAAAAAAAmAAAAAAAAAAAAAAAlAP//AAAAAAAAAAAlAP7/AAAAAAAAAAAlAP3/AAAAAAAAAAAlAPz/AAAAAAAAAAAlAPv/AAAAAAAAAAAlAPr/AAAAAAAAAAAlAPn/AAAAAAAAAAAlAPj/AAAAAAAAAAAlAPf/AAAAAAAAAAAlAPb/AAAAAAAAAAAkAPb/AAAAAAAAAAAjAPX/AAAAAAAAAAAiAPX/AAAAAAAAAAAhAPX/AAAAAAAAAAAgAPX/AAAAAAAAAAAfAPX/AAAAAAAAAAAeAPX/AAAAAAAAAAAdAPT/AAAAAAAAAAAcAPT/AAAAAAAAAAAbAPT/AAAAAAAAAAAaAPT/AAAAAAAAAAAZAPT/AAAAAAAAAAAYAPT/AAAAAAAAAAAXAPT/AAAAAAAAAAAWAPT/AAAAAAAAAAAVAPX/AAAAAAAAAAAUAPX/AAAAAAAAAAATAPX/AAAAAAAAAAASAPX/AAAAAAAAAAARAPX/AAAAAAAAAAAQAPX/AAAAAAAAAAAPAPX/AAAAAAAAAAAOAPX/AAAAAAAAAAANAPX/AAAAAAAAAAAMAPX/AAAAAAAAAAALAPb/AAAAAAAAAAAKAPf/AAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAkAP7/AAAAAAAAAAAjAP7/AAAAAAAAAAAiAP7/AAAAAAAAAAAhAP7/AAAAAAAAAAAgAP7/AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAkAAAAAAAAAAAAAAAkAAEAAAAAAAAAAAAlAAEAAAAAAAAAAAAlAAAAAAAAAAAAAAAlAAIAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAAAAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAJAAMAAAABAAAAAAA=")
@@ -77,13 +86,13 @@ shape = SubResource("WorldBoundaryShape2D_poaww")
 position = Vector2(-5056, -768)
 shape = SubResource("RectangleShape2D_k04qy")
 
-[node name="CamLeftBottom" parent="." index="9" instance=ExtResource("8_ecrwt")]
+[node name="CamLBInit" parent="." index="9" instance=ExtResource("8_ecrwt")]
 position = Vector2(-1024, 896)
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
-[node name="CamRightTop" parent="." index="10" instance=ExtResource("8_ecrwt")]
+[node name="CamRTInit" parent="." index="10" instance=ExtResource("8_ecrwt")]
 position = Vector2(1664, -256)
 auto_activate = true
 vert_boundry = 0
@@ -96,11 +105,42 @@ position = Vector2(640, 640)
 position = Vector2(3200, 1152)
 
 [node name="PitTexture" type="Sprite2D" parent="." index="13"]
-position = Vector2(-640, 832)
-scale = Vector2(24, 6)
+position = Vector2(-448, 768)
+scale = Vector2(1152, 51.2)
 texture = ExtResource("10_nbks7")
 
 [node name="PitTexture2" type="Sprite2D" parent="." index="14"]
 position = Vector2(2368, 1536)
-scale = Vector2(50, 8)
+scale = Vector2(3200, 102.4)
 texture = ExtResource("10_nbks7")
+
+[node name="CamLB2" parent="." index="15" instance=ExtResource("8_ecrwt")]
+position = Vector2(128, 1280)
+vert_boundry = 1
+horz_boundry = 0
+
+[node name="CamRT2" parent="." index="16" instance=ExtResource("8_ecrwt")]
+position = Vector2(3072, 0)
+vert_boundry = 0
+horz_boundry = 1
+
+[node name="CamBoundInit" parent="." index="17" node_paths=PackedStringArray("enter_bounds") instance=ExtResource("11_gwmin")]
+position = Vector2(1152, 384)
+enter_bounds = [NodePath("../CamLBInit"), NodePath("../CamRTInit")]
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamBoundInit" index="0"]
+position = Vector2(192, 64)
+shape = SubResource("RectangleShape2D_8yh31")
+
+[node name="CamBound2" parent="." index="18" node_paths=PackedStringArray("enter_bounds") instance=ExtResource("11_gwmin")]
+position = Vector2(640, 768)
+enter_bounds = [NodePath("../CamLB2"), NodePath("../CamRT2")]
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamBound2" index="0"]
+position = Vector2(448, 192)
+shape = SubResource("RectangleShape2D_llfla")
+
+[node name="Explosion" parent="." index="19" instance=ExtResource("12_tkaep")]
+position = Vector2(1280, 512)

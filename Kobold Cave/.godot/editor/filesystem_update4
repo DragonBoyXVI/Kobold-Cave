@@ -1,31 +1,12 @@
-res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn
+res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 res://Kobold Cave/Entity/Player/player_armour.tres
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.tscn
-res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.gd
-res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
-res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.tscn
-res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.gd
-res://Kobold Cave/Menu/Player HUD/hud.tscn
-res://Kobold Cave/Menu/Player HUD/hud.gd
-res://Dragon Game Template/Resources/Settings File/settings_file.gd
-res://Kobold Cave/Entity/Player/player.gd
-res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn
+res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
 res://test_world.tscn
-res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
-res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd
-res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement/widget_ui_placement.tscn
-res://Dragon Game Template/Menues/Pause Menu/Settings Page/settings_page.tscn
-res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.gd
-res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
-res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn
-res://Kobold Cave/Components/2D/Trigger/triggger_base.gd
-res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.gd
+res://Kobold Cave/Entity/Player/player.tscn
 res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
-res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn
-res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn
-res://Kobold Cave/AutoLoad/Game Manager/game_manager.gd
+res://Kobold Cave/Explosion/explosion.gd
+res://Kobold Cave/Explosion/explosion.tscn

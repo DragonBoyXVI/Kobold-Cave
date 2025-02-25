@@ -228,7 +228,6 @@ debug_color = Color(1, 0, 0, 0.4)
 collision_layer = 0
 collision_mask = 19
 input_pickable = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea2D"]
 shape = SubResource("CircleShape2D_atdlg")
