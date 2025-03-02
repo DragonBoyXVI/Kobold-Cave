@@ -54,6 +54,8 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	DragonControler.tree_paused.connect( _on_tree_paused, CONNECT_DEFERRED )
+	
 	KoboldRadio.ui_connect_health.emit( health_node.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
 
@@ -82,7 +84,7 @@ func start_i_frames() -> void:
 		
 		_i_frame_tween.kill()
 	
-	var tween := KoboldUtility.create_tween_style( self )
+	var tween := create_tween()
 	tween.set_loops(  )
 	
 	if ( Settings.data.flashing_lights ):
@@ -153,6 +155,14 @@ func _death() -> void:
 	Input.parse_input_event( input )
 	
 	model.scale.y = 0.1
+
+
+func _on_tree_paused( paused: bool ) -> void:
+	
+	if ( not paused ): return
+	
+	modulate.a = maxf( 0.5, modulate.a )
+	show()
 
 
 func _on_i_frames_timer_timeout() -> void:

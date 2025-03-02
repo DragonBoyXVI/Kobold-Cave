@@ -18,8 +18,13 @@ signal ui_connect_bombs( bomb_thrower: BombThrower )
 ## emitted when the player touches the goal trigger
 signal goal_touched
 
+
+
 signal room_pause
 signal room_unpause
+
+## used when a new spawn point should be set
+signal level_set_spawn( spawn_marker: Marker2D )
 
 ## emitted when the "next" button is pressed on the
 ## level clear screen

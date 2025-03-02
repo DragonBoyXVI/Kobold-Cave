@@ -30,7 +30,7 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
 size = Vector2(112, 4)
 
-[sub_resource type="Resource" id="Resource_7bdwn"]
+[sub_resource type="Resource" id="Resource_osega"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 rounded = true
@@ -127,7 +127,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="7" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_7bdwn")
+health = SubResource("Resource_osega")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="8" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]

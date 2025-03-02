@@ -1,12 +1,7 @@
-res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Entity/Wolf/wolf.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
 res://Kobold Cave/Entity/Player/player_armour.tres
 res://Kobold Cave/new_tile_set.tres
 res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
-res://test_world.tscn
-res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
-res://Kobold Cave/Explosion/explosion.gd
-res://Kobold Cave/Explosion/explosion.tscn

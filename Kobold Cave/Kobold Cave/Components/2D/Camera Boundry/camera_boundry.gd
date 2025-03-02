@@ -97,9 +97,10 @@ func activate() -> void:
 
 func _tween_cam_limit( limit: NodePath, value: float ) -> void:
 	
-	var tween := KoboldUtility.create_tween_style( MainCamera2D )
+	var tween := MainCamera2D.create_tween()
+	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
 	
-	tween.tween_property( MainCamera2D, limit, value, 1.25 )
+	tween.tween_property( MainCamera2D, limit, value, 0.25 )
 
 
 var _name_update := true

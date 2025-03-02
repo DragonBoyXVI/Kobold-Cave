@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MovementData" load_steps=2 format=3 uid="uid://q6gst07iemw5"]
+
+[ext_resource type="Script" path="res://Kobold Cave/Resources/MovementData/movement_data.gd" id="1_8t32u"]
+
+[resource]
+script = ExtResource("1_8t32u")
+ground_speed = 400.0
+ground_accel = 8000.0
+ground_decel = 12000.0
+ground_jump = 500.0
+air_gravity = 1000.0
+air_terminal_velocity = 2000.0
+air_terminal_squared = 4e+06
+air_friction = 1000.0
+air_move_speed = 450.0
+air_move_control_speed = 800.0

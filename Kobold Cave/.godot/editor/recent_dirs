@@ -1,7 +1,11 @@
+res://Kobold Cave/Entity/Wolf/States
+res://Kobold Cave/Entity/Wolf
+res://Dragon Game Template/Components/Multi/State/Behaviour/Base
+res://Kobold Cave/Components/2D/Trigger/Set Spawn
+res://Kobold Cave/Components/2D/Trigger
 res://
 res://Kobold Cave/Level Objects/Goal Flag
 res://Kobold Cave/Components/2D/Trigger/Push
-res://Kobold Cave/Components/2D/Trigger
 res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement
 res://Dragon Game Template/Components/Control/Setting Widget/Option Button
 res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs
@@ -16,9 +20,5 @@ res://Kobold Cave/Bomb/States
 res://Kobold Cave/Bomb
 res://Kobold Cave/Saved Resources/Hitbox masks
 res://Kobold Cave/Components/2D/Bomb Thrower
-res://Kobold Cave/Levels/Sketch/1
-res://Kobold Cave/Levels
-res://Kobold Cave/Components/2D/Trigger/Camera Bounds
-res://Kobold Cave/AutoLoad/Part Manager
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave
 C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/Kobold Cave/Entity/Player
