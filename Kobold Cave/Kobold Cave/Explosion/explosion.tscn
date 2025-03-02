@@ -3,15 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="1_2jui1"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_cvft8"]
 [ext_resource type="Script" path="res://Kobold Cave/Explosion/explosion.gd" id="2_eokw3"]
-[ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/Template/damage.gd" id="3_0fw1t"]
+[ext_resource type="Script" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="4_7s6bx"]
 [ext_resource type="PackedScene" uid="uid://cui0cogigjt8m" path="res://Kobold Cave/Explosion/cpu_particles_dust.tscn" id="5_q1e8g"]
 
-[sub_resource type="Resource" id="Resource_bj61k"]
-script = ExtResource("3_0fw1t")
-amount = 2.0
-peirce = 0.0
+[sub_resource type="Resource" id="Resource_bk02s"]
+script = ExtResource("4_7s6bx")
+amount = 2
+peirce = 5
 element = 0
-rounded = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4e1o1"]
 resource_local_to_scene = true
@@ -216,7 +215,7 @@ modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2_cvft8")
 
 [node name="Hurtbox2D" parent="." instance=ExtResource("1_2jui1")]
-event = SubResource("Resource_bj61k")
+event = SubResource("Resource_bk02s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 shape = SubResource("CircleShape2D_4e1o1")

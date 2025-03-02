@@ -5,7 +5,7 @@ class_name HurtboxEvent
 ##
 ## This base class is used by hurtboxes to pass information to
 ## a [NodeHealth] when they strike a valid [Hitbox2D] or [Hitbox3D].[br]
-## NOTE: Hurtboxes supply a copy of this resource, as they systems
+## NOTE: Hurtboxes supply a copy of this resource, as the systems
 ## they interact with change the data within the resource.
 
 

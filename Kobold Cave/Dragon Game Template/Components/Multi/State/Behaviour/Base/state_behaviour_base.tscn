@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b53q2bsxhf3y1"]
-
-[ext_resource type="PackedScene" uid="uid://bt5l1jpr65pw1" path="res://Dragon Game Template/Components/Multi/State/Base/state_base.tscn" id="1_mc2dh"]
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Multi/State/Behaviour/Base/state_behaviour_base.gd" id="2_ucg0d"]
-
-[node name="StateBehaviourBase" instance=ExtResource("1_mc2dh")]
-script = ExtResource("2_ucg0d")
-defer_change = false

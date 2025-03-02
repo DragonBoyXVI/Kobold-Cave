@@ -167,21 +167,21 @@ func _disable() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 
 
-func _on_node_health_pre_hurt( damage: BaseDamage ) -> void:
+func _on_node_health_pre_hurt( damage: Damage ) -> void:
 	
 	model.flash_color( damage.to_color(), damage.amount / 5.0 )
 	_pre_hurt( damage )
 
-func _on_node_health_hurt( damage: BaseDamage ) -> void:
+func _on_node_health_hurt( damage: Damage ) -> void:
 	
 	_hurt( damage )
 
-func _on_node_health_pre_healed( heal: BaseHeal ) -> void:
+func _on_node_health_pre_healed( heal: Heal ) -> void:
 	
 	model.flash_color( heal.to_color(), heal.amount / 1.25 )
 	_pre_healed( heal )
 
-func _on_node_health_healed( heal: BaseHeal ) -> void:
+func _on_node_health_healed( heal: Heal ) -> void:
 	
 	_healed( heal )
 
@@ -191,19 +191,19 @@ func _on_node_health_died() -> void:
 
 
 ## virtual
-func _pre_hurt( _damage: BaseDamage ) -> void:
+func _pre_hurt( _damage: Damage ) -> void:
 	pass
 
 ## virtual
-func _hurt( _damage: BaseDamage ) -> void:
+func _hurt( _damage: Damage ) -> void:
 	pass
 
 ## virtual
-func _pre_healed( _heal: BaseHeal ) -> void:
+func _pre_healed( _heal: Heal ) -> void:
 	pass
 
 ## virtual
-func _healed( _heal: BaseHeal ) -> void:
+func _healed( _heal: Heal ) -> void:
 	pass
 
 ## virtual

@@ -27,7 +27,6 @@ func flash_color( color: Color, time: float = 0.125 ) -> void:
 	
 	modulate = color
 	var tween := create_tween()
-	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
 	tween.set_trans( Tween.TRANS_LINEAR )
 	tween.set_ease( Tween.EASE_IN )
 	

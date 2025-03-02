@@ -29,7 +29,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 
-func _enter() -> void:
+func _enter( _args: Array ) -> void:
 	
 	camera_focal.position = CAMERA_FOCAL_OFFSET
 	player.velocity.y = 1.0

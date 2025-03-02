@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt5l1jpr65pw1"]
-
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Multi/State/Base/state_base.gd" id="1_rdno1"]
-
-[node name="StateBase" type="Node"]
-editor_description = "Base node for anything related to states."
-script = ExtResource("1_rdno1")

@@ -1,23 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdnubucseh6ix"]
+[gd_scene load_steps=14 format=3 uid="uid://cdnubucseh6ix"]
 
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_2j47d"]
 [ext_resource type="Script" path="res://Kobold Cave/Entity/Wolf/wolf.gd" id="2_c5c4t"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="3_6feir"]
+[ext_resource type="Resource" uid="uid://q6gst07iemw5" path="res://Kobold Cave/Entity/Wolf/movement.tres" id="3_8plix"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="4_sg76n"]
 [ext_resource type="Script" path="res://Dragon Game Template/Resources/Health/health.gd" id="5_arsdn"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="6_5fft6"]
 [ext_resource type="Resource" uid="uid://dtqt8suvkv3jo" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="7_cgkj6"]
-[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn" id="8_x7y00"]
+[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="8_x7y00"]
+[ext_resource type="Script" path="res://Kobold Cave/Entity/Wolf/States/march_foreward.gd" id="10_d2b60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13x5"]
 size = Vector2(120, 68)
 
 [sub_resource type="Resource" id="Resource_c8mln"]
 script = ExtResource("5_arsdn")
-rounded = true
 ignore_max = true
-maximum = 1.0
-current = 1.0
+maximum = 1
+current = 1
 percent = 1.0
 element_heal_flag = 4
 
@@ -26,13 +27,25 @@ radius = 56.0
 
 [node name="Wolf" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine") instance=ExtResource("1_2j47d")]
 script = ExtResource("2_c5c4t")
-model = NodePath("PlayerModel")
+movement_stats = ExtResource("3_8plix")
+model = NodePath("FlipPivot/PlayerModel")
 health_node = NodePath("NodeHealth")
 hitbox = NodePath("Hitbox2D")
 state_machine = NodePath("StateMachine")
+metadata/_edit_group_ = true
 
-[node name="PlayerModel" parent="." index="0" instance=ExtResource("3_6feir")]
+[node name="FlipPivot" type="Node2D" parent="." index="0"]
+unique_name_in_owner = true
+
+[node name="PlayerModel" parent="FlipPivot" index="0" instance=ExtResource("3_6feir")]
 modulate = Color(1, 0, 0, 1)
+
+[node name="RayFloor" type="RayCast2D" parent="FlipPivot" index="1"]
+position = Vector2(60, 0)
+
+[node name="RayWall" type="RayCast2D" parent="FlipPivot" index="2"]
+position = Vector2(60, -32)
+target_position = Vector2(50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -34)
@@ -51,3 +64,10 @@ shape = SubResource("CircleShape2D_hgrgg")
 debug_color = Color(0, 0, 1, 0.4)
 
 [node name="StateMachine" parent="." index="4" instance=ExtResource("8_x7y00")]
+
+[node name="MarchForeward" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("wolf", "pivot", "ray_floor", "ray_wall")]
+script = ExtResource("10_d2b60")
+wolf = NodePath("../..")
+pivot = NodePath("../../FlipPivot")
+ray_floor = NodePath("../../FlipPivot/RayFloor")
+ray_wall = NodePath("../../FlipPivot/RayWall")

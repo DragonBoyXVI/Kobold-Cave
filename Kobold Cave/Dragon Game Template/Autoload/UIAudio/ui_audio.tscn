@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://e6ycij4p3uk7"]
+
+[ext_resource type="AudioStream" uid="uid://fm2pxbmkn8pd" path="res://Dragon Game Template/Audio/Test SFX/bassdrum_acoustic01.ogg" id="1_8ql3t"]
+
+[node name="UIAudio" type="Node"]
+
+[node name="SFXFocused" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_8ql3t")
+bus = &"SFX"

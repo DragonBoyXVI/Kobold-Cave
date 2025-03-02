@@ -25,6 +25,5 @@ layout_mode = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "- WINDOWS G"
-alignment = 1
 
 [connection signal="toggled" from="MarginContainer/CheckButton" to="." method="_on_check_button_toggled"]

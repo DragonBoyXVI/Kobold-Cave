@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cksnwnxdury7g"]
+
+[ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/state_behaviour_base.tscn" id="1_acts8"]
+[ext_resource type="Script" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="2_fdo3u"]
+
+[node name="StateMachine" instance=ExtResource("1_acts8")]
+editor_description = "Manages StateBehaviour children."
+script = ExtResource("2_fdo3u")

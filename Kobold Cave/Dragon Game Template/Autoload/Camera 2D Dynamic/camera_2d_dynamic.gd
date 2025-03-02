@@ -2,25 +2,13 @@ extends Camera2D
 ## the main camera 2D, allows the camera to be globally acessable
 
 
-## the cameras listiner
-@onready var listiner := $AudioListener2D as AudioListener2D
 ## the cameras state machine
 @onready var state_machine := $StateMachine as StateMachine
 
 
-## increases the distance the camera travels
-var speed_multiplier: float = 5.0
-## how fast the camera moves when lerping
-var lerp_speed: float = 0.25
-
-
 ## a list of currently active camera effects
 var active_effects: Dictionary = {}
-var next_effect_id: int = 0
-
-
-## changed by settings to weaken camera shake
-var shake_strength: float = 1.0
+var effect_next_id := 0
 
 
 func _ready() -> void:
@@ -33,26 +21,30 @@ func _ready() -> void:
 		
 		_on_settings_updated( Settings.data )
 
+func _process( delta: float ) -> void:
+	
+	logic_camera_effects( delta )
+
 
 ## adds an effect to the camera
 func add_effect( effect: CameraEffect2D ) -> void:
 	
 	effect.apply( self )
-	active_effects[ next_effect_id ] = effect
-	
-	next_effect_id += 1
+	active_effects[ effect_next_id ] = effect
+	effect_next_id += 1
 
 ## removes an effect from the camera, mostly used internally
 func remove_effect( index: int ) -> void:
 	
 	active_effects[ index ].remove( self )
+	active_effects.erase( index )
 
 
 ## routine for hanlding camera effects
 func logic_camera_effects( delta: float ) -> void:
 	
 	var effect: CameraEffect2D
-	for index: int in active_effects.size():
+	for index: int in active_effects:
 		
 		effect = active_effects[ index ] as CameraEffect2D
 		
@@ -64,49 +56,23 @@ func logic_camera_effects( delta: float ) -> void:
 			# deffer as to not change array size while in loop
 			remove_effect.call_deferred( index )
 
-## Moves the camera toward a point
-func logic_move_toward( point: Vector2, delta: float ) -> void:
+
+## make the camera follow a node
+func set_follow_node( node: Node2D ) -> void:
 	
-	delta *= speed_multiplier
-	if ( delta > 1.0 ):
-		global_position = point
-		return
+	const state_name := &"FollowNode"
+	state_machine.change_state( state_name, [ node ] )
+
+## make the camera look at a global coord
+func set_follow_coord( global_coord: Vector2 ) -> void:
 	
-	position = position.lerp( point, delta )
-
-
-## standard camera routine
-func routine_camera( point: Vector2, delta: float ) -> void:
+	const state_name := &"NoBehaviour"
+	state_machine.change_state( state_name )
 	
-	logic_move_toward( point, delta )
-	logic_camera_effects( delta )
-
-
-@onready var look_point := $StateMachine/FollowPoint as StateBehaviour
-## Sets the camera to the idle state and makes it look at a point
-func set_state_look_at_point( point: Vector2 ) -> void:
-	
-	state_machine.change_state( look_point.name )
-	look_point.point = point
-
-@onready var follow_state := $StateMachine/FollowNode as StateBehaviour
-## Sets the camera to follow a node
-func set_state_follow_node( node: Node2D ) -> void:
-	
-	state_machine.change_state( follow_state.name )
-	follow_state.node_to_follow = node
-
-
-@onready var manual_debug := $StateMachine/ManualDebug as StateBehaviour
-## free came mode, not meant for gameplay
-func set_state_free_cam() -> void:
-	
-	state_machine.change_state( manual_debug.name )
+	position = global_coord
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
-	
-	shake_strength = recived_data.camera_shake_strength
 	
 	if ( recived_data.camera_as_physics ):
 		

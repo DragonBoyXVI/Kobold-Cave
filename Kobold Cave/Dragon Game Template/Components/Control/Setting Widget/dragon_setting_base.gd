@@ -269,6 +269,8 @@ func _on_settings_widget_enabled( property: StringName, enable: bool ) -> void:
 
 func _on_radio_widget_sync( property: StringName, value: Variant ) -> void:
 	
+	if ( property == &"dummy_property" ): return
+	
 	if ( property != setting_property ):
 		return
 	

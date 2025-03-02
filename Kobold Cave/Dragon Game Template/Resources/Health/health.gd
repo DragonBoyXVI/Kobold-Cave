@@ -11,51 +11,45 @@ class_name Health
 signal updated
 
 
-## if true, hp is rounded to the nearest int
-@export var rounded := true
 ## if true, max health is ignored
 @export var ignore_max: bool = false
 ## the max health
-@export_range( 0.0, 125.0, 0.01, "or_greater" ) var maximum: float :
+@export_range( 0, 125, 1, "or_greater" ) var maximum: int :
 	set( value ):
 		
-		if ( rounded ):
-			
-			maximum = roundf( value )
-		else:
-			
-			maximum = value
+		maximum = value
 		
 		if ( _internal_update ):
 			_internal_update = false
 			
 			if ( not ignore_max ):
 				
-				current = minf( current, maximum )
+				current = mini( current, maximum )
 			
-			percent = current / maximum
+			if ( maximum == 0 ):
+				
+				percent = 1.0
+			else:
+				
+				percent = current / float( maximum )
 			
 			updated.emit()
 			_internal_update = true
 ## the current hp value
-@export_range( 0.0, 125.0, 0.01, "or_greater" ) var current: float :
+@export_range( 0, 125, 1, "or_greater" ) var current: int :
 	set( value ):
 		
-		if ( rounded ):
-			
-			current = roundf( value )
-		else:
+		if ( ignore_max ):
 			
 			current = value
-		
-		if ( not ignore_max ):
+		else:
 			
-			current = minf( current, maximum )
+			current = mini( value, maximum )
 		
 		if ( _internal_update ):
 			_internal_update = false
 			
-			percent = current / maximum
+			percent = current / float( maximum )
 			
 			updated.emit()
 			_internal_update = true
@@ -68,7 +62,7 @@ signal updated
 		if ( _internal_update ):
 			_internal_update = false
 			
-			current = maximum * percent
+			current = roundi( maximum * percent )
 			
 			updated.emit()
 			_internal_update = true

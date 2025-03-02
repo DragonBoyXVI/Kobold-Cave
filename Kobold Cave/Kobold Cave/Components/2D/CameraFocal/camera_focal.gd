@@ -8,4 +8,4 @@ class_name CameraFocal2D
 
 func _ready() -> void:
 	
-	MainCamera2D.set_state_follow_node( self )
+	MainCamera2D.set_follow_node( self )

@@ -23,9 +23,9 @@ var guts_percent_limit: float
 var guts_percent_set_to: float
 
 ## if above this hp, activate guts
-var guts_absolute_limit: float
+var guts_absolute_limit: int
 ## when guts activates, set to this hp value
-var guts_absolute_set_to: float
+var guts_absolute_set_to: int
 
 ## the mode to use
 var guts_mode := GUTS_MODE.PERCENT : 
@@ -119,7 +119,7 @@ func _get_property_list() -> Array[ Dictionary ]:
 	return properties
 
 
-func _apply( info: ArmourDamageInfo, health_node: NodeHealth, damage: BaseDamage ) -> void:
+func _apply( info: ArmourDamageInfo, health_node: NodeHealth, damage: Damage ) -> void:
 	super( info, health_node, damage )
 	
 	var health: Health = health_node.health
@@ -127,7 +127,7 @@ func _apply( info: ArmourDamageInfo, health_node: NodeHealth, damage: BaseDamage
 	var limit := guts_absolute_limit
 	if ( guts_mode == GUTS_MODE.PERCENT ):
 		
-		limit = health.maximum * guts_percent_limit
+		limit = roundi( health.maximum * guts_percent_limit )
 	
 	if ( health.current > limit ):
 		
@@ -136,9 +136,9 @@ func _apply( info: ArmourDamageInfo, health_node: NodeHealth, damage: BaseDamage
 			var set_to := guts_absolute_set_to
 			if ( guts_mode == GUTS_MODE.PERCENT ):
 				
-				set_to = guts_percent_set_to * health.maximum
+				set_to = roundi( guts_percent_set_to * health.maximum )
 			
-			var hp_diff := absf( health.current - set_to )
+			var hp_diff := absi( health.current - set_to )
 			var prev_damage := damage.amount
 			
 			damage.amount = hp_diff

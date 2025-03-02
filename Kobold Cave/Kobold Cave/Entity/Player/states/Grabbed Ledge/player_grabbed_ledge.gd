@@ -41,7 +41,7 @@ func _ready() -> void:
 	ledge_grabber.found_grab_ledge.connect( _on_ledge_found )
 
 
-func _enter() -> void:
+func _enter( _args: Array = [] ) -> void:
 	
 	#player.disable.call_deferred()
 	#await get_tree().physics_frame

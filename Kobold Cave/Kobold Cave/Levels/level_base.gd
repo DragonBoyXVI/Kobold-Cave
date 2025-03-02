@@ -47,7 +47,7 @@ func _on_radio_goal_touched() -> void:
 	
 	pause()
 
-func _on_radio_player_hitstun( damage: BaseDamage ) -> void:
+func _on_radio_player_hitstun( damage: Damage ) -> void:
 	
 	pause()
 	await get_tree().create_timer( damage.amount / 5.0 ).timeout

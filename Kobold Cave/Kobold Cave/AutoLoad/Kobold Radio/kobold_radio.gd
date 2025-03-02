@@ -8,7 +8,7 @@ signal player_reset_needed( player: Player )
 ## emitted when the player runs out of health
 signal player_died
 ## emitted when we want to pause the room for hitstun
-signal player_hitstun( damage: BaseDamage )
+signal player_hitstun( damage: Damage )
 
 ## used to connect a [Health] to the [UIHealth] node.
 signal ui_connect_health( health: Health )

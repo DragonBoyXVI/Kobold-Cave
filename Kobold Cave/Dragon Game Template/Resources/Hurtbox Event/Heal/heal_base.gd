@@ -1,24 +1,27 @@
 @icon( "res://Dragon Game Template/Icons/Hurtbox Events/Heal/heal_abstract.png" )
 extends HurtboxEvent
-class_name BaseHeal
+class_name Heal
 ## Base for healing
 ##
-## Provides a base to create your own custom heal branch.
+## A basic heal, usable as a base for other healing types
 
 
 ## the amount of healing
-@export var amount: float
+@export var amount: int
 
 
 func _to_string() -> String:
 	
-	const text := "BaseHeal, not meant to be used directly"
-	return text
+	const text := "Heal\nAmount: %s"
+	return text % amount
 
 func _to_color() -> Color:
 	
 	return ELEMENT_COLOR[ ELEMENT.LIFE ]
 
+func _init( amt := 0 ) -> void:
+	
+	amount = amt
 
 func apply( health_node: NodeHealth ) -> void:
 	
@@ -35,13 +38,15 @@ func apply( health_node: NodeHealth ) -> void:
 ## virtual[br]
 ## used so the heal object can modify itself before healing
 func _calculate( _health_node: NodeHealth ) -> void:
+	
 	pass
-	#push_error( "NOT IMPLIENTED: Heal._caculate()", self )
 
 ## Virtual[br]
 ## Used to heal the health node.[br]
 ## Should return true if healing was actually done.
-func _heal( _health_node: NodeHealth ) -> bool:
+func _heal( health_node: NodeHealth ) -> bool:
 	
-	push_error( "NOT IMPLIENTED: Heal._heal()", self )
-	return false
+	if ( amount <= 0.0 ): return false
+	
+	health_node.health.current += amount
+	return true

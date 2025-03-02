@@ -43,8 +43,8 @@ var slow: float = SLOW_NORMAL
 
 const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -48.0 )
 
-func enter() -> void:
-	super()
+func enter( args: Array = [] ) -> void:
+	super( args )
 	
 	if ( use_slow ):
 		

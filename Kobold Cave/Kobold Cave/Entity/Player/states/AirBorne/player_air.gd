@@ -20,7 +20,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 
-func _enter() -> void:
+func _enter( _args: Array = [] ) -> void:
 	
 	ledge_grabber.enable.call_deferred()
 	stuck_timer.start()

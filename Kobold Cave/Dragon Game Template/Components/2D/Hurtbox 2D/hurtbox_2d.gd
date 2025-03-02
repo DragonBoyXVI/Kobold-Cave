@@ -112,7 +112,7 @@ func _on_area_entered( area: Area2D ) -> void:
 		
 		if ( is_hitbox_valid( hitbox ) ):
 			
-			var sendable_event := event.duplicate() as HurtboxEvent
+			var sendable_event := event.duplicate()
 			pre_send.emit( sendable_event )
 			
 			hitbox.hit( sendable_event )

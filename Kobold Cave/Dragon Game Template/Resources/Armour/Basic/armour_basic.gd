@@ -11,10 +11,10 @@ func _to_string() -> String:
 	return text.format( [ value, element_value ] )
 
 
-func _apply( info: ArmourDamageInfo, _health_node: NodeHealth, damage: BaseDamage ) -> void:
+func _apply( info: ArmourDamageInfo, _health_node: NodeHealth, damage: Damage ) -> void:
 	
 	var final_armour := value
-	if ( value > 0.0 ):
+	if ( value > 0 ):
 		
 		final_armour -= damage.peirce
 	info.flat_armor += final_armour

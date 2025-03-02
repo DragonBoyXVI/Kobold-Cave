@@ -16,6 +16,26 @@ class_name CameraShake2D
 var shake_curve: Curve
 
 
+static var _setting_shake_strength: float = 1.0
+
+static func _static_init() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	if ( not Settings.is_node_ready() ):
+		await Settings.ready
+	
+	Settings.updated.connect( _on_settings_updated )
+	if ( Settings.data ):
+		
+		_on_settings_updated( Settings.data )
+
+static func _on_settings_updated( recived_data: SettingsFile ) -> void:
+	
+	_setting_shake_strength = recived_data.camera_shake_strength
+
+
 func _init() -> void:
 	
 	# default linear curve
@@ -59,6 +79,8 @@ func _property_get_revert( property: StringName ) -> Variant:
 
 func _update( cam: Camera2D, _delta: float ) -> void:
 	
+	if ( _setting_shake_strength <= 0.0 ): return
+	
 	# get curve factor
 	var curve_factor := 1.0
 	if ( shake_curve ):
@@ -68,11 +90,11 @@ func _update( cam: Camera2D, _delta: float ) -> void:
 	# get shake vector
 	const circle_degrees := deg_to_rad( 360.0 )
 	var shake_vector := Vector2.from_angle( randf() * circle_degrees )
-	shake_vector *= shake_strength * curve_factor * MainCamera2D.shake_strength
+	shake_vector *= shake_strength * curve_factor * _setting_shake_strength
 	
 	# apply
 	cam.offset = shake_vector
 
-func _leave( cam: Camera2D ) -> void:
+func _remove( cam: Camera2D ) -> void:
 	
 	cam.offset = Vector2.ZERO

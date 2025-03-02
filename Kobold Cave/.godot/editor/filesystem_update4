@@ -1,7 +1,14 @@
-res://Kobold Cave/Entity/Wolf/wolf.tscn
-res://Dragon Game Template/default_theme.tres
-res://Kobold Cave/Entity/Player/player_movement.tres
-res://Kobold Cave/Entity/Player/states/Grounded/focal_curve.tres
-res://Kobold Cave/Entity/Player/player_armour.tres
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.en.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.es.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ja.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.zh.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ru.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.de.translation
+res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.pt.translation
+res://test_world.tscn
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
+res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
+res://Kobold Cave/Bomb/bomb.gd
+res://Kobold Cave/Levels/level_base.gd
+res://Kobold Cave/Entity/Player/player.gd
+res://Kobold Cave/Explosion/explosion.tscn

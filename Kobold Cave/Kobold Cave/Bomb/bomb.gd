@@ -26,6 +26,6 @@ func explode() -> void:
 
 func _on_hitbox_2d_recived_event( event: HurtboxEvent ) -> void:
 	
-	if ( event is BaseDamage ):
+	if ( event is Damage ):
 		
 		explode()

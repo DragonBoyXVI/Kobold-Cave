@@ -14,7 +14,12 @@ enum PUSH_TYPE {
 
 @export_group( "Push", "push_" )
 ## the direction the camera is to be pushed
-@export var push_direction: Vector2
+@export var push_direction: Vector2 :
+	set( value ):
+		
+		push_direction = value.normalized()
+## how many pixels to push
+@export var push_strength: float
 
 ## the curve to use
 @export var push_curve: Curve
@@ -52,5 +57,5 @@ func _update( cam: Camera2D, _delta: float ) -> void:
 		curve_factor = push_curve.sample_baked( duration_percent )
 	
 	# push
-	var push_vector := push_direction * curve_factor
+	var push_vector := push_direction * push_strength * curve_factor
 	cam.offset = push_vector

@@ -1,34 +1,37 @@
 @icon( "res://Dragon Game Template/Icons/Hurtbox Events/Damage/damage_abstract.png" )
 extends HurtboxEvent
-class_name BaseDamage
+class_name Damage
 ## Most basic class for dealing damage to [NodeHealth]
 ##
-## This is the most stripped down and bare bones damage object i
-## could make. Ideally you'd be making custom [Armour], as that
+## A base class for damage. 
+## Ideally you'd be making custom [Armour], as that
 ## provides more flexibility with custom code.
 
 
 ## the amount of damage
-@export var amount: float
+@export var amount: int
 ## armour uses this to reduce its effectiveness
-@export var peirce: float
+@export var peirce: int
 ## armour also uses this, with other stuff
 @export var element := ELEMENT.NONE
-## if true, the damage is rounded to the nearest int before
-## _damage is called
-@export var rounded := true
 
 
 func _to_string() -> String:
 	
-	const text := "BaseDamage, not meant to be used directly\nAmount: {0}, Element: {1}, Peirce: {2}"
-	return text.format( [ amount, element, peirce ] )
+	const text := "Damage\nAmount: {0}, Peirce: {1}, Element: {2}"
+	return text.format( [ amount, peirce, element ] )
 
 func _to_color() -> Color:
 	
-	push_error( "NOT IMPLIENTED: Damage._to_color()", self )
-	return Color.RED
+	if ( element == ELEMENT.NONE ): return Color.RED
+	
+	return ELEMENT_COLOR[ element ]
 
+func _init( amt := 0, elem := ELEMENT.NONE, peir := 0 ) -> void:
+	
+	amount = amt
+	peirce = peir
+	element = elem
 
 func apply( node_health: NodeHealth ) -> void:
 	
@@ -41,21 +44,14 @@ func apply( node_health: NodeHealth ) -> void:
 	node_health.apply_armour( self )
 	_calculate( node_health )
 	
-	if ( rounded ):
-		
-		amount = roundf( amount )
-	
 	var did_damage := _damage( node_health )
 	if ( did_damage ):
 		
 		node_health.hurt.emit( self )
-		if ( node_health.health.current <= 0.0 ):
-			
-			node_health.died.emit()
 
 
 ## used to turn this into a heal object
-func to_heal() -> BaseHeal:
+func to_heal() -> Heal:
 	
 	return _to_heal()
 
@@ -74,22 +70,25 @@ func _calculate( _health_node: NodeHealth ) -> void:
 
 ## virtual[br]
 ## called when this heals instead of damages
-func _to_heal() -> BaseHeal:
+func _to_heal() -> Heal:
 	
-	push_error( "NOT IMPLIENTED: Damage._to_heal()", self )
-	return BaseHeal.new()
+	return Heal.new( amount )
 
 ## virtual[br]
 ## used to test if this heals the health instead of damage it.
-func _health_is_healed_by_this( _health: Health ) -> bool:
+func _health_is_healed_by_this( health: Health ) -> bool:
 	
-	push_error( "NOT IMPLIENTED: Damage._health_is_healed_by_this()", self )
-	return false
+	if ( element == ELEMENT.NONE ): return false
+	
+	return ( health.element_heal_flag & 1 << element )
 
 ## virtual[br]
 ## used to actually do damage to the node.[br]
 ## should return true if damage was actually done.
-func _damage( _node_health: NodeHealth ) -> bool:
+func _damage( node_health: NodeHealth ) -> bool:
 	
-	push_error( "NOT IMPLIMENTED: Damage._damage()\n", self )
+	if ( amount > 0 ):
+		
+		node_health.health.current -= amount
+	
 	return false

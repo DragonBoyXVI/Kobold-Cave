@@ -25,11 +25,11 @@ func _input( event: InputEvent ) -> void:
 			
 			KEY_0:
 				
-				health_node.recive_event( Heal.new( 1.0 ) )
+				health_node.recive_event( Heal.new( 1 ) )
 			
 			KEY_9:
 				
-				health_node.recive_event( Heal.new( 5.0 ) )
+				health_node.recive_event( Heal.new( 5 ) )
 			
 			KEY_1:
 				
@@ -119,16 +119,14 @@ func out_of_bounds() -> void:
 	
 	if ( _i_frame_timer.is_stopped() ):
 		
-		var damage := Damage.new()
-		damage.amount = 1.0
-		health_node.recive_event( damage )
+		health_node.recive_event( Damage.new( 1 ) )
 
 
-func _pre_hurt( damage: BaseDamage ) -> void:
+func _pre_hurt( damage: Damage ) -> void:
 	
 	print( damage.to_string() )
 
-func _hurt( damage: BaseDamage ) -> void:
+func _hurt( damage: Damage ) -> void:
 	
 	start_i_frames()
 	

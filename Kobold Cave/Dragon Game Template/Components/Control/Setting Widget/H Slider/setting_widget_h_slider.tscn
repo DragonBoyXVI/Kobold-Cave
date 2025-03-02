@@ -32,6 +32,7 @@ alignment = 1
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/InfoContainer" index="0"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "- Sex Quantities: "
 
 [node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/InfoContainer" index="1"]
