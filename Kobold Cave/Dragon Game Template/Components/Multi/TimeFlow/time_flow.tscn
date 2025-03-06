@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cde0kw3cs4nyt"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Multi/TimeFlow/time_flow.gd" id="1_qootu"]
+[ext_resource type="Script" uid="uid://dyvqlhpf7fjno" path="res://Dragon Game Template/Components/Multi/TimeFlow/time_flow.gd" id="1_qootu"]
 
 [node name="TimeFlow" type="Node"]
 script = ExtResource("1_qootu")

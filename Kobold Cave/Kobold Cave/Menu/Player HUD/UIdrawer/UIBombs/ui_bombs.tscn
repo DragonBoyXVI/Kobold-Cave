@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvrqv2drtu5tp"]
 
 [ext_resource type="PackedScene" uid="uid://5shsld8ae6i1" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn" id="1_c5cfc"]
-[ext_resource type="Script" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.gd" id="2_fab2m"]
+[ext_resource type="Script" uid="uid://bav4eajqfrh1w" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.gd" id="2_fab2m"]
 
 [node name="UIBombs" instance=ExtResource("1_c5cfc")]
 script = ExtResource("2_fab2m")

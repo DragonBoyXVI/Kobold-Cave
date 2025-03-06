@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2q7cu6v6ooav"]
 
 [ext_resource type="PackedScene" uid="uid://utujl3ay3qm6" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn" id="1_eokug"]
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/setting_widget_option_button.gd" id="2_gyng5"]
+[ext_resource type="Script" uid="uid://dnovmrcqyam28" path="res://Dragon Game Template/Components/Control/Setting Widget/Option Button/setting_widget_option_button.gd" id="2_gyng5"]
 
 [node name="SettingWidgetOptionButton" node_paths=PackedStringArray("option_button", "focus_me_node", "pass_focus_up", "pass_focus_right", "pass_focus_down", "pass_focus_left") instance=ExtResource("1_eokug")]
 custom_minimum_size = Vector2(128, 64)

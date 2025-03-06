@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://icdorteoj566"]
 
 [ext_resource type="PackedScene" uid="uid://utujl3ay3qm6" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn" id="1_06c1c"]
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/Color Picker/setting_widget_color_picker.gd" id="2_u6o02"]
+[ext_resource type="Script" uid="uid://du7gggga2ftdd" path="res://Dragon Game Template/Components/Control/Setting Widget/Color Picker/setting_widget_color_picker.gd" id="2_u6o02"]
 
 [node name="SettingWidgetColorPicker" node_paths=PackedStringArray("color_picker_button", "focus_me_node", "pass_focus_up", "pass_focus_right", "pass_focus_down", "pass_focus_left") instance=ExtResource("1_06c1c")]
 anchor_right = 0.338281

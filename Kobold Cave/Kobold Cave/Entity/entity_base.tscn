@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0y3e3k6tk6xw"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Entity/entity_base.gd" id="1_d0g12"]
+[ext_resource type="Script" uid="uid://bhncwprp3y7lj" path="res://Kobold Cave/Entity/entity_base.gd" id="1_d0g12"]
 
 [node name="EntityBase" type="CharacterBody2D"]
 z_index = 5

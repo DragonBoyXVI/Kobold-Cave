@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh3ub3nubrpl8"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Description Box/description_box.gd" id="1_1cpfl"]
+[ext_resource type="Script" uid="uid://cnj44esnunkt1" path="res://Dragon Game Template/Components/Control/Description Box/description_box.gd" id="1_1cpfl"]
 
 [node name="DescriptionBox" type="PanelContainer"]
 custom_minimum_size = Vector2(256, 128)

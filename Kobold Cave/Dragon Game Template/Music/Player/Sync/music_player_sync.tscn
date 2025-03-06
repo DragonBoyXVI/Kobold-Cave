@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bowtristt5bdd"]
 
 [ext_resource type="PackedScene" uid="uid://danotxsglaoff" path="res://Dragon Game Template/Music/Player/music_player.tscn" id="1_gihgp"]
-[ext_resource type="Script" path="res://Dragon Game Template/Music/Player/Sync/music_player_sync.gd" id="2_7ifof"]
+[ext_resource type="Script" uid="uid://dexm1nmalsseb" path="res://Dragon Game Template/Music/Player/Sync/music_player_sync.gd" id="2_7ifof"]
 
 [node name="MusicPlayerSync" instance=ExtResource("1_gihgp")]
 script = ExtResource("2_7ifof")

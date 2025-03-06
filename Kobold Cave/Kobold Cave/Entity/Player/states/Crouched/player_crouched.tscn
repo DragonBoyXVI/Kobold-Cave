@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbmfun1dvs7bd"]
 
 [ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_vlvro"]
-[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd" id="2_waw3k"]
+[ext_resource type="Script" uid="uid://cqh14eenc4rn" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd" id="2_waw3k"]
 
 [node name="PlayerCrouched" instance=ExtResource("1_vlvro")]
 script = ExtResource("2_waw3k")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmv13olcilrq6"]
 
 [ext_resource type="PackedScene" uid="uid://utujl3ay3qm6" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn" id="1_xbmes"]
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.gd" id="2_6ha0e"]
+[ext_resource type="Script" uid="uid://dcljd8ykum355" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.gd" id="2_6ha0e"]
 
 [node name="SettingWidgetCheckButton" node_paths=PackedStringArray("check_button", "focus_me_node", "pass_focus_up", "pass_focus_right", "pass_focus_down", "pass_focus_left") instance=ExtResource("1_xbmes")]
 custom_minimum_size = Vector2(256, 64)

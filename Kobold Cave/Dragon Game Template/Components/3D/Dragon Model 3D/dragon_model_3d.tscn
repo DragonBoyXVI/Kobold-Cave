@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c60mrv2wetpx3"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/3D/Dragon Model 3D/dragon_model_3d.gd" id="1_6wsds"]
+[ext_resource type="Script" uid="uid://dxuhrb413bxns" path="res://Dragon Game Template/Components/3D/Dragon Model 3D/dragon_model_3d.gd" id="1_6wsds"]
 
 [node name="DragonModel3D" type="Node3D"]
 script = ExtResource("1_6wsds")

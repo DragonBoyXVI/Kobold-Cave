@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5hlu3metayiq"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Menu/Player HUD/hud.gd" id="1_g0csc"]
+[ext_resource type="Script" uid="uid://c2h0wxs6jkuks" path="res://Kobold Cave/Menu/Player HUD/hud.gd" id="1_g0csc"]
 [ext_resource type="PackedScene" uid="uid://clwf28du2k170" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.tscn" id="2_u1pru"]
 [ext_resource type="PackedScene" uid="uid://dvrqv2drtu5tp" path="res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.tscn" id="3_cljr0"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cn8dbjksgpxgc"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd" id="1_kc0vh"]
+[ext_resource type="Script" uid="uid://j26p2u165jxt" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd" id="1_kc0vh"]
 
 [node name="LevelBoundry" type="Area2D"]
 collision_layer = 0

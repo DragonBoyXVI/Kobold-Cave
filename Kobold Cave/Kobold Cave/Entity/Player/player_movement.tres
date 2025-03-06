@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MovementData" load_steps=2 format=3 uid="uid://dsv0qgalvyih5"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Resources/MovementData/movement_data.gd" id="1_xxoee"]
+[ext_resource type="Script" uid="uid://x3wirdftryst" path="res://Kobold Cave/Resources/MovementData/movement_data.gd" id="1_xxoee"]
 
 [resource]
 script = ExtResource("1_xxoee")

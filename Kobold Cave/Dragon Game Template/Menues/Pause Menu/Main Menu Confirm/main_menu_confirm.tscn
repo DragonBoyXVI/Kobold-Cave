@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcviprw8mawkf"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Menues/Pause Menu/Main Menu Confirm/main_menu_confirm.gd" id="1_34d01"]
+[ext_resource type="Script" uid="uid://chvc1c4qa1571" path="res://Dragon Game Template/Menues/Pause Menu/Main Menu Confirm/main_menu_confirm.gd" id="1_34d01"]
 
 [sub_resource type="Shortcut" id="Shortcut_0m7ye"]
 events = [null]

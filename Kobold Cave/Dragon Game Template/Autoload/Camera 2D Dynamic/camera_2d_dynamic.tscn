@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmwh2bj21418l"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.gd" id="1_1p56u"]
+[ext_resource type="Script" uid="uid://d4el1iv15a3jj" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.gd" id="1_1p56u"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="2_3emqc"]
 [ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/state_behaviour_base.tscn" id="4_yf44x"]
-[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_node.gd" id="5_rhb5r"]
+[ext_resource type="Script" uid="uid://c2ol8t44gsjkj" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_node.gd" id="5_rhb5r"]
 
 [node name="MainCamera2D" type="Camera2D"]
 process_priority = 167814208

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bknhkp6nqfib0"]
 
 [ext_resource type="PackedScene" uid="uid://utujl3ay3qm6" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn" id="1_oo8wa"]
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/setting_widget_h_slider.gd" id="2_22bdw"]
+[ext_resource type="Script" uid="uid://cu57j71ekim8t" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/setting_widget_h_slider.gd" id="2_22bdw"]
 
 [node name="SettingWidgetHSlider" node_paths=PackedStringArray("spin_box", "slider", "focus_me_node", "pass_focus_up", "pass_focus_right", "pass_focus_down", "pass_focus_left") instance=ExtResource("1_oo8wa")]
 custom_minimum_size = Vector2(256, 128)

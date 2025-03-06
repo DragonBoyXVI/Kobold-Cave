@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0uxq0s0t73ly"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/test 3d/test.gd" id="1_b13pd"]
-[ext_resource type="Texture2D" uid="uid://cb5aky4h0lhe6" path="res://icon.svg" id="2_whnsf"]
+[ext_resource type="Script" uid="uid://dxmuhi5axmeku" path="res://Dragon Game Template/test 3d/test.gd" id="1_b13pd"]
+[ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_whnsf"]
 
 [node name="test" type="Node3D"]
 script = ExtResource("1_b13pd")

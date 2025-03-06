@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7woleo53xw3t"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Components/2D/Trigger/triggger_base.gd" id="1_rpjxa"]
+[ext_resource type="Script" uid="uid://wk6s0gw6kcut" path="res://Kobold Cave/Components/2D/Trigger/triggger_base.gd" id="1_rpjxa"]
 
 [node name="TrigggerBase" type="Area2D"]
 collision_layer = 0

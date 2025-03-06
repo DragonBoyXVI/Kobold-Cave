@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://t5x0mhoevjw3"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Autoload/Camera 3D Dynamic/camera_3d_dynamic.gd" id="1_e82ol"]
+[ext_resource type="Script" uid="uid://br18j33lcqh0i" path="res://Dragon Game Template/Autoload/Camera 3D Dynamic/camera_3d_dynamic.gd" id="1_e82ol"]
 
 [node name="Camera3DDynamic" type="Node3D" node_paths=PackedStringArray("camera", "state_machine")]
 editor_description = "A main camera that can follow nodes. Can be disabled in autoload."

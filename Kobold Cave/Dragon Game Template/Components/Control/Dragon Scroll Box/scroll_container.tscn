@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo8yrvwc06rdn"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Dragon Scroll Box/scroll_container.gd" id="1_alug3"]
+[ext_resource type="Script" uid="uid://31fdx4otphib" path="res://Dragon Game Template/Components/Control/Dragon Scroll Box/scroll_container.gd" id="1_alug3"]
 
 [node name="DragonScrollBox" type="ScrollContainer"]
 custom_minimum_size = Vector2(125, 125)

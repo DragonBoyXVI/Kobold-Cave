@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://doe6toohpuk3t"]
 
 [ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_rme60"]
-[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.gd" id="2_6amod"]
+[ext_resource type="Script" uid="uid://b42fob81pjatk" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.gd" id="2_6amod"]
 
 [node name="PlayerGrabbedLedge" instance=ExtResource("1_rme60")]
 script = ExtResource("2_6amod")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dr6hf8b1jeeet"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.gd" id="1_bjouj"]
+[ext_resource type="Script" uid="uid://b67vm6m6jh20b" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.gd" id="1_bjouj"]
 
 [node name="LedgeGrabDetector" type="Area2D"]
 collision_layer = 0

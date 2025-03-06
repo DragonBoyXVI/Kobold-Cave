@@ -168,8 +168,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yll36"]
 _data = {
-"Explode": SubResource("Animation_5lu4m"),
-"RESET": SubResource("Animation_tvmtf")
+&"Explode": SubResource("Animation_5lu4m"),
+&"RESET": SubResource("Animation_tvmtf")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]

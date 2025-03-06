@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbccbby1k133q"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd" id="1_ye6s7"]
+[ext_resource type="Script" uid="uid://dbf8r7wqq34yj" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd" id="1_ye6s7"]
 
 [node name="CameraBoundry" type="Marker2D"]
 rotation = 0.785398

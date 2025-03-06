@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://utujl3ay3qm6"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.gd" id="1_8pn5x"]
+[ext_resource type="Script" uid="uid://caq8miox2oo70" path="res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.gd" id="1_8pn5x"]
 
 [node name="DragonSettingBase" type="PanelContainer"]
 custom_minimum_size = Vector2(32, 32)

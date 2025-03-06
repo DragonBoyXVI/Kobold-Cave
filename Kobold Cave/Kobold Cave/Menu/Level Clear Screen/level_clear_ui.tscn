@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqc6s2gu0o6lh"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd" id="1_hyvse"]
+[ext_resource type="Script" uid="uid://b8lyjgkj7k8q8" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd" id="1_hyvse"]
 
 [node name="LevelClearUI" type="Control" node_paths=PackedStringArray("focus_me")]
 layout_mode = 3

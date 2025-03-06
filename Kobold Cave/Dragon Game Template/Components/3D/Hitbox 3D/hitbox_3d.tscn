@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0latwqowsnv1"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/3D/Hitbox 3D/hitbox_3d.gd" id="1_ip5m4"]
+[ext_resource type="Script" uid="uid://dntajv707kby5" path="res://Dragon Game Template/Components/3D/Hitbox 3D/hitbox_3d.gd" id="1_ip5m4"]
 
 [node name="Hitbox3D" type="Area3D"]
 editor_description = "This node is detected by hurtbox3D components."

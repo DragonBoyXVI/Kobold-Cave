@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://7ija0pyj8qlc"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Menues/Pause Menu/pause_menu.gd" id="1_ewh3c"]
+[ext_resource type="Script" uid="uid://bhblc5jq2g758" path="res://Dragon Game Template/Menues/Pause Menu/pause_menu.gd" id="1_ewh3c"]
 [ext_resource type="PackedScene" uid="uid://bxo5mfhpjiate" path="res://Dragon Game Template/Menues/Pause Menu/Front Page/pause_front_page.tscn" id="2_0hg3j"]
 [ext_resource type="PackedScene" uid="uid://bcks0khtkwbbh" path="res://Dragon Game Template/Menues/Pause Menu/Desktop Confirm/desktop_page.tscn" id="4_i4m30"]
 [ext_resource type="PackedScene" uid="uid://bgan5cvx0fjap" path="res://Dragon Game Template/Menues/Pause Menu/Settings Page/settings_page.tscn" id="4_ohplc"]

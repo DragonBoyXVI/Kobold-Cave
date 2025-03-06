@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb3acgli1hwhy"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Components/Control/DragonMenu/dragon_menu.gd" id="1_fkbf5"]
+[ext_resource type="Script" uid="uid://bprvnut1x5edm" path="res://Dragon Game Template/Components/Control/DragonMenu/dragon_menu.gd" id="1_fkbf5"]
 
 [node name="DragonMenu" type="MarginContainer"]
 custom_minimum_size = Vector2(128, 128)

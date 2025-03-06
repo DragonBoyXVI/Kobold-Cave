@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cndqr11pkblab"]
 
 [ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_klbuu"]
-[ext_resource type="Script" path="res://Kobold Cave/Entity/Player/states/Trans/player_trans.gd" id="2_b71om"]
+[ext_resource type="Script" uid="uid://chyq84ko251ge" path="res://Kobold Cave/Entity/Player/states/Trans/player_trans.gd" id="2_b71om"]
 
 [node name="PlayerTrans" instance=ExtResource("1_klbuu")]
 script = ExtResource("2_b71om")

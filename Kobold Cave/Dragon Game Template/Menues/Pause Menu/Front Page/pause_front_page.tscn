@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxo5mfhpjiate"]
 
-[ext_resource type="Script" path="res://Dragon Game Template/Menues/Pause Menu/Front Page/pause_front_page.gd" id="1_5qxg3"]
+[ext_resource type="Script" uid="uid://cp07k8bjrte5t" path="res://Dragon Game Template/Menues/Pause Menu/Front Page/pause_front_page.gd" id="1_5qxg3"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_lchq8"]
 action = &"Backspace"

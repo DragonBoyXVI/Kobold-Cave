@@ -1,9 +1,110 @@
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.en.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.es.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ja.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.zh.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.ru.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.de.translation
-res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.pt.translation
+res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.tscn
+res://Dragon Game Template/Autoload/Camera 3D Dynamic/camera_3d_dynamic.tscn
+res://Dragon Game Template/Autoload/Dragon Controler/dragon_controler.tscn
+res://Dragon Game Template/Autoload/DragonRadio/dragon_radio.tscn
+res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn
+res://Dragon Game Template/Autoload/MusicManager/music_manager.tscn
+res://Dragon Game Template/Autoload/Time Manager/time_manager.tscn
+res://Dragon Game Template/Autoload/UIAudio/ui_audio.tscn
+res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn
+res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn
+res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn
+res://Dragon Game Template/Components/3D/Dragon Model 3D/dragon_model_3d.tscn
+res://Dragon Game Template/Components/3D/Hitbox 3D/hitbox_3d.tscn
+res://Dragon Game Template/Components/3D/Hurtbox 3D/hurtbox_3d.tscn
+res://Dragon Game Template/Components/Control/Description Box/description_box.tscn
+res://Dragon Game Template/Components/Control/Dragon Scroll Box/scroll_container.tscn
+res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn
+res://Dragon Game Template/Components/Control/DragonMenu/dragon_menu.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/BW Filter/widget_color_blind_filter.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Camera Physics/widget_camera_physics.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Flashing Lights/widget_flashing_lights.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Particles Enabled/widget_particles_enabled.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause music when paused/widget_pause_music_on_pause.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause on Lost Focus/widget_pause_unfocused.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Politics/widget_politics.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Blood/widget_show_blood.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Show Nudity/widget_nudity.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Unlimited FPS/widget_unlimited_fps.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Color Picker/setting_widget_color_picker.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Camera Shake/widget_camera_shake.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/FPS Slider/widget_fps_slider.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Physics Slider/widget_physics_slider.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Master/widget_master_volume.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Music/widget_music_volume.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume SFX/widget_volume_sfx.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Voice/widget_volume_voice.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/H Slider/setting_widget_h_slider.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Translation/widget_translation.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Option Button/Window Scaling/widget_window_scaling.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/Option Button/setting_widget_option_button.tscn
+res://Dragon Game Template/Components/Control/Setting Widget/dragon_setting_base.tscn
+res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn
+res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn
+res://Dragon Game Template/Components/Multi/State/Behaviour/state_behaviour_base.tscn
+res://Dragon Game Template/Components/Multi/State/state_base.tscn
+res://Dragon Game Template/Components/Multi/TimeFlow/FlowTimer/flow_timer.tscn
+res://Dragon Game Template/Components/Multi/TimeFlow/time_flow.tscn
+res://Dragon Game Template/Menues/Pause Menu/Debug/debug_menu.tscn
+res://Dragon Game Template/Menues/Pause Menu/Desktop Confirm/desktop_page.tscn
+res://Dragon Game Template/Menues/Pause Menu/Front Page/pause_front_page.tscn
+res://Dragon Game Template/Menues/Pause Menu/Main Menu Confirm/main_menu_confirm.tscn
+res://Dragon Game Template/Menues/Pause Menu/Settings Page/settings_page.tscn
+res://Dragon Game Template/Menues/Pause Menu/pause_menu.tscn
+res://Dragon Game Template/Music/Player/Interactive/music_player_interactive.tscn
+res://Dragon Game Template/Music/Player/Sync/music_player_sync.tscn
+res://Dragon Game Template/Music/Player/music_player.tscn
+res://Dragon Game Template/Music/music_base.tscn
+res://Dragon Game Template/test/test_2d.tscn
+res://Dragon Game Template/test 3d/test.tscn
+res://Kobold Cave/Bomb/bomb.tscn
+res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn
+res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn
+res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn
+res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn
+res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn
+res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.tscn
+res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.tscn
+res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.tscn
+res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn
+res://Kobold Cave/Components/2D/Trigger/Set Spawn/trigger_set_spawn.tscn
+res://Kobold Cave/Components/2D/Trigger/triggger_base.tscn
+res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn
+res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn
+res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn
+res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn
+res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn
+res://Kobold Cave/Entity/Player/states/Trans/player_trans.tscn
+res://Kobold Cave/Entity/Player/states/player_state_base.tscn
+res://Kobold Cave/Entity/Player/player.tscn
+res://Kobold Cave/Entity/Player/player_armour.tres
+res://Kobold Cave/Entity/Player/player_hp.tres
+res://Kobold Cave/Entity/Player/player_model.tscn
+res://Kobold Cave/Entity/Player/player_movement.tres
+res://Kobold Cave/Entity/Wolf/movement.tres
+res://Kobold Cave/Entity/Wolf/wolf.tscn
+res://Kobold Cave/Entity/entity_base.tscn
+res://Kobold Cave/Explosion/animation_player.tscn
+res://Kobold Cave/Explosion/cpu_particles_dust.tscn
+res://Kobold Cave/Explosion/explosion.tscn
+res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn
+res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn
+res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
+res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Levels/level_base.tscn
+res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIBombs/ui_bombs.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/UIHealth/ui_health.tscn
+res://Kobold Cave/Menu/Player HUD/UIdrawer/ui_drawer.tscn
+res://Kobold Cave/Menu/Player HUD/hud.tscn
+res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_toggle_crouch.tscn
+res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_up_to_jump.tscn
+res://Kobold Cave/Menu/Settings Menu Options/Option List/Ui Placement/widget_ui_placement.tscn
+res://Kobold Cave/Particles/Test Dust/test_dust_particles.tscn
+res://Kobold Cave/Saved Resources/Hitbox masks/bomb_mask.tres
+res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres
+res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres
 res://test_world.tscn
+res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/new_tile_set.tres

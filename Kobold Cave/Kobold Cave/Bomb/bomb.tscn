@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://jhp4a7c1ahg8"]
 
-[ext_resource type="Script" path="res://Kobold Cave/Bomb/bomb.gd" id="1_84bg3"]
+[ext_resource type="Script" uid="uid://cp1mrpekc3h6g" path="res://Kobold Cave/Bomb/bomb.gd" id="1_84bg3"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="1_xx25p"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="3_tiw5t"]
-[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/Base/state_machine.tscn" id="5_l28rg"]
-[ext_resource type="Script" path="res://Kobold Cave/Bomb/States/moving.gd" id="6_jrnav"]
-[ext_resource type="Script" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
+[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="5_l28rg"]
+[ext_resource type="Script" uid="uid://by10hxt84qjet" path="res://Kobold Cave/Bomb/States/moving.gd" id="6_jrnav"]
+[ext_resource type="Script" uid="uid://b6t2e5o2hx8yc" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqese"]
 radius = 32.0
