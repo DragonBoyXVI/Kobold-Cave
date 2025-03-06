@@ -36,13 +36,6 @@ func unpause() -> void:
 	process_mode = PROCESS_MODE_INHERIT
 
 
-func _test() -> void:
-	
-	#propagate_notification()
-	
-	pass
-
-
 func _on_radio_goal_touched() -> void:
 	
 	pause()

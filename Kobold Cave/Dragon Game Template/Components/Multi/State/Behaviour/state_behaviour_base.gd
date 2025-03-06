@@ -23,6 +23,8 @@ signal state_top_requested
 ## if true, the parent [StateMachine] will defer all state change requests.[br]
 ## changing this at runtime has no effect
 @export var defer_change := false
+## default enter arguments
+@export var default_enter_args: Array = []
 
 
 func _ready() -> void:
@@ -38,8 +40,19 @@ func _ready() -> void:
 		set_process_shortcut_input( false )
 
 
-## Called by a state machine to enter this state
+## Called by a state machine to enter this state.
+## also handles default args and given args
 func enter( args: Array[ Variant ] = [] ) -> void:
+	
+	if ( default_enter_args.size() > args.size() ):
+		
+		args.resize( default_enter_args.size() )
+	
+	for i: int in args.size():
+		
+		if ( args[ i ] == null ):
+			
+			args[ i ] = default_enter_args[ i ]
 	
 	_enter( args )
 	entered.emit()

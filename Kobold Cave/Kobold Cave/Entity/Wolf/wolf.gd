@@ -8,6 +8,7 @@ var facing_right := true
 
 @onready var flip_pivot := %FlipPivot as Node2D
 
+
 func set_facing( right: bool ) -> void:
 	
 	facing_right = right

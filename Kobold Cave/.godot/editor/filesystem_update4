@@ -7,8 +7,3 @@ res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - 
 res://Dragon Game Template/Translation/Pause Menu/Pause Menu Translation Base - Sheet1.pt.translation
 res://test_world.tscn
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd
-res://Kobold Cave/Bomb/bomb.gd
-res://Kobold Cave/Levels/level_base.gd
-res://Kobold Cave/Entity/Player/player.gd
-res://Kobold Cave/Explosion/explosion.tscn

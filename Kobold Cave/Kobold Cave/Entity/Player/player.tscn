@@ -30,13 +30,12 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nigli"]
 size = Vector2(112, 4)
 
-[sub_resource type="Resource" id="Resource_bxxn4"]
+[sub_resource type="Resource" id="Resource_8dv1p"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
-rounded = true
 ignore_max = true
-maximum = 5.0
-current = 5.0
+maximum = 5
+current = 5
 percent = 1.0
 element_heal_flag = 4
 
@@ -58,25 +57,29 @@ metadata/_edit_group_ = true
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state") instance=ExtResource("3_cilv7")]
 initial_state = NodePath("PlayerAir")
+default_enter_args = []
 
 [node name="PlayerTrans" parent="StateMachine" index="0" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("6_v7y7c")]
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="PlayerGrounded" parent="StateMachine" index="1" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("6_2vjjd")]
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="PlayerAir" parent="StateMachine" index="2" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
-movement_stats = ExtResource("3_vs55y")
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
+movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="PlayerCrouched" parent="StateMachine" index="3" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model", "camera_focal") instance=ExtResource("9_v25kg")]
 standing_shape = NodePath("../../ShapeStanding")
@@ -85,6 +88,7 @@ player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="PlayerGrabbedLedge" parent="StateMachine" index="4" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("10_1cxb3")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
@@ -92,12 +96,14 @@ player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="PlayerDead" parent="StateMachine" index="5" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
-movement_stats = ExtResource("3_vs55y")
 player = NodePath("../..")
+movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -52.5)
@@ -127,7 +133,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="7" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_bxxn4")
+health = SubResource("Resource_8dv1p")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="8" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]

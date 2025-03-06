@@ -67,7 +67,6 @@ func _on_push_area_body_entered( body: Node2D ) -> void:
 
 func _on_push_area_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int ) -> void:
 	
-	print( body.name )
 	if ( body is TileMapLayer ):
 		var body_tilemap := body as TileMapLayer
 		

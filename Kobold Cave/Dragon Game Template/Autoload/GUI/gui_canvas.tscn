@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://o5w1tmecos0r"]
+[gd_scene load_steps=6 format=3 uid="uid://o5w1tmecos0r"]
 
 [ext_resource type="Script" path="res://Dragon Game Template/Autoload/GUI/gui_canvas.gd" id="1_i1q6m"]
+[ext_resource type="PackedScene" uid="uid://bqc6s2gu0o6lh" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.tscn" id="2_4fcvj"]
 [ext_resource type="PackedScene" uid="uid://7ija0pyj8qlc" path="res://Dragon Game Template/Menues/Pause Menu/pause_menu.tscn" id="2_t32lr"]
+[ext_resource type="PackedScene" uid="uid://5hlu3metayiq" path="res://Kobold Cave/Menu/Player HUD/hud.tscn" id="3_p36qt"]
 [ext_resource type="Material" uid="uid://dham7rhvy2uqu" path="res://Dragon Game Template/Autoload/GUI/mat_shader_black_and_white.tres" id="3_xodq7"]
 
 [node name="GUICanvas" type="CanvasLayer"]
@@ -17,6 +19,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("2_4fcvj")]
+visible = false
+layout_mode = 1
+
+[node name="HUD" parent="GUIRoot" instance=ExtResource("3_p36qt")]
+layout_mode = 1
 
 [node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
 layout_mode = 1

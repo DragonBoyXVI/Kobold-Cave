@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_8t32u")
-ground_speed = 400.0
-ground_accel = 8000.0
-ground_decel = 12000.0
+ground_speed = 250.0
+ground_accel = 1000.0
+ground_decel = 2000.0
 ground_jump = 500.0
 air_gravity = 1000.0
 air_terminal_velocity = 2000.0

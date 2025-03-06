@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=13 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0vlefq1ki1db" path="res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn" id="9_7c6lc"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
+[ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_1xjxr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
 
@@ -66,3 +67,5 @@ position = Vector2(256, -256)
 
 [node name="GoalFlag" parent="." instance=ExtResource("9_m10ai")]
 position = Vector2(384, -1280)
+
+[node name="Wolf" parent="." instance=ExtResource("10_1xjxr")]

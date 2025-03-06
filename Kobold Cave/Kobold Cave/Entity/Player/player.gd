@@ -131,7 +131,7 @@ func _hurt( damage: Damage ) -> void:
 	start_i_frames()
 	
 	var cam_effect := CameraShake2D.new()
-	cam_effect.duration_max = 0.5
+	cam_effect.duration_max = 0.25
 	cam_effect.shake_strength = 25.0 * damage.amount
 	
 	MainCamera2D.add_effect( cam_effect )
