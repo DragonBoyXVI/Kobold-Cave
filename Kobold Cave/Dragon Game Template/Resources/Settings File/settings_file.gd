@@ -44,6 +44,7 @@ var color_blind_enabled: bool = false
 @export var frame_rate: int = 30
 @export var frame_rate_unlimited := false
 @export var physics_rate: int = 60
+@export var physics_interpolation_enabled: bool = true
 @export var particles_enabled := true
 @export var window_scaling: int = 1
 

@@ -20,14 +20,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("2_4fcvj")]
-visible = false
-layout_mode = 1
-
 [node name="HUD" parent="GUIRoot" instance=ExtResource("3_p36qt")]
 layout_mode = 1
 
+[node name="LevelClearUI" parent="GUIRoot" instance=ExtResource("2_4fcvj")]
+layout_mode = 1
+
 [node name="PauseMenu" parent="GUIRoot" instance=ExtResource("2_t32lr")]
+visible = false
 layout_mode = 1
 
 [node name="ColorBlindRect" type="ColorRect" parent="."]
@@ -40,3 +40,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="FadeRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

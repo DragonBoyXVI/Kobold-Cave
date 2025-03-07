@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3ruqqd61s2v"]
+
+[ext_resource type="PackedScene" uid="uid://dmv13olcilrq6" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/setting_widget_check_button.tscn" id="1_a7hn4"]
+
+[node name="WidgetPhysicsInterpolation" instance=ExtResource("1_a7hn4")]
+setting_property = &"physics_interpolation_enabled"
+
+[node name="CheckButton" parent="MarginContainer" index="0"]
+text = "- Enable Physics Interpolation"

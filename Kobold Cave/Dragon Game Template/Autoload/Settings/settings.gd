@@ -138,6 +138,7 @@ func _update_engine_fps( recived_data: SettingsFile ) -> void:
 		Engine.max_fps = recived_data.frame_rate
 		enable_setting_widgets( &"frame_rate", true )
 	
+	get_tree().set_deferred( &"physics_interpolation", recived_data.physics_interpolation_enabled )
 	Engine.physics_ticks_per_second = recived_data.physics_rate
 
 func _update_window_scaling( recived_data: SettingsFile ) -> void:

@@ -22,6 +22,8 @@ func _ready() -> void:
 	KoboldRadio.player_hitstun.connect( _on_radio_player_hitstun, CONNECT_DEFERRED )
 	KoboldRadio.player_reset_needed.connect( _on_radio_player_needs_reset )
 	
+	MainCamera2D.set_follow_coord( get_spawn_position() )
+	
 	if ( KoboldUtility.in_level_trans ):
 		
 		pause.call_deferred()
@@ -34,6 +36,15 @@ func pause() -> void:
 func unpause() -> void:
 	
 	process_mode = PROCESS_MODE_INHERIT
+
+
+func get_spawn_position() -> Vector2:
+	
+	if ( respawn_point ):
+		
+		return respawn_point.global_position
+	
+	return Vector2.ZERO
 
 
 func _on_radio_goal_touched() -> void:
@@ -50,11 +61,6 @@ func _on_radio_player_needs_reset( player: Player ) -> void:
 	
 	player.reset_physics_interpolation()
 	player.velocity = Vector2.ZERO
-	if ( respawn_point ):
-		
-		player.global_position = respawn_point.global_position
-	else:
-		
-		player.global_position = Vector2.ZERO
+	player.global_position = get_spawn_position()
 	
 	#player.force_update_transform()

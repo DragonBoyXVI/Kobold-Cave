@@ -18,6 +18,9 @@ func _enter( args: Array ) -> void:
 
 func _process( _delta: float ) -> void:
 	
-	if ( not node_to_follow ): return
+	if ( not is_instance_valid( node_to_follow ) ): 
+		
+		request_state( &"NoBehaviour" )
+		return
 	
 	camera.position = node_to_follow.global_position

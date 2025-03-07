@@ -36,6 +36,7 @@ class PoolManager:
 		
 		var item := avaliable_nodes.pop_at( 0 ) as CPUParticles2D
 		item.process_mode = Node.PROCESS_MODE_ALWAYS
+		item.show()
 		
 		return item
 	
@@ -44,12 +45,23 @@ class PoolManager:
 		
 		particles.process_mode = Node.PROCESS_MODE_DISABLED
 		particles.restart()
+		particles.hide()
 		avaliable_nodes.append( particles )
+
+
+var _particles_enabled: bool = true
 
 
 func _init() -> void:
 	
 	z_index = 6
+
+func _ready() -> void:
+	
+	Settings.updated.connect( _on_settings_updated )
+	if ( Settings.data ):
+		
+		_on_settings_updated( Settings.data )
 
 
 func new_manager( scene_path: String ) -> PoolManager:
@@ -63,10 +75,15 @@ func new_manager( scene_path: String ) -> PoolManager:
 
 
 @onready var dust_manager := new_manager( "res://Kobold Cave/Particles/Test Dust/test_dust_particles.tscn" )
-func spawn_dust( pos: Vector2 ) -> CPUParticles2D:
+func spawn_dust( pos: Vector2 ) -> void:
+	
+	if ( not _particles_enabled ): return
 	
 	var spawn := dust_manager.get_item()
 	spawn.emitting = true
 	spawn.global_position = pos
+
+
+func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	
-	return spawn
+	_particles_enabled = recived_data.particles_enabled

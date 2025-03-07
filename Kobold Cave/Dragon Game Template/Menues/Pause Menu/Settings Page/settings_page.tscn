@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgan5cvx0fjap"]
+[gd_scene load_steps=25 format=3 uid="uid://bgan5cvx0fjap"]
 
 [ext_resource type="PackedScene" uid="uid://d2f8nyqg41ixh" path="res://Dragon Game Template/Components/Control/Dragon Tabs/dragon_tabs.tscn" id="1_hv408"]
 [ext_resource type="AudioStream" uid="uid://b6bja1q8f8v6v" path="res://Dragon Game Template/Audio/merp.wav" id="2_t3xsu"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dxcn4xfjc67ph" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Camera Shake/widget_camera_shake.tscn" id="8_hfnuy"]
 [ext_resource type="PackedScene" uid="uid://savm6ibppnuw" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Music/widget_music_volume.tscn" id="9_f1vli"]
 [ext_resource type="PackedScene" uid="uid://d1gm0s1gehl1d" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Camera Physics/widget_camera_physics.tscn" id="9_hj0cw"]
+[ext_resource type="PackedScene" uid="uid://i3ruqqd61s2v" path="res://Kobold Cave/Menu/Settings Menu Options/Check Buttons/widget_physics_interpolation.tscn" id="9_xhtaq"]
 [ext_resource type="PackedScene" uid="uid://dh24n8kld1wbk" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume SFX/widget_volume_sfx.tscn" id="10_sebij"]
 [ext_resource type="PackedScene" uid="uid://dgn0xmwf2vjdv" path="res://Dragon Game Template/Components/Control/Setting Widget/H Slider/Volume Voice/widget_volume_voice.tscn" id="11_hmhod"]
 [ext_resource type="PackedScene" uid="uid://ckhstvkm8ykhj" path="res://Dragon Game Template/Components/Control/Setting Widget/Check Button/Pause music when paused/widget_pause_music_on_pause.tscn" id="12_t0jym"]
@@ -104,19 +105,23 @@ pass_focus_up = [NodePath("MarginContainer/VBoxContainer/InfoContainer/SpinBox")
 [node name="WidgetPhysicsSlider" parent="Display/ScrollContainer/VBoxContainer" index="2" node_paths=PackedStringArray("pass_focus_up") instance=ExtResource("4_2acui")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../WidgetFPSSlider")
-focus_neighbor_bottom = NodePath("../WidgetWindowScaling")
-focus_next = NodePath("../WidgetWindowScaling")
+focus_neighbor_bottom = NodePath("../WidgetPhysicsInterpolation")
+focus_next = NodePath("../WidgetPhysicsInterpolation")
 focus_previous = NodePath("../WidgetFPSSlider")
 pass_focus_up = [NodePath("MarginContainer/VBoxContainer/InfoContainer/SpinBox")]
 
-[node name="WidgetWindowScaling" parent="Display/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("5_gio5y")]
+[node name="WidgetPhysicsInterpolation" parent="Display/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("9_xhtaq")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../WidgetPhysicsSlider")
+_property_is_valid = true
+
+[node name="WidgetWindowScaling" parent="Display/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("5_gio5y")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WidgetPhysicsInterpolation")
 focus_neighbor_bottom = NodePath("../WidgetParticlesEnabled")
 focus_next = NodePath("../WidgetParticlesEnabled")
-focus_previous = NodePath("../WidgetPhysicsSlider")
+focus_previous = NodePath("../WidgetPhysicsInterpolation")
 
-[node name="WidgetParticlesEnabled" parent="Display/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("6_j0fsm")]
+[node name="WidgetParticlesEnabled" parent="Display/ScrollContainer/VBoxContainer" index="5" instance=ExtResource("6_j0fsm")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../WidgetWindowScaling")
 focus_previous = NodePath("../WidgetWindowScaling")

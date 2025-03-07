@@ -8,4 +8,5 @@ class_name CameraFocal2D
 
 func _ready() -> void:
 	
-	MainCamera2D.set_follow_node( self )
+	# deferred cause room changes cam state on ready
+	MainCamera2D.set_follow_node.call_deferred( self )

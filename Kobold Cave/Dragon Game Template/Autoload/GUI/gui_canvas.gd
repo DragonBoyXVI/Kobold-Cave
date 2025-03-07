@@ -59,6 +59,29 @@ func remove_gui_element( removed_gui: Control, free_it: bool = false ) -> void:
 		removed_gui.queue_free()
 
 
+@onready var fade_rect: ColorRect = $FadeRect
+func fade_out( fade_time: float = 1.25, fade_color: Color = Color.BLACK ) -> void:
+	
+	KoboldUtility.in_level_trans = true
+	KoboldRadio.room_pause.emit()
+	fade_rect.show()
+	var tween := create_tween()
+	
+	tween.tween_property( fade_rect, ^"color", fade_color, fade_time )
+	await tween.finished
+	return
+
+func fade_in( fade_time: float = 1.25 ) -> void:
+	
+	var tween := create_tween()
+	
+	tween.tween_property( fade_rect, ^"color", Color( Color.BLACK, 0.0 ), fade_time )
+	await tween.finished
+	fade_rect.hide()
+	KoboldUtility.in_level_trans = false
+	KoboldRadio.room_unpause.emit()
+	return
+
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	

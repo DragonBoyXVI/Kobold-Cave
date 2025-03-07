@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://jhp4a7c1ahg8"]
+[gd_scene load_steps=10 format=3 uid="uid://jhp4a7c1ahg8"]
 
 [ext_resource type="Script" uid="uid://cp1mrpekc3h6g" path="res://Kobold Cave/Bomb/bomb.gd" id="1_84bg3"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="1_xx25p"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="3_tiw5t"]
+[ext_resource type="Resource" uid="uid://du3ox11s21dld" path="res://Kobold Cave/Saved Resources/Hitbox masks/bomb_mask.tres" id="4_gdduf"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="5_l28rg"]
 [ext_resource type="Script" uid="uid://by10hxt84qjet" path="res://Kobold Cave/Bomb/States/moving.gd" id="6_jrnav"]
 [ext_resource type="Script" uid="uid://b6t2e5o2hx8yc" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
@@ -25,6 +26,7 @@ texture = ExtResource("1_xx25p")
 shape = SubResource("CircleShape2D_oqese")
 
 [node name="Hitbox2D" parent="." instance=ExtResource("3_tiw5t")]
+team_mask = ExtResource("4_gdduf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("CircleShape2D_wn477")
@@ -32,6 +34,7 @@ debug_color = Color(0, 0, 1, 0.4)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_l28rg")]
 initial_state = NodePath("Moving")
+default_enter_args = []
 
 [node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite")]
 script = ExtResource("6_jrnav")
