@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=14 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
 [ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_1xjxr"]
+[ext_resource type="PackedScene" uid="uid://car8lov7qvebp" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn" id="11_5457m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
 
@@ -69,3 +70,6 @@ position = Vector2(256, -256)
 position = Vector2(384, -1280)
 
 [node name="Wolf" parent="." instance=ExtResource("10_1xjxr")]
+
+[node name="ExplodingGhost" parent="." instance=ExtResource("11_5457m")]
+position = Vector2(-135, -17)

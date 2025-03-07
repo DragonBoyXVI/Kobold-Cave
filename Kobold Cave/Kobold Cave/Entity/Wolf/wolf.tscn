@@ -19,6 +19,7 @@
 size = Vector2(120, 68)
 
 [sub_resource type="Resource" id="Resource_c8mln"]
+resource_local_to_scene = true
 script = ExtResource("5_arsdn")
 ignore_max = true
 maximum = 2

@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://car8lov7qvebp"]
+
+[ext_resource type="Script" uid="uid://chqesjqvwm64a" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd" id="1_5aatd"]
+[ext_resource type="Script" uid="uid://x3wirdftryst" path="res://Kobold Cave/Resources/MovementData/movement_data.gd" id="2_56hmm"]
+[ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="2_srrlq"]
+[ext_resource type="Script" uid="uid://bvrqhrw7vp6qj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.gd" id="3_2q3f0"]
+[ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="4_2s2sw"]
+[ext_resource type="Script" uid="uid://bin8onstxmkgx" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.gd" id="5_hho2b"]
+[ext_resource type="Resource" uid="uid://dtqt8suvkv3jo" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="6_1imle"]
+[ext_resource type="Script" uid="uid://brqtkn8s5qbpr" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd" id="7_pvdyc"]
+[ext_resource type="Script" uid="uid://cjxpiamvofga" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="8_56hmm"]
+[ext_resource type="Script" uid="uid://c0rmwjvuwixkx" path="res://Kobold Cave/Entity/Exploding Ghost/States/follow_player.gd" id="9_pvdyc"]
+[ext_resource type="Script" uid="uid://ychislssk3xx" path="res://Kobold Cave/Entity/Exploding Ghost/States/no_ai.gd" id="10_56hmm"]
+
+[sub_resource type="Resource" id="Resource_w0pik"]
+script = ExtResource("2_56hmm")
+ground_speed = 1200.0
+ground_accel = 5000.0
+ground_decel = 5500.0
+ground_jump = 1200.0
+air_gravity = 800.0
+air_terminal_velocity = 2000.0
+air_terminal_squared = 4e+06
+air_friction = 1000.0
+air_move_speed = 800.0
+air_move_control_speed = 1600.0
+metadata/_custom_type_script = "uid://x3wirdftryst"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvdyc"]
+radius = 512.0
+
+[sub_resource type="Resource" id="Resource_cc0xt"]
+resource_local_to_scene = true
+script = ExtResource("4_2s2sw")
+ignore_max = true
+maximum = 1
+current = 1
+percent = 1.0
+element_heal_flag = 4
+metadata/_custom_type_script = "uid://bp718wotfrc6m"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0pik"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je6jb"]
+radius = 64.0
+
+[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine", "bomb_thrower")]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_5aatd")
+movement_stats = SubResource("Resource_w0pik")
+model = NodePath("PlayerModel")
+health_node = NodePath("NodeHealth")
+hitbox = NodePath("Hitbox2D")
+state_machine = NodePath("StateMachine")
+bomb_thrower = NodePath("BombThrower")
+metadata/_custom_type_script = "uid://bhncwprp3y7lj"
+metadata/_edit_group_ = true
+
+[node name="AreaSeePlayer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSeePlayer"]
+shape = SubResource("CircleShape2D_pvdyc")
+debug_color = Color(0.881151, 0.142134, 0.74623, 0.42)
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_srrlq")]
+modulate = Color(0.737255, 0.737255, 0.737255, 0.392157)
+position = Vector2(0, 32)
+
+[node name="NodeHealth" type="Node" parent="."]
+script = ExtResource("3_2q3f0")
+health = SubResource("Resource_cc0xt")
+metadata/_custom_type_script = "uid://bvrqhrw7vp6qj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w0pik")
+
+[node name="Hitbox2D" type="Area2D" parent="." node_paths=PackedStringArray("event_recivers")]
+script = ExtResource("5_hho2b")
+event_recivers = [NodePath("../NodeHealth")]
+team_mask = ExtResource("6_1imle")
+metadata/_custom_type_script = "uid://bin8onstxmkgx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+shape = SubResource("CircleShape2D_je6jb")
+debug_color = Color(0, 0, 1, 0.4)
+
+[node name="BombThrower" type="Node2D" parent="."]
+script = ExtResource("7_pvdyc")
+bomb_infinite = true
+throw_radius = 125.0
+metadata/_custom_type_script = "uid://brqtkn8s5qbpr"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_56hmm")
+initial_state = NodePath("NoAi")
+metadata/_custom_type_script = "uid://cjxpiamvofga"
+
+[node name="FollowPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
+script = ExtResource("9_pvdyc")
+ghost = NodePath("../..")
+default_enter_args = [null]
+
+[node name="NoAi" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
+script = ExtResource("10_56hmm")
+ghost = NodePath("../..")
+
+[connection signal="body_entered" from="AreaSeePlayer" to="StateMachine/NoAi" method="_on_area_see_player_body_entered"]
+[connection signal="body_exited" from="AreaSeePlayer" to="StateMachine/FollowPlayer" method="_on_area_see_player_body_exited"]

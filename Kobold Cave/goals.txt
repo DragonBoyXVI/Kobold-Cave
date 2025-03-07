@@ -5,3 +5,8 @@ fast as possible. The only time limit being a self imposed one.
 You lose if the player hits 0 hp, as there will be many hazards
 to consider.
 Exploration is rewarded with heals. ( perma collectable? )
+
+
+-- Maintain the same design principle you had in school,
+dont think about it too much, make it work
+Technical debt is a lie (lie)
