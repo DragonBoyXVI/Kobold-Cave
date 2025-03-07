@@ -73,6 +73,8 @@ func _on_push_area_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_
 		var cell_coords: Vector2i = body_tilemap.get_coords_for_body_rid( body_rid )
 		var cell_data: TileData = body_tilemap.get_cell_tile_data( cell_coords )
 		
+		if ( not cell_data ): return
+		
 		const data_breakable := "Breakable"
 		if ( cell_data.get_custom_data( data_breakable ) ):
 			

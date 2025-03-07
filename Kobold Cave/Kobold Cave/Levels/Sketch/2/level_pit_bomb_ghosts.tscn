@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceuwoldmxmd2s"]
+
+[ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_840jg"]
+
+[node name="LevelPitBombGhosts" type="Node2D"]
+script = ExtResource("1_840jg")
+metadata/_custom_type_script = "uid://beh5jj3cug0u3"

@@ -21,6 +21,7 @@ func _ready() -> void:
 	KoboldRadio.goal_touched.connect( _on_radio_goal_touched, CONNECT_DEFERRED )
 	KoboldRadio.player_hitstun.connect( _on_radio_player_hitstun, CONNECT_DEFERRED )
 	KoboldRadio.player_reset_needed.connect( _on_radio_player_needs_reset )
+	KoboldRadio.level_set_spawn.connect( _on_radio_new_spawn )
 	
 	MainCamera2D.set_follow_coord( get_spawn_position() )
 	
@@ -64,3 +65,7 @@ func _on_radio_player_needs_reset( player: Player ) -> void:
 	player.global_position = get_spawn_position()
 	
 	#player.force_update_transform()
+
+func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
+	
+	respawn_point = new_spawn

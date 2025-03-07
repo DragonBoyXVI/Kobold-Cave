@@ -15,3 +15,7 @@ res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd
 res://Kobold Cave/Entity/Wolf/wolf.tscn
 res://Kobold Cave/Entity/Exploding Ghost/States/follow_player.gd
 res://Kobold Cave/Entity/Exploding Ghost/States/no_ai.gd
+res://Kobold Cave/Components/2D/Trigger/Enemy Spawner/area_enemy_spawner.tscn
+res://Kobold Cave/Components/2D/Trigger/Enemy Spawner/area_enemy_spawner.gd
+res://Kobold Cave/Explosion/explosion.gd
+res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
