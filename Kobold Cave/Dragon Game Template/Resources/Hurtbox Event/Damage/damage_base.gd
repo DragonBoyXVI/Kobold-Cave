@@ -38,6 +38,7 @@ func apply( node_health: NodeHealth ) -> void:
 	if ( health_is_healed_by_this( node_health.health ) ):
 		
 		node_health.recive_event( to_heal() )
+		return
 	
 	node_health.pre_hurt.emit( self )
 	
@@ -90,5 +91,6 @@ func _damage( node_health: NodeHealth ) -> bool:
 	if ( amount > 0 ):
 		
 		node_health.health.current -= amount
+		return true
 	
 	return false

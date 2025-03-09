@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bjmvkf4od4tp1"]
+[gd_scene load_steps=9 format=4 uid="uid://bjmvkf4od4tp1"]
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_h2574"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_abrwm"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="5_owt3g"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="6_xr5mw"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="6_ykb0b"]
+[ext_resource type="Script" uid="uid://j26p2u165jxt" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.gd" id="7_sc555"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gw4dd"]
 
 [node name="LevelWakeRoom" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_h2574")]
 respawn_point = NodePath("MarkerSpawn")
@@ -40,3 +43,11 @@ horz_boundry = 1
 
 [node name="GoalFlag" parent="." index="6" instance=ExtResource("6_xr5mw")]
 position = Vector2(1280, 256)
+
+[node name="LevelBoundry2D" type="Area2D" parent="." index="7"]
+position = Vector2(128, 768)
+script = ExtResource("7_sc555")
+metadata/_custom_type_script = "uid://j26p2u165jxt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry2D" index="0"]
+shape = SubResource("WorldBoundaryShape2D_gw4dd")

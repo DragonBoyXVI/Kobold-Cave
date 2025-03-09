@@ -24,6 +24,7 @@ func _ready() -> void:
 	KoboldRadio.level_set_spawn.connect( _on_radio_new_spawn )
 	
 	MainCamera2D.set_follow_coord( get_spawn_position() )
+	MainCamera2D.set_zoom_tween( Vector2.ONE, 0.25 )
 	
 	if ( KoboldUtility.in_level_trans ):
 		
@@ -69,3 +70,4 @@ func _on_radio_player_needs_reset( player: Player ) -> void:
 func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
 	
 	respawn_point = new_spawn
+	print( "new spawn: ", new_spawn.global_position )

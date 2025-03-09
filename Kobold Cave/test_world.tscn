@@ -87,6 +87,7 @@ monitorable = false
 script = ExtResource("12_ivea3")
 enemy_scene = ExtResource("11_5457m")
 spawn_timer = NodePath("Timer")
+spawn_limit = null
 spawn_point = NodePath("Marker2D")
 run_enter = true
 run_leave = true

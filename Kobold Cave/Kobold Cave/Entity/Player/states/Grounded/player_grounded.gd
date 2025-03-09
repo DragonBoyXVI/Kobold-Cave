@@ -7,9 +7,8 @@ class_name PlayerGrounded
 
 const STATE_NAME := &"PlayerGrounded"
 
-
 @export var focal_curve: Curve
-const FOCAL_DISPLACEMENT := 128.0 * 1.5
+const FOCAL_DISPLACEMENT := 128.0
 
 @onready var cyote_timer := %CyoteTimer as Timer
 @onready var crouch_timer := %CrouchTimer as Timer

@@ -15,6 +15,12 @@ class_name TriggerEnemySpawner
 		update_configuration_warnings.call_deferred()
 		
 		spawn_timer = new_timer
+@export var spawn_limit: int = 1:
+	set( value ):
+		
+		spawn_limit = maxi( 0, value )
+
+var existing_spawns: int = 0
 
 @export var spawn_point: Marker2D
 
@@ -65,10 +71,19 @@ func get_spawn_point() -> Vector2:
 
 func _on_timer_timeout() -> void:
 	
+	if ( existing_spawns >= spawn_limit ): return
+	existing_spawns += 1
+	
 	var spawned_thing: Node2D = enemy_scene.instantiate()
 	spawned_thing.position = get_spawn_point()
 	
+	spawned_thing.tree_exited.connect( _on_spawn_tree_exited )
+	
 	get_tree().current_scene.add_child( spawned_thing )
+
+func _on_spawn_tree_exited() -> void:
+	
+	existing_spawns -= 1
 
 func _util_on_child_entered( node: Node ) -> void:
 	

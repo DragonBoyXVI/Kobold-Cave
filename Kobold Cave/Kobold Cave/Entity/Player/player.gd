@@ -31,6 +31,10 @@ func _input( event: InputEvent ) -> void:
 				
 				health_node.recive_event( Heal.new( 5 ) )
 			
+			KEY_8:
+				
+				KoboldRadio.goal_touched.emit()
+			
 			KEY_1:
 				
 				Engine.time_scale = 0.05
@@ -86,6 +90,7 @@ func start_i_frames() -> void:
 	
 	var tween := create_tween()
 	tween.set_loops(  )
+	tween.set_ignore_time_scale()
 	
 	if ( Settings.data.flashing_lights ):
 		

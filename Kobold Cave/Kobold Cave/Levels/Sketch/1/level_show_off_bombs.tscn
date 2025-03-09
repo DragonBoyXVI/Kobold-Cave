@@ -31,7 +31,7 @@ size = Vector2(256, 128)
 size = Vector2(896, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfc0y"]
-size = Vector2(128, 384)
+size = Vector2(3200, 384)
 
 [node name="LevelShowOffBombs" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_dbpff")]
 editor_description = "actually  more like a big starting room that lets the player fuck around and learn without being in too much danger."
@@ -172,7 +172,7 @@ enter_bounds = [NodePath("../CamLBBig"), NodePath("../CamRTBig")]
 run_enter = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamBoundBig" index="0"]
-position = Vector2(64, 192)
+position = Vector2(1600, 192)
 shape = SubResource("RectangleShape2D_sfc0y")
 
 [node name="CamRTBig" parent="." index="23" instance=ExtResource("8_ecrwt")]

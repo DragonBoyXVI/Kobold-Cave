@@ -57,6 +57,14 @@ func logic_camera_effects( delta: float ) -> void:
 			remove_effect.call_deferred( index )
 
 
+func set_zoom_tween( new_zoom: Vector2, time: float = 1.25 ) -> void:
+	
+	var tween := create_tween()
+	tween.set_ignore_time_scale()
+	
+	tween.tween_property( self, ^"zoom", new_zoom, time )
+
+
 ## make the camera follow a node
 func set_follow_node( node: Node2D ) -> void:
 	

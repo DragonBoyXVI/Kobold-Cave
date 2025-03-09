@@ -48,7 +48,7 @@ func _ready() -> void:
 		health_node.pre_hurt.connect( _on_node_health_pre_hurt )
 		health_node.hurt.connect( _on_node_health_hurt )
 		health_node.pre_healed.connect( _on_node_health_pre_healed )
-		health_node.pre_healed.connect( _on_node_health_healed )
+		health_node.healed.connect( _on_node_health_healed )
 		health_node.died.connect( _on_node_health_died )
 
 

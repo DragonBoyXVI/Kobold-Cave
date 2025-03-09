@@ -1,7 +1,10 @@
-Level
-Marker2D
+TriggerCameraBounds
 Timer
+TileMapLayer
 CollisionShape2D
+LevelBoundry2D
+Marker2D
+Level
 TriggerEnemySpawner
 AreaTrigger2D
 Area2D
@@ -10,6 +13,3 @@ StateBehaviour
 StateMachine
 BombThrower
 Hitbox2D
-NodeHealth
-Entity
-ColorRect
