@@ -38,6 +38,16 @@ func _ready() -> void:
 	body_entered.connect( _on_body_entered )
 	body_exited.connect( _on_body_exited )
 
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings := PackedStringArray()
+	
+	if ( not ( run_enter or run_leave ) ):
+		
+		const text := "Inert trigger. Neither run or leave is set to run."
+		warnings.append( text )
+	
+	return warnings
+
 
 func run_loop_enter( player: Player ) -> void:
 	

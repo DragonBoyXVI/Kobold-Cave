@@ -26,16 +26,16 @@ func _get_property_list() -> Array[ Dictionary ]:
 			"name": "bounds_enter",
 			"type": TYPE_ARRAY,
 			"hint": PROPERTY_HINT_ARRAY_TYPE,
-			"hint_string": "CameraBoundry"
+			"hint_string": "%d/%d:CameraBoundry" % [TYPE_OBJECT, PROPERTY_HINT_NODE_TYPE]
 		} )
 	
 	if ( editor_is_leave_callable() ):
 		
 		properties.append( {
-			"name": "bounds_leave",
+			"name": "bounds_enter",
 			"type": TYPE_ARRAY,
 			"hint": PROPERTY_HINT_ARRAY_TYPE,
-			"hint_string": "CameraBoundry"
+			"hint_string": "%d/%d:CameraBoundry" % [TYPE_OBJECT, PROPERTY_HINT_NODE_TYPE]
 		} )
 	
 	return properties

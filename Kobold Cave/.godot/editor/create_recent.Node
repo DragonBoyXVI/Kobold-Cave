@@ -1,7 +1,7 @@
-TriggerPush
-CollisionShape2D
-TriggerCameraZoom
 TriggerCameraBounds
+CollisionShape2D
+TriggerPush
+TriggerCameraZoom
 TriggerBombPickup
 TriggerLevelClear
 TriggerResponse
@@ -12,4 +12,3 @@ Marker2D
 TileMapLayer
 LevelBoundry2D
 Level
-AreaTrigger2D

@@ -1,33 +1,81 @@
-[gd_scene load_steps=9 format=4 uid="uid://cqmjs5nf5k3lg"]
+[gd_scene load_steps=15 format=4 uid="uid://cqmjs5nf5k3lg"]
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_dbpff"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="2_25ypc"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="2_lf71n"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_x2hij"]
+[ext_resource type="Script" uid="uid://w23o54ji1wpq" path="res://Kobold Cave/Components/2D/Trigger Response/Push/push.gd" id="3_243qt"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_vdol8"]
+[ext_resource type="Script" uid="uid://r6dfw2tyyfff" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd" id="6_3b14o"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="6_c56uy"]
+[ext_resource type="Script" uid="uid://dbf8r7wqq34yj" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd" id="7_xx7ub"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="8_ecrwt"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="9_mi7dm"]
 [ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="10_nbks7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3b14o"]
+radius = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhcp2"]
+size = Vector2(1792, 640)
 
 [node name="LevelShowOffBombs" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_dbpff")]
 editor_description = "actually  more like a big starting room that lets the player fuck around and learn without being in too much danger."
 respawn_point = NodePath("InitSpawn")
 metadata/_edit_group_ = true
 
-[node name="Player" parent="." index="0" instance=ExtResource("2_25ypc")]
+[node name="TrigInitPush" parent="." index="0" instance=ExtResource("2_lf71n")]
+run_enter = true
+
+[node name="TriggerPush" type="Node2D" parent="TrigInitPush" index="0"]
+script = ExtResource("3_243qt")
+force = 200.0
+push_vector = Vector2(0, 1)
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://w23o54ji1wpq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigInitPush" index="1"]
+shape = SubResource("CircleShape2D_3b14o")
+
+[node name="Player" parent="." index="1" instance=ExtResource("2_25ypc")]
 position = Vector2(896, 384)
 
-[node name="InitSpawn" type="Marker2D" parent="." index="1"]
-position = Vector2(0, 256)
+[node name="InitSpawn" type="Marker2D" parent="." index="2"]
+position = Vector2(0, 128)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." index="2"]
+[node name="CamLBInit" parent="." index="3" instance=ExtResource("8_ecrwt")]
+position = Vector2(-1024, 896)
+auto_activate = true
+vert_boundry = 1
+horz_boundry = 0
+
+[node name="CamRTInit" parent="." index="4" instance=ExtResource("8_ecrwt")]
+position = Vector2(3072, -256)
+auto_activate = true
+vert_boundry = 0
+horz_boundry = 1
+
+[node name="TrigCamInit" parent="." index="5" instance=ExtResource("2_lf71n")]
+position = Vector2(1024, 640)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCamInit" index="0"]
+position = Vector2(-384, -320)
+shape = SubResource("RectangleShape2D_qhcp2")
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamInit" index="1"]
+script = ExtResource("6_3b14o")
+bounds_enter = Array[ExtResource("7_xx7ub")]([null])
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." index="6"]
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAALAAMAAAABAAAAAAALAAQAAAABAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP//AAAAAAAAAAD+//7/AAAAAAAAAAD8//r/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD8//z/AAAAAAAAAAD8//v/AAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAA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")
 tile_set = ExtResource("2_x2hij")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="7"]
 texture = ExtResource("3_vdol8")
 
-[node name="Label" type="Label" parent="." index="4"]
+[node name="Label" type="Label" parent="." index="8"]
 offset_left = -556.0
 offset_top = 118.0
 offset_right = -421.0
@@ -38,70 +86,58 @@ text = "- DANGER
 (death pits should have a gradient on them)
 (gradients are cringe, flat colors for life!)"
 
-[node name="Label2" type="Label" parent="." index="5"]
+[node name="Label2" type="Label" parent="." index="9"]
 offset_left = 409.0
 offset_top = 1423.0
 offset_right = 544.0
 offset_bottom = 1565.0
 text = "secret"
 
-[node name="Label3" type="Label" parent="." index="6"]
+[node name="Label3" type="Label" parent="." index="10"]
 offset_left = 292.0
 offset_top = -510.0
 offset_right = 427.0
 offset_bottom = -368.0
 text = "rare secret"
 
-[node name="GoalFlag" parent="." index="7" instance=ExtResource("6_c56uy")]
+[node name="GoalFlag" parent="." index="11" instance=ExtResource("6_c56uy")]
 position = Vector2(4608, 1152)
 
-[node name="CamLBInit" parent="." index="8" instance=ExtResource("8_ecrwt")]
-position = Vector2(-1024, 896)
-auto_activate = true
-vert_boundry = 1
-horz_boundry = 0
-
-[node name="CamRTInit" parent="." index="9" instance=ExtResource("8_ecrwt")]
-position = Vector2(3072, -256)
-auto_activate = true
-vert_boundry = 0
-horz_boundry = 1
-
-[node name="BombPile" parent="." index="10" instance=ExtResource("9_mi7dm")]
+[node name="BombPile" parent="." index="12" instance=ExtResource("9_mi7dm")]
 position = Vector2(640, 640)
 
-[node name="BombPile2" parent="." index="11" instance=ExtResource("9_mi7dm")]
+[node name="BombPile2" parent="." index="13" instance=ExtResource("9_mi7dm")]
 position = Vector2(3200, 1152)
 
-[node name="PitTexture" type="Sprite2D" parent="." index="12"]
+[node name="PitTexture" type="Sprite2D" parent="." index="14"]
 position = Vector2(-448, 768)
 scale = Vector2(1152, 51.2)
 texture = ExtResource("10_nbks7")
 
-[node name="PitTexture2" type="Sprite2D" parent="." index="13"]
+[node name="PitTexture2" type="Sprite2D" parent="." index="15"]
 position = Vector2(2368, 1408)
 scale = Vector2(3200, 51.2)
 texture = ExtResource("10_nbks7")
 
-[node name="CamLB2" parent="." index="14" instance=ExtResource("8_ecrwt")]
+[node name="CamLB2" parent="." index="16" instance=ExtResource("8_ecrwt")]
 position = Vector2(128, 1408)
 vert_boundry = 1
 horz_boundry = 0
 
-[node name="CamRT2" parent="." index="15" instance=ExtResource("8_ecrwt")]
+[node name="CamRT2" parent="." index="17" instance=ExtResource("8_ecrwt")]
 position = Vector2(3072, 0)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="Spawn2" type="Marker2D" parent="." index="16"]
+[node name="Spawn2" type="Marker2D" parent="." index="18"]
 position = Vector2(1408, 1024)
 
-[node name="CamRTBig" parent="." index="17" instance=ExtResource("8_ecrwt")]
+[node name="CamRTBig" parent="." index="19" instance=ExtResource("8_ecrwt")]
 position = Vector2(4992, -1536)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="CamLBBig" parent="." index="18" instance=ExtResource("8_ecrwt")]
+[node name="CamLBBig" parent="." index="20" instance=ExtResource("8_ecrwt")]
 position = Vector2(768, 1536)
 vert_boundry = 1
 horz_boundry = 0

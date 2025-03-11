@@ -24,3 +24,4 @@ res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd
 res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd
 res://Kobold Cave/Components/2D/Trigger Response/Push/push.gd
 res://Kobold Cave/Components/2D/Trigger Response/Enemy Spawns/enemy_spawner.gd
+res://Kobold Cave/Components/2D/Trigger Response/Set Respawn/set_respawn.gd
