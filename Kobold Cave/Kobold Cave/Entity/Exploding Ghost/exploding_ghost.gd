@@ -36,3 +36,9 @@ func _death() -> void:
 		bomb_thrower.throw_bomb( Vector2.from_angle( throw_angle ) )
 	
 	queue_free()
+
+
+func _on_life_timer_timeout() -> void:
+	
+	var damage := Damage.new( 555 )
+	health_node.recive_event( damage )

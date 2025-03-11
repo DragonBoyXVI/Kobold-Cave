@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ovww3im8kayd"]
 
-[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/triggger_base.tscn" id="1_4oegu"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="1_4oegu"]
 [ext_resource type="Script" uid="uid://d0mocc5xi68rj" path="res://Kobold Cave/Components/2D/Trigger/Camera Zoom/trigger_cam_zoom.gd" id="2_0dwhn"]
 
 [node name="TriggerCamZoom" instance=ExtResource("1_4oegu")]

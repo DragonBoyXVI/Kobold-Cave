@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsclik3anepif"]
 
-[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/triggger_base.tscn" id="1_y6drh"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="1_y6drh"]
 [ext_resource type="Script" uid="uid://dkxqnm3p6u68j" path="res://Kobold Cave/Components/2D/Trigger/Goal/triggger_goal.gd" id="2_rm3eg"]
 
 [node name="TriggerGoal" instance=ExtResource("1_y6drh")]

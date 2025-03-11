@@ -1,5 +1,5 @@
-SpikeTrap
 Timer
+SpikeTrap
 CollisionShape2D
 Sprite2D
 Marker2D
@@ -12,4 +12,3 @@ AreaTrigger2D
 Area2D
 Node
 StateBehaviour
-StateMachine

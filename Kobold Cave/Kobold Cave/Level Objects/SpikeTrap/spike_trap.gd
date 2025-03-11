@@ -28,10 +28,10 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 			
 			if ( new_state ):
 				
-				spikes_go_up()
+				spikes_go_up.call_deferred()
 			else:
 				
-				spikes_go_down()
+				spikes_go_down.call_deferred()
 @export var state_flips: bool : 
 	set( value ):
 		
