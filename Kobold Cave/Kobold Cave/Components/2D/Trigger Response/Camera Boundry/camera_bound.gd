@@ -32,7 +32,7 @@ func _get_property_list() -> Array[ Dictionary ]:
 	if ( editor_is_leave_callable() ):
 		
 		properties.append( {
-			"name": "bounds_enter",
+			"name": "bounds_leave",
 			"type": TYPE_ARRAY,
 			"hint": PROPERTY_HINT_ARRAY_TYPE,
 			"hint_string": "%d/%d:CameraBoundry" % [TYPE_OBJECT, PROPERTY_HINT_NODE_TYPE]

@@ -26,6 +26,7 @@ enum HORZ_MODE {
 
 
 ## if true, the boundry is applied when the level starts
+@export var tween_time: float = 0.25
 @export var auto_activate: bool = false
 @export var vert_boundry := VERT_MODE.NONE : 
 	set( value ):
@@ -101,7 +102,7 @@ func _tween_cam_limit( limit: NodePath, value: float ) -> void:
 	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
 	tween.set_ignore_time_scale()
 	
-	tween.tween_property( MainCamera2D, limit, value, 0.25 )
+	tween.tween_property( MainCamera2D, limit, value, tween_time )
 
 
 var _name_update := true

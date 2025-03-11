@@ -24,3 +24,8 @@ func _process( _delta: float ) -> void:
 		return
 	
 	camera.position = node_to_follow.global_position
+
+
+func _change_is_valid( _new_state: StateBehaviour ) -> bool:
+	
+	return true

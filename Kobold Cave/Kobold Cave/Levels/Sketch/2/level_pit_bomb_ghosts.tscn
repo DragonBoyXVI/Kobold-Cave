@@ -1,14 +1,40 @@
-[gd_scene load_steps=5 format=4 uid="uid://ceuwoldmxmd2s"]
+[gd_scene load_steps=21 format=4 uid="uid://ceuwoldmxmd2s"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_840jg"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_6ij6o"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="3_ktnd5"]
+[ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="4_ei58l"]
+[ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="6_gniwd"]
+[ext_resource type="Script" uid="uid://dbf8r7wqq34yj" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd" id="7_u7cdw"]
 [ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="8_dfnk7"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="8_lvda0"]
+[ext_resource type="Script" uid="uid://r6dfw2tyyfff" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd" id="9_txw2f"]
+[ext_resource type="Script" uid="uid://ccq3bxklty4a6" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd" id="10_5sriq"]
+[ext_resource type="Script" uid="uid://colxx5hl8mqt0" path="res://Kobold Cave/Components/2D/Trigger Response/Enemy Spawns/enemy_spawner.gd" id="11_txw2f"]
+[ext_resource type="PackedScene" uid="uid://car8lov7qvebp" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn" id="12_5sriq"]
+[ext_resource type="Script" uid="uid://ccjwnrvy2ghsa" path="res://Kobold Cave/Components/2D/Trigger Response/Set Respawn/set_respawn.gd" id="13_4dytg"]
+[ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="14_5sriq"]
+[ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="15_4dytg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4dytg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alru3"]
+size = Vector2(2176, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1v3"]
+size = Vector2(3712, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xft8l"]
+size = Vector2(3840, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ii1f"]
+size = Vector2(1280, 512)
 
 [node name="LevelPitBombGhosts" type="Node2D" node_paths=PackedStringArray("respawn_point")]
 script = ExtResource("1_840jg")
 respawn_point = NodePath("InitSpawn")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
+metadata/_edit_group_ = true
 
 [node name="SpikeTimer" type="Timer" parent="."]
 process_callback = 0
@@ -16,32 +42,262 @@ wait_time = 2.25
 autostart = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAABAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAARAAIAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//v/AAAAAAAAAAD7//v/AAAAAAAAAAD6//v/AAAAAAAAAAD5//v/AAAAAAAAAAATAP7/AAAAAAAAAAATAP3/AAAAAAAAAAATAPz/AAAAAAAAAAATAPn/AAAAAAAAAAAWAP7/AAAAAAAAAAAWAP3/AAAAAAAAAAATAPj/AAAAAAAAAAATAPf/AAAAAAAAAAATAPb/AAAAAAAAAAAWAPf/AAAAAAAAAAAWAPr/AAAAAAAAAAAXAPf/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAABAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAARAAIAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//v/AAAAAAAAAAD7//v/AAAAAAAAAAD6//v/AAAAAAAAAAD5//v/AAAAAAAAAAD9//X/AAAAAAAAAAD+//X/AAAAAAAAAAD///X/AAAAAAAAAAAAAPX/AAAAAAAAAAABAPX/AAAAAAAAAAACAPX/AAAAAAAAAAADAPX/AAAAAAAAAAAEAPX/AAAAAAAAAAAFAPX/AAAAAAAAAAAGAPX/AAAAAAAAAAAHAPX/AAAAAAAAAAAIAPX/AAAAAAAAAAAJAPb/AAAAAAAAAAAIAPb/AAAAAAAAAAAIAPH/AAAAAAAAAAAJAPH/AAAAAAAAAAAJAPD/AAAAAAAAAAAKAPD/AAAAAAAAAAALAO//AAAAAAAAAAAHAPH/AAAAAAAAAAAGAPD/AAAAAAAAAAAFAPD/AAAAAAAAAAAEAPD/AAAAAAAAAAADAPD/AAAAAAAAAAACAPD/AAAAAAAAAAABAPD/AAAAAAAAAAAAAPD/AAAAAAAAAAD///H/AAAAAAAAAAD+//H/AAAAAAAAAAD9//L/AAAAAAAAAAD9//P/AAAAAAAAAAD8//T/AAAAAAAAAAD9//T/AAAAAAAAAAAJAPf/AAAAAAAAAAAJAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPr/AAAAAAAAAAANAPf/AAAAAAAAAAAOAPf/AAAAAAAAAAAPAPf/AAAAAAAAAAAQAPf/AAAAAAAAAAARAPf/AAAAAAAAAAAUAPb/AAAAAAAAAAAWAPb/AAAAAAAAAAAVAPb/AAAAAAAAAAAZAPj/AAAAAAAAAAAZAPn/AAAAAAAAAAAZAPr/AAAAAAAAAAAdAP7/AAAAAAAAAAAdAP3/AAAAAAAAAAAdAPz/AAAAAAAAAAAdAPv/AAAAAAAAAAAdAPj/AAAAAAAAAAAdAPb/AAAAAAAAAAAZAP7/AAAAAAAAAAAVAAMAAAAAAAAAAAAWAAIAAAAAAAAAAAAXAAIAAAAAAAAAAAAYAAIAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAPv/AAAAAAAAAAAUAPf/AAAAAAAAAAAVAPf/AAAAAAAAAAAVAPj/AAAAAAAAAAAVAPn/AAAAAAAAAAAOAPj/AAAAAAAAAAAPAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPn/AAAAAAAAAAAQAPj/AAAAAAAAAAAPAPj/AAAAAAAAAAARAPj/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAZAPX/AAAAAAAAAAAZAPT/AAAAAAAAAAALAO7/AAAAAAAAAAALAO3/AAAAAAAAAAALAOz/AAAAAAAAAAALAOv/AAAAAAAAAAAMAOr/AAAAAAAAAAANAOr/AAAAAAAAAAAOAOr/AAAAAAAAAAAPAOr/AAAAAAAAAAAQAOr/AAAAAAAAAAARAOn/AAAAAAAAAAASAOn/AAAAAAAAAAATAOn/AAAAAAAAAAAUAOj/AAAAAAAAAAAVAOj/AAAAAAAAAAAWAOj/AAAAAAAAAAAXAOj/AAAAAAAAAAAYAOj/AAAAAAAAAAAZAOj/AAAAAAAAAAAdAOj/AAAAAAAAAAAeAOj/AAAAAAAAAAAfAOj/AAAAAAAAAAAgAOj/AAAAAAAAAAAhAOj/AAAAAAAAAAAiAOn/AAAAAAAAAAAjAOr/AAAAAAAAAAAkAOv/AAAAAAAAAAAkAOz/AAAAAAAAAAAkAO3/AAAAAAAAAAAkAO7/AAAAAAAAAAAlAO//AAAAAAAAAAAlAPD/AAAAAAAAAAAlAPH/AAAAAAAAAAAlAPL/AAAAAAAAAAAlAPP/AAAAAAAAAAAmAPT/AAAAAAAAAAAmAPX/AAAAAAAAAAAmAPb/AAAAAAAAAAAmAP3/AAAAAAAAAAAmAP7/AAAAAAAAAAAmAP//AAAAAAAAAAAmAAAAAAABAAAAAAAlAAEAAAABAAAAAAAlAAIAAAABAAAAAAAlAAMAAAAAAAAAAAAkAAQAAAAAAAAAAAAlAPz/AAAAAAAAAAAkAPz/AAAAAAAAAAAkAPv/AAAAAAAAAAAkAPr/AAAAAAAAAAAkAPn/AAAAAAAAAAAkAPj/AAAAAAAAAAAkAPf/AAAAAAAAAAAlAPf/AAAAAAAAAAAlAPb/AAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAXAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAD5//z/AAAAAAAAAAD5//3/AAAAAAAAAAD4//3/AAAAAAAAAAD3//3/AAAAAAAAAAD2//7/AAAAAAAAAAD2////AAABAAAAAAD2/wAAAAABAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAAfAAQAAAAAAAAAAAAfAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAdAAQAAAAAAAAAAAAeAAQAAAAAAAAAAAAeAAMAAAAAAAAAAAAeAAIAAAAAAAAAAAAdAAEAAAAAAAAAAAAZAOT/AAAAAAAAAAAZAOP/AAAAAAAAAAAZAOL/AAAAAAAAAAAZAOH/AAAAAAAAAAAZAOD/AAAAAAAAAAAZAN//AAAAAAAAAAAZAN7/AAAAAAAAAAAZAN3/AAAAAAAAAAAZANz/AAAAAAAAAAAZANv/AAAAAAAAAAAdAOf/AAAAAAAAAAAdAOb/AAAAAAAAAAAdAOX/AAAAAAAAAAAdAOT/AAAAAAAAAAAdAOP/AAAAAAAAAAAdAOL/AAAAAAAAAAAdAOH/AAAAAAAAAAAdAOD/AAAAAAAAAAAdAN//AAAAAAAAAAAdAN7/AAAAAAAAAAAdAN3/AAAAAAAAAAAdANz/AAAAAAAAAAAdANv/AAAAAAAAAAAdANr/AAAAAAAAAAAdANn/AAAAAAAAAAAZANr/AAAAAAAAAAAZANn/AAAAAAAAAAAYAOT/AAAAAAAAAAAXAOT/AAAAAAAAAAAWAOT/AAAAAAAAAAAVAOT/AAAAAAAAAAAUAOT/AAAAAAAAAAAUAOX/AAAAAAAAAAAUAOb/AAAAAAAAAAAUAOf/AAAAAAAAAAAZAOz/AAAAAAAAAAAZAO3/AAAAAAAAAAA=")
 tile_set = ExtResource("2_6ij6o")
+
+[node name="Label" type="Label" parent="TileMapLayer"]
+offset_left = 4096.0
+offset_top = -768.0
+offset_right = 4371.0
+offset_bottom = -675.0
+text = "wooden mineshaft?
+"
+
+[node name="Label2" type="Label" parent="TileMapLayer"]
+offset_left = 3328.0
+offset_top = -2560.0
+offset_right = 3885.0
+offset_bottom = -2467.0
+text = "a giant dirll?
+what would the rockbolds be drilling for
+card idea ig"
 
 [node name="Player" parent="." instance=ExtResource("3_ktnd5")]
 position = Vector2(-768, 0)
 
 [node name="InitSpawn" type="Marker2D" parent="."]
-position = Vector2(-768, 0)
+position = Vector2(-768, 128)
+
+[node name="DeathSprite" type="Sprite2D" parent="."]
+position = Vector2(1792, 576)
+scale = Vector2(5632, 25.6)
+texture = ExtResource("4_ei58l")
 
 [node name="SpikeTrap" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
-position = Vector2(2816, -640)
-rotation = -1.5708
+position = Vector2(3328, -256)
+rotation = 1.5708
 tile_length = 1
 state_flips = true
 state_timer = NodePath("../SpikeTimer")
 
 [node name="SpikeTrap2" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
-position = Vector2(2432, -768)
+position = Vector2(3328, -1024)
+rotation = 1.5708
+tile_length = 4
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap4" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3328, -1536)
+rotation = 1.5708
+tile_length = 2
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap3" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3200, -1280)
+rotation = -1.5708
+tile_length = 2
+state = false
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap6" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3200, -512)
+rotation = -1.5708
+tile_length = 4
+state = false
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap7" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(1664, -1152)
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap8" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3712, -128)
 rotation = -1.5708
 tile_length = 4
 state_flips = true
 state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap3" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
-position = Vector2(2560, -1280)
+[node name="SpikeTrap9" parent="." instance=ExtResource("8_dfnk7")]
+position = Vector2(3200, 512)
+tile_length = 5
+
+[node name="SpikeTrap10" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3712, -896)
+rotation = -1.5708
+tile_length = 1
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap11" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3712, -1152)
+rotation = -1.5708
+tile_length = 1
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap12" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3840, -1280)
 rotation = 1.5708
+tile_length = 1
 state = false
 state_flips = true
 state_timer = NodePath("../SpikeTimer")
+
+[node name="SpikeTrap13" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+position = Vector2(3840, -1024)
+rotation = 1.5708
+tile_length = 1
+state = false
+state_flips = true
+state_timer = NodePath("../SpikeTimer")
+
+[node name="LevelBoundry" parent="." instance=ExtResource("6_gniwd")]
+position = Vector2(0, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry"]
+shape = SubResource("WorldBoundaryShape2D_4dytg")
+
+[node name="CamBLInit" type="Marker2D" parent="."]
+position = Vector2(-1280, 640)
+script = ExtResource("7_u7cdw")
+auto_activate = true
+vert_boundry = 1
+horz_boundry = 0
+metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
+
+[node name="CamTRInit" type="Marker2D" parent="."]
+position = Vector2(2048, -640)
+script = ExtResource("7_u7cdw")
+auto_activate = true
+vert_boundry = 0
+horz_boundry = 1
+metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
+
+[node name="TrigInit" parent="." instance=ExtResource("8_lvda0")]
+run_enter = true
+run_leave = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigInit"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_alru3")
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigInit"]
+script = ExtResource("9_txw2f")
+bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-1280, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2048, -640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+])
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigInit"]
+script = ExtResource("10_5sriq")
+enter_zoom = Vector2(1.05, 1.05)
+enter_time = 1.25
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
+
+[node name="TriggerEnemySpawner" type="Node2D" parent="TrigInit" node_paths=PackedStringArray("spawn_marker", "spawn_timer")]
+script = ExtResource("11_txw2f")
+spawn_scene = ExtResource("12_5sriq")
+spawn_marker = NodePath("Marker2D")
+spawn_timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://colxx5hl8mqt0"
+
+[node name="Marker2D" type="Marker2D" parent="TrigInit/TriggerEnemySpawner"]
+position = Vector2(512, -384)
+
+[node name="Timer" type="Timer" parent="TrigInit/TriggerEnemySpawner"]
+process_callback = 0
+
+[node name="CamBLBotttom" type="Marker2D" parent="."]
+position = Vector2(1024, 640)
+script = ExtResource("7_u7cdw")
+tween_time = 1.25
+vert_boundry = 1
+horz_boundry = 0
+metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
+
+[node name="CamTRBottom" type="Marker2D" parent="."]
+position = Vector2(4992, -3072)
+script = ExtResource("7_u7cdw")
+tween_time = 1.25
+vert_boundry = 0
+horz_boundry = 1
+metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
+
+[node name="TrigCamBottom" parent="." instance=ExtResource("8_lvda0")]
+position = Vector2(3072, 0)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCamBottom"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_wx1v3")
+
+[node name="TriggerSetSpawn" type="Node2D" parent="TrigCamBottom" node_paths=PackedStringArray("spawn")]
+script = ExtResource("13_4dytg")
+spawn = NodePath("Marker2D")
+disable_when_ticked = true
+disable_tick_time = 3
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://ccjwnrvy2ghsa"
+
+[node name="Marker2D" type="Marker2D" parent="TrigCamBottom/TriggerSetSpawn"]
+position = Vector2(-1280, 256)
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCamBottom"]
+script = ExtResource("10_5sriq")
+enter_zoom = Vector2(0.5, 0.5)
+enter_time = 2.0
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamBottom"]
+script = ExtResource("9_txw2f")
+bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(1024, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(4992, -3072),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+])
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TrigCamTop" parent="." instance=ExtResource("8_lvda0")]
+position = Vector2(3072, -2048)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCamTop"]
+position = Vector2(128, 512)
+shape = SubResource("RectangleShape2D_xft8l")
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamTop"]
+script = ExtResource("9_txw2f")
+bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-1280, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(4992, -3072),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
+])
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCamTop"]
+script = ExtResource("10_5sriq")
+enter_zoom = Vector2(0.5, 0.5)
+enter_time = 1.25
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
+
+[node name="TrigCamGoal" parent="." instance=ExtResource("8_lvda0")]
+position = Vector2(384, -1664)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCamGoal"]
+shape = SubResource("RectangleShape2D_3ii1f")
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCamGoal"]
+script = ExtResource("10_5sriq")
+enter_zoom = Vector2(1.5, 1.5)
+enter_time = 1.25
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
+
+[node name="GoalFlag" parent="." instance=ExtResource("14_5sriq")]
+position = Vector2(128, -1408)
+
+[node name="Wolf" parent="." instance=ExtResource("15_4dytg")]
+position = Vector2(2688, -1536)

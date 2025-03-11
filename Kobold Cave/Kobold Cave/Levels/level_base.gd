@@ -70,4 +70,3 @@ func _on_radio_player_needs_reset( player: Player ) -> void:
 func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
 	
 	respawn_point = new_spawn
-	print( "new spawn: ", new_spawn.global_position )

@@ -207,10 +207,6 @@ func add_state( state_to_add: StateBehaviour ) -> void:
 ## Use this to change states
 func change_state( state_name: StringName, args: Array = [] ) -> void:
 	
-	# dont enter a state youre already in
-	if ( current_state ):
-		if ( state_name == current_state.name ): return
-	
 	# double check we have this state
 	if ( stored_states.has( state_name ) ):
 		

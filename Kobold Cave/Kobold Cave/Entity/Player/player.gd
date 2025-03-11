@@ -16,7 +16,7 @@ func _input( event: InputEvent ) -> void:
 			
 			KEY_SPACE:
 				
-				position = Vector2.ZERO
+				KoboldRadio.player_reset_needed.emit( self )
 			
 			KEY_P: 
 				

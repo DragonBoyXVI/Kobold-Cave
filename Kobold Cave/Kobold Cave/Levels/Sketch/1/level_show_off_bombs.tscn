@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cqmjs5nf5k3lg"]
+[gd_scene load_steps=20 format=4 uid="uid://cqmjs5nf5k3lg"]
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_dbpff"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="2_25ypc"]
@@ -12,12 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="8_ecrwt"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="9_mi7dm"]
 [ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="10_nbks7"]
+[ext_resource type="Script" uid="uid://ccjwnrvy2ghsa" path="res://Kobold Cave/Components/2D/Trigger Response/Set Respawn/set_respawn.gd" id="13_xx7ub"]
+[ext_resource type="Script" uid="uid://ccq3bxklty4a6" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd" id="14_qhcp2"]
+[ext_resource type="Script" uid="uid://ub3r32s53lb6" path="res://Kobold Cave/Components/2D/Trigger Response/Steal Camera/steal_cam.gd" id="15_gt1ev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3b14o"]
 radius = 128.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhcp2"]
 size = Vector2(1792, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt1ev"]
+size = Vector2(896, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i366"]
+size = Vector2(256, 512)
 
 [node name="LevelShowOffBombs" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_dbpff")]
 editor_description = "actually  more like a big starting room that lets the player fuck around and learn without being in too much danger."
@@ -31,6 +40,8 @@ run_enter = true
 script = ExtResource("3_243qt")
 force = 200.0
 push_vector = Vector2(0, 1)
+disable_when_ticked = true
+disable_tick_time = 3
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://w23o54ji1wpq"
 
@@ -41,16 +52,18 @@ shape = SubResource("CircleShape2D_3b14o")
 position = Vector2(896, 384)
 
 [node name="InitSpawn" type="Marker2D" parent="." index="2"]
-position = Vector2(0, 128)
+position = Vector2(512, 128)
 
 [node name="CamLBInit" parent="." index="3" instance=ExtResource("8_ecrwt")]
 position = Vector2(-1024, 896)
+tween_time = null
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
 [node name="CamRTInit" parent="." index="4" instance=ExtResource("8_ecrwt")]
 position = Vector2(3072, -256)
+tween_time = null
 auto_activate = true
 vert_boundry = 0
 horz_boundry = 1
@@ -65,8 +78,16 @@ shape = SubResource("RectangleShape2D_qhcp2")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="TrigCamInit" index="1"]
 script = ExtResource("6_3b14o")
-bounds_enter = Array[ExtResource("7_xx7ub")]([null])
+bounds_enter = Array[ExtResource("7_xx7ub")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-1024, 896),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":null,"auto_activate":true,"vert_boundry":1,"horz_boundry":0,"_name_update":true)
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(3072, -256),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":null,"auto_activate":true,"vert_boundry":0,"horz_boundry":1,"_name_update":true)
+])
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCamInit" index="2"]
+script = ExtResource("14_qhcp2")
+enter_zoom = Vector2(1, 1)
+enter_time = 0.25
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." index="6"]
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAALAAMAAAABAAAAAAALAAQAAAABAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP//AAAAAAAAAAD+//7/AAAAAAAAAAD8//r/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD8//z/AAAAAAAAAAD8//v/AAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAATAAsAAAAAAAAAAAASAAsAAAAAAAAAAAARAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAD9//r/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAD9//v/AAAAAAAAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAAAAAAAAD3//7/AAAAAAAAAAD2//7/AAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAXAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAZAP//AAAAAAAAAAAYAP//AAAAAAAAAAAfAAkAAAAAAAAAAAAgAAkAAAAAAAAAAAAhAAkAAAAAAAAAAAAiAAkAAAAAAAAAAAAjAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAlAAkAAAAAAAAAAAAmAAkAAAAAAAAAAAAmAAgAAAAAAAAAAAAlAAcAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAmAAUAAAAAAAAAAAAmAAQAAAAAAAAAAAAmAAMAAAAAAAAAAAAmAAIAAAAAAAAAAAAmAAEAAAAAAAAAAAAmAAAAAAAAAAAAAAAlAP//AAAAAAAAAAAlAP7/AAAAAAAAAAAlAP3/AAAAAAAAAAAlAPz/AAAAAAAAAAAlAPv/AAAAAAAAAAAlAPr/AAAAAAAAAAAlAPn/AAAAAAAAAAAlAPj/AAAAAAAAAAAlAPf/AAAAAAAAAAAlAPb/AAAAAAAAAAAkAPb/AAAAAAAAAAAjAPX/AAAAAAAAAAAiAPX/AAAAAAAAAAAhAPX/AAAAAAAAAAAgAPX/AAAAAAAAAAAfAPX/AAAAAAAAAAAeAPX/AAAAAAAAAAAdAPT/AAAAAAAAAAAcAPT/AAAAAAAAAAAbAPT/AAAAAAAAAAAaAPT/AAAAAAAAAAAZAPT/AAAAAAAAAAAYAPT/AAAAAAAAAAAXAPT/AAAAAAAAAAAWAPT/AAAAAAAAAAAVAPX/AAAAAAAAAAAUAPX/AAAAAAAAAAATAPX/AAAAAAAAAAASAPX/AAAAAAAAAAARAPX/AAAAAAAAAAAQAPX/AAAAAAAAAAAPAPX/AAAAAAAAAAAOAPX/AAAAAAAAAAANAPX/AAAAAAAAAAAMAPX/AAAAAAAAAAALAPb/AAAAAAAAAAAKAPf/AAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAkAP7/AAAAAAAAAAAjAP7/AAAAAAAAAAAiAP7/AAAAAAAAAAAhAP7/AAAAAAAAAAAgAP7/AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAkAAAAAAAAAAAAAAAkAAEAAAAAAAAAAAAlAAEAAAAAAAAAAAAlAAAAAAAAAAAAAAAlAAIAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAAAAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAJAAMAAAABAAAAAAAGAAoAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAA=")
@@ -120,24 +141,84 @@ scale = Vector2(3200, 51.2)
 texture = ExtResource("10_nbks7")
 
 [node name="CamLB2" parent="." index="16" instance=ExtResource("8_ecrwt")]
-position = Vector2(128, 1408)
+position = Vector2(384, 1280)
 vert_boundry = 1
 horz_boundry = 0
 
 [node name="CamRT2" parent="." index="17" instance=ExtResource("8_ecrwt")]
-position = Vector2(3072, 0)
+position = Vector2(2048, 640)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="Spawn2" type="Marker2D" parent="." index="18"]
-position = Vector2(1408, 1024)
+[node name="TrigCam2" parent="." index="18" instance=ExtResource("2_lf71n")]
+position = Vector2(1024, 1024)
+run_enter = true
+run_leave = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCam2" index="0"]
+position = Vector2(64, -64)
+shape = SubResource("RectangleShape2D_gt1ev")
+
+[node name="TriggerSetSpawn" type="Node2D" parent="TrigCam2" index="1" node_paths=PackedStringArray("spawn")]
+script = ExtResource("13_xx7ub")
+spawn = NodePath("Spawn2")
+disable_when_ticked = true
+disable_tick_time = 3
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://ccjwnrvy2ghsa"
+
+[node name="Spawn2" type="Marker2D" parent="TrigCam2/TriggerSetSpawn" index="0"]
+position = Vector2(384, -128)
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCam2" index="2"]
+script = ExtResource("14_qhcp2")
+enter_zoom = Vector2(1.05, 1.05)
+enter_time = 1.25
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCam2" index="3"]
+script = ExtResource("6_3b14o")
+bounds_enter = Array[ExtResource("7_xx7ub")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(384, 1280),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":0.25,"auto_activate":false,"vert_boundry":1,"horz_boundry":0,"_name_update":true)
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2048, 640),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":0.25,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true)
+])
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TriggerStealCamera" type="Node2D" parent="TrigCam2" index="4"]
+position = Vector2(128, 0)
+script = ExtResource("15_gt1ev")
+metadata/_custom_type_script = "uid://ub3r32s53lb6"
 
 [node name="CamRTBig" parent="." index="19" instance=ExtResource("8_ecrwt")]
 position = Vector2(4992, -1536)
+tween_time = 1.0
 vert_boundry = 0
 horz_boundry = 1
 
 [node name="CamLBBig" parent="." index="20" instance=ExtResource("8_ecrwt")]
 position = Vector2(768, 1536)
+tween_time = 1.0
 vert_boundry = 1
 horz_boundry = 0
+
+[node name="TrigCam3" parent="." index="21" instance=ExtResource("2_lf71n")]
+position = Vector2(1792, 1024)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigCam3" index="0"]
+shape = SubResource("RectangleShape2D_5i366")
+
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCam3" index="1"]
+script = ExtResource("6_3b14o")
+bounds_enter = Array[ExtResource("7_xx7ub")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(4992, -1536),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":null,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true)
+, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(768, 1536),"rotation":0.785398,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":25.0,"script":ExtResource("7_xx7ub"),"tween_time":null,"auto_activate":false,"vert_boundry":1,"horz_boundry":0,"_name_update":true)
+])
+metadata/_custom_type_script = "uid://r6dfw2tyyfff"
+
+[node name="TriggerCameraZoom" type="Node2D" parent="TrigCam3" index="2"]
+script = ExtResource("14_qhcp2")
+enter_zoom = Vector2(0.6, 0.6)
+enter_time = 2.0
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://ccq3bxklty4a6"

@@ -10,6 +10,10 @@ signal player_died
 ## emitted when we want to pause the room for hitstun
 signal player_hitstun( damage: Damage )
 
+## emitted when the player should call the cameras
+## focus again
+signal give_camera_to_player
+
 ## used to connect a [Health] to the [UIHealth] node.
 signal ui_connect_health( health: Health )
 ## used to connect a [BombThrower] to the [UIBombs] node.

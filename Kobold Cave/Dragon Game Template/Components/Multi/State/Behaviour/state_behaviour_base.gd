@@ -79,9 +79,9 @@ func _leave() -> void:
 	pass
 
 ## virtual for the state change is valid function.
-func _change_is_valid( _new_state: StateBehaviour ) -> bool:
+func _change_is_valid( new_state: StateBehaviour ) -> bool:
 	
-	return true
+	return new_state.name != name
 
 
 ## Call this function to request a state change

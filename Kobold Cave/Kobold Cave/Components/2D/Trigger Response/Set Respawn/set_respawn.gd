@@ -21,12 +21,18 @@ func _get_configuration_warnings() -> PackedStringArray:
 		const text := "Has no spawn marker, give it one!"
 		warnings.append( text )
 	
-	if ( editor_is_enter_callable() ):
+	if ( not editor_is_enter_callable() ):
 		
 		const text := "If this cant run enter, then the spawn wont be set."
 		warnings.append( text )
 	
 	return warnings
+
+func _util_child_entered_tree( node: Node ) -> void:
+	
+	if ( node is Marker2D and not spawn ):
+		
+		spawn = node
 
 func _init() -> void:
 	

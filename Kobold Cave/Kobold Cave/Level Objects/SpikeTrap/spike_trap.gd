@@ -63,6 +63,10 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	if ( not state ):
+		
+		spikes_go_down()
+	
 	if ( state_flips and state_timer ):
 		
 		state_timer.timeout.connect( _on_state_timer_timeout )

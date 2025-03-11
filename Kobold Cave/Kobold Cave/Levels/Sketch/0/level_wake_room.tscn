@@ -31,12 +31,14 @@ position = Vector2(896, 640)
 
 [node name="CamLeftBottom" parent="." index="4" instance=ExtResource("6_ykb0b")]
 position = Vector2(0, 768)
+tween_time = null
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
 [node name="CamRightTop" parent="." index="5" instance=ExtResource("6_ykb0b")]
 position = Vector2(1536, -128)
+tween_time = null
 auto_activate = true
 vert_boundry = 0
 horz_boundry = 1
