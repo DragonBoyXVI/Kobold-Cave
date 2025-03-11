@@ -163,3 +163,14 @@ func _on_state_timer_timeout() -> void:
 		spikes_go_up()
 	
 	state = not state
+
+
+func _on_hurtbox_2d_body_entered( body: Node2D ) -> void:
+	
+	if ( body is Entity ):
+		
+		const push_force := 400.0
+		var angle: float = rotation - deg_to_rad( 90.0 )
+		var push_vector: Vector2 = Vector2.from_angle( angle ) * push_force
+		
+		body.velocity += push_vector

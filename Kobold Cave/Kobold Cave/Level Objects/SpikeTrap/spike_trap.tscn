@@ -42,9 +42,12 @@ region_enabled = true
 region_rect = Rect2(0, 0, 384, 128)
 
 [node name="Hurtbox2D" parent="." instance=ExtResource("3_qveay")]
+collision_mask = 6
 event = SubResource("Resource_vvx0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(192, -64)
 shape = SubResource("RectangleShape2D_qveay")
 debug_color = Color(1, 0, 0, 0.4)
+
+[connection signal="body_entered" from="Hurtbox2D" to="." method="_on_hurtbox_2d_body_entered"]
