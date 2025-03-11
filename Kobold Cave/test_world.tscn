@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=14 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -6,21 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_gjs3b"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="8_8ixqh"]
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
-[ext_resource type="PackedScene" uid="uid://d0vlefq1ki1db" path="res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn" id="9_7c6lc"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
-[ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_1xjxr"]
-[ext_resource type="PackedScene" uid="uid://car8lov7qvebp" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn" id="11_5457m"]
-[ext_resource type="Script" uid="uid://xx3p4hgyheau" path="res://Kobold Cave/Components/2D/Trigger/Enemy Spawner/area_enemy_spawner.gd" id="12_ivea3"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="10_5457m"]
+[ext_resource type="Script" uid="uid://w23o54ji1wpq" path="res://Kobold Cave/Components/2D/Trigger Response/Push/push.gd" id="11_ivea3"]
 [ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="13_jvck6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6usxr"]
-size = Vector2(256, 246)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvck6"]
-size = Vector2(1280, 896)
+size = Vector2(1024, 128)
 
 [node name="Test World" type="Node2D"]
 script = ExtResource("1_rbnmu")
@@ -59,50 +54,8 @@ horz_boundry = 1
 [node name="BombPile" parent="." instance=ExtResource("8_8ixqh")]
 position = Vector2(128, 384)
 
-[node name="TrigggerPush" parent="." node_paths=PackedStringArray("ref_marker") instance=ExtResource("9_7c6lc")]
-position = Vector2(-1280, 256)
-ref_marker = NodePath("Marker2D")
-push_force = 9000.0
-auto_disable = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerPush"]
-shape = SubResource("RectangleShape2D_6usxr")
-
-[node name="Marker2D" type="Marker2D" parent="TrigggerPush"]
-position = Vector2(256, -256)
-
 [node name="GoalFlag" parent="." instance=ExtResource("9_m10ai")]
 position = Vector2(384, -1280)
-
-[node name="Wolf" parent="." instance=ExtResource("10_1xjxr")]
-
-[node name="ExplodingGhost" parent="." instance=ExtResource("11_5457m")]
-position = Vector2(-135, -17)
-
-[node name="TriggerEnemySpawner" type="Area2D" parent="." node_paths=PackedStringArray("spawn_timer", "spawn_point")]
-position = Vector2(1408, -640)
-collision_layer = 0
-collision_mask = 2
-input_pickable = false
-monitorable = false
-script = ExtResource("12_ivea3")
-enemy_scene = ExtResource("11_5457m")
-spawn_timer = NodePath("Timer")
-spawn_point = NodePath("Marker2D")
-run_enter = true
-run_leave = true
-metadata/_custom_type_script = "uid://xx3p4hgyheau"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerEnemySpawner"]
-position = Vector2(640, 448)
-shape = SubResource("RectangleShape2D_jvck6")
-
-[node name="Timer" type="Timer" parent="TriggerEnemySpawner"]
-process_callback = 0
-wait_time = 2.25
-
-[node name="Marker2D" type="Marker2D" parent="TriggerEnemySpawner"]
-position = Vector2(640, -256)
 
 [node name="SpikesTimer" type="Timer" parent="."]
 process_callback = 0
@@ -112,3 +65,18 @@ autostart = true
 position = Vector2(512, 384)
 state_flips = true
 state_timer = NodePath("../SpikesTimer")
+
+[node name="TriggerBase" parent="." instance=ExtResource("10_5457m")]
+position = Vector2(-1024, 768)
+run_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBase"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_jvck6")
+
+[node name="TriggerPush" type="Node2D" parent="TriggerBase"]
+script = ExtResource("11_ivea3")
+force = 5000.0
+push_vector = Vector2(0, -1)
+parent_respect_leave = false
+metadata/_custom_type_script = "uid://w23o54ji1wpq"

@@ -14,3 +14,13 @@ res://Kobold Cave/Entity/Player/player.gd
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd
 res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn
+res://Kobold Cave/Components/2D/Trigger Response/trigger_response.gd
+res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn
+res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn
+res://Kobold Cave/Components/2D/Trigger/trigger_base.gd
+res://Kobold Cave/Components/2D/Trigger Response/Level Complete/new_script.gd
+res://Kobold Cave/Components/2D/Trigger Response/Bomb Pickup/bomb_pickup.gd
+res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd
+res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd
+res://Kobold Cave/Components/2D/Trigger Response/Push/push.gd
+res://Kobold Cave/Components/2D/Trigger Response/Enemy Spawns/enemy_spawner.gd

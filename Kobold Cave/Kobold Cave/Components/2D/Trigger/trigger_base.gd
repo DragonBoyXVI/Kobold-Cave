@@ -1,49 +1,33 @@
-#@tool
+@tool
 extends Area2D
 class_name AreaTrigger2D
-## An area that triggers something when the player enters it
+## An area that triggers [TriggerResponse] kids when a 
+## player enters
 ## 
 ## ditto
-# how long has that "ggg" been in teh filename? fuck sake
 
 
 signal enabled
 signal disabled
 
-signal player_entered
-signal player_left
-
-
-## modes for auto disable
-enum DISABLE_AT {
-	## disable when entered
-	ENTER,
-	## disable when left
-	LEAVE,
-	## never disable
-	NEVER
-}
+signal player_entered( player: Player )
+signal player_left( player: Player )
 
 
 ## if true, run the enter callback
-@export var run_enter: bool : 
+@export var run_enter: bool :
 	set( value ):
-		notify_property_list_changed.call_deferred()
 		
 		run_enter = value
+		propagate_call( &"update_configuration_warnings" )
+		propagate_call( &"notify_property_list_changed" )
 ## if true, run the left callback
-@export var run_leave: bool : 
+@export var run_leave: bool :
 	set( value ):
-		notify_property_list_changed.call_deferred()
 		
 		run_leave = value
-
-## when to auto disable this trigger
-@export var auto_disable: DISABLE_AT = DISABLE_AT.NEVER : 
-	set( value ):
-		notify_property_list_changed.call_deferred()
-		
-		auto_disable = value
+		propagate_call( &"update_configuration_warnings" )
+		propagate_call( &"notify_property_list_changed" )
 
 
 func _ready() -> void:
@@ -55,58 +39,37 @@ func _ready() -> void:
 	body_exited.connect( _on_body_exited )
 
 
-## virtual[br]
-## called when the player enters this trigger
-func _player_entered( _player: Player ) -> void:
+func run_loop_enter( player: Player ) -> void:
 	
-	push_error( name, ": Func not implimented \"_player_entered\"" )
+	var children := get_children()
+	for child: Node in children:
+		
+		if ( child is TriggerResponse ):
+			
+			child.player_enter( player )
 
-## virtual[br]
-## called when the player leaves this trigger
-func _player_left( _player: Player ) -> void:
+func run_loop_leave( player: Player ) -> void:
 	
-	push_error( name, ": Func not implimented \"_player_left\"" )
+	var children := get_children()
+	for child: Node in children:
+		
+		if ( child is TriggerResponse ):
+			
+			child.player_leave( player )
 
 
-func enable() -> void:
-	
-	_enable()
-	show()
-	enabled.emit()
-
-func disable() -> void:
-	
-	_disable()
-	hide()
-	disabled.emit()
-
-## virtual[br]
-func _enable() -> void:
-	
-	process_mode = PROCESS_MODE_INHERIT
-
-## virtual[br]
-func _disable() -> void:
-	
-	process_mode = PROCESS_MODE_DISABLED
-
-
-func _on_body_entered( body: Node2D ) -> void:
+func _on_body_entered( node: Node2D ) -> void:
 	if ( not run_enter ): return
-	if ( body is not Player ): return
 	
-	_player_entered( body as Player )
-	player_entered.emit()
-	if ( auto_disable == DISABLE_AT.ENTER ):
+	if ( node is Player ):
 		
-		disable.call_deferred()
+		run_loop_enter( node )
+		player_entered.emit( node )
 
-func _on_body_exited( body: Node2D ) -> void:
+func _on_body_exited( node: Node2D ) -> void:
 	if ( not run_leave ): return
-	if ( body is not Player ): return
 	
-	_player_left( body as Player )
-	player_left.emit()
-	if ( auto_disable == DISABLE_AT.LEAVE ):
+	if ( node is Player ):
 		
-		disable.call_deferred()
+		run_loop_leave( node )
+		player_left.emit( node )

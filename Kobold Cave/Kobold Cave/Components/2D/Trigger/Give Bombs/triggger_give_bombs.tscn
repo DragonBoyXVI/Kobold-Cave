@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct46p6sx4kxn1"]
-
-[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="1_mc5ic"]
-[ext_resource type="Script" uid="uid://cmwlmukjknca0" path="res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.gd" id="2_1d0vo"]
-
-[node name="TrigggerGiveBombs" instance=ExtResource("1_mc5ic")]
-script = ExtResource("2_1d0vo")
-run_enter = true
-run_leave = true

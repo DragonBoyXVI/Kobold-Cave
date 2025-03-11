@@ -1,37 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://cqmjs5nf5k3lg"]
+[gd_scene load_steps=9 format=4 uid="uid://cqmjs5nf5k3lg"]
 
 [ext_resource type="PackedScene" uid="uid://dheils4c8cb2g" path="res://Kobold Cave/Levels/level_base.tscn" id="1_dbpff"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="2_25ypc"]
 [ext_resource type="TileSet" uid="uid://ckjnad62i6j0w" path="res://Kobold Cave/new_tile_set.tres" id="2_x2hij"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="3_vdol8"]
-[ext_resource type="PackedScene" uid="uid://d0vlefq1ki1db" path="res://Kobold Cave/Components/2D/Trigger/Push/triggger_push.tscn" id="5_r8uch"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="6_c56uy"]
-[ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="7_um41a"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="8_ecrwt"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="9_mi7dm"]
 [ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="10_nbks7"]
-[ext_resource type="PackedScene" uid="uid://1kon0y4rhb47" path="res://Kobold Cave/Components/2D/Trigger/Camera Bounds/trigger_camera_bounds.tscn" id="11_gwmin"]
-[ext_resource type="PackedScene" uid="uid://cib5s37b843mr" path="res://Kobold Cave/Components/2D/Trigger/Set Spawn/trigger_set_spawn.tscn" id="12_mqvt5"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfmjp"]
-radius = 32.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_poaww"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k04qy"]
-size = Vector2(4224, 256)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yh31"]
-size = Vector2(384, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sux4g"]
-size = Vector2(256, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_llfla"]
-size = Vector2(896, 384)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfc0y"]
-size = Vector2(3200, 384)
 
 [node name="LevelShowOffBombs" node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_dbpff")]
 editor_description = "actually  more like a big starting room that lets the player fuck around and learn without being in too much danger."
@@ -76,111 +52,56 @@ offset_right = 427.0
 offset_bottom = -368.0
 text = "rare secret"
 
-[node name="TriggerInitPush" parent="." index="7" instance=ExtResource("5_r8uch")]
-push_force = 200.0
-push_direction = Vector2(0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerInitPush" index="0"]
-shape = SubResource("CircleShape2D_mfmjp")
-
-[node name="GoalFlag" parent="." index="8" instance=ExtResource("6_c56uy")]
+[node name="GoalFlag" parent="." index="7" instance=ExtResource("6_c56uy")]
 position = Vector2(4608, 1152)
 
-[node name="LevelBoundry" parent="." index="9" instance=ExtResource("7_um41a")]
-position = Vector2(3072, 1792)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry" index="0"]
-shape = SubResource("WorldBoundaryShape2D_poaww")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="LevelBoundry" index="1"]
-position = Vector2(-5056, -768)
-shape = SubResource("RectangleShape2D_k04qy")
-
-[node name="CamLBInit" parent="." index="10" instance=ExtResource("8_ecrwt")]
+[node name="CamLBInit" parent="." index="8" instance=ExtResource("8_ecrwt")]
 position = Vector2(-1024, 896)
 auto_activate = true
 vert_boundry = 1
 horz_boundry = 0
 
-[node name="CamRTInit" parent="." index="11" instance=ExtResource("8_ecrwt")]
+[node name="CamRTInit" parent="." index="9" instance=ExtResource("8_ecrwt")]
 position = Vector2(3072, -256)
 auto_activate = true
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="BombPile" parent="." index="12" instance=ExtResource("9_mi7dm")]
+[node name="BombPile" parent="." index="10" instance=ExtResource("9_mi7dm")]
 position = Vector2(640, 640)
 
-[node name="BombPile2" parent="." index="13" instance=ExtResource("9_mi7dm")]
+[node name="BombPile2" parent="." index="11" instance=ExtResource("9_mi7dm")]
 position = Vector2(3200, 1152)
 
-[node name="PitTexture" type="Sprite2D" parent="." index="14"]
+[node name="PitTexture" type="Sprite2D" parent="." index="12"]
 position = Vector2(-448, 768)
 scale = Vector2(1152, 51.2)
 texture = ExtResource("10_nbks7")
 
-[node name="PitTexture2" type="Sprite2D" parent="." index="15"]
+[node name="PitTexture2" type="Sprite2D" parent="." index="13"]
 position = Vector2(2368, 1408)
 scale = Vector2(3200, 51.2)
 texture = ExtResource("10_nbks7")
 
-[node name="CamLB2" parent="." index="16" instance=ExtResource("8_ecrwt")]
+[node name="CamLB2" parent="." index="14" instance=ExtResource("8_ecrwt")]
 position = Vector2(128, 1408)
 vert_boundry = 1
 horz_boundry = 0
 
-[node name="CamRT2" parent="." index="17" instance=ExtResource("8_ecrwt")]
+[node name="CamRT2" parent="." index="15" instance=ExtResource("8_ecrwt")]
 position = Vector2(3072, 0)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="CamBoundInit" parent="." index="18" node_paths=PackedStringArray("enter_bounds") instance=ExtResource("11_gwmin")]
-position = Vector2(1152, 384)
-enter_bounds = [NodePath("../CamLBInit"), NodePath("../CamRTInit")]
-run_enter = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CamBoundInit" index="0"]
-position = Vector2(192, 64)
-shape = SubResource("RectangleShape2D_8yh31")
-
-[node name="TriggerSetSpawn" parent="." index="19" node_paths=PackedStringArray("new_spawn") instance=ExtResource("12_mqvt5")]
-position = Vector2(1280, 640)
-new_spawn = NodePath("Marker2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerSetSpawn" index="0"]
-position = Vector2(128, 64)
-shape = SubResource("RectangleShape2D_sux4g")
-
-[node name="Marker2D" type="Marker2D" parent="TriggerSetSpawn" index="1"]
-position = Vector2(0, 256)
-
-[node name="CamBound2" parent="." index="20" node_paths=PackedStringArray("enter_bounds") instance=ExtResource("11_gwmin")]
-position = Vector2(640, 768)
-enter_bounds = [NodePath("../CamLB2"), NodePath("../CamRT2")]
-run_enter = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CamBound2" index="0"]
-position = Vector2(448, 192)
-shape = SubResource("RectangleShape2D_llfla")
-
-[node name="Spawn2" type="Marker2D" parent="." index="21"]
+[node name="Spawn2" type="Marker2D" parent="." index="16"]
 position = Vector2(1408, 1024)
 
-[node name="CamBoundBig" parent="." index="22" node_paths=PackedStringArray("enter_bounds") instance=ExtResource("11_gwmin")]
-position = Vector2(1664, 768)
-enter_bounds = [NodePath("../CamLBBig"), NodePath("../CamRTBig")]
-run_enter = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CamBoundBig" index="0"]
-position = Vector2(1600, 192)
-shape = SubResource("RectangleShape2D_sfc0y")
-
-[node name="CamRTBig" parent="." index="23" instance=ExtResource("8_ecrwt")]
+[node name="CamRTBig" parent="." index="17" instance=ExtResource("8_ecrwt")]
 position = Vector2(4992, -1536)
 vert_boundry = 0
 horz_boundry = 1
 
-[node name="CamLBBig" parent="." index="24" instance=ExtResource("8_ecrwt")]
+[node name="CamLBBig" parent="." index="18" instance=ExtResource("8_ecrwt")]
 position = Vector2(768, 1536)
 vert_boundry = 1
 horz_boundry = 0

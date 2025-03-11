@@ -1,22 +1,21 @@
 @tool
-extends AreaTrigger2D
+extends TriggerResponse
 class_name TriggerCameraZoom
-## sets the zoom of the camera
+## zooms the camera when triggered
 ##
 ## ditto
 
+var enter_zoom := Vector2.ONE
+var enter_time := 1.25
 
-var enter_zoom: Vector2 = Vector2.ONE
-var enter_time: float = 1.25
-
-var leave_zoom: Vector2 = Vector2.ONE
-var leave_time: float = 1.25
+var leave_zoom := Vector2.ONE
+var leave_time := 1.25
 
 
 func _get_property_list() -> Array[ Dictionary ]:
 	var properties: Array[ Dictionary ] = []
 	
-	if ( run_enter ):
+	if ( editor_is_enter_callable() ):
 		
 		properties.append( {
 			"name": "Enter",
@@ -35,7 +34,7 @@ func _get_property_list() -> Array[ Dictionary ]:
 			"type": TYPE_FLOAT,
 		} )
 	
-	if ( run_leave ):
+	if ( editor_is_leave_callable() ):
 		
 		properties.append( {
 			"name": "Leave",
@@ -56,27 +55,11 @@ func _get_property_list() -> Array[ Dictionary ]:
 	
 	return properties
 
-func _property_can_revert( property: StringName ) -> bool:
-	const revertable: PackedStringArray = [
-		"enter_time",
-		"leave_time",
-	]
-	
-	return revertable.has( property )
 
-func _property_get_revert( property: StringName ) -> Variant:
-	
-	match property:
-		&"enter_time": return 1.25
-		&"leave_time": return 1.25
-	
-	return null
-
-
-func _player_entered( _player: Player ) -> void:
+func _player_enter( _player: Player ) -> void:
 	
 	MainCamera2D.set_zoom_tween( enter_zoom, enter_time )
 
-func _player_left( _player: Player ) -> void:
+func _player_leave( _player: Player ) -> void:
 	
 	MainCamera2D.set_zoom_tween( leave_zoom, leave_time )

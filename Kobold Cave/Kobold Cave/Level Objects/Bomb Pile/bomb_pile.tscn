@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwk6n2uejntni"]
+[gd_scene load_steps=5 format=3 uid="uid://cwk6n2uejntni"]
 
 [ext_resource type="Texture2D" uid="uid://d2kg6pgd007bo" path="res://Dragon Game Template/Icons/3D/hurtbox_3d.png" id="1_gl1rn"]
-[ext_resource type="PackedScene" uid="uid://ct46p6sx4kxn1" path="res://Kobold Cave/Components/2D/Trigger/Give Bombs/triggger_give_bombs.tscn" id="2_kivyo"]
+[ext_resource type="PackedScene" uid="uid://b7woleo53xw3t" path="res://Kobold Cave/Components/2D/Trigger/trigger_base.tscn" id="2_o5140"]
+[ext_resource type="Script" uid="uid://c3n77anhlajcy" path="res://Kobold Cave/Components/2D/Trigger Response/Bomb Pickup/bomb_pickup.gd" id="3_v1675"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ch6b"]
-radius = 80.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_27q7c"]
+radius = 64.0
 
 [node name="BombPile" type="Node2D"]
 
@@ -13,8 +14,18 @@ position = Vector2(0, -64)
 scale = Vector2(8, 8)
 texture = ExtResource("1_gl1rn")
 
-[node name="TrigggerGiveBombs" parent="." instance=ExtResource("2_kivyo")]
+[node name="TriggerBase" parent="." instance=ExtResource("2_o5140")]
 position = Vector2(0, -64)
+run_enter = true
+run_leave = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrigggerGiveBombs"]
-shape = SubResource("CircleShape2D_5ch6b")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBase"]
+shape = SubResource("CircleShape2D_27q7c")
+
+[node name="TriggerBombPickup" type="Node2D" parent="TriggerBase"]
+script = ExtResource("3_v1675")
+disabled = null
+disable_when_ticked = null
+disable_at_tick = null
+disable_tick_time = null
+metadata/_custom_type_script = "uid://c3n77anhlajcy"
