@@ -6,6 +6,9 @@ class_name Player
 ## yuyg
 
 
+var _flashing_lights: bool
+
+
 func _input( event: InputEvent ) -> void:
 	
 	if ( event is InputEventKey and event.is_pressed() ):
@@ -33,7 +36,15 @@ func _input( event: InputEvent ) -> void:
 			
 			KEY_8:
 				
+				health_node.health.current = 5
+			
+			KEY_7:
+				
 				KoboldRadio.goal_touched.emit()
+			
+			KEY_6:
+				
+				bomb_thrower.refill()
 			
 			KEY_1:
 				
@@ -92,7 +103,7 @@ func start_i_frames() -> void:
 	tween.set_loops(  )
 	tween.set_ignore_time_scale()
 	
-	if ( Settings.data.flashing_lights ):
+	if ( _flashing_lights ):
 		
 		tween.tween_callback( hide ).set_delay( 0.125 )
 		tween.tween_callback( show ).set_delay( 0.125 )
@@ -158,6 +169,11 @@ func _death() -> void:
 	Input.parse_input_event( input )
 	
 	model.scale.y = 0.1
+
+
+func _settings_update( recived_data: SettingsFile ) -> void:
+	
+	_flashing_lights = recived_data.flashing_lights
 
 
 func _on_tree_paused( paused: bool ) -> void:

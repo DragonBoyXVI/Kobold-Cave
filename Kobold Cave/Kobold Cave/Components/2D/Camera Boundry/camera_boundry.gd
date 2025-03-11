@@ -99,6 +99,7 @@ func _tween_cam_limit( limit: NodePath, value: float ) -> void:
 	
 	var tween := MainCamera2D.create_tween()
 	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
+	tween.set_ignore_time_scale()
 	
 	tween.tween_property( MainCamera2D, limit, value, 0.25 )
 
@@ -110,49 +111,65 @@ func _util_on_renamed() -> void:
 		return
 	_name_update = false
 	
-	var my_name := name.to_lower()
-	match my_name:
-		
-		"l": 
-			name = "CamLeft"
-			horz_boundry = HORZ_MODE.LEFT
-		
-		"r": 
-			name = "CamRight"
-			horz_boundry = HORZ_MODE.RIGHT
-		
-		"t": 
-			name = "CamTop"
-			vert_boundry = VERT_MODE.TOP
-		
-		"b": 
-			name = "CamBottom"
-			vert_boundry = VERT_MODE.BOTTOM
-		
-		"lt": 
-			name = "CamLeftTop"
-			vert_boundry = VERT_MODE.TOP
-			horz_boundry = HORZ_MODE.LEFT
-		
-		"lb": 
-			name = "CamLeftBottom"
-			vert_boundry = VERT_MODE.BOTTOM
-			horz_boundry = HORZ_MODE.LEFT
-		
-		"rt": 
-			name = "CamRightTop"
-			vert_boundry = VERT_MODE.TOP
-			horz_boundry = HORZ_MODE.RIGHT
-		
-		"rb": 
-			name = "CamLeftBottom"
-			vert_boundry = VERT_MODE.BOTTOM
-			horz_boundry = HORZ_MODE.RIGHT
-		
-		"reset":
-			name = "CamReset"
-			vert_boundry = VERT_MODE.RESET
-			horz_boundry = HORZ_MODE.RESET
 	
+	const names_l := [ "l", "left" ]
+	const names_r := [ "r", "right" ]
+	const names_t := [ "t", "top", "up", "upper" ]
+	const names_b := [ "b", "bottom", "down", "lower" ]
+	const names_tl := [ "tl", "topleft", "lt", "lefttop" ]
+	const names_tr := [ "tr", "topright", "rt", "righttop" ]
+	const names_bl := [ "bl", "bottomleft", "lb", "leftbottom" ]
+	const names_br := [ "br", "bottomright", "rb", "rightbottom" ]
+	const names_reset := [ "reset" ]
+	
+	
+	var my_name := name.to_lower()
+	
+	if ( names_l.has( my_name ) ):
+		
+		name = "CamLeft"
+		horz_boundry = HORZ_MODE.LEFT
+	elif ( names_r.has( my_name ) ): 
+		
+		name = "CamRight"
+		horz_boundry = HORZ_MODE.RIGHT
+	elif ( names_t.has( my_name ) ):
+		
+		name = "CamTop"
+		vert_boundry = VERT_MODE.TOP
+	elif ( names_b.has( my_name ) ):
+		
+		name = "CamBottom"
+		vert_boundry = VERT_MODE.BOTTOM
+	elif ( names_tl.has( my_name ) ): 
+		
+		name = "CamLeftTop"
+		vert_boundry = VERT_MODE.TOP
+		horz_boundry = HORZ_MODE.LEFT
+	elif ( names_bl.has( my_name ) ): 
+		
+		name = "CamLeftBottom"
+		vert_boundry = VERT_MODE.BOTTOM
+		horz_boundry = HORZ_MODE.LEFT
+	elif ( names_tr.has( my_name ) ): 
+		
+		name = "CamRightTop"
+		vert_boundry = VERT_MODE.TOP
+		horz_boundry = HORZ_MODE.RIGHT
+	elif ( names_bl.has( my_name ) ): 
+		
+		name = "CamLeftBottom"
+		vert_boundry = VERT_MODE.BOTTOM
+		horz_boundry = HORZ_MODE.LEFT
+	elif ( names_br.has( my_name ) ): 
+		
+		name = "CamRightBottom"
+		vert_boundry = VERT_MODE.BOTTOM
+		horz_boundry = HORZ_MODE.RIGHT
+	elif ( names_reset.has( my_name ) ):
+		
+		name = "CamReset"
+		vert_boundry = VERT_MODE.RESET
+		horz_boundry = HORZ_MODE.RESET
 	
 	_name_update = true

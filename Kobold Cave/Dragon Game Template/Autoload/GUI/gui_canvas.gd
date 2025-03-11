@@ -66,6 +66,7 @@ func fade_out( fade_time: float = 1.25, fade_color: Color = Color.BLACK ) -> voi
 	KoboldRadio.room_pause.emit()
 	fade_rect.show()
 	var tween := create_tween()
+	tween.set_ignore_time_scale()
 	
 	tween.tween_property( fade_rect, ^"color", fade_color, fade_time )
 	await tween.finished
@@ -74,6 +75,7 @@ func fade_out( fade_time: float = 1.25, fade_color: Color = Color.BLACK ) -> voi
 func fade_in( fade_time: float = 1.25 ) -> void:
 	
 	var tween := create_tween()
+	tween.set_ignore_time_scale()
 	
 	tween.tween_property( fade_rect, ^"color", Color( Color.BLACK, 0.0 ), fade_time )
 	await tween.finished

@@ -1,9 +1,11 @@
-TriggerCameraBounds
+SpikeTrap
 Timer
-TileMapLayer
 CollisionShape2D
-LevelBoundry2D
+Sprite2D
 Marker2D
+TriggerCameraBounds
+TileMapLayer
+LevelBoundry2D
 Level
 TriggerEnemySpawner
 AreaTrigger2D
@@ -11,5 +13,3 @@ Area2D
 Node
 StateBehaviour
 StateMachine
-BombThrower
-Hitbox2D

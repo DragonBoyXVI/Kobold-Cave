@@ -43,6 +43,11 @@ func _ready() -> void:
 		child_entered_tree.connect( _util_child_entered_tree )
 		return
 	
+	Settings.updated.connect( _on_settings_updated )
+	if ( Settings.data ):
+		
+		_on_settings_updated( Settings.data )
+	
 	if ( health_node ):
 		
 		health_node.pre_hurt.connect( _on_node_health_pre_hurt )
@@ -210,6 +215,14 @@ func _healed( _heal: Heal ) -> void:
 func _death() -> void:
 	
 	queue_free()
+
+
+func _on_settings_updated( recived_data: SettingsFile ) -> void:
+	
+	_settings_update( recived_data )
+
+func _settings_update( _recived_data: SettingsFile ) -> void:
+	pass
 
 
 func _util_child_entered_tree( node: Node ) -> void:

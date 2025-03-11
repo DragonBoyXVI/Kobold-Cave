@@ -1,5 +1,13 @@
-res://Kobold Cave/Components/2D/Trigger/Camera Zoom/trigger_cam_zoom.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/new_tile_set.tres
+res://Kobold Cave/Entity/Exploding Ghost/movement.tres
 res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
-res://Kobold Cave/Components/2D/Trigger/Camera Zoom/trigger_cam_zoom.gd
+res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn
+res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.gd
+res://test_world.tscn
+res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
+res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn
+res://Dragon Game Template/Autoload/Dragon Controler/dragon_controler.gd
+res://Kobold Cave/Entity/entity_base.gd
+res://Kobold Cave/Entity/Player/player.gd

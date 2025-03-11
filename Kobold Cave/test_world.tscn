@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=17 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_1xjxr"]
 [ext_resource type="PackedScene" uid="uid://car8lov7qvebp" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn" id="11_5457m"]
 [ext_resource type="Script" uid="uid://xx3p4hgyheau" path="res://Kobold Cave/Components/2D/Trigger/Enemy Spawner/area_enemy_spawner.gd" id="12_ivea3"]
+[ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="13_jvck6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
 
@@ -87,7 +88,6 @@ monitorable = false
 script = ExtResource("12_ivea3")
 enemy_scene = ExtResource("11_5457m")
 spawn_timer = NodePath("Timer")
-spawn_limit = null
 spawn_point = NodePath("Marker2D")
 run_enter = true
 run_leave = true
@@ -103,3 +103,12 @@ wait_time = 2.25
 
 [node name="Marker2D" type="Marker2D" parent="TriggerEnemySpawner"]
 position = Vector2(640, -256)
+
+[node name="SpikesTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="SpikeTrap" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("13_jvck6")]
+position = Vector2(512, 384)
+state_flips = true
+state_timer = NodePath("../SpikesTimer")

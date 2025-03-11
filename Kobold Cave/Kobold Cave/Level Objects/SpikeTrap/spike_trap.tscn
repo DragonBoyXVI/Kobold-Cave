@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dau8a8o301pvi"]
+
+[ext_resource type="Script" uid="uid://21k8p6ysegm4" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.gd" id="1_02ldl"]
+[ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_id601"]
+[ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="3_qveay"]
+[ext_resource type="Script" uid="uid://c5gadi8o0xx0i" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="4_a3cu1"]
+
+[sub_resource type="Resource" id="Resource_vvx0l"]
+script = ExtResource("4_a3cu1")
+amount = 1
+peirce = 1
+element = 5
+metadata/_custom_type_script = "uid://c5gadi8o0xx0i"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qveay"]
+resource_local_to_scene = true
+size = Vector2(384, 128)
+
+[node name="SpikeTrap" type="Node2D" node_paths=PackedStringArray("sprite_spikes", "sprite_ghost", "collison_shape", "hurtbox")]
+texture_repeat = 2
+script = ExtResource("1_02ldl")
+tile_length = 3
+sprite_spikes = NodePath("SpriteSpikes")
+sprite_ghost = NodePath("SpriteGhost")
+collison_shape = NodePath("Hurtbox2D/CollisionShape2D")
+hurtbox = NodePath("Hurtbox2D")
+state = true
+
+[node name="SpriteSpikes" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = ExtResource("2_id601")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 384, 128)
+
+[node name="SpriteGhost" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+position = Vector2(0, -128)
+texture = ExtResource("2_id601")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 384, 128)
+
+[node name="Hurtbox2D" parent="." instance=ExtResource("3_qveay")]
+event = SubResource("Resource_vvx0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(192, -64)
+shape = SubResource("RectangleShape2D_qveay")
+debug_color = Color(1, 0, 0, 0.4)
