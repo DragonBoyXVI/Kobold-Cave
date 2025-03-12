@@ -1,14 +1,9 @@
-res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Levels/Sketch/3/level_climb_the_drill.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/Entity/Player/player_movement.tres
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
-res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd
-res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.gd
-res://test_world.tscn
-res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
-res://Kobold Cave/Levels/level_base.gd
 res://Kobold Cave/Entity/Exploding Ghost/movement.tres
+res://Kobold Cave/Levels/level_base.gd
 res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
-res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.gd
-res://Kobold Cave/Entity/Player/player.gd
+res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
+res://test_world.tscn
