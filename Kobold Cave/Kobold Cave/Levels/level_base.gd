@@ -40,7 +40,6 @@ func unpause() -> void:
 	process_mode = PROCESS_MODE_INHERIT
 
 
-## returns the spawns global, or ZERO if no spawn
 func get_spawn_position() -> Vector2:
 	
 	if ( respawn_point ):

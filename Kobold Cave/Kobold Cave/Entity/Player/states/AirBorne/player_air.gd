@@ -7,7 +7,6 @@ class_name PlayerAir
 
 const STATE_NAME := &"PlayerAir"
 
-
 @export var ledge_grabber: LedgeGrabDetector
 
 @onready var jump_timer := %jumpTimer as Timer
@@ -22,13 +21,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _enter( _args: Array = [] ) -> void:
 	
-	ledge_grabber.enable.call_deferred()
+	#ledge_grabber.enable.call_deferred()
 	stuck_timer.start()
 
 func _leave() -> void:
 	
-	ledge_grabber.disable.call_deferred()
-	
+	#ledge_grabber.disable.call_deferred()
 	jump_timer.stop()
 	stuck_timer.stop()
 	model.root.scale = Vector2.ONE
@@ -111,4 +109,5 @@ func _unhandled_input( event: InputEvent ) -> void:
 
 func _on_stuck_timer_timeout() -> void:
 	
+	push_warning( "Falling forever are we?" )
 	KoboldRadio.player_reset_needed.emit( player )

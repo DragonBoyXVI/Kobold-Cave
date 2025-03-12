@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://buyukcqokx32w"]
+
+[ext_resource type="Script" uid="uid://47w34bxokj05" path="res://Kobold Cave/Components/2D/Climbable Finder/climbable_finder.gd" id="1_p3ec4"]
+
+[node name="ClimbableFinder" type="Area2D"]
+collision_layer = 0
+input_pickable = false
+monitorable = false
+script = ExtResource("1_p3ec4")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

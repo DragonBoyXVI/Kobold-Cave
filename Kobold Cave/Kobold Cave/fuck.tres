@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d2sesonkjewl3"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ckjnad62i6j0w"]
 
-[ext_resource type="Texture2D" uid="uid://c6s1agw5mpel5" path="res://Kobold Cave/new_noise_texture_2d.tres" id="1_e3020"]
+[ext_resource type="Texture2D" uid="uid://c6s1agw5mpel5" path="res://Kobold Cave/new_noise_texture_2d.tres" id="1_r6bml"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujgj0"]
-texture = ExtResource("1_e3020")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bguas"]
+resource_name = "Test"
+texture = ExtResource("1_r6bml")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/modulate = Color(0, 0, 0, 1)
@@ -13,10 +14,12 @@ texture_region_size = Vector2i(128, 128)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0/custom_data_0 = true
 2:0/0 = 0
-2:0/0/modulate = Color(0, 0, 1, 1)
+<<<<<<< HEAD
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:0/0/custom_data_1 = true
 2:0/0/custom_data_2 = true
+=======
+>>>>>>> parent of 52bf82a (level semi sketched, going to revise the ledge grab)
 3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
@@ -41,4 +44,4 @@ custom_data_layer_1/name = "Grab Pass"
 custom_data_layer_1/type = 1
 custom_data_layer_2/name = "Can Climb"
 custom_data_layer_2/type = 1
-sources/1 = SubResource("TileSetAtlasSource_ujgj0")
+sources/0 = SubResource("TileSetAtlasSource_bguas")

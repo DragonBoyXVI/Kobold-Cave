@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ffnb8272tmn"]
+
+[ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_6opif"]
+[ext_resource type="Script" uid="uid://bamx28io6i8eq" path="res://Kobold Cave/Entity/Player/states/Climb/player_climb.gd" id="2_xs31o"]
+
+[node name="PlayerClimb" instance=ExtResource("1_6opif")]
+script = ExtResource("2_xs31o")
+default_enter_args = []

@@ -6,6 +6,7 @@
 [node name="PlayerAir" instance=ExtResource("1_564h3")]
 script = ExtResource("2_gme20")
 use_slow = true
+default_enter_args = []
 
 [node name="jumpTimer" type="Timer" parent="." index="0"]
 unique_name_in_owner = true
