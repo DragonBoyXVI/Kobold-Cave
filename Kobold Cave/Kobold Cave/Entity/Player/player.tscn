@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=25 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://brk8ciananh4q" path="res://Kobold Cave/Entity/Player/states/AirBorne/player_air.tscn" id="7_6youo"]
 [ext_resource type="Texture2D" uid="uid://c8yqebyrtbrt4" path="res://Dragon Game Template/Icons/temperature.png" id="9_0t3dc"]
 [ext_resource type="PackedScene" uid="uid://bbmfun1dvs7bd" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn" id="9_v25kg"]
+[ext_resource type="PackedScene" uid="uid://doe6toohpuk3t" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn" id="10_ox5nn"]
 [ext_resource type="PackedScene" uid="uid://cv04tdlilp0fm" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn" id="11_ypnxr"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="14_er2h2"]
 [ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="16_84pue"]
 [ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="16_g8os4"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="17_2ulmg"]
 [ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres" id="18_ikaeu"]
-[ext_resource type="PackedScene" uid="uid://buyukcqokx32w" path="res://Kobold Cave/Components/2D/Climbable Finder/climbable_finder.tscn" id="18_ppqkk"]
+[ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn" id="19_65dp7"]
 [ext_resource type="PackedScene" uid="uid://b1ibt3fjhtfvd" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn" id="20_7lm0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
@@ -25,7 +26,7 @@ size = Vector2(80, 105)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 64)
 
-[sub_resource type="Resource" id="Resource_ppqkk"]
+[sub_resource type="Resource" id="Resource_v02m0"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -63,7 +64,8 @@ movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerAir" parent="StateMachine" index="1" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("7_6youo")]
+[node name="PlayerAir" parent="StateMachine" index="1" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
+ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
@@ -79,6 +81,14 @@ camera_focal = NodePath("../../CameraFocal")
 default_enter_args = []
 
 [node name="PlayerDead" parent="StateMachine" index="3" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
+player = NodePath("../..")
+movement_stats = ExtResource("3_vs55y")
+model = NodePath("../../PlayerModel")
+camera_focal = NodePath("../../CameraFocal")
+default_enter_args = []
+
+[node name="PlayerGrabbedLedge" parent="StateMachine" index="4" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("10_ox5nn")]
+ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
 movement_stats = ExtResource("3_vs55y")
 model = NodePath("../../PlayerModel")
@@ -105,7 +115,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -64)
 
 [node name="NodeHealth" parent="." index="6" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_ppqkk")
+health = SubResource("Resource_v02m0")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="7" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
@@ -133,12 +143,12 @@ process_callback = 0
 wait_time = 0.25
 one_shot = true
 
-[node name="ClimbableFinder" parent="." index="10" node_paths=PackedStringArray("position_marker") instance=ExtResource("18_ppqkk")]
-position = Vector2(0, -96)
-position_marker = NodePath("../TileRefPosition")
+[node name="LedgeGrabDetector" parent="." index="10" node_paths=PackedStringArray("tile_ref") instance=ExtResource("19_65dp7")]
+tile_ref = NodePath("../TileRefPosition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbableFinder" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector" index="0"]
+position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_65dp7")
-debug_color = Color(0.768627, 0.94902, 0, 0.419608)
+debug_color = Color(1, 1, 0, 0.5)
 
 [connection signal="timeout" from="IFramesTimer" to="." method="_on_i_frames_timer_timeout"]

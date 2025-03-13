@@ -10,3 +10,40 @@ Exploration is rewarded with heals. ( perma collectable? )
 -- Maintain the same design principle you had in school,
 dont think about it too much, make it work
 Technical debt is a lie (lie)
+
+
+-- Levels
+
+- 0 
+Unique to story mode, a simple room with cracks and blood
+everwhere. The player starts unconsious and wakes up here
+
+- 1
+A fairly safe big room where the player can fuck around with
+movement and bombs, and find secrets for doing so.
+
+- 2
+Big like the previous room, but much more dangerous.
+features a few enemies and traps, and punishes you for falling.
+
+preludes to the big shaft climb in teh next room
+
+- 3
+a fairly long vertical climb full of traps and enemies.
+falling is heavily punished, use of vertical lanches is 
+heavily rewarded.
+
+The shaft belongs to an old drill, so more machine esque
+art is needed
+
+- 4
+a long horizonal run that features no traps but lots of enemies,
+since this is the end of the cave, you're encourage to
+just run for it.
+
+returns to the cave style for a bit but fades out to a more
+grassy natural one.
+
+- 5 
+bossfight! kill the big baddie with bombs while avoiding
+rockbold goons

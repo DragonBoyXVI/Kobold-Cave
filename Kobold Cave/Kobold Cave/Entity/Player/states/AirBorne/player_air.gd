@@ -21,12 +21,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _enter( _args: Array = [] ) -> void:
 	
-	#ledge_grabber.enable.call_deferred()
+	ledge_grabber.enable.call_deferred()
 	stuck_timer.start()
 
 func _leave() -> void:
 	
-	#ledge_grabber.disable.call_deferred()
+	ledge_grabber.disable.call_deferred()
 	jump_timer.stop()
 	stuck_timer.stop()
 	model.root.scale = Vector2.ONE
