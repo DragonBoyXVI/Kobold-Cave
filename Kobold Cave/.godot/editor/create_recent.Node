@@ -1,4 +1,8 @@
+CollisionShape2D
+TriggerCameraZoom
+Marker2D
 CameraBoundry
-Label
+Timer
 TileMapLayer
 Level
+Label

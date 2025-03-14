@@ -36,10 +36,16 @@ debug_color = Color(0, 0, 1, 0.4)
 initial_state = NodePath("Moving")
 default_enter_args = []
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite")]
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite", "timer")]
 script = ExtResource("6_jrnav")
 bomb = NodePath("../..")
 sprite = NodePath("../../Sprite2D")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Moving"]
+process_callback = 0
+wait_time = 30.0
+one_shot = true
 
 [node name="Exploding" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite", "timer")]
 script = ExtResource("7_fn1d5")

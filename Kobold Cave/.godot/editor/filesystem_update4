@@ -1,11 +1,8 @@
-res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
+res://Kobold Cave/Levels/Sketch/4/level_gtfo.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
-res://goals.txt
-res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Entity/Player/states/AirBorne/player_air.gd
 res://test_world.tscn
-res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn
-res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn
+res://Kobold Cave/Entity/Player/player.tscn
 res://Kobold Cave/Levels/Sketch/3/level_climb_the_drill.tscn
+res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
+res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres

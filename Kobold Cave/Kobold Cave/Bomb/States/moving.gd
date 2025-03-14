@@ -3,7 +3,21 @@ extends StateBehaviour
 
 @export var bomb: Bomb
 @export var sprite: Node2D
+@export var timer: Timer
 
+
+func _ready() -> void:
+	super()
+	
+	timer.timeout.connect( _on_timer_timeout )
+
+func _enter( _args: Array ) -> void:
+	
+	timer.start()
+
+func _leave() -> void:
+	
+	timer.stop()
 
 func _process( delta: float ) -> void:
 	
@@ -22,3 +36,8 @@ func _physics_process( delta: float ) -> void:
 	if ( collision ):
 		
 		request_state( &"Exploding" )
+
+
+func _on_timer_timeout() -> void:
+	
+	bomb.explode()

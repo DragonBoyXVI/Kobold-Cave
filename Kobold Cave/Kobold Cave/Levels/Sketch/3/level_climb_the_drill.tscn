@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://btaugyh0oj77m"]
+[gd_scene load_steps=9 format=4 uid="uid://btaugyh0oj77m"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_8647c"]
 [ext_resource type="TileSet" uid="uid://d2sesonkjewl3" path="res://Kobold Cave/new_tile_set.tres" id="2_2nc0w"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="4_furhy"]
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="5_1cwvj"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="6_fkax3"]
+[ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="7_furhy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1cwvj"]
 
 [node name="LevelClimbTheDrill" type="Node2D"]
 script = ExtResource("1_8647c")
@@ -46,3 +49,9 @@ position = Vector2(576, -1408)
 
 [node name="GoalFlag" parent="." instance=ExtResource("6_fkax3")]
 position = Vector2(3195.84, -5128.84)
+
+[node name="LevelBoundry" parent="." instance=ExtResource("7_furhy")]
+position = Vector2(640, 1280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry"]
+shape = SubResource("WorldBoundaryShape2D_1cwvj")

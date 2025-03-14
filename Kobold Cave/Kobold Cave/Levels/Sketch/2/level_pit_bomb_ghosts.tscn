@@ -301,3 +301,6 @@ position = Vector2(128, -1408)
 
 [node name="Wolf" parent="." instance=ExtResource("15_4dytg")]
 position = Vector2(2688, -1536)
+
+[node name="Wolf2" parent="." instance=ExtResource("15_4dytg")]
+position = Vector2(2944, 128)
