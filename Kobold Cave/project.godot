@@ -275,6 +275,7 @@ camera/depth_of_field/depth_of_field_bokeh_quality=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 textures/decals/filter=2
 textures/light_projectors/filter=2
+2d/snap/snap_2d_transforms_to_pixel=true
 lights_and_shadows/positional_shadow/atlas_size=1024
 lights_and_shadows/positional_shadow/atlas_size.mobile=784
 
