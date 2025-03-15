@@ -20,9 +20,12 @@ metadata/_edit_group_ = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_3emqc")]
 initial_state = NodePath("NoBehaviour")
+default_enter_args = []
 
 [node name="FollowNode" parent="StateMachine" node_paths=PackedStringArray("camera") instance=ExtResource("4_yf44x")]
 script = ExtResource("5_rhb5r")
 camera = NodePath("../..")
+default_enter_args = []
 
 [node name="NoBehaviour" parent="StateMachine" instance=ExtResource("4_yf44x")]
+default_enter_args = []

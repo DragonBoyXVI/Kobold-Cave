@@ -1,8 +1,6 @@
-res://Kobold Cave/Levels/Sketch/4/level_gtfo.tscn
+res://Kobold Cave/Entity/Player/player_model.tscn
 res://Dragon Game Template/default_theme.tres
 res://Kobold Cave/new_tile_set.tres
-res://test_world.tscn
+res://Kobold Cave/Saved Resources/Tile Sets/Test Cave/test_cave_tiles.tres
 res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Levels/Sketch/3/level_climb_the_drill.tscn
-res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn
-res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres
+res://test_world.tscn

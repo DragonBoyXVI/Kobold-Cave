@@ -22,12 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://c3a2ywqitkbyp" path="res://Kobold Cave/mudlick_example.png" id="20_65dp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fq1t"]
-size = Vector2(80, 105)
+size = Vector2(86, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
-size = Vector2(76, 64)
+size = Vector2(76, 111)
 
-[sub_resource type="Resource" id="Resource_ox5nn"]
+[sub_resource type="Resource" id="Resource_65dp7"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -36,11 +36,11 @@ current = 5
 percent = 1.0
 element_heal_flag = 4
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ylnya"]
-radius = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v02m0"]
+size = Vector2(90, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65dp7"]
-size = Vector2(128, 16)
+size = Vector2(160, 16)
 
 [node name="Player" node_paths=PackedStringArray("_i_frame_timer", "model", "health_node", "hitbox", "state_machine", "bomb_thrower") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
@@ -56,6 +56,7 @@ metadata/_edit_group_ = true
 [node name="PlayerModel" parent="." index="0" instance=ExtResource("4_hijn5")]
 
 [node name="MudlickExample" type="Sprite2D" parent="PlayerModel" index="2"]
+visible = false
 texture = ExtResource("20_65dp7")
 offset = Vector2(0, -285)
 
@@ -101,35 +102,36 @@ camera_focal = NodePath("../../CameraFocal")
 default_enter_args = []
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, -52.5)
+position = Vector2(0, -113)
 shape = SubResource("RectangleShape2D_2fq1t")
 
 [node name="ShapeCrouching" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(0, -32)
+position = Vector2(0, -55.5)
 shape = SubResource("RectangleShape2D_r432o")
 disabled = true
 
 [node name="CameraFocal" parent="." index="4" instance=ExtResource("6_6ygbl")]
-position = Vector2(0, -48)
+position = Vector2(0, -128)
 
 [node name="Sprite2D" type="Sprite2D" parent="CameraFocal" index="0"]
 texture = ExtResource("9_0t3dc")
 
 [node name="TileRefPosition" type="Marker2D" parent="." index="5"]
 editor_description = "Use the position of this node when checking what tile we are in."
-position = Vector2(0, -64)
+position = Vector2(0, -128)
 
 [node name="NodeHealth" parent="." index="6" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_ox5nn")
+health = SubResource("Resource_65dp7")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." index="7" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
-position = Vector2(0, -48)
+position = Vector2(0, -128)
 event_recivers = [NodePath("../NodeHealth")]
 team_mask = ExtResource("18_ikaeu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" index="0"]
-shape = SubResource("CircleShape2D_ylnya")
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_v02m0")
 debug_color = Color(0, 0, 1, 0.4)
 
 [node name="IFramesTimer" type="Timer" parent="." index="8"]
@@ -138,7 +140,7 @@ wait_time = 1.25
 one_shot = true
 
 [node name="BombThrower" parent="." index="9" node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
-position = Vector2(0, -64)
+position = Vector2(0, -192)
 throw_radius = 96.0
 cooldown_timer = NodePath("Timer")
 starts_empty = true
@@ -152,7 +154,7 @@ one_shot = true
 tile_ref = NodePath("../TileRefPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector" index="0"]
-position = Vector2(0, -96)
+position = Vector2(0, -160)
 shape = SubResource("RectangleShape2D_65dp7")
 debug_color = Color(1, 1, 0, 0.5)
 

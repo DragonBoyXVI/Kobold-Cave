@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2sv5wtxoty01"]
 
 [ext_resource type="PackedScene" uid="uid://cwxl8687gvrdn" path="res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn" id="1_28yhp"]
-[ext_resource type="Texture2D" uid="uid://cq4r3rl8yc71r" path="res://Dragon Game Template/Moe_kobold_adventure_128x146.PNG" id="2_5mnms"]
+[ext_resource type="Texture2D" uid="uid://d4ffqgkoy5bdo" path="res://Kobold Cave/placeholder.png" id="2_7jhht"]
 
 [node name="PlayerModel" instance=ExtResource("1_28yhp")]
 
 [node name="Base" type="Node2D" parent="Root" index="0"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Root/Base" index="0"]
-texture = ExtResource("2_5mnms")
-offset = Vector2(0, -48)
+texture = ExtResource("2_7jhht")
+offset = Vector2(0, -130)
