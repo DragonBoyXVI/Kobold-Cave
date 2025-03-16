@@ -11,14 +11,15 @@ var player: Player
 const explode_dis: float = pow( 64.0, 2 )
 
 
-func _enter( args: Array ) -> void:
+func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	if ( args[ 0 ] is Player ):
+	const arg_player := &"Player"
+	if ( args[ arg_player ] is Player ):
 		
-		player = args[ 0 ]
+		player = args[ arg_player ]
 	else:
 		
-		push_error( "No player given to follow" )
+		player = null
 
 func _physics_process( delta: float ) -> void:
 	
@@ -34,7 +35,6 @@ func _physics_process( delta: float ) -> void:
 		
 		var damage := Damage.new( 555 )
 		ghost.health_node.recive_event( damage )
-		
 
 
 func _on_area_see_player_body_exited( body: Node2D ) -> void:

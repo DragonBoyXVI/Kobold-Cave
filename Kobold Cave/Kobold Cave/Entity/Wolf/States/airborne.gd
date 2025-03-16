@@ -19,4 +19,4 @@ func _physics_process( delta: float ) -> void:
 	
 	if ( wolf.is_on_floor() ):
 		
-		request_state( StateWolfMarch.STATE_NAME, [ false ] )
+		request_state( StateWolfMarch.STATE_NAME, { &"Flip on Leave": false } )

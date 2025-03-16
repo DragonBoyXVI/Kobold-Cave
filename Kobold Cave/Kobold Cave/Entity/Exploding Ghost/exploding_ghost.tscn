@@ -90,7 +90,9 @@ metadata/_custom_type_script = "uid://cjxpiamvofga"
 [node name="FollowPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("9_pvdyc")
 ghost = NodePath("../..")
-default_enter_args = [null]
+default_enter_args = Dictionary[StringName, Variant]({
+&"Player": null
+})
 
 [node name="NoAi" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("10_56hmm")

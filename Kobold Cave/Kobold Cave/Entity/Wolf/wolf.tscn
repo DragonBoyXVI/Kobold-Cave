@@ -18,7 +18,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13x5"]
 size = Vector2(120, 68)
 
-[sub_resource type="Resource" id="Resource_c8mln"]
+[sub_resource type="Resource" id="Resource_hhi7x"]
 resource_local_to_scene = true
 script = ExtResource("5_arsdn")
 ignore_max = true
@@ -66,7 +66,7 @@ position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_k13x5")
 
 [node name="NodeHealth" parent="." index="2" instance=ExtResource("4_sg76n")]
-health = SubResource("Resource_c8mln")
+health = SubResource("Resource_hhi7x")
 
 [node name="Hitbox2D" parent="." index="3" node_paths=PackedStringArray("event_recivers") instance=ExtResource("6_5fft6")]
 position = Vector2(0, -34)
@@ -79,7 +79,7 @@ debug_color = Color(0, 0, 1, 0.4)
 
 [node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_x7y00")]
 initial_state = NodePath("Idle")
-default_enter_args = []
+default_enter_args = Dictionary[StringName, Variant]({})
 
 [node name="MarchForeward" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("wolf", "pivot", "ray_floor", "ray_wall")]
 script = ExtResource("10_d2b60")
@@ -92,7 +92,9 @@ ray_wall = NodePath("../../FlipPivot/RayWall")
 script = ExtResource("11_6x55g")
 wolf = NodePath("../..")
 wait_timer = NodePath("Timer")
-default_enter_args = [false]
+default_enter_args = Dictionary[StringName, Variant]({
+&"Flip on Leave": true
+})
 
 [node name="Timer" type="Timer" parent="StateMachine/Idle" index="0"]
 process_callback = 0

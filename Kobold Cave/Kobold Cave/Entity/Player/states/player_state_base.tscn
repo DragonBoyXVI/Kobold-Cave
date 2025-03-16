@@ -7,3 +7,4 @@
 script = ExtResource("2_k2186")
 use_slow = false
 movement_stats = null
+default_enter_args = Dictionary[StringName, Variant]({})

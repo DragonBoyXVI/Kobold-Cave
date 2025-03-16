@@ -69,7 +69,9 @@ func set_zoom_tween( new_zoom: Vector2, time: float = 1.25 ) -> void:
 func set_follow_node( node: Node2D ) -> void:
 	
 	const state_name := &"FollowNode"
-	state_machine.change_state( state_name, [ node ] )
+	const arg_node := &"Node"
+	print( { arg_node: node } )
+	state_machine.change_state( state_name, { arg_node: node } )
 
 ## make the camera look at a global coord
 func set_follow_coord( global_coord: Vector2 ) -> void:

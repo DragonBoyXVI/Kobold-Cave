@@ -7,14 +7,20 @@ extends StateBehaviour
 var node_to_follow: Node2D
 
 
-func _enter( args: Array ) -> void:
+const ARG_NODE := &"Node"
+
+
+func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	if ( args[ 0 ] is Node2D ):
+	print( args )
+	
+	if ( args[ ARG_NODE ] is Node2D ):
 		
-		node_to_follow = args[ 0 ]
+		node_to_follow = args[ ARG_NODE ]
 	else:
 		
-		push_error( "Camera2D was not provided with a valid follow node" )
+		node_to_follow = null
+		print( "invalid follow node provided" )
 
 func _process( _delta: float ) -> void:
 	

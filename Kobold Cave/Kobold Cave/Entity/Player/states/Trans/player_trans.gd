@@ -35,7 +35,7 @@ func _ready() -> void:
 	anim_player.animation_finished.connect( _on_animation_player_finished )
 
 
-func _enter( _args: Array = [] ) -> void:
+func _enter( _args: Dictionary ) -> void:
 	
 	anim_player.play( anim_to_play )
 

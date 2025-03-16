@@ -6,7 +6,7 @@ extends StateBehaviour
 @export var timer: Timer
 
 
-func _enter( _args: Array ) -> void:
+func _enter( _args: Dictionary ) -> void:
 	
 	timer.start()
 	

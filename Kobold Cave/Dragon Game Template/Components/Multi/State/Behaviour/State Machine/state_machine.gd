@@ -26,7 +26,7 @@ signal state_entered( state: StateBehaviour )
 
 
 ## states this machine has access to, populated at creation and never updated!
-var stored_states: Dictionary = {}
+var stored_states: Dictionary[ StringName, StateBehaviour ] = {}
 ## the current state. To change this, use [annotation StateMachine.change_state]
 var current_state: StateBehaviour
 
@@ -161,7 +161,7 @@ func _property_get_revert( property: StringName ) -> Variant:
 	return null
 
 
-func _enter( _args: Array ) -> void:
+func _enter( _args: Dictionary ) -> void:
 	
 	if ( initial_state ):
 		
@@ -205,12 +205,12 @@ func add_state( state_to_add: StateBehaviour ) -> void:
 	pass
 
 ## Use this to change states
-func change_state( state_name: StringName, args: Array = [] ) -> void:
+func change_state( state_name: StringName, args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	
 	# double check we have this state
 	if ( stored_states.has( state_name ) ):
 		
-		var new_state := ( stored_states[ state_name ] as StateBehaviour )
+		var new_state: StateBehaviour = stored_states[ state_name ]
 		
 		if ( current_state ):
 			
@@ -222,7 +222,6 @@ func change_state( state_name: StringName, args: Array = [] ) -> void:
 			state_left.emit( current_state )
 			current_state.disable()
 		
-		#current_state = ( stored_states[ state_name ] as StateBehaviour )
 		current_state = new_state
 		current_state.enable()
 		current_state.enter( args )
@@ -249,7 +248,7 @@ func is_in_state( state_name: StringName ) -> bool:
 	return state_name == current_state.name
 
 
-func _on_child_state_change_requested( state_name: StringName, args: Array ) -> void:
+func _on_child_state_change_requested( state_name: StringName, args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	change_state( state_name, args )
 

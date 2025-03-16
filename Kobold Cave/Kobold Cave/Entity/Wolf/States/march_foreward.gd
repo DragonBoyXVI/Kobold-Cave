@@ -20,8 +20,8 @@ func _physics_process( delta: float ) -> void:
 	
 	if ( not wolf.is_on_floor() ):
 		
-		request_state( StateWolfAir.STATE_NAME, [ false ] )
+		request_state( StateWolfAir.STATE_NAME )
 	
 	if ( ray_wall.is_colliding() or not ray_floor.is_colliding() ):
 		
-		request_state( StateWolfIdle.STATE_NAME, [ true ] )
+		request_state( StateWolfIdle.STATE_NAME, { &"Flip on Leave": true } )

@@ -41,9 +41,9 @@ const SLOW_SLOW := 0.05
 var slow: float = SLOW_NORMAL
 
 
-const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -48.0 )
+const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -128.0 )
 
-func enter( args: Array = [] ) -> void:
+func enter( args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	super( args )
 	
 	if ( use_slow ):
@@ -80,13 +80,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 func _ready() -> void:
+	super()
 	
 	if ( Engine.is_editor_hint() ):
-		
-		set_process( false )
-		set_physics_process( false )
-		set_process_input( false )
-		set_process_unhandled_input( false )
 		return
 	
 	Settings.loaded.connect( _on_settings_updated )

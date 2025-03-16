@@ -31,7 +31,7 @@ func _ready() -> void:
 		return
 
 
-func _enter( _args: Array = [] ) -> void:
+func _enter( _args: Dictionary ) -> void:
 	
 	model.scale.y = 0.5
 	

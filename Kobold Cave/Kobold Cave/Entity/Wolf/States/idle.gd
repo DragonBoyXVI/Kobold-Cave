@@ -18,11 +18,10 @@ func _ready() -> void:
 	
 	wait_timer.timeout.connect( _on_wait_timer_timeout )
 
-func _enter( args: Array ) -> void:
+func _enter( args: Dictionary ) -> void:
 	
-	if ( args[ 0 ] ):
-		
-		flip_on_leave = args[ 0 ]
+	const arg_flip := &"Flip on Leave"
+	flip_on_leave = args[ arg_flip ]
 	
 	wait_timer.start()
 

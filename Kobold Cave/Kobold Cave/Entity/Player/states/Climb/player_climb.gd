@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	climb_speed = movement_stats.ground_speed / 2.0
 
-func _enter( _args: Array ) -> void:
+func _enter( _args: Dictionary ) -> void:
 	
 	var my_tile: Vector2i = climb_finder.ref_to_tile( ref_node )
 	var target_tile: Vector2i = climb_finder.current_tile_coords

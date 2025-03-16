@@ -5,3 +5,4 @@
 
 [node name="PlayerGrabbedLedge" instance=ExtResource("1_rme60")]
 script = ExtResource("2_6amod")
+default_enter_args = []

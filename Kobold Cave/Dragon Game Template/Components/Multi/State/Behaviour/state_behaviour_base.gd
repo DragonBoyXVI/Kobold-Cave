@@ -24,7 +24,7 @@ signal state_top_requested
 ## changing this at runtime has no effect
 @export var defer_change := false
 ## default enter arguments
-@export var default_enter_args: Array = []
+@export var default_enter_args: Dictionary[ StringName, Variant ] = {}
 
 
 func _ready() -> void:
@@ -42,19 +42,9 @@ func _ready() -> void:
 
 ## Called by a state machine to enter this state.
 ## also handles default args and given args
-func enter( args: Array[ Variant ] = [] ) -> void:
+func enter( args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	
-	if ( default_enter_args.size() > args.size() ):
-		
-		args.resize( default_enter_args.size() )
-	
-	for i: int in args.size():
-		
-		if ( args[ i ] == null ):
-			
-			args[ i ] = default_enter_args[ i ]
-	
-	_enter( args )
+	_enter( default_enter_args.merged( args, true ) )
 	entered.emit()
 
 ## Called by a state machine to leave this state
@@ -71,7 +61,7 @@ func state_change_is_valid( new_state: StateBehaviour ) -> bool:
 
 
 ## virtual for the enter function
-func _enter( _args: Array[ Variant ] ) -> void:
+func _enter( _args: Dictionary[ StringName, Variant ] ) -> void:
 	pass
 
 ## virtual for the leave function
@@ -85,7 +75,7 @@ func _change_is_valid( new_state: StateBehaviour ) -> bool:
 
 
 ## Call this function to request a state change
-func request_state( state_name: StringName, args: Array[ Variant ] = [] ) -> void:
+func request_state( state_name: StringName, args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	
 	state_change_requested.emit( state_name, args )
 
