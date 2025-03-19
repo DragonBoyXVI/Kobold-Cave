@@ -70,7 +70,6 @@ func set_follow_node( node: Node2D ) -> void:
 	
 	const state_name := &"FollowNode"
 	const arg_node := &"Node"
-	print( { arg_node: node } )
 	state_machine.change_state( state_name, { arg_node: node } )
 
 ## make the camera look at a global coord

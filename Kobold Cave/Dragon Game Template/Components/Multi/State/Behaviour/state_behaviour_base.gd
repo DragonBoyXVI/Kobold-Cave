@@ -27,6 +27,10 @@ signal state_top_requested
 @export var default_enter_args: Dictionary[ StringName, Variant ] = {}
 
 
+func _init() -> void:
+	
+	default_enter_args.make_read_only()
+
 func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):

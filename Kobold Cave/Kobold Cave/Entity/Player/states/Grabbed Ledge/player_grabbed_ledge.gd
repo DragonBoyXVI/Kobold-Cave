@@ -11,57 +11,19 @@ const TILE_SIZE := Vector2( 128.0, 128.0 )
 const PLAYER_OFFSET := Vector2( 100.0, 105.0 )
 
 
-@export var ledge_grabber: LedgeGrabDetector :
-	set( value ):
-		update_configuration_warnings.call_deferred()
-		
-		ledge_grabber = value
+const ARG_GRAB_POSITION := &"Grab Position"
+const ARG_GRAB_RIGHT := &"Grab Right"
+
+var grab_position: Vector2
+var grab_right_side: bool
 
 
-var grabbed_position: Vector2
-var grabbed_right_side: bool
-
-
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings := super()
+func _enter( args: Dictionary ) -> void:
 	
-	if ( not ledge_grabber ):
-		
-		const text := "GRABBER NEEDED AAAAAAAA"
-		warnings.append( text )
+	grab_position = args[ ARG_GRAB_POSITION ]
+	grab_right_side = args[ ARG_GRAB_RIGHT ]
 	
-	return warnings
-
-func _ready() -> void:
-	super()
-	
-	if ( Engine.is_editor_hint() ):
-		return
-	
-	ledge_grabber.found_grab_ledge.connect( _on_ledge_found )
-
-
-func _enter( _args: Dictionary ) -> void:
-	
-	#player.disable.call_deferred()
-	#await get_tree().physics_frame
-	#player.global_position = grabbed_position
-	#return
-	
-	player.reset_physics_interpolation()
-	player.velocity = Vector2.ZERO
-	player.global_position.y = grabbed_position.y
-	
-	PartManager.spawn_dust( grabbed_position )
-	
-	if ( grabbed_right_side ):
-		
-		model.scale.x = 1.0
-	else:
-		
-		model.scale.x = -1.0
-	
-	camera_focal.global_position = grabbed_position
+	camera_focal.global_position = grab_position
 
 func _physics_process( _delta: float ) -> void:
 	
@@ -80,13 +42,3 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return 
-
-
-func _on_ledge_found( grab_position: Vector2, grab_right_side: bool ) -> void:
-	
-	grabbed_position = grab_position
-	grabbed_right_side = grab_right_side
-	
-	if ( not can_process() ):
-		
-		request_state( STATE_NAME )

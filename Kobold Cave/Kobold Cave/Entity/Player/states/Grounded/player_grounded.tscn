@@ -6,10 +6,8 @@
 
 [node name="PlayerGrounded" instance=ExtResource("1_mesg0")]
 script = ExtResource("2_w1734")
-test = Dictionary[String, int]({})
 focal_curve = ExtResource("3_kr6ub")
 use_slow = true
-default_enter_args = []
 
 [node name="CyoteTimer" type="Timer" parent="." index="0"]
 unique_name_in_owner = true

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://br8lw72ghspj6"]
+
+[ext_resource type="PackedScene" uid="uid://f0y5yutdgyx2" path="res://Kobold Cave/Entity/Player/states/player_state_base.tscn" id="1_py7mu"]
+[ext_resource type="Script" uid="uid://ba1ix2caf42bf" path="res://Kobold Cave/Entity/Player/states/Climb To Ledge/player_climb_to_ledge.gd" id="2_qwbrf"]
+
+[node name="PlayerClimbToLedge" instance=ExtResource("1_py7mu")]
+script = ExtResource("2_qwbrf")
+default_enter_args = Dictionary[StringName, Variant]({
+&"Grab Position": Vector2(0, 0),
+&"Grab Right": false
+})

@@ -26,6 +26,8 @@ const story_levels: PackedStringArray = [
 	"res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn",
 	"res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn",
 	"res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn",
+	"res://Kobold Cave/Levels/Sketch/3/level_climb_the_drill.tscn",
+	"res://Kobold Cave/Levels/Sketch/4/level_gtfo.tscn"
 ]
 var story_position: int = -1
 
@@ -41,6 +43,10 @@ func story_advance() -> void:
 		await GUI.fade_in(  )
 		KoboldUtility.in_level_trans = false
 		KoboldRadio.room_unpause.emit()
+	else:
+		
+		# story beaten
+		get_tree().quit()
 
 
 #endregion story

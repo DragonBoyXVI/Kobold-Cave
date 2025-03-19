@@ -12,8 +12,6 @@ const ARG_NODE := &"Node"
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	print( args )
-	
 	if ( args[ ARG_NODE ] is Node2D ):
 		
 		node_to_follow = args[ ARG_NODE ]

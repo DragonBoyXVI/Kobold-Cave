@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2sv5wtxoty01"]
 
 [ext_resource type="PackedScene" uid="uid://cwxl8687gvrdn" path="res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn" id="1_28yhp"]
-[ext_resource type="Texture2D" uid="uid://d4ffqgkoy5bdo" path="res://Kobold Cave/placeholder.png" id="2_7jhht"]
+[ext_resource type="Texture2D" uid="uid://bbkaig01ab4g0" path="res://Kobold Cave/test.png" id="2_7jhht"]
 
 [node name="PlayerModel" instance=ExtResource("1_28yhp")]
 
@@ -9,4 +9,4 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="Root/Base" index="0"]
 texture = ExtResource("2_7jhht")
-offset = Vector2(0, -130)
+offset = Vector2(-20, -90)
