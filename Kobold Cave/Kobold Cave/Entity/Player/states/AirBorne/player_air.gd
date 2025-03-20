@@ -11,17 +11,15 @@ const STATE_NAME := &"PlayerAir"
 
 @onready var jump_timer := %jumpTimer as Timer
 @onready var stuck_timer := %StuckTimer as Timer
+@onready var grab_timer: Timer = %GrabTimer
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings := super()
+const ARG_GRAB_TIME := &"Grab Time"
+
+
+func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	return warnings
-
-
-func _enter( _args: Dictionary ) -> void:
-	
-	ledge_grabber.enable.call_deferred()
+	grab_timer.start( args[ ARG_GRAB_TIME ] )
 	stuck_timer.start()
 
 func _leave() -> void:
@@ -29,6 +27,8 @@ func _leave() -> void:
 	ledge_grabber.disable.call_deferred()
 	jump_timer.stop()
 	stuck_timer.stop()
+	grab_timer.stop()
+	
 	model.root.scale = Vector2.ONE
 	model.rotation = 0.0
 
@@ -111,3 +111,7 @@ func _on_stuck_timer_timeout() -> void:
 	
 	push_warning( "Falling forever are we?" )
 	KoboldRadio.player_reset_needed.emit( player )
+
+func _on_grab_timer_timeout() -> void:
+	
+	ledge_grabber.enable.call_deferred()

@@ -85,7 +85,11 @@ func logic_apply_longjump( direction: float ) -> void:
 	
 	logic_apply_jump( 0.75 )
 	
-	velocity.x += movement_stats.ground_speed * 2.0 * direction
+	var power := 2.0
+	if ( not is_on_floor() ):
+		
+		power = 1.25
+	velocity.x += movement_stats.ground_speed * power * direction
 
 
 var _i_frame_tween: Tween

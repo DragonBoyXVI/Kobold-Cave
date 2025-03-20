@@ -6,6 +6,9 @@
 [node name="PlayerAir" instance=ExtResource("1_564h3")]
 script = ExtResource("2_gme20")
 use_slow = true
+default_enter_args = Dictionary[StringName, Variant]({
+&"Grab Time": 0.2
+})
 
 [node name="jumpTimer" type="Timer" parent="." index="0"]
 unique_name_in_owner = true
@@ -20,4 +23,10 @@ process_callback = 0
 wait_time = 30.0
 one_shot = true
 
+[node name="GrabTimer" type="Timer" parent="." index="2"]
+unique_name_in_owner = true
+process_callback = 0
+one_shot = true
+
 [connection signal="timeout" from="StuckTimer" to="." method="_on_stuck_timer_timeout"]
+[connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]

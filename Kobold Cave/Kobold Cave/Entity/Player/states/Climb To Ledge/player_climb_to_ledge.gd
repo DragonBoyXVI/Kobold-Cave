@@ -100,6 +100,19 @@ func _physics_process( _delta: float ) -> void:
 		
 		request_state( PlayerAir.STATE_NAME )
 
+func _unhandled_input( event: InputEvent ) -> void:
+	super( event )
+	var window := get_window()
+	if ( window.is_input_handled() ): return
+	
+	if ( event.is_action_pressed( &"Jump" ) ):
+		
+		player.logic_apply_jump(  )
+		#request_state( PlayerAir.STATE_NAME )
+		
+		window.set_input_as_handled()
+		return
+
 
 func _on_ledge_grabber_found_ledge( ledge_position: Vector2, ledge_right_side: bool ) -> void:
 	
