@@ -17,13 +17,6 @@ const STATE_NAME := &"PlayerCrouched"
 var _toggle_crouch := true
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings := super()
-	
-	
-	
-	return warnings
-
 func _ready() -> void:
 	super()
 	
@@ -34,6 +27,7 @@ func _ready() -> void:
 func _enter( _args: Dictionary ) -> void:
 	
 	model.scale.y = 0.5
+	update_animation()
 	
 	if ( standing_shape and crouched_shape ):
 		
@@ -66,6 +60,13 @@ func _physics_process( delta: float ) -> void:
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
 	if ( get_window().is_input_handled() ): return
+	
+	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
+		
+		update_animation()
+		
+		get_window().set_input_as_handled()
+		return
 	
 	if ( event.is_action( &"Crouch" ) ):
 		
@@ -115,6 +116,17 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
+
+
+func update_animation() -> void:
+	
+	var dir: float = Input.get_axis( &"Move Left", &"Move Right" )
+	if ( is_zero_approx( dir ) ):
+		
+		model.animation_player.play( ANIM_IDLE )
+	else:
+		
+		model.animation_player.play( ANIM_RUN )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

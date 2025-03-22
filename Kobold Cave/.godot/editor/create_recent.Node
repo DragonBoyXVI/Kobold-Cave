@@ -1,9 +1,13 @@
-Timer
+Sprite2D
+Marker2D
+AnimatedSprite2D
+Node2D
+Node
 TileMapLayer
+Level
+Timer
 StateBehaviour
 CollisionShape2D
 TriggerCameraZoom
-Marker2D
 CameraBoundry
-Level
 Label

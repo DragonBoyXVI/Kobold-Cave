@@ -19,6 +19,8 @@ const ARG_GRAB_TIME := &"Grab Time"
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
+	model.animation_player.play( ANIM_FALL )
+	
 	grab_timer.start( args[ ARG_GRAB_TIME ] )
 	stuck_timer.start()
 

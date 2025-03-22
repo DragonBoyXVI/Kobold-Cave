@@ -1,12 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2sv5wtxoty01"]
+[gd_scene load_steps=9 format=3 uid="uid://c2sv5wtxoty01"]
 
-[ext_resource type="PackedScene" uid="uid://cwxl8687gvrdn" path="res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn" id="1_28yhp"]
+[ext_resource type="Script" uid="uid://v71k03e0i5jk" path="res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.gd" id="1_5gqdx"]
+[ext_resource type="AnimationLibrary" uid="uid://ck6ne32xcbv1x" path="res://Kobold Cave/Entity/Player/pc images/pc_anims.res" id="2_5gqdx"]
 [ext_resource type="Texture2D" uid="uid://bbkaig01ab4g0" path="res://Kobold Cave/test.png" id="2_7jhht"]
+[ext_resource type="Texture2D" uid="uid://55ol287sngil" path="res://Kobold Cave/Entity/Player/pc images/wb_run_0.png" id="3_37otm"]
+[ext_resource type="Texture2D" uid="uid://dtm710dbmcdx4" path="res://Kobold Cave/Entity/Player/pc images/wb_run_1.png" id="4_mpuqh"]
+[ext_resource type="Texture2D" uid="uid://c5a871l1shhbb" path="res://Kobold Cave/Entity/Player/pc images/wb_idle.png" id="5_x2r3k"]
+[ext_resource type="Texture2D" uid="uid://bqoe55c00w8bm" path="res://Kobold Cave/Entity/Player/pc images/wd_fall.png" id="6_5gqdx"]
 
-[node name="PlayerModel" instance=ExtResource("1_28yhp")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2r3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_37otm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mpuqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
-[node name="Base" type="Node2D" parent="Root" index="0"]
+[node name="PlayerModel" type="Node2D" node_paths=PackedStringArray("animation_player", "root")]
+editor_description = "A model for animation. i dont like having game stuff tied to animation."
+script = ExtResource("1_5gqdx")
+animation_player = NodePath("AnimationPlayer")
+root = NodePath("Root")
 
-[node name="Sprite2D" type="Sprite2D" parent="Root/Base" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../Root")
+libraries = {
+&"": ExtResource("2_5gqdx")
+}
+
+[node name="Root" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Base" type="Node2D" parent="Root"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Root/Base"]
+visible = false
 texture = ExtResource("2_7jhht")
 offset = Vector2(-20, -90)
+
+[node name="AnimRun" type="AnimatedSprite2D" parent="Root/Base"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_x2r3k")
+offset = Vector2(0, -70)
+
+[node name="SprIdle" type="Sprite2D" parent="Root/Base"]
+texture = ExtResource("5_x2r3k")
+offset = Vector2(0, -70)
+
+[node name="SprAir" type="Sprite2D" parent="Root/Base"]
+visible = false
+texture = ExtResource("6_5gqdx")
+offset = Vector2(0, -70)
+
+[node name="LedgeGrabPoint" type="Marker2D" parent="."]
+position = Vector2(31, -99)

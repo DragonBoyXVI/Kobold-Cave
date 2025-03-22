@@ -42,9 +42,14 @@ func tile_blocks_grab( tile_body: TileMapLayer, coords: Vector2i ) -> bool:
 	
 	if ( tile_data ):
 		
-		if ( tile_data.get_custom_data( DATA_GRAB_PASS ) ):
+		if ( tile_data.has_custom_data( DATA_GRAB_PASS ) ):
 			
-			return false
+			if ( tile_data.get_custom_data( DATA_GRAB_PASS ) ):
+				
+				return false
+			else:
+				
+				return true
 		else:
 			
 			return true

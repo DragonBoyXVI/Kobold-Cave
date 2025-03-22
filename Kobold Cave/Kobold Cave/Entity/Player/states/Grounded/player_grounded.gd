@@ -72,6 +72,8 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
 		
 		update_model_direction()
+		get_window().set_input_as_handled()
+		return
 	
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
@@ -110,10 +112,14 @@ func _unhandled_input( event: InputEvent ) -> void:
 ## used to make the model face the right way
 func update_model_direction() -> void:
 	
-		var dir: float = signf( Input.get_axis( &"Move Left", &"Move Right" ) )
-		if ( dir != 0.0 ):
-			
-			model.scale.x = dir
+	var dir: float = signf( Input.get_axis( &"Move Left", &"Move Right" ) )
+	if ( dir != 0.0 ):
+		
+		model.scale.x = dir
+		model.animation_player.play( ANIM_RUN )
+	else:
+		
+		model.animation_player.play( ANIM_IDLE )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
