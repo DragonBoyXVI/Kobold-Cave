@@ -1,9 +1,0 @@
-res://test_world.tscn
-res://Dragon Game Template/default_theme.tres
-res://Kobold Cave/new_tile_set.tres
-res://Kobold Cave/Shaders/wave.gdshader
-res://Kobold Cave/Entity/Player/player.tscn
-res://Kobold Cave/Entity/Player/player_model.tscn
-res://Kobold Cave/Entity/Player/pc images/pc_anims.res
-res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.tscn
-res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.gd
