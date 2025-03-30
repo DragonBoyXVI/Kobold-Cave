@@ -9,26 +9,20 @@ const STATE_NAME := &"PlayerGrabbedLedge"
 
 const TILE_SIZE := Vector2( 128.0, 128.0 )
 const PLAYER_OFFSET := Vector2( 100.0, 105.0 )
+const ARG_GRAB_INFO := &"Grab Info"
 
-
-const ARG_GRAB_POSITION := &"Grab Position"
-const ARG_GRAB_RIGHT := &"Grab Right"
-
-var grab_position: Vector2
-var grab_right_side: bool
-
+var current_grab: LedgeGrabInfo
 
 var input_faces_away: bool = false
 
 
 func _enter( args: Dictionary ) -> void:
 	
-	grab_position = args[ ARG_GRAB_POSITION ]
-	grab_right_side = args[ ARG_GRAB_RIGHT ]
+	current_grab = args[ ARG_GRAB_INFO ]
 	
-	camera_focal.global_position = grab_position
+	camera_focal.global_position = current_grab.grab_position
 	
-	if ( grab_right_side ):
+	if ( current_grab.grab_to_the_right ):
 		
 		input_faces_away = Input.is_action_pressed( &"Move Left" )
 	else:
@@ -50,7 +44,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		if ( input_faces_away ):
 			
 			var dir: float
-			if ( grab_right_side ):
+			if ( current_grab.grab_to_the_right ):
 				
 				dir = -1.0
 			else:
@@ -77,7 +71,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
 		
-		if ( grab_right_side ):
+		if ( current_grab.grab_to_the_right ):
 			
 			input_faces_away = Input.is_action_pressed( &"Move Left" )
 		else:
@@ -87,13 +81,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 		if ( input_faces_away ):
 			
 			var offset: float = TILE_SIZE.x * 2.0
-			if ( grab_right_side ):
+			if ( current_grab.grab_to_the_right ):
 				
 				offset *= -1.0
-			camera_focal.global_position.x = grab_position.x + offset
+			camera_focal.global_position.x = current_grab.grab_position.x + offset
 		else:
 			
-			camera_focal.global_position = grab_position
+			camera_focal.global_position = current_grab.grab_position
 		
 		get_window().set_input_as_handled()
 		return

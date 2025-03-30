@@ -11,7 +11,7 @@ const DEBUG_COLOR := Color( "YELLOW", 0.5 )
 
 const DATA_GRAB_PASS := "Grab Pass"
 
-signal found_grab_ledge( grab_position: Vector2, right_side: bool )
+signal found_grab_ledge( grab_info: LedgeGrabInfo )
 
 
 @export var tile_ref: Marker2D
@@ -56,8 +56,16 @@ func tile_blocks_grab( tile_body: TileMapLayer, coords: Vector2i ) -> bool:
 	
 	return false
 
+func emit_grabbed( grab_info: LedgeGrabInfo ) -> void:
+	
+	found_grab_ledge.emit( grab_info )
+
 
 func _on_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int ) -> void:
+	
+	var grab_info := LedgeGrabInfo.new()
+	grab_info.grabbed_node = body
+	grab_info.my_position = tile_ref.global_position
 	
 	if ( body is TileMapLayer ):
 		var tile_map: TileMapLayer = ( body as TileMapLayer )
@@ -75,10 +83,10 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int
 		if ( tile_blocks_grab( tile_map, found_coords + Vector2i.UP ) ):
 			return
 		
-		var grab_position: Vector2 = tile_map.to_global( tile_map.map_to_local( found_coords ) )
-		var grabbed_right_side: bool = ( ( found_coords.x - my_coords.x ) > 0 )
+		grab_info.grab_position = tile_map.to_global( tile_map.map_to_local( found_coords ) )
+		grab_info.grab_to_the_right = ( ( grab_info.grab_position.x - grab_info.my_position.x ) > 0 )
 		
-		found_grab_ledge.emit( grab_position, grabbed_right_side )
+		emit_grabbed( grab_info )
 
 
 func _util_on_child_entered_tree( node: Node ) -> void:
