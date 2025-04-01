@@ -10,6 +10,7 @@ const ARG_GRAB_INFO := &"Grab Info"
 
 
 @export var ledge_grabber: LedgeGrabDetector
+@export var ref_marker: Marker2D
 @export var player_shape: CollisionShape2D
 
 
@@ -28,6 +29,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ( not player_shape ):
 		
 		const text := "Provide the player shape to offset the player correctly"
+		warnings.append( text )
+	
+	if ( not ref_marker ):
+		
+		const text := "Ledge grabbing wont work without a ref marker!"
 		warnings.append( text )
 	
 	return warnings
@@ -60,7 +66,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	if ( not Engine.is_in_physics_frame() ):
 		await get_tree().physics_frame
 	
-	var ray_query := PhysicsRayQueryParameters2D.create( grab_info.my_position, grab_info.grab_position, 0b1 )
+	var ray_query := PhysicsRayQueryParameters2D.create( ref_marker.global_position, grab_info.grab_position, 0b1 )
 	var direct_state := player.get_world_2d().direct_space_state
 	var ray_result: Dictionary = direct_state.intersect_ray( ray_query )
 	if ( ray_result.is_empty() ):

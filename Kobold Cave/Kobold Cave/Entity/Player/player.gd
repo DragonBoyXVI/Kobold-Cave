@@ -73,6 +73,10 @@ func _ready() -> void:
 	
 	KoboldRadio.ui_connect_health.emit( health_node.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
+	
+	state_machine.state_entered.connect( func( state: StateBehaviour ) -> void:
+		print( state.name )
+		pass )
 
 
 func logic_apply_backflip( direction: float ) -> void:

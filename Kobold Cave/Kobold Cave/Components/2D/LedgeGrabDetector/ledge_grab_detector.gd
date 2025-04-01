@@ -62,16 +62,23 @@ func emit_grabbed( grab_info: LedgeGrabInfo ) -> void:
 
 
 func _on_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int ) -> void:
-	
 	var grab_info := LedgeGrabInfo.new()
-	grab_info.grabbed_node = body
-	grab_info.my_position = tile_ref.global_position
 	
 	if ( body is TileMapLayer ):
 		var tile_map: TileMapLayer = ( body as TileMapLayer )
 		
 		var found_coords: Vector2i = tile_map.get_coords_for_body_rid( body_rid )
 		var my_coords: Vector2i = ( tile_map.local_to_map( tile_map.to_local( tile_ref.global_position ) ) )
+		
+		# solve inside tile
+		if ( found_coords == my_coords ):
+			
+			var found_position: Vector2 = tile_map.to_global( tile_map.map_to_local( found_coords ) )
+			if ( found_position.x > tile_ref.global_position.x ):
+				my_coords += Vector2i.LEFT
+			else:
+				my_coords += Vector2i.RIGHT
+		
 		
 		# something above/below me?
 		if ( tile_blocks_grab( tile_map, my_coords + Vector2i.UP ) ):
@@ -84,7 +91,7 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int
 			return
 		
 		grab_info.grab_position = tile_map.to_global( tile_map.map_to_local( found_coords ) )
-		grab_info.grab_to_the_right = ( ( grab_info.grab_position.x - grab_info.my_position.x ) > 0 )
+		grab_info.grab_to_the_right = ( ( found_coords.x - my_coords.x ) > 0 )
 		
 		emit_grabbed( grab_info )
 

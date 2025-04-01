@@ -23,6 +23,7 @@ func _ready() -> void:
 
 const story_levels: PackedStringArray = [
 	#"res://test_world.tscn",
+	"uid://oqjluqp5ko3j",
 	"res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn",
 	"res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn",
 	"res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn",

@@ -35,7 +35,7 @@ class_name PlayerState
 		camera_focal = new_focal
 
 
-const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -50.0 )
+const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -80.0 )
 
 const SLOW_NORMAL := 1.0
 const SLOW_SLOW := 0.05
