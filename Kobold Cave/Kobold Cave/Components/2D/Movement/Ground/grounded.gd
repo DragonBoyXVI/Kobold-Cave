@@ -1,5 +1,5 @@
 @tool
-extends Movement
+extends KCResource
 class_name MovementGround
 ## Component for ground movement
 ##
@@ -39,12 +39,6 @@ class_name MovementGround
 @export var air_move_control_speed: float = 1600.0
 
 
-func _init() -> void:
-	super()
-	
-	name = "MovementGround"
-
-
 ## walk to the left or right
 func logic_walk( body: CharacterBody2D, delta: float, direction: float ) -> void:
 	
@@ -66,10 +60,12 @@ func logic_walk( body: CharacterBody2D, delta: float, direction: float ) -> void
 	
 	body.velocity.x = move_toward( body.velocity.x, speed_target, speed_delta )
 
+
 ## apply an upward force
 func logic_apply_jump( body: CharacterBody2D, strength: float = 1.0 ) -> void:
 	
 	body.velocity.y -= ground_jump * strength
+
 
 ## move left and right while airborne
 func logic_air_strafe( body: CharacterBody2D, delta: float, direction: float ) -> void:
@@ -91,3 +87,26 @@ func logic_air_strafe( body: CharacterBody2D, delta: float, direction: float ) -
 			return
 	
 	body.velocity.x = move_toward( body.velocity.x, strafe_target, strafe_delta )
+
+## logic for gravity, use direction to fall faster/slower
+func logic_gravity( body: CharacterBody2D, delta: float, direction: float = 0.0 ) -> void:
+	
+	direction = remap( direction, -1.0, 1.0, 0.5, 1.5 )
+	body.velocity.y += delta * air_gravity * direction
+
+## logic for air drag
+func logic_terminal_velocity( body: CharacterBody2D, delta: float ) -> void:
+	
+	if ( body.velocity.length_squared() > air_terminal_squared ):
+		
+		var velocity_target: Vector2 = air_terminal_velocity * body.velocity.normalized()
+		var velocity_delta: float = delta * air_friction
+		body.velocity = body.velocity.move_toward( velocity_target, velocity_delta )
+
+## capsule for the full air routine.
+## gravity, terminal velocity, and strafing
+func routine_airborne( body: CharacterBody2D, delta: float, direction: Vector2 ) -> void:
+	
+	logic_air_strafe( body, delta, direction.x )
+	logic_gravity( body, delta, direction.y )
+	logic_terminal_velocity( body, delta )

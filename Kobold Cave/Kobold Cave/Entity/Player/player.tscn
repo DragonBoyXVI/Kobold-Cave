@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="3_cilv7"]
-[ext_resource type="Resource" uid="uid://dsv0qgalvyih5" path="res://Kobold Cave/Entity/Player/player_movement.tres" id="3_vs55y"]
+[ext_resource type="Resource" uid="uid://c08ur33jqim3p" path="res://Kobold Cave/Entity/Player/movement.tres" id="3_xq7jb"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="4_hijn5"]
 [ext_resource type="PackedScene" uid="uid://dpygy5a7d23qn" path="res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn" id="6_2vjjd"]
 [ext_resource type="PackedScene" uid="uid://bcwe3apiil7su" path="res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn" id="6_6ygbl"]
@@ -41,15 +41,15 @@ radius = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65dp7"]
 size = Vector2(80, 16)
 
-[node name="Player" node_paths=PackedStringArray("_i_frame_timer", "model", "health_node", "hitbox", "state_machine", "bomb_thrower") instance=ExtResource("1_my4pb")]
+[node name="Player" node_paths=PackedStringArray("bomb_thrower", "hitbox", "state_machine", "_i_frame_timer", "health_node", "model") instance=ExtResource("1_my4pb")]
 script = ExtResource("2_0u77g")
-_i_frame_timer = NodePath("IFramesTimer")
-movement_stats = ExtResource("3_vs55y")
-model = NodePath("PlayerModel")
-health_node = NodePath("NodeHealth")
+movement = ExtResource("3_xq7jb")
+bomb_thrower = NodePath("BombThrower")
 hitbox = NodePath("Hitbox2D")
 state_machine = NodePath("StateMachine")
-bomb_thrower = NodePath("BombThrower")
+_i_frame_timer = NodePath("IFramesTimer")
+health_node = NodePath("NodeHealth")
+model = NodePath("PlayerModel")
 metadata/_edit_group_ = true
 
 [node name="PlayerModel" parent="." index="0" instance=ExtResource("4_hijn5")]
@@ -64,14 +64,14 @@ initial_state = NodePath("PlayerAir")
 
 [node name="PlayerGrounded" parent="StateMachine" index="0" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("6_2vjjd")]
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
 [node name="PlayerAir" parent="StateMachine" index="1" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
@@ -79,19 +79,19 @@ camera_focal = NodePath("../../CameraFocal")
 standing_shape = NodePath("../../ShapeStanding")
 crouched_shape = NodePath("../../ShapeCrouching")
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
 [node name="PlayerDead" parent="StateMachine" index="3" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
 [node name="PlayerGrabbedLedge" parent="StateMachine" index="4" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("10_ox5nn")]
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 default_enter_args = Dictionary[StringName, Variant]({})
@@ -101,7 +101,7 @@ ledge_grabber = NodePath("../../LedgeGrabDetector")
 ref_marker = NodePath("../../TileRefPosition")
 player_shape = NodePath("../../ShapeStanding")
 player = NodePath("../..")
-movement_stats = ExtResource("3_vs55y")
+movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 

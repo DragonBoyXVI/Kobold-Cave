@@ -127,7 +127,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
-		player.logic_apply_jump(  )
+		movement.logic_apply_jump( player )
 		#request_state( PlayerAir.STATE_NAME )
 		
 		window.set_input_as_handled()

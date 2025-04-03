@@ -53,7 +53,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 			player.logic_apply_longjump( dir )
 		else:
 			
-			player.logic_apply_jump()
+			movement.logic_apply_jump( player )
 		
 		request_state( PlayerAir.STATE_NAME )
 		

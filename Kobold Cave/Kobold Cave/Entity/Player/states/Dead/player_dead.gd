@@ -19,10 +19,10 @@ func _physics_process( delta: float ) -> void:
 	
 	if ( player.is_on_floor() ):
 		
-		player.logic_walk( delta, 0.0 )
+		movement.logic_walk( player, delta, 0.0 )
 	else:
 		
-		player.routine_airborne( delta, Vector2.ZERO )
+		movement.routine_airborne( player, delta, Vector2.ZERO )
 	
 	player.move_and_slide()
 

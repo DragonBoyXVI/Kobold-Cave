@@ -5,9 +5,12 @@ class_name PlayerAir
 ##
 ## ditto
 
+
 const STATE_NAME := &"PlayerAir"
 
+
 @export var ledge_grabber: LedgeGrabDetector
+@export var bomb_thrower: BombThrower
 
 @onready var jump_timer := %jumpTimer as Timer
 @onready var stuck_timer := %StuckTimer as Timer
@@ -39,7 +42,7 @@ func _process( _delta: float ) -> void:
 	# stretch
 	const stretch_max := 0.15
 	
-	var fall_amount: float = absf( player.velocity.y ) / movement_stats.air_terminal_velocity
+	var fall_amount: float = absf( player.velocity.y ) / movement.air_terminal_velocity
 	
 	var stretch_y: float = 1.0 + ( stretch_max * fall_amount )
 	var stretch_x: float = 2.0 - stretch_y
@@ -49,7 +52,7 @@ func _process( _delta: float ) -> void:
 	# rotation
 	const rotate_max := deg_to_rad( 25.0 )
 	
-	var rotate_amount: float = player.velocity.x / movement_stats.air_terminal_velocity
+	var rotate_amount: float = player.velocity.x / movement.air_terminal_velocity
 	model.rotation = rotate_max * rotate_amount
 
 func _physics_process( delta: float ) -> void:
@@ -66,8 +69,7 @@ func _physics_process( delta: float ) -> void:
 		direction.y = Input.get_axis( &"Move Up", &"Move Down" )
 	direction.x *= slow
 	
-	player.routine_airborne( delta, direction )
-	
+	movement.routine_airborne( player, delta, direction )
 	player.move_and_slide()
 	
 	if ( player.is_on_floor() ):
@@ -76,7 +78,7 @@ func _physics_process( delta: float ) -> void:
 		
 		if ( not jump_timer.is_stopped() ):
 			
-			player.logic_apply_jump()
+			movement.logic_apply_jump( player )
 			return
 		
 		if ( Input.is_action_pressed( &"Crouch" ) ):
@@ -103,7 +105,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		dir.x = model.scale.x
 		dir.y -= 0.8
 		
-		player.bomb_thrower.throw_bomb( dir.normalized(), player.get_real_velocity() )
+		bomb_thrower.throw_bomb( dir.normalized(), player.get_real_velocity() )
 		
 		get_window().set_input_as_handled()
 		return

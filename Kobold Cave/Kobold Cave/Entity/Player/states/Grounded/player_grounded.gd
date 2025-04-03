@@ -51,8 +51,7 @@ func _physics_process( delta: float ) -> void:
 	
 	var direction := Input.get_axis( &"Move Left", &"Move Right" )
 	direction *= slow
-	player.logic_walk( delta, direction )
-	
+	movement.logic_walk( player, delta, direction )
 	player.move_and_slide()
 	
 	if ( not player.is_on_floor() ):
@@ -77,7 +76,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
-		player.logic_apply_jump()
+		movement.logic_apply_jump( player )
 		request_state( PlayerAir.STATE_NAME )
 		
 		PartManager.spawn_dust( player.position )

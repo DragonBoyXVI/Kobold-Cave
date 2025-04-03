@@ -15,14 +15,14 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		player = new_player
-		if ( player and player.movement_stats ):
+		if ( player and not movement ):
 			
-			movement_stats = player.movement_stats
-@export var movement_stats: MovementData : 
-	set( new_stats ):
-		update_configuration_warnings.call_deferred()
+			movement = player.movement
+@export var movement: MovementGround:
+	set( new ):
+		movement = new
 		
-		movement_stats = new_stats
+		update_configuration_warnings()
 @export var model: DragonModel2D :
 	set( new_model ):
 		update_configuration_warnings.call_deferred()
@@ -33,7 +33,6 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		camera_focal = new_focal
-
 
 const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -80.0 )
 
@@ -78,9 +77,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 		const text := "Please provide a camera focal point!"
 		warnings.append( text )
 	
-	if ( not movement_stats ):
+	if ( not movement ):
 		
-		const text := "We want the players movement stats! Either resupply the player node or place the resource here."
+		const text := "No movement, this is here for code convinenceehege"
 		warnings.append( text )
 	
 	return warnings

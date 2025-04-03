@@ -14,14 +14,8 @@ const STATE_NAME := &"PlayerCrouched"
 
 @onready var uncrouch_timer := %UncrouchTimer as Timer
 
+
 var _toggle_crouch := true
-
-
-func _ready() -> void:
-	super()
-	
-	if ( Engine.is_editor_hint() ):
-		return
 
 
 func _enter( _args: Dictionary ) -> void:
@@ -50,7 +44,7 @@ func _physics_process( delta: float ) -> void:
 	var direction := Input.get_axis( &"Move Left", &"Move Right" )
 	direction *= 0.25 * slow
 	
-	player.logic_walk( delta, direction )
+	movement.logic_walk( player, delta, direction )
 	player.move_and_slide()
 	
 	if ( not player.is_on_floor() ):

@@ -76,8 +76,10 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_index: int
 			var found_position: Vector2 = tile_map.to_global( tile_map.map_to_local( found_coords ) )
 			if ( found_position.x > tile_ref.global_position.x ):
 				my_coords += Vector2i.LEFT
+				print( " left " )
 			else:
 				my_coords += Vector2i.RIGHT
+				print( " right " )
 		
 		
 		# something above/below me?

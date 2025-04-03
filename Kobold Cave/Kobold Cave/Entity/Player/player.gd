@@ -6,6 +6,13 @@ class_name Player
 ## yuyg
 
 
+@export var movement: MovementGround
+
+@export var bomb_thrower: BombThrower
+@export var hitbox: Hitbox2D
+@export var state_machine: StateMachine
+
+
 var _flashing_lights: bool
 
 
@@ -74,6 +81,8 @@ func _ready() -> void:
 	KoboldRadio.ui_connect_health.emit( health_node.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
 	
+	print( movement )
+	
 	state_machine.state_entered.connect( func( state: StateBehaviour ) -> void:
 		print( state.name )
 		pass )
@@ -81,19 +90,19 @@ func _ready() -> void:
 
 func logic_apply_backflip( direction: float ) -> void:
 	
-	logic_apply_jump( 1.25 )
+	movement.logic_apply_jump( self, 1.25 )
 	
-	velocity.x += movement_stats.ground_speed * 0.05 * direction
+	velocity.x += movement.ground_speed * 0.05 * direction
 
 func logic_apply_longjump( direction: float ) -> void:
 	
-	logic_apply_jump( 0.75 )
+	movement.logic_apply_jump( self, 0.75 )
 	
 	var power := 2.0
 	if ( not is_on_floor() ):
 		
 		power = 1.25
-	velocity.x += movement_stats.ground_speed * power * direction
+	velocity.x += movement.ground_speed * power * direction
 
 
 var _i_frame_tween: Tween
