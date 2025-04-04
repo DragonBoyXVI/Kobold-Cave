@@ -50,7 +50,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 			else:
 				
 				dir = 1.0
-			player.logic_apply_longjump( dir )
+			movement.logic_apply_longjump( player, dir )
 		else:
 			
 			movement.logic_apply_jump( player )

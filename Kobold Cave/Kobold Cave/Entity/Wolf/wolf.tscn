@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdnubucseh6ix"]
+[gd_scene load_steps=19 format=3 uid="uid://cdnubucseh6ix"]
 
-[ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_2j47d"]
 [ext_resource type="Script" uid="uid://dt6t6t4lcx3tb" path="res://Kobold Cave/Entity/Wolf/wolf.gd" id="2_c5c4t"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="3_6feir"]
-[ext_resource type="Resource" uid="uid://q6gst07iemw5" path="res://Kobold Cave/Entity/Wolf/movement.tres" id="3_8plix"]
+[ext_resource type="Resource" uid="uid://djnktmxppw1h1" path="res://Kobold Cave/Entity/Wolf/movement.tres" id="3_8plix"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="4_sg76n"]
 [ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="5_arsdn"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="6_5fft6"]
@@ -18,7 +17,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13x5"]
 size = Vector2(120, 68)
 
-[sub_resource type="Resource" id="Resource_hhi7x"]
+[sub_resource type="Resource" id="Resource_6it0c"]
 resource_local_to_scene = true
 script = ExtResource("5_arsdn")
 ignore_max = true
@@ -39,78 +38,79 @@ element = 5
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkqiw"]
 radius = 48.0
 
-[node name="Wolf" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine") instance=ExtResource("1_2j47d")]
+[node name="Wolf" type="CharacterBody2D" node_paths=PackedStringArray("health_node", "model")]
+z_index = 5
+collision_layer = 2
 script = ExtResource("2_c5c4t")
-movement_stats = ExtResource("3_8plix")
-model = NodePath("FlipPivot/PlayerModel")
 health_node = NodePath("NodeHealth")
-hitbox = NodePath("Hitbox2D")
-state_machine = NodePath("StateMachine")
+model = NodePath("FlipPivot/PlayerModel")
 metadata/_edit_group_ = true
 
-[node name="FlipPivot" type="Node2D" parent="." index="0"]
+[node name="FlipPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="PlayerModel" parent="FlipPivot" index="0" instance=ExtResource("3_6feir")]
+[node name="PlayerModel" parent="FlipPivot" instance=ExtResource("3_6feir")]
 modulate = Color(1, 0, 0, 1)
 
-[node name="RayFloor" type="RayCast2D" parent="FlipPivot" index="1"]
+[node name="RayFloor" type="RayCast2D" parent="FlipPivot"]
 position = Vector2(60, 0)
 
-[node name="RayWall" type="RayCast2D" parent="FlipPivot" index="2"]
+[node name="RayWall" type="RayCast2D" parent="FlipPivot"]
 position = Vector2(60, -32)
 target_position = Vector2(50, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_k13x5")
 
-[node name="NodeHealth" parent="." index="2" instance=ExtResource("4_sg76n")]
-health = SubResource("Resource_hhi7x")
+[node name="NodeHealth" parent="." instance=ExtResource("4_sg76n")]
+health = SubResource("Resource_6it0c")
 
-[node name="Hitbox2D" parent="." index="3" node_paths=PackedStringArray("event_recivers") instance=ExtResource("6_5fft6")]
+[node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("6_5fft6")]
 position = Vector2(0, -34)
 event_recivers = [NodePath("../NodeHealth")]
 team_mask = ExtResource("7_cgkj6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("CircleShape2D_hgrgg")
 debug_color = Color(0, 0, 1, 0.4)
 
-[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state") instance=ExtResource("8_x7y00")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_x7y00")]
 initial_state = NodePath("Idle")
-default_enter_args = Dictionary[StringName, Variant]({})
 
-[node name="MarchForeward" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("wolf", "pivot", "ray_floor", "ray_wall")]
+[node name="MarchForeward" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf", "pivot", "ray_floor", "ray_wall")]
 script = ExtResource("10_d2b60")
 wolf = NodePath("../..")
+movement = ExtResource("3_8plix")
 pivot = NodePath("../../FlipPivot")
 ray_floor = NodePath("../../FlipPivot/RayFloor")
 ray_wall = NodePath("../../FlipPivot/RayWall")
 
-[node name="Idle" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("wolf", "wait_timer")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf", "wait_timer")]
 script = ExtResource("11_6x55g")
 wolf = NodePath("../..")
+movement = ExtResource("3_8plix")
 wait_timer = NodePath("Timer")
 default_enter_args = Dictionary[StringName, Variant]({
 &"Flip on Leave": true
 })
 
-[node name="Timer" type="Timer" parent="StateMachine/Idle" index="0"]
+[node name="Timer" type="Timer" parent="StateMachine/Idle"]
 process_callback = 0
 wait_time = 1.25
 one_shot = true
 
-[node name="Airborne" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("wolf")]
+[node name="Airborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf")]
 script = ExtResource("12_oyrkr")
 wolf = NodePath("../..")
+movement = ExtResource("3_8plix")
 
-[node name="Hurtbox2D" parent="." index="5" node_paths=PackedStringArray("exclude") instance=ExtResource("13_q6r7d")]
+[node name="Hurtbox2D" parent="." node_paths=PackedStringArray("exclude") instance=ExtResource("13_q6r7d")]
 position = Vector2(0, -32)
 exclude = [NodePath("../Hitbox2D")]
 team_mask = ExtResource("7_cgkj6")
 event = SubResource("Resource_bs8k3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 shape = SubResource("CircleShape2D_qkqiw")
 debug_color = Color(1, 0, 0, 0.4)

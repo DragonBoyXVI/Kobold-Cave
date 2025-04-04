@@ -3,10 +3,7 @@ extends Entity
 class_name ExplodingGhost
 
 
-
-
-func logic_fly_in_direction( _delta: float, _direction: Vector2 ) -> void:
-	pass
+@export var bomb_thrower: BombThrower
 
 
 func _death() -> void:

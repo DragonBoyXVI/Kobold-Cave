@@ -66,6 +66,22 @@ func logic_apply_jump( body: CharacterBody2D, strength: float = 1.0 ) -> void:
 	
 	body.velocity.y -= ground_jump * strength
 
+func logic_apply_backflip( body: CharacterBody2D, direction: float ) -> void:
+	
+	logic_apply_jump( body, 1.25 )
+	
+	body.velocity.x += ground_speed * 0.05 * direction
+
+func logic_apply_longjump( body: CharacterBody2D, direction: float ) -> void:
+	
+	logic_apply_jump( body, 0.75 )
+	
+	var power := 2.0
+	if ( not body.is_on_floor() ):
+		
+		power = 1.25
+	body.velocity.x += ground_speed * power * direction
+
 
 ## move left and right while airborne
 func logic_air_strafe( body: CharacterBody2D, delta: float, direction: float ) -> void:

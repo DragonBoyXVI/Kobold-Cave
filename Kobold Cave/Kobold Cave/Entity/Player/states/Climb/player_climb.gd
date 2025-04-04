@@ -18,7 +18,7 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
-	climb_speed = movement_stats.ground_speed / 2.0
+	#climb_speed = movement_stats.ground_speed / 2.0
 
 func _enter( _args: Dictionary ) -> void:
 	

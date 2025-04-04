@@ -15,9 +15,6 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		player = new_player
-		if ( player and not movement ):
-			
-			movement = player.movement
 @export var movement: MovementGround:
 	set( new ):
 		movement = new

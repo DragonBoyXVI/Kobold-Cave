@@ -1,6 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=26 format=3 uid="uid://cv22pcm2jgbaa"]
 
-[ext_resource type="PackedScene" uid="uid://b0y3e3k6tk6xw" path="res://Kobold Cave/Entity/entity_base.tscn" id="1_my4pb"]
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="3_cilv7"]
 [ext_resource type="Resource" uid="uid://c08ur33jqim3p" path="res://Kobold Cave/Entity/Player/movement.tres" id="3_xq7jb"]
@@ -26,7 +25,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 57)
 
-[sub_resource type="Resource" id="Resource_72db5"]
+[sub_resource type="Resource" id="Resource_v02m0"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -39,11 +38,12 @@ element_heal_flag = 4
 radius = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65dp7"]
-size = Vector2(80, 16)
+size = Vector2(80, 4)
 
-[node name="Player" node_paths=PackedStringArray("bomb_thrower", "hitbox", "state_machine", "_i_frame_timer", "health_node", "model") instance=ExtResource("1_my4pb")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "hitbox", "state_machine", "_i_frame_timer", "health_node", "model")]
+z_index = 5
+collision_layer = 2
 script = ExtResource("2_0u77g")
-movement = ExtResource("3_xq7jb")
 bomb_thrower = NodePath("BombThrower")
 hitbox = NodePath("Hitbox2D")
 state_machine = NodePath("StateMachine")
@@ -52,30 +52,30 @@ health_node = NodePath("NodeHealth")
 model = NodePath("PlayerModel")
 metadata/_edit_group_ = true
 
-[node name="PlayerModel" parent="." index="0" instance=ExtResource("4_hijn5")]
+[node name="PlayerModel" parent="." instance=ExtResource("4_hijn5")]
 
-[node name="MudlickExample" type="Sprite2D" parent="PlayerModel" index="2"]
+[node name="MudlickExample" type="Sprite2D" parent="PlayerModel"]
 visible = false
 texture = ExtResource("20_65dp7")
 offset = Vector2(0, -285)
 
-[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state") instance=ExtResource("3_cilv7")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_cilv7")]
 initial_state = NodePath("PlayerAir")
 
-[node name="PlayerGrounded" parent="StateMachine" index="0" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("6_2vjjd")]
+[node name="PlayerGrounded" parent="StateMachine" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("6_2vjjd")]
 player = NodePath("../..")
 movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerAir" parent="StateMachine" index="1" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
+[node name="PlayerAir" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "player", "model", "camera_focal") instance=ExtResource("7_6youo")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 player = NodePath("../..")
 movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerCrouched" parent="StateMachine" index="2" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model", "camera_focal") instance=ExtResource("9_v25kg")]
+[node name="PlayerCrouched" parent="StateMachine" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model", "camera_focal") instance=ExtResource("9_v25kg")]
 standing_shape = NodePath("../../ShapeStanding")
 crouched_shape = NodePath("../../ShapeCrouching")
 player = NodePath("../..")
@@ -83,20 +83,20 @@ movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerDead" parent="StateMachine" index="3" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
+[node name="PlayerDead" parent="StateMachine" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("11_ypnxr")]
 player = NodePath("../..")
 movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="PlayerGrabbedLedge" parent="StateMachine" index="4" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("10_ox5nn")]
+[node name="PlayerGrabbedLedge" parent="StateMachine" node_paths=PackedStringArray("player", "model", "camera_focal") instance=ExtResource("10_ox5nn")]
 player = NodePath("../..")
 movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 default_enter_args = Dictionary[StringName, Variant]({})
 
-[node name="PlayerClimbToLedge" parent="StateMachine" index="5" node_paths=PackedStringArray("ledge_grabber", "ref_marker", "player_shape", "player", "model", "camera_focal") instance=ExtResource("12_v02m0")]
+[node name="PlayerClimbToLedge" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "ref_marker", "player_shape", "player", "model", "camera_focal") instance=ExtResource("12_v02m0")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 ref_marker = NodePath("../../TileRefPosition")
 player_shape = NodePath("../../ShapeStanding")
@@ -105,59 +105,59 @@ movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
-[node name="ShapeStanding" type="CollisionShape2D" parent="." index="2"]
+[node name="ShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -61)
 shape = ExtResource("13_72db5")
 
-[node name="ShapeCrouching" type="CollisionShape2D" parent="." index="3"]
+[node name="ShapeCrouching" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28.5)
 shape = SubResource("RectangleShape2D_r432o")
 disabled = true
 
-[node name="CameraFocal" parent="." index="4" instance=ExtResource("6_6ygbl")]
+[node name="CameraFocal" parent="." instance=ExtResource("6_6ygbl")]
 position = Vector2(0, -80)
 
-[node name="Sprite2D" type="Sprite2D" parent="CameraFocal" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="CameraFocal"]
 texture = ExtResource("9_0t3dc")
 
-[node name="TileRefPosition" type="Marker2D" parent="." index="5"]
+[node name="TileRefPosition" type="Marker2D" parent="."]
 editor_description = "Use the position of this node when checking what tile we are in."
-position = Vector2(0, -40)
+position = Vector2(0, -70)
 
-[node name="NodeHealth" parent="." index="6" instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_72db5")
+[node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
+health = SubResource("Resource_v02m0")
 armour = ExtResource("16_84pue")
 
-[node name="Hitbox2D" parent="." index="7" node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
+[node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
 position = Vector2(0, -60)
 event_recivers = [NodePath("../NodeHealth")]
 team_mask = ExtResource("18_ikaeu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("CircleShape2D_v02m0")
 debug_color = Color(0, 0, 1, 0.4)
 
-[node name="IFramesTimer" type="Timer" parent="." index="8"]
+[node name="IFramesTimer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 1.25
 one_shot = true
 
-[node name="BombThrower" parent="." index="9" node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
+[node name="BombThrower" parent="." node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
 position = Vector2(0, -80)
 throw_radius = 96.0
 cooldown_timer = NodePath("Timer")
 starts_empty = true
 
-[node name="Timer" type="Timer" parent="BombThrower" index="0"]
+[node name="Timer" type="Timer" parent="BombThrower"]
 process_callback = 0
 wait_time = 0.25
 one_shot = true
 
-[node name="LedgeGrabDetector" parent="." index="10" node_paths=PackedStringArray("tile_ref") instance=ExtResource("19_65dp7")]
-position = Vector2(0, -100)
+[node name="LedgeGrabDetector" parent="." node_paths=PackedStringArray("tile_ref") instance=ExtResource("19_65dp7")]
+position = Vector2(0, -120)
 tile_ref = NodePath("../TileRefPosition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector"]
 shape = SubResource("RectangleShape2D_65dp7")
 debug_color = Color(1, 1, 0, 0.5)
 

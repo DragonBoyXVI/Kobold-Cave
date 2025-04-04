@@ -6,6 +6,7 @@ const STATE_NAME := &"MarchForeward"
 
 
 @export var wolf: Wolf
+@export var movement: MovementGround
 @export var pivot: Node2D
 
 @export var ray_floor: RayCast2D
@@ -15,7 +16,7 @@ const STATE_NAME := &"MarchForeward"
 func _physics_process( delta: float ) -> void:
 	
 	var dir: float = 1.0 * pivot.scale.x
-	wolf.logic_walk( delta, dir )
+	movement.logic_walk( wolf, delta, dir )
 	wolf.move_and_slide()
 	
 	if ( not wolf.is_on_floor() ):

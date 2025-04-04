@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://car8lov7qvebp"]
 
 [ext_resource type="Script" uid="uid://chqesjqvwm64a" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd" id="1_5aatd"]
-[ext_resource type="Resource" uid="uid://cnfm5l2hlu1yh" path="res://Kobold Cave/Entity/Exploding Ghost/movement.tres" id="2_56hmm"]
+[ext_resource type="Resource" uid="uid://vltf7hy6w3im" path="res://Kobold Cave/Entity/Exploding Ghost/movement.tres" id="2_56hmm"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="2_srrlq"]
 [ext_resource type="Script" uid="uid://bvrqhrw7vp6qj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.gd" id="3_2q3f0"]
 [ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="4_2s2sw"]
@@ -31,16 +31,13 @@ radius = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_je6jb"]
 radius = 64.0
 
-[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("model", "health_node", "hitbox", "state_machine", "bomb_thrower")]
+[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "health_node", "model")]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_5aatd")
-movement_stats = ExtResource("2_56hmm")
-model = NodePath("PlayerModel")
-health_node = NodePath("NodeHealth")
-hitbox = NodePath("Hitbox2D")
-state_machine = NodePath("StateMachine")
 bomb_thrower = NodePath("BombThrower")
+health_node = NodePath("NodeHealth")
+model = NodePath("PlayerModel")
 metadata/_custom_type_script = "uid://bhncwprp3y7lj"
 metadata/_edit_group_ = true
 
@@ -90,6 +87,7 @@ metadata/_custom_type_script = "uid://cjxpiamvofga"
 [node name="FollowPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("9_pvdyc")
 ghost = NodePath("../..")
+movement = ExtResource("2_56hmm")
 default_enter_args = Dictionary[StringName, Variant]({
 &"Player": null
 })
@@ -97,6 +95,7 @@ default_enter_args = Dictionary[StringName, Variant]({
 [node name="NoAi" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("10_56hmm")
 ghost = NodePath("../..")
+movement = ExtResource("2_56hmm")
 
 [node name="LifeTimer" type="Timer" parent="."]
 process_callback = 0

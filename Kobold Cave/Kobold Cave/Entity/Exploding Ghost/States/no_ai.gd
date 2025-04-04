@@ -4,7 +4,13 @@ extends StateBehaviour
 
 
 @export var ghost: ExplodingGhost
+@export var movement: MovementFlying
 
+
+func _physics_process( delta: float ) -> void:
+	
+	movement.logic_fly_in_place( ghost, delta )
+	ghost.move_and_slide()
 
 func _on_area_see_player_body_entered( body: Node2D ) -> void:
 	

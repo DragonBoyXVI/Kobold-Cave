@@ -4,6 +4,7 @@ extends StateBehaviour
 
 
 @export var ghost: ExplodingGhost
+@export var movement: MovementFlying
 
 var player: Player
 
@@ -28,7 +29,7 @@ func _physics_process( delta: float ) -> void:
 		request_state( &"NoAi" )
 		return
 	
-	ghost.logic_fly_to_point( delta, player.global_position )
+	movement.logic_fly_to_point( ghost, delta, player.global_position )
 	ghost.move_and_slide()
 	
 	if ( ghost.position.distance_squared_to( player.global_position ) < explode_dis ):

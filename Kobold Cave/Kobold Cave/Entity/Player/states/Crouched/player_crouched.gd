@@ -89,11 +89,11 @@ func _unhandled_input( event: InputEvent ) -> void:
 		var model_dir: float = signf( model.scale.x )
 		if ( model_dir == direction ):
 			
-			player.logic_apply_longjump( direction )
+			movement.logic_apply_longjump( player, direction )
 			camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
 		else:
 			
-			player.logic_apply_backflip( direction )
+			movement.logic_apply_backflip( player, direction )
 		
 		#camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
 		

@@ -6,7 +6,7 @@ const STATE_NAME := &"Idle"
 
 
 @export var wolf: Wolf
-
+@export var movement: MovementGround
 @export var wait_timer: Timer
 
 
@@ -27,7 +27,7 @@ func _enter( args: Dictionary ) -> void:
 
 func _physics_process( delta: float ) -> void:
 	
-	wolf.logic_walk( delta, 0.0 )
+	movement.logic_walk( wolf, delta, 0.0 )
 	if ( wolf.velocity.length_squared() > 0.0 ):
 		
 		wolf.move_and_slide()
