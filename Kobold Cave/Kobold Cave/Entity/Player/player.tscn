@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://doe6toohpuk3t" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn" id="10_ox5nn"]
 [ext_resource type="PackedScene" uid="uid://cv04tdlilp0fm" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn" id="11_ypnxr"]
 [ext_resource type="PackedScene" uid="uid://br8lw72ghspj6" path="res://Kobold Cave/Entity/Player/states/Climb To Ledge/player_climb_to_ledge.tscn" id="12_v02m0"]
-[ext_resource type="Shape2D" uid="uid://deewmaof0le1r" path="res://Kobold Cave/Entity/Player/shape_box_stand.tres" id="13_72db5"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="14_er2h2"]
 [ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="16_84pue"]
 [ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="16_g8os4"]
@@ -22,10 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://b1ibt3fjhtfvd" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn" id="20_7lm0b"]
 [ext_resource type="Texture2D" uid="uid://c3a2ywqitkbyp" path="res://Kobold Cave/mudlick_example.png" id="20_65dp7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
-size = Vector2(76, 57)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v02m0"]
+size = Vector2(50, 122)
 
-[sub_resource type="Resource" id="Resource_v02m0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
+size = Vector2(76, 58)
+
+[sub_resource type="Resource" id="Resource_72db5"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -106,11 +108,11 @@ model = NodePath("../../PlayerModel")
 camera_focal = NodePath("../../CameraFocal")
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="."]
-position = Vector2(0, -61)
-shape = ExtResource("13_72db5")
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_v02m0")
 
 [node name="ShapeCrouching" type="CollisionShape2D" parent="."]
-position = Vector2(0, -28.5)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_r432o")
 disabled = true
 
@@ -125,7 +127,7 @@ editor_description = "Use the position of this node when checking what tile we a
 position = Vector2(0, -70)
 
 [node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_v02m0")
+health = SubResource("Resource_72db5")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]
