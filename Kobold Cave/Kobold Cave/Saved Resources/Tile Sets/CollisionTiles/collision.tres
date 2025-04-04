@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cnronmkm2bylm"]
+
+[ext_resource type="Texture2D" uid="uid://botvm4b35gnf3" path="res://Kobold Cave/Saved Resources/Tile Sets/CollisionTiles/new_gradient_texture_2d.tres" id="1_kyq0a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1cof"]
+resource_name = "Coll"
+texture = ExtResource("1_kyq0a")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "Breakable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "Grab Pass"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_y1cof")
