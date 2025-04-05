@@ -233,5 +233,5 @@ shape = SubResource("CircleShape2D_atdlg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yucyj")
+&"": SubResource("AnimationLibrary_yucyj")
 }

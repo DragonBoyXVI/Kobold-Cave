@@ -78,7 +78,8 @@ func _on_push_area_body_shape_entered( body_rid: RID, body: Node2D, _body_shape_
 		const data_breakable := "Breakable"
 		if ( cell_data.get_custom_data( data_breakable ) ):
 			
-			body_tilemap.set_cell( cell_coords )
+			#body_tilemap.erase_cell( cell_coords )
+			body_tilemap.set_cells_terrain_connect( [cell_coords], 0, -1 )
 
 func _on_animation_player_animation_finished( anim_name: StringName ) -> void:
 	
