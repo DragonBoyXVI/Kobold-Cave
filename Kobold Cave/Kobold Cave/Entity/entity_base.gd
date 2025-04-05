@@ -14,6 +14,10 @@ signal disabled
 @export var model: DragonModel2D
 
 
+func _init() -> void:
+	
+	collision_layer = 0b10
+
 func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):
@@ -33,6 +37,20 @@ func _ready() -> void:
 		health_node.pre_healed.connect( _on_node_health_pre_healed )
 		health_node.healed.connect( _on_node_health_healed )
 		health_node.died.connect( _on_node_health_died )
+
+func _property_can_revert( property: StringName ) -> bool:
+	const revertable: PackedStringArray = [
+		"collision_layer",
+	]
+	
+	return revertable.has( property )
+
+func _property_get_revert( property: StringName ) -> Variant:
+	
+	match property:
+		&"collision_layer": return 0b10
+	
+	return null
 
 
 func out_of_bounds() -> void:

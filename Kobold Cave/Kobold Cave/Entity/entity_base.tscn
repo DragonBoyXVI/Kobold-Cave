@@ -3,6 +3,5 @@
 [ext_resource type="Script" uid="uid://bhncwprp3y7lj" path="res://Kobold Cave/Entity/entity_base.gd" id="1_d0g12"]
 
 [node name="EntityBase" type="CharacterBody2D"]
-z_index = 5
 collision_layer = 2
 script = ExtResource("1_d0g12")
