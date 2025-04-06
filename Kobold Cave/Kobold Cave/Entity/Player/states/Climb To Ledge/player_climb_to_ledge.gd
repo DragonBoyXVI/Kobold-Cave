@@ -62,23 +62,9 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	# play a ledge scrable anim here
 	
-	# raycast to find the edge of the tile
-	if ( not Engine.is_in_physics_frame() ):
-		await get_tree().physics_frame
-	
-	var ray_query := PhysicsRayQueryParameters2D.create( ref_marker.global_position, grab_info.grab_position, 0b1 )
-	var direct_state := player.get_world_2d().direct_space_state
-	var ray_result: Dictionary = direct_state.intersect_ray( ray_query )
-	if ( ray_result.is_empty() ):
-		
-		request_state( PlayerAir.STATE_NAME, {
-			PlayerAir.ARG_GRAB_TIME: 2.0
-		} )
-		print( "lmao you missed" )
-		return
 	
 	# get the position of the player smushed up to the wall
-	var wall_position: Vector2 = ray_result[ "position" ]
+	var wall_position: Vector2 = grab_info.grab_position
 	var player_size: Rect2 = player_shape.shape.get_rect()
 	const size_offset: float = 0.5
 	

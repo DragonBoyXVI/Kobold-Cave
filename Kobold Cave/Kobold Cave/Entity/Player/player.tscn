@@ -43,6 +43,7 @@ radius = 50.0
 size = Vector2(80, 4)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "hitbox", "state_machine", "_i_frame_timer", "health_node", "model")]
+z_index = 1
 collision_layer = 2
 script = ExtResource("2_0u77g")
 bomb_thrower = NodePath("BombThrower")
@@ -100,7 +101,7 @@ default_enter_args = Dictionary[StringName, Variant]({})
 
 [node name="PlayerClimbToLedge" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "ref_marker", "player_shape", "player", "model", "camera_focal") instance=ExtResource("12_v02m0")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
-ref_marker = NodePath("../../TileRefPosition")
+ref_marker = NodePath("../../MarkPosition")
 player_shape = NodePath("../../ShapeStanding")
 player = NodePath("../..")
 movement = ExtResource("3_xq7jb")
@@ -121,10 +122,6 @@ position = Vector2(0, -80)
 
 [node name="Sprite2D" type="Sprite2D" parent="CameraFocal"]
 texture = ExtResource("9_0t3dc")
-
-[node name="TileRefPosition" type="Marker2D" parent="."]
-editor_description = "Use the position of this node when checking what tile we are in."
-position = Vector2(0, -70)
 
 [node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
 health = SubResource("Resource_65dp7")
@@ -155,12 +152,28 @@ process_callback = 0
 wait_time = 0.25
 one_shot = true
 
-[node name="LedgeGrabDetector" parent="." node_paths=PackedStringArray("tile_ref") instance=ExtResource("19_65dp7")]
+[node name="LedgeGrabDetector" parent="." node_paths=PackedStringArray("position_ref", "floor_ref", "ceiling_ref", "peek_height_ref") instance=ExtResource("19_65dp7")]
 position = Vector2(0, -120)
-tile_ref = NodePath("../TileRefPosition")
+position_ref = NodePath("../MarkPosition")
+floor_ref = NodePath("../MarkFloor")
+ceiling_ref = NodePath("../MarkCeiling")
+peek_height_ref = NodePath("../MarkPeek")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeGrabDetector"]
 shape = SubResource("RectangleShape2D_65dp7")
 debug_color = Color(1, 1, 0, 0.5)
+
+[node name="MarkPosition" type="Marker2D" parent="."]
+editor_description = "Use the position of this node when checking what tile we are in."
+position = Vector2(0, -70)
+
+[node name="MarkFloor" type="Marker2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="MarkCeiling" type="Marker2D" parent="."]
+position = Vector2(0, -160)
+
+[node name="MarkPeek" type="Marker2D" parent="."]
+position = Vector2(0, -144)
 
 [connection signal="timeout" from="IFramesTimer" to="." method="_on_i_frames_timer_timeout"]
