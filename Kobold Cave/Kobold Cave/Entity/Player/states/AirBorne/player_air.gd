@@ -74,7 +74,7 @@ func _physics_process( delta: float ) -> void:
 	
 	if ( player.is_on_floor() ):
 		
-		PartManager.spawn_dust( player.position )
+		PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 		
 		if ( not jump_timer.is_stopped() ):
 			

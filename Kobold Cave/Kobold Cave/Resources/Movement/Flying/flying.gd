@@ -1,4 +1,4 @@
-extends KCResource
+extends Resource
 class_name MovementFlying
 
 
@@ -15,10 +15,10 @@ func logic_fly_to_point( body: CharacterBody2D, delta: float, target_position: V
 	var target_angle: float
 	if ( body.is_on_ceiling() ):
 		
-		target_angle = ANGLE_DOWN
+		target_angle = Angle.DOWN
 	elif ( body.is_on_wall() ):
 		
-		target_angle = ANGLE_UP
+		target_angle = Angle.UP
 	else:
 		
 		target_angle = body.position.angle_to_point( target_position )

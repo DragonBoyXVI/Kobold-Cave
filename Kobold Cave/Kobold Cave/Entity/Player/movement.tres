@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MovementGround" load_steps=2 format=3 uid="uid://c08ur33jqim3p"]
 
-[ext_resource type="Script" uid="uid://dvwfnxb7rlu6b" path="res://Kobold Cave/Components/2D/Movement/Ground/grounded.gd" id="1_0twss"]
+[ext_resource type="Script" uid="uid://dvwfnxb7rlu6b" path="res://Kobold Cave/Resources/Movement/Ground/grounded.gd" id="1_0twss"]
 
 [resource]
 script = ExtResource("1_0twss")

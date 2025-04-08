@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MovementFlying" load_steps=2 format=3 uid="uid://vltf7hy6w3im"]
 
-[ext_resource type="Script" uid="uid://5k2g15fqfv2w" path="res://Kobold Cave/Components/2D/Movement/Flying/flying.gd" id="1_qf87x"]
+[ext_resource type="Script" uid="uid://5k2g15fqfv2w" path="res://Kobold Cave/Resources/Movement/Flying/flying.gd" id="1_qf87x"]
 
 [resource]
 script = ExtResource("1_qf87x")

@@ -170,7 +170,7 @@ position = Vector2(384, -128)
 
 [node name="TriggerCameraZoom" type="Node2D" parent="TrigCam2" index="2"]
 script = ExtResource("14_qhcp2")
-enter_zoom = Vector2(1.05, 1.05)
+enter_zoom = Vector2(1, 1)
 enter_time = 1.25
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://ccq3bxklty4a6"
@@ -216,7 +216,7 @@ metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TriggerCameraZoom" type="Node2D" parent="TrigCam3" index="2"]
 script = ExtResource("14_qhcp2")
-enter_zoom = Vector2(0.6, 0.6)
-enter_time = 2.0
+enter_zoom = Vector2(1, 1)
+enter_time = 1.25
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://ccq3bxklty4a6"

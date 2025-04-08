@@ -40,6 +40,34 @@ func _get_property_list() -> Array[ Dictionary ]:
 	
 	return properties
 
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings := super()
+	
+	if ( editor_is_enter_callable() ):
+		if ( bounds_enter.is_empty() ):
+			
+			const text := "No bounds set for enter call. (save to rid message)"
+			warnings.append( text )
+	
+	if ( editor_is_leave_callable() ):
+		if ( bounds_leave.is_empty() ):
+			
+			const text := "No bounds set for leave call. (save to rid message)"
+			warnings.append( text )
+	
+	return warnings
+
+func _notification( what: int ) -> void:
+	
+	match what:
+		
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			
+			update_configuration_warnings()
+			return
+	
+	super( what )
+
 
 func _player_enter( _player: Player ) -> void:
 	

@@ -22,6 +22,7 @@ var ticks_ran: int = 0
 ## when do we count a activation tick
 @export_flags( "Enter", "Leave" ) var disable_tick_time: int = 2
 @export_group( "Parent", "parent_" )
+@export_subgroup( "Respect", "respect_" )
 ## if true, runs enter when the parent calls for it
 @export var parent_respect_enter: bool = true :
 	set( value ):

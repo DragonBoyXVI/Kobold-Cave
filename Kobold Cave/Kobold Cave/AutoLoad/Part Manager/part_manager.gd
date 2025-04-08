@@ -1,55 +1,58 @@
-
 extends Node2D
 
 
-class PoolManager:
-	
+class PartPool:
 	extends Node2D
 	
-	const initial_spawns := 5
+	var options: ParticleOptions
 	
-	var spawn_scene: PackedScene
-	var avaliable_nodes: Array[ CPUParticles2D ] = []
+	var _avaliable: Array[ CPUParticles2D ] = []
 	
 	
-	func _ready() -> void:
+	func init_populace() -> void:
 		
-		for i: int in initial_spawns:
+		for _i: int in options.initial_scene_count:
 			
-			new_item()
+			make_item()
 	
-	func new_item() -> void:
+	
+	func make_item() -> void:
 		
-		var spawn := spawn_scene.instantiate() as CPUParticles2D
-		spawn.process_mode = Node.PROCESS_MODE_DISABLED
+		var new_item: CPUParticles2D = options.packed_scene.instantiate()
+		new_item.hide()
+		new_item.process_mode = Node.PROCESS_MODE_DISABLED
+		new_item.finished.connect( _on_child_finished.bind( new_item ), CONNECT_DEFERRED )
 		
-		spawn.finished.connect( _on_particles_finished.bind( spawn ), CONNECT_DEFERRED )
-		
-		avaliable_nodes.append( spawn )
-		add_child( spawn )
+		add_child( new_item )
+		_avaliable.append( new_item )
 	
 	func get_item() -> CPUParticles2D:
 		
-		if ( avaliable_nodes.size() == 0 ):
+		if ( _avaliable.size() > 0 ):
 			
-			new_item()
+			var item: CPUParticles2D = _avaliable.pop_back()
+			return item
 		
-		var item := avaliable_nodes.pop_at( 0 ) as CPUParticles2D
-		item.process_mode = Node.PROCESS_MODE_ALWAYS
-		item.show()
-		
-		return item
+		make_item()
+		return _avaliable.pop_back()
 	
 	
-	func _on_particles_finished( particles: CPUParticles2D ) -> void:
+	func _on_child_finished( child: CPUParticles2D ) -> void:
 		
-		particles.process_mode = Node.PROCESS_MODE_DISABLED
-		particles.restart()
-		particles.hide()
-		avaliable_nodes.append( particles )
+		child.restart()
+		child.hide()
+		child.process_mode = Node.PROCESS_MODE_DISABLED
+		
+		_avaliable.append( child )
+
+
+const SMALL_DUST: ParticleOptions = preload( "uid://0chm1vymshi" )
 
 
 var _particles_enabled: bool = true
+
+
+var _pool_cache: Dictionary[ ParticleOptions, PartPool ] = {}
 
 
 func _init() -> void:
@@ -58,30 +61,34 @@ func _init() -> void:
 
 func _ready() -> void:
 	
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	create_pool( SMALL_DUST )
 
 
-func new_manager( scene_path: String ) -> PoolManager:
+func create_pool( options: ParticleOptions ) -> void:
 	
-	var manager := PoolManager.new()
-	manager.spawn_scene = load( scene_path ) as PackedScene
+	var new_pool := PartPool.new()
+	new_pool.options = options
+	add_child( new_pool )
 	
-	add_child( manager )
-	return manager
-
-
-
-@onready var dust_manager := new_manager( "res://Kobold Cave/Particles/Test Dust/test_dust_particles.tscn" )
-func spawn_dust( pos: Vector2 ) -> void:
+	new_pool.init_populace()
 	
+	_pool_cache[ options ] = new_pool
+
+func spawn_particles( pos: Vector2, key: ParticleOptions ) -> void:
 	if ( not _particles_enabled ): return
 	
-	var spawn := dust_manager.get_item()
-	spawn.emitting = true
-	spawn.global_position = pos
+	
+	if ( _pool_cache.has( key ) ):
+		
+		var pool := _pool_cache[ key ]
+		var item := pool.get_item()
+		item.position = pos
+		item.emitting = true
+		item.process_mode = Node.PROCESS_MODE_INHERIT
+		item.show()
+	else:
+		
+		create_pool( key )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

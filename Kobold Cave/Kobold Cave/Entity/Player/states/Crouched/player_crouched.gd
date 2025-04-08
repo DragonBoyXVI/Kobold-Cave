@@ -99,7 +99,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		request_state( PlayerAir.STATE_NAME )
 		
-		PartManager.spawn_dust( player.position )
+		PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 		
 		get_window().set_input_as_handled()
 		return

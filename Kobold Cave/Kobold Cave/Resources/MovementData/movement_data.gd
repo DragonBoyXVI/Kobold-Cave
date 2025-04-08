@@ -1,5 +1,6 @@
 @tool
-extends KCResource
+@icon( "res://Dragon Game Template/Icons/scalie_resource.png" )
+extends Resource
 class_name MovementData
 
 

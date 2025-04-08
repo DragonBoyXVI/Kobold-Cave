@@ -62,7 +62,7 @@ func _physics_process( delta: float ) -> void:
 		elif( cyote_timer.is_stopped() ):
 			
 			cyote_timer.start()
-			PartManager.spawn_dust( player.position )
+			PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
@@ -79,7 +79,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		movement.logic_apply_jump( player )
 		request_state( PlayerAir.STATE_NAME )
 		
-		PartManager.spawn_dust( player.position )
+		PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 		
 		get_window().set_input_as_handled()
 		return

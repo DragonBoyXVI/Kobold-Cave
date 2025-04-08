@@ -1,5 +1,5 @@
-
-extends KCResource
+@icon( "res://Dragon Game Template/Icons/scalie_resource.png" )
+extends RefCounted
 class_name LedgeGrabInfo
 ## Container for data related to ledge grabbing
 ##
