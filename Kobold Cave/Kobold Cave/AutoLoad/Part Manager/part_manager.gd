@@ -18,7 +18,7 @@ class PartPool:
 	
 	func make_item() -> void:
 		
-		var new_item: CPUParticles2D = options.packed_scene.instantiate()
+		var new_item: CPUParticles2D = options.packed_scene.instantiate(  )
 		new_item.hide()
 		new_item.process_mode = Node.PROCESS_MODE_DISABLED
 		new_item.finished.connect( _on_child_finished.bind( new_item ), CONNECT_DEFERRED )

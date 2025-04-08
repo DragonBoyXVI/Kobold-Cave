@@ -11,4 +11,4 @@ class_name ParticleOptions
 @export var packed_scene: PackedScene
 
 ## how many to spawn at game start
-@export var initial_scene_count: int = 5
+@export_range( 0, 25, 1, "or_greater" ) var initial_scene_count: int = 5
