@@ -47,6 +47,7 @@ class PartPool:
 
 
 const SMALL_DUST: ParticleOptions = preload( "uid://0chm1vymshi" )
+const EXPLOSION_DUST: ParticleOptions = preload( "uid://kaquuk3542fp" )
 
 
 var _particles_enabled: bool = true
@@ -62,6 +63,7 @@ func _init() -> void:
 func _ready() -> void:
 	
 	create_pool( SMALL_DUST )
+	create_pool( EXPLOSION_DUST )
 
 
 func create_pool( options: ParticleOptions ) -> void:

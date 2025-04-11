@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ParticleOptions" load_steps=3 format=3 uid="uid://0chm1vymshi"]
 
-[ext_resource type="PackedScene" uid="uid://7veprv3g856n" path="res://Kobold Cave/Particles/Test Dust/test_dust_particles.tscn" id="1_cunq8"]
+[ext_resource type="PackedScene" uid="uid://7veprv3g856n" path="res://Kobold Cave/Particle Scenes/small_dust.tscn" id="1_cunq8"]
 [ext_resource type="Script" uid="uid://wlw2g6p0s7m8" path="res://Kobold Cave/Resources/Particle Options/particle_options.gd" id="1_nmbad"]
 
 [resource]

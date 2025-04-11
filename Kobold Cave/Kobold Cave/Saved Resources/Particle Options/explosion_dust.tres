@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ParticleOptions" load_steps=3 format=3 uid="uid://kaquuk3542fp"]
+
+[ext_resource type="Script" uid="uid://wlw2g6p0s7m8" path="res://Kobold Cave/Resources/Particle Options/particle_options.gd" id="1_8yc70"]
+[ext_resource type="PackedScene" uid="uid://cui0cogigjt8m" path="res://Kobold Cave/Particle Scenes/explosion_dust.tscn" id="1_fnubv"]
+
+[resource]
+script = ExtResource("1_8yc70")
+packed_scene = ExtResource("1_fnubv")
+initial_scene_count = 5
+metadata/_custom_type_script = "uid://wlw2g6p0s7m8"

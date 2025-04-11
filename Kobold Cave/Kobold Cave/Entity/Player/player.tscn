@@ -143,7 +143,7 @@ one_shot = true
 
 [node name="BombThrower" parent="." node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
 position = Vector2(0, -80)
-throw_radius = 96.0
+throw_radius = 112.0
 cooldown_timer = NodePath("Timer")
 starts_empty = true
 

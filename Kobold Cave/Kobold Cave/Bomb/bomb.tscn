@@ -9,15 +9,16 @@
 [ext_resource type="Script" uid="uid://b6t2e5o2hx8yc" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqese"]
-radius = 32.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wn477"]
 radius = 64.0
 
-[node name="Bomb" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wn477"]
+radius = 48.0
+
+[node name="Bomb" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_84bg3")
+hitbox = NodePath("Hitbox2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xx25p")
@@ -34,7 +35,6 @@ debug_color = Color(0, 0, 1, 0.4)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_l28rg")]
 initial_state = NodePath("Moving")
-default_enter_args = []
 
 [node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite", "timer")]
 script = ExtResource("6_jrnav")

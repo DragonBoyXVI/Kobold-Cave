@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_cvft8"]
 [ext_resource type="Script" uid="uid://v7iimb56jxdl" path="res://Kobold Cave/Explosion/explosion.gd" id="2_eokw3"]
 [ext_resource type="Script" uid="uid://c5gadi8o0xx0i" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="4_7s6bx"]
-[ext_resource type="PackedScene" uid="uid://cui0cogigjt8m" path="res://Kobold Cave/Explosion/cpu_particles_dust.tscn" id="5_q1e8g"]
+[ext_resource type="PackedScene" uid="uid://cui0cogigjt8m" path="res://Kobold Cave/Particle Scenes/explosion_dust.tscn" id="5_q1e8g"]
 
 [sub_resource type="Resource" id="Resource_bk02s"]
 script = ExtResource("4_7s6bx")

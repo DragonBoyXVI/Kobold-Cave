@@ -15,6 +15,7 @@ func _init() -> void:
 	camera_shake.shake_strength = 200.0
 	camera_shake.duration_max = 0.25
 	
+	z_index = 2
 	auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 
 func _ready() -> void:
@@ -27,7 +28,9 @@ func _exit_tree() -> void:
 
 
 func create_explosion( params: ExplosionParameters ) -> void:
+	
 	add_explosion_drawing( params )
+	PartManager.spawn_particles( params.position, PartManager.EXPLOSION_DUST )
 	
 	# shake camera
 	var cam_distance := params.position.distance_squared_to( MainCamera2D.position )
@@ -49,6 +52,7 @@ func create_explosion( params: ExplosionParameters ) -> void:
 	query.transform = Transform2D( 0.0, params.position )
 	query.collision_mask = COLLISION_MASK
 	query.collide_with_areas = true
+	query.exclude = params.exclude
 	
 	query.shape_rid = shape
 	PhysicsServer2D.shape_set_data( shape, params.radius )
@@ -124,6 +128,7 @@ func _draw() -> void:
 		var draw_item: DrawExplosion = things_to_draw[ id ]
 		
 		var opacity: float = 1.0 - ( draw_item.current_time / draw_item.max_time )
+		opacity = maxf( 0.0, opacity )
 		draw_circle( draw_item.position, draw_item.radius, Color( "Red", opacity ), true )
 
 func _free_drawing( id: int ) -> void:
