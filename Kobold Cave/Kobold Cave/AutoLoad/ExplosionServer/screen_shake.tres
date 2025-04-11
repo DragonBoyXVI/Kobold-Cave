@@ -11,5 +11,5 @@ script = ExtResource("1_u6sdk")
 shake_strength = 200.0
 shake_curve = SubResource("Curve_4hum5")
 duration_mode = 0
-duration_max = 1.25
+duration_max = 0.2
 metadata/_custom_type_script = "uid://ci7kwmnuyx8gi"

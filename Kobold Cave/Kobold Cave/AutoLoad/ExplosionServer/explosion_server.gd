@@ -3,11 +3,21 @@ extends Node2D
 
 const COLLISION_MASK := 0b111
 var shape: RID
-var camera_shake: CameraShake2D = preload( "uid://2dryhj15dbtf" )
 
+# preload dont fucjking work for some reason
+#const camera_shake: CameraShake2D = preload( "uid://2dryhj15dbtf" )
+var camera_shake: CameraShake2D
+
+
+func _init() -> void:
+	
+	camera_shake = CameraShake2D.new()
+	camera_shake.shake_strength = 200.0
+	camera_shake.duration_max = 0.25
+	
+	auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 
 func _ready() -> void:
-	
 	
 	shape = PhysicsServer2D.circle_shape_create()
 
@@ -17,6 +27,7 @@ func _exit_tree() -> void:
 
 
 func create_explosion( params: ExplosionParameters ) -> void:
+	add_explosion_drawing( params )
 	
 	# shake camera
 	var cam_distance := params.position.distance_squared_to( MainCamera2D.position )
@@ -72,3 +83,49 @@ func create_explosion( params: ExplosionParameters ) -> void:
 						else:
 							
 							collider.set_cell( tile_coords )
+
+
+class DrawExplosion:
+	extends RefCounted
+	
+	var current_time: float = 0.0
+	var max_time: float = 0.15
+	
+	var radius: float = 0.0
+	var position: Vector2 = Vector2.ZERO
+
+var things_to_draw: Dictionary[ int, DrawExplosion ] = {}
+var next_draw_id: int = 0
+func add_explosion_drawing( params: ExplosionParameters ) -> void:
+	
+	var new := DrawExplosion.new()
+	new.radius = params.radius
+	new.position = params.position
+	
+	things_to_draw[ next_draw_id ] = new
+	next_draw_id += 1
+
+func _process( delta: float ) -> void:
+	
+	if ( things_to_draw.size() > 0 ):
+		
+		queue_redraw()
+		for id: int in things_to_draw:
+			var thing: DrawExplosion = things_to_draw[ id ]
+			
+			thing.current_time += delta
+			if ( thing.current_time > thing.max_time ):
+				
+				_free_drawing.call_deferred( id )
+
+func _draw() -> void:
+	
+	for id: int in things_to_draw:
+		var draw_item: DrawExplosion = things_to_draw[ id ]
+		
+		var opacity: float = 1.0 - ( draw_item.current_time / draw_item.max_time )
+		draw_circle( draw_item.position, draw_item.radius, Color( "Red", opacity ), true )
+
+func _free_drawing( id: int ) -> void:
+	
+	things_to_draw.erase( id )
