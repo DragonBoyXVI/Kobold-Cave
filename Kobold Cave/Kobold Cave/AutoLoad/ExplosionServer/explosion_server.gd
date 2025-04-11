@@ -1,0 +1,74 @@
+extends Node2D
+
+
+const COLLISION_MASK := 0b111
+var shape: RID
+var camera_shake: CameraShake2D = preload( "uid://2dryhj15dbtf" )
+
+
+func _ready() -> void:
+	
+	
+	shape = PhysicsServer2D.circle_shape_create()
+
+func _exit_tree() -> void:
+	
+	PhysicsServer2D.free_rid( shape )
+
+
+func create_explosion( params: ExplosionParameters ) -> void:
+	
+	# shake camera
+	var cam_distance := params.position.distance_squared_to( MainCamera2D.position )
+	var shake_radius: float = params.radius_squared * 5.0
+	if ( cam_distance < shake_radius ):
+		
+		var ratio: float = 1.0 - ( cam_distance / shake_radius )
+		var effect: CameraShake2D = camera_shake.duplicate()
+		effect.shake_strength *= ratio
+		effect.duration_max *= ratio
+		MainCamera2D.add_effect( effect )
+	
+	if ( not Engine.is_in_physics_frame() ):
+		await get_tree().physics_frame
+	
+	# use a shape cast to detect everything it hits
+	var physics_state := get_world_2d().direct_space_state
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.transform = Transform2D( 0.0, params.position )
+	query.collision_mask = COLLISION_MASK
+	query.collide_with_areas = true
+	
+	query.shape_rid = shape
+	PhysicsServer2D.shape_set_data( shape, params.radius )
+	
+	# prob more performant to set terrain all at once
+	#var tile_cache: Array[ Vector2i ] = []
+	
+	var result: Array[ Dictionary ] = physics_state.intersect_shape( query )
+	for item: Dictionary in result:
+		var collider: Node2D = item[ "collider" ]
+		
+		if ( collider is CharacterBody2D ):
+			
+			var direction: Vector2 = ( collider.position - params.position ).normalized()
+			collider.velocity += direction * params.push
+		elif( collider is Hitbox2D ):
+			
+			collider.hit( params.damage.duplicate() )
+		elif( collider is TileMapLayer ):
+			
+			var tile_rid: RID = item[ "rid" ]
+			var tile_coords: Vector2i = collider.get_coords_for_body_rid( tile_rid )
+			var tile_data: TileData = collider.get_cell_tile_data( tile_coords )
+			
+			if ( tile_data ):
+				if ( tile_data.has_custom_data( "Breakable" ) ):
+					if ( tile_data.get_custom_data( "Breakable" ) ):
+						
+						if ( collider.tile_set.get_terrain_sets_count() > 0 ):
+							
+							collider.set_cells_terrain_connect( [ tile_coords ], 0, -1 )
+						else:
+							
+							collider.set_cell( tile_coords )

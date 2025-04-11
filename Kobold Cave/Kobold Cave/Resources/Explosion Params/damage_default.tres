@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=2 format=3 uid="uid://drko8psvy2smv"]
+
+[ext_resource type="Script" uid="uid://c5gadi8o0xx0i" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="1_c06a2"]
+
+[resource]
+script = ExtResource("1_c06a2")
+amount = 2
+peirce = 5
+element = 0
+metadata/_custom_type_script = "uid://c5gadi8o0xx0i"

@@ -63,6 +63,12 @@ func _input( event: InputEvent ) -> void:
 				
 				print( "orphans: " )
 				print_orphan_nodes()
+			
+			KEY_F2:
+				
+				var params := ExplosionParameters.new()
+				params.position = get_global_mouse_position()
+				ExplosionServer.create_explosion( params )
 
 func _exit_tree() -> void:
 	

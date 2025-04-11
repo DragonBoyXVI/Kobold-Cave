@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CameraShake2D" load_steps=3 format=3 uid="uid://2dryhj15dbtf"]
+
+[ext_resource type="Script" uid="uid://ci7kwmnuyx8gi" path="res://Dragon Game Template/Resources/Camera Effects/2D/Shake/camera_shake_2d.gd" id="1_u6sdk"]
+
+[sub_resource type="Curve" id="Curve_4hum5"]
+_data = [Vector2(0, 1), 0.0, -1.0, 1, 1, Vector2(1, 0), -1.0, 0.0, 1, 1]
+point_count = 2
+
+[resource]
+script = ExtResource("1_u6sdk")
+shake_strength = 200.0
+shake_curve = SubResource("Curve_4hum5")
+duration_mode = 0
+duration_max = 1.25
+metadata/_custom_type_script = "uid://ci7kwmnuyx8gi"

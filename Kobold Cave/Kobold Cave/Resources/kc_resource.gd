@@ -1,6 +1,9 @@
 #@icon( "res://Dragon Game Template/Icons/scalie_resource.png" )
 extends Object
 class_name Angle
+## Provides some commonly used angles
+##
+## this is teh resting place of KCResource
 
 
 const RIGHT := 0.0

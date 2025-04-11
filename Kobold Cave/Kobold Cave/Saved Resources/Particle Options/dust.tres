@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_nmbad")
 packed_scene = ExtResource("1_cunq8")
-initial_scene_count = 0
+initial_scene_count = 10
 metadata/_custom_type_script = "uid://wlw2g6p0s7m8"
