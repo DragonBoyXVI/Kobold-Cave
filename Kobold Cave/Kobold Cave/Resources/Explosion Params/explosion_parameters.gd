@@ -15,7 +15,7 @@ var radius: float = 144.0 :
 		radius = val
 		radius_squared = pow( val, 2.0 )
 ## the radius squared
-var radius_squared: float = pow( 256.0, 2.0 )
+var radius_squared: float = pow( radius, 2.0 )
 ## the damage object to supply
 var damage: Damage = preload( "uid://drko8psvy2smv" )
 ## How much push [CharacterBody2D]s are given

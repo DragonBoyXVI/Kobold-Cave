@@ -19,6 +19,7 @@ func logic_gravity( delta: float ) -> void:
 func explode() -> void:
 	
 	var params := ExplosionParameters.new()
+	params.radius = 160.0
 	params.position = global_position
 	params.exclude = [ get_rid(), hitbox.get_rid() ]
 	#ExplosionServer.create_explosion( params )

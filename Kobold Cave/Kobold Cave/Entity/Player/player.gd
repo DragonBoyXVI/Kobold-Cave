@@ -68,6 +68,7 @@ func _input( event: InputEvent ) -> void:
 				
 				var params := ExplosionParameters.new()
 				params.position = get_global_mouse_position()
+				params.radius *= randf() * 2.0
 				ExplosionServer.create_explosion( params )
 
 func _exit_tree() -> void:
