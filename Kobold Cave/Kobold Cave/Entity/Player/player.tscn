@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=25 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="3_cilv7"]
-[ext_resource type="Resource" uid="uid://c08ur33jqim3p" path="res://Kobold Cave/Entity/Player/movement.tres" id="3_xq7jb"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="4_hijn5"]
 [ext_resource type="PackedScene" uid="uid://dpygy5a7d23qn" path="res://Kobold Cave/Entity/Player/states/Grounded/player_grounded.tscn" id="6_2vjjd"]
 [ext_resource type="PackedScene" uid="uid://bcwe3apiil7su" path="res://Kobold Cave/Components/2D/CameraFocal/camera_focal.tscn" id="6_6ygbl"]
@@ -27,7 +26,7 @@ size = Vector2(50, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 58)
 
-[sub_resource type="Resource" id="Resource_65dp7"]
+[sub_resource type="Resource" id="Resource_ox5nn"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -66,31 +65,26 @@ initial_state = NodePath("PlayerAir")
 
 [node name="PlayerGrounded" parent="StateMachine" node_paths=PackedStringArray("player", "model") instance=ExtResource("6_2vjjd")]
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 
 [node name="PlayerAir" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "bomb_thrower", "player", "model") instance=ExtResource("7_6youo")]
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 bomb_thrower = NodePath("../../BombThrower")
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 
 [node name="PlayerCrouched" parent="StateMachine" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model") instance=ExtResource("9_v25kg")]
 standing_shape = NodePath("../../ShapeStanding")
 crouched_shape = NodePath("../../ShapeCrouching")
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 
 [node name="PlayerDead" parent="StateMachine" node_paths=PackedStringArray("player", "model") instance=ExtResource("11_ypnxr")]
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 
 [node name="PlayerGrabbedLedge" parent="StateMachine" node_paths=PackedStringArray("player", "model") instance=ExtResource("10_ox5nn")]
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 default_enter_args = Dictionary[StringName, Variant]({})
 
@@ -99,7 +93,6 @@ ledge_grabber = NodePath("../../LedgeGrabDetector")
 ref_marker = NodePath("../../MarkPosition")
 player_shape = NodePath("../../ShapeStanding")
 player = NodePath("../..")
-movement = ExtResource("3_xq7jb")
 model = NodePath("../../PlayerModel")
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="."]
@@ -118,7 +111,7 @@ position = Vector2(0, -80)
 texture = ExtResource("9_0t3dc")
 
 [node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_65dp7")
+health = SubResource("Resource_ox5nn")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]

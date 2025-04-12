@@ -104,3 +104,14 @@ func _player_leave( _player: Player ) -> void:
 	for bound: CameraBoundry in bounds_leave:
 		
 		bound.activate()
+
+
+# for some reason, the nodes stored in the arrays get orphaned,
+# so clean up here is needed. thanks godot
+func _exit_tree() -> void:
+	
+	if ( Engine.is_editor_hint() ): return
+	
+	for item: Node in bounds_enter + bounds_leave:
+		
+		item.queue_free()

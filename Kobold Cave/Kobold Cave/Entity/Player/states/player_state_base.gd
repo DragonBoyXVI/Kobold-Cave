@@ -6,6 +6,8 @@ class_name PlayerState
 ## ditto
 
 
+const movement: MovementGround = preload( "uid://c08ur33jqim3p" )
+
 ## if true, the slow value is updated when needed.[br]
 ## (you still need to use the slow value in code)
 @export var use_slow: bool = false
@@ -15,18 +17,12 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		player = new_player
-@export var movement: MovementGround:
-	set( new ):
-		movement = new
-		
-		update_configuration_warnings()
 @export var model: DragonModel2D :
 	set( new_model ):
 		update_configuration_warnings.call_deferred()
 		
 		model = new_model
 
-const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -80.0 )
 
 const SLOW_NORMAL := 1.0
 const SLOW_SLOW := 0.05
@@ -62,11 +58,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ( not model ):
 		
 		const text := "A model is needed for this state!"
-		warnings.append( text )
-	
-	if ( not movement ):
-		
-		const text := "No movement, this is here for code convinenceehege"
 		warnings.append( text )
 	
 	return warnings

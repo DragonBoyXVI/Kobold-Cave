@@ -90,7 +90,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		if ( model_dir == direction ):
 			
 			movement.logic_apply_longjump( player, direction )
-			camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
+			#camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( focal_displacement * direction )
 		else:
 			
 			movement.logic_apply_backflip( player, direction )

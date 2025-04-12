@@ -7,8 +7,16 @@ class_name PlayerGrounded
 
 const STATE_NAME := &"PlayerGrounded"
 
-@onready var cyote_timer := %CyoteTimer as Timer
-@onready var crouch_timer := %CrouchTimer as Timer
+
+@export var cyote_timer: Timer
+@export var crouch_timer: Timer
+
+
+enum CAM_STATE {
+	BE_STILL,
+	FOLLOW,
+}
+var cam_state: CAM_STATE = CAM_STATE.BE_STILL
 
 
 var _toggle_crouch := true
@@ -23,9 +31,6 @@ func _leave() -> void:
 	
 	cyote_timer.stop()
 	crouch_timer.stop()
-
-func _process( _delta: float ) -> void:
-	pass
 
 func _physics_process( delta: float ) -> void:
 	

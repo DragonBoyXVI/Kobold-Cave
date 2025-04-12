@@ -20,7 +20,7 @@ func _enter( args: Dictionary ) -> void:
 	
 	current_grab = args[ ARG_GRAB_INFO ]
 	
-	camera_focal.global_position = current_grab.grab_position
+	#camera_focal.global_position = current_grab.grab_position
 	
 	if ( current_grab.grab_to_the_right ):
 		
@@ -84,10 +84,10 @@ func _unhandled_input( event: InputEvent ) -> void:
 			if ( current_grab.grab_to_the_right ):
 				
 				offset *= -1.0
-			camera_focal.global_position.x = current_grab.grab_position.x + offset
-		else:
+			#camera_focal.global_position.x = current_grab.grab_position.x + offset
+		else:pass
 			
-			camera_focal.global_position = current_grab.grab_position
+			#camera_focal.global_position = current_grab.grab_position
 		
 		get_window().set_input_as_handled()
 		return
