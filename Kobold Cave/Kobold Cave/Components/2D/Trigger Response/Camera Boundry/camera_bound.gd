@@ -6,8 +6,16 @@ class_name TriggerCameraBounds
 ## ditto
 
 
-var bounds_enter: Array[ CameraBoundry ] = []
-var bounds_leave: Array[ CameraBoundry ] = []
+var bounds_enter: Array[ CameraBoundry ] = []: 
+	set( val ):
+		
+		bounds_enter = val
+		update_configuration_warnings()
+var bounds_leave: Array[ CameraBoundry ] = []: 
+	set( val ):
+		
+		bounds_leave = val
+		update_configuration_warnings()
 
 
 func _get_property_list() -> Array[ Dictionary ]:
@@ -56,6 +64,22 @@ func _get_configuration_warnings() -> PackedStringArray:
 			warnings.append( text )
 	
 	return warnings
+
+func _property_can_revert( property: StringName ) -> bool:
+	const revertable: PackedStringArray = [
+		"bounds_enter",
+		"bounds_leave"
+	]
+	
+	return revertable.has( property )
+
+func _property_get_revert( property: StringName ) -> Variant:
+	
+	match property:
+		&"bounds_enter": return []
+		&"bounds_leave": return []
+	
+	return null
 
 func _notification( what: int ) -> void:
 	

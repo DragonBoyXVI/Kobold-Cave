@@ -1,4 +1,5 @@
 extends Node2D
+## Creates explosions in the world
 
 
 const COLLISION_MASK := 0b111
@@ -27,6 +28,7 @@ func _exit_tree() -> void:
 	PhysicsServer2D.free_rid( shape )
 
 
+## supply a params object to create an explosion
 func create_explosion( params: ExplosionParameters ) -> void:
 	
 	add_explosion_drawing( params )
@@ -100,6 +102,7 @@ class DrawExplosion:
 
 var things_to_draw: Dictionary[ int, DrawExplosion ] = {}
 var next_draw_id: int = 0
+## used internally to draw the explosion area, does not create an explosion
 func add_explosion_drawing( params: ExplosionParameters ) -> void:
 	
 	var new := DrawExplosion.new()

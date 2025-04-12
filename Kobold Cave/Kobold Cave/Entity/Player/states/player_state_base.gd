@@ -25,11 +25,6 @@ class_name PlayerState
 		update_configuration_warnings.call_deferred()
 		
 		model = new_model
-@export var camera_focal: CameraFocal2D :
-	set( new_focal ):
-		update_configuration_warnings.call_deferred()
-		
-		camera_focal = new_focal
 
 const CAMERA_FOCAL_OFFSET := Vector2( 0.0, -80.0 )
 
@@ -67,11 +62,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ( not model ):
 		
 		const text := "A model is needed for this state!"
-		warnings.append( text )
-	
-	if ( not camera_focal ):
-		
-		const text := "Please provide a camera focal point!"
 		warnings.append( text )
 	
 	if ( not movement ):

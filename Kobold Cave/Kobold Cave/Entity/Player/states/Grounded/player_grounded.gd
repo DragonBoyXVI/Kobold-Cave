@@ -7,9 +7,6 @@ class_name PlayerGrounded
 
 const STATE_NAME := &"PlayerGrounded"
 
-@export var focal_curve: Curve
-const FOCAL_DISPLACEMENT := 128.0
-
 @onready var cyote_timer := %CyoteTimer as Timer
 @onready var crouch_timer := %CrouchTimer as Timer
 
@@ -17,20 +14,8 @@ const FOCAL_DISPLACEMENT := 128.0
 var _toggle_crouch := true
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings := super()
-	
-	if ( not focal_curve ):
-		
-		const text := "Camera focal curve is empty!"
-		warnings.append( text )
-	
-	return warnings
-
-
 func _enter( _args: Dictionary ) -> void:
 	
-	camera_focal.position = CAMERA_FOCAL_OFFSET
 	player.velocity.y = 1.0
 	update_model_direction()
 
@@ -40,12 +25,7 @@ func _leave() -> void:
 	crouch_timer.stop()
 
 func _process( _delta: float ) -> void:
-	
-	var direction:= Input.get_axis( &"Move Left", &"Move Right" )
-	direction = ( direction / 2.0 ) + 0.5 #faster? #remap( direction, -1.0, 1.0, 0.0, 1.0 )
-	
-	var sample := focal_curve.sample_baked( direction )
-	camera_focal.position.x = CAMERA_FOCAL_OFFSET.x + ( FOCAL_DISPLACEMENT * sample )
+	pass
 
 func _physics_process( delta: float ) -> void:
 	

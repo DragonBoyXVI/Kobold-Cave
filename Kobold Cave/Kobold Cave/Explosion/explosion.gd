@@ -1,5 +1,5 @@
 extends Node2D
-class_name Explosion
+#class_name Explosion
 ## An explosion in the wolrd
 ##
 ## ditto
