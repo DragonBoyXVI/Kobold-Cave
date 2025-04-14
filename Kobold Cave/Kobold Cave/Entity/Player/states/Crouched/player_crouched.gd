@@ -84,7 +84,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		var direction := Input.get_axis( &"Move Left", &"Move Right" )
 		direction = signf( direction )
 		
-		const focal_displacement := 256.0
+		const _focal_displacement := 256.0
 		
 		var model_dir: float = signf( model.scale.x )
 		if ( model_dir == direction ):
