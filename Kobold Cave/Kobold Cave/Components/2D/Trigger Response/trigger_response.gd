@@ -47,6 +47,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 		const text := "Please use this as a child of an AreaTrigger2D!"
 		warnings.append( text )
 	
+	if ( not editor_is_enter_callable() and not editor_is_leave_callable() ):
+		
+		const text := "Neither enter or leave can be called"
+		warnings.append( text )
+	
 	return warnings
 
 func _ready() -> void:

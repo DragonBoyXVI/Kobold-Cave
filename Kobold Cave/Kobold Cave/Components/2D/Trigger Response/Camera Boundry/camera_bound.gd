@@ -6,47 +6,17 @@ class_name TriggerCameraBounds
 ## ditto
 
 
-var bounds_enter: Array[ CameraBoundry ] = []: 
+@export var bounds_enter: Array[ CameraBoundry ] = []: 
 	set( val ):
 		
 		bounds_enter = val
 		update_configuration_warnings()
-var bounds_leave: Array[ CameraBoundry ] = []: 
+@export var bounds_leave: Array[ CameraBoundry ] = []: 
 	set( val ):
 		
 		bounds_leave = val
 		update_configuration_warnings()
 
-
-func _get_property_list() -> Array[ Dictionary ]:
-	var properties: Array[ Dictionary ] = []
-	
-	properties.append( {
-		"name": "Bounds",
-		"type": TYPE_NIL,
-		"usage": PROPERTY_USAGE_GROUP,
-		"hint_string": "bounds_"
-	} )
-	
-	if ( editor_is_enter_callable() ):
-		
-		properties.append( {
-			"name": "bounds_enter",
-			"type": TYPE_ARRAY,
-			"hint": PROPERTY_HINT_ARRAY_TYPE,
-			"hint_string": "%d/%d:CameraBoundry" % [TYPE_OBJECT, PROPERTY_HINT_NODE_TYPE]
-		} )
-	
-	if ( editor_is_leave_callable() ):
-		
-		properties.append( {
-			"name": "bounds_leave",
-			"type": TYPE_ARRAY,
-			"hint": PROPERTY_HINT_ARRAY_TYPE,
-			"hint_string": "%d/%d:CameraBoundry" % [TYPE_OBJECT, PROPERTY_HINT_NODE_TYPE]
-		} )
-	
-	return properties
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := super()
@@ -64,22 +34,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 			warnings.append( text )
 	
 	return warnings
-
-func _property_can_revert( property: StringName ) -> bool:
-	const revertable: PackedStringArray = [
-		"bounds_enter",
-		"bounds_leave"
-	]
-	
-	return revertable.has( property )
-
-func _property_get_revert( property: StringName ) -> Variant:
-	
-	match property:
-		&"bounds_enter": return []
-		&"bounds_leave": return []
-	
-	return null
 
 func _notification( what: int ) -> void:
 	

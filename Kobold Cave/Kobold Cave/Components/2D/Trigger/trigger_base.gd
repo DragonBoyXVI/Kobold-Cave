@@ -30,13 +30,39 @@ signal player_left( player: Player )
 		propagate_call( &"notify_property_list_changed" )
 
 
-func _ready() -> void:
+func _init() -> void:
+	
+	input_pickable = false
+	monitorable = false
+	collision_layer = 0
+	collision_mask = 0b10
+	
 	
 	if ( Engine.is_editor_hint() ):
 		return
 	
 	body_entered.connect( _on_body_entered )
 	body_exited.connect( _on_body_exited )
+
+func _property_can_revert( property: StringName ) -> bool:
+	const revertable: PackedStringArray = [
+		"input_pickable",
+		"monitorable",
+		"collision_layer",
+		"collision_mask"
+	]
+	
+	return revertable.has( property )
+
+func _property_get_revert( property: StringName ) -> Variant:
+	
+	match property:
+		&"input_pickable": return false
+		&"monitorable": return false
+		&"collision_layer": return 0
+		&"collision_mask": return 0b10
+	
+	return null
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
