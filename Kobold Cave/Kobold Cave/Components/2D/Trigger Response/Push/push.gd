@@ -36,6 +36,7 @@ func _get_property_list() -> Array[ Dictionary ]:
 	return properties
 
 func _init() -> void:
+	super()
 	
 	parent_respect_leave = false
 

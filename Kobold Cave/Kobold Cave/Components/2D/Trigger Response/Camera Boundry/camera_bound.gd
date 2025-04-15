@@ -6,6 +6,7 @@ class_name TriggerCameraBounds
 ## ditto
 
 
+@export_group( "Bounds", "bounds_" )
 @export var bounds_enter: Array[ CameraBoundry ] = []: 
 	set( val ):
 		

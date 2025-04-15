@@ -12,16 +12,19 @@ class_name TriggerEnemySpawner
 	set( value ):
 		
 		spawn_limit = maxi( 1, value )
+## the scene to instance, must be at minimal a [Node2D]
 @export var spawn_scene: PackedScene:
 	set( new_scene ):
 		
 		spawn_scene = new_scene
 		update_configuration_warnings()
+## Optional marker to spawn enemies at
 @export var spawn_marker: Marker2D:
 	set( new_marker ):
 		
 		spawn_marker = new_marker
 		update_configuration_warnings()
+## timer for spawn interval
 @export var spawn_timer: Timer:
 	set( new_timer ):
 		
@@ -43,11 +46,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ( not spawn_scene ):
 		
 		const text := "This has no scene to spawn!"
-		warnings.append( text )
-	
-	if ( not spawn_marker ):
-		
-		const text := "Needs a spawn marker to know where to place stuff"
 		warnings.append( text )
 	
 	if ( not spawn_timer ):
@@ -90,7 +88,12 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_count += 1
 	
 	var spawn: Node2D = spawn_scene.instantiate()
-	spawn.position = spawn_marker.global_position
+	if ( spawn_marker ):
+		
+		spawn.position = spawn_marker.global_position
+	else:
+		
+		spawn.position = global_position
 	
 	spawn.tree_exited.connect( _on_spawn_exited_tree )
 	

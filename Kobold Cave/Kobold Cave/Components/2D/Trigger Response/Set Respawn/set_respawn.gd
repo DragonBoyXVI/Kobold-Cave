@@ -35,6 +35,7 @@ func _util_child_entered_tree( node: Node ) -> void:
 		spawn = node
 
 func _init() -> void:
+	super()
 	
 	parent_respect_leave = false
 	disable_when_ticked = true

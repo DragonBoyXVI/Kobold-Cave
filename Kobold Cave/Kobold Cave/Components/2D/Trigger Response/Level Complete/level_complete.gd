@@ -7,6 +7,7 @@ class_name TriggerLevelClear
 
 
 func _init() -> void:
+	super()
 	
 	parent_respect_leave = false
 

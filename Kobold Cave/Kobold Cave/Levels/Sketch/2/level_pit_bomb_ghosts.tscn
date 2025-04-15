@@ -186,11 +186,9 @@ run_leave = true
 position = Vector2(-64, 0)
 shape = SubResource("RectangleShape2D_alru3")
 
-[node name="TriggerCameraBounds" type="Node2D" parent="TrigInit"]
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigInit" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-1280, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(2048, -640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-])
+bounds_enter = [NodePath(""), NodePath("")]
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
@@ -255,11 +253,9 @@ enter_zoom = Vector2(0.5, 0.5)
 enter_time = 2.0
 metadata/_custom_type_script = "uid://ccq3bxklty4a6"
 
-[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamBottom"]
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamBottom" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(1024, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(4992, -3072),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-])
+bounds_enter = [NodePath(""), NodePath("")]
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TrigCamTop" parent="." instance=ExtResource("8_lvda0")]
@@ -270,11 +266,9 @@ run_enter = true
 position = Vector2(128, 512)
 shape = SubResource("RectangleShape2D_xft8l")
 
-[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamTop"]
+[node name="TriggerCameraBounds" type="Node2D" parent="TrigCamTop" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = Array[ExtResource("7_u7cdw")]([Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-1280, 640),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":0.25,"auto_activate":true,"vert_boundry":1,"horz_boundry":0,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-, Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(4992, -3072),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":ExtResource("7_u7cdw"),"tween_time":1.25,"auto_activate":false,"vert_boundry":0,"horz_boundry":1,"_name_update":true,"metadata/_custom_type_script":"uid://dbf8r7wqq34yj")
-])
+bounds_enter = [NodePath(""), NodePath("")]
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TriggerCameraZoom" type="Node2D" parent="TrigCamTop"]
