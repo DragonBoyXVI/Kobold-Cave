@@ -31,6 +31,8 @@ func _exit_tree() -> void:
 ## supply a params object to create an explosion
 func create_explosion( params: ExplosionParameters ) -> void:
 	
+	if ( not is_inside_tree() ): return
+	
 	add_explosion_drawing( params )
 	PartManager.spawn_particles( params.position, PartManager.EXPLOSION_DUST )
 	

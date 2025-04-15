@@ -68,6 +68,10 @@ func _notification( what: int ) -> void:
 		NOTIFICATION_PARENTED:
 			
 			update_configuration_warnings()
+		
+		NOTIFICATION_POST_ENTER_TREE:
+			
+			update_configuration_warnings()
 
 func _ready() -> void:
 	pass
@@ -85,6 +89,7 @@ func tick_logic() -> void:
 func editor_is_enter_callable() -> bool:
 	
 	var parent := get_parent()
+	if ( not parent.is_node_ready() ): return true
 	if ( parent is AreaTrigger2D ):
 		
 		return parent_respect_enter and parent.run_enter
@@ -95,6 +100,7 @@ func editor_is_enter_callable() -> bool:
 func editor_is_leave_callable() -> bool:
 	
 	var parent := get_parent()
+	if ( not parent.is_node_ready() ): return true
 	if ( parent is AreaTrigger2D ):
 		
 		return parent_respect_leave and parent.run_leave

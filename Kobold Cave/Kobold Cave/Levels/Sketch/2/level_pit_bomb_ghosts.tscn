@@ -188,7 +188,7 @@ shape = SubResource("RectangleShape2D_alru3")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="TrigInit" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = [NodePath(""), NodePath("")]
+bounds_enter = [null, null]
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
@@ -255,7 +255,7 @@ metadata/_custom_type_script = "uid://ccq3bxklty4a6"
 
 [node name="TriggerCameraBounds" type="Node2D" parent="TrigCamBottom" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = [NodePath(""), NodePath("")]
+bounds_enter = [null, null]
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TrigCamTop" parent="." instance=ExtResource("8_lvda0")]
@@ -268,7 +268,7 @@ shape = SubResource("RectangleShape2D_xft8l")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="TrigCamTop" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("9_txw2f")
-bounds_enter = [NodePath(""), NodePath("")]
+bounds_enter = [null, null]
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TriggerCameraZoom" type="Node2D" parent="TrigCamTop"]
