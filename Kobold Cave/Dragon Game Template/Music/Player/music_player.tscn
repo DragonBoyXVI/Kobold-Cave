@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://danotxsglaoff"]
-
-[ext_resource type="PackedScene" uid="uid://vll54w3vhs8s" path="res://Dragon Game Template/Music/music_base.tscn" id="1_ypu2f"]
-[ext_resource type="Script" uid="uid://mjjh2bv7il1l" path="res://Dragon Game Template/Music/Player/music_player.gd" id="2_0au7h"]
-
-[node name="MusicPlayer" node_paths=PackedStringArray("audio_player") instance=ExtResource("1_ypu2f")]
-script = ExtResource("2_0au7h")
-audio_player = NodePath("")
-fade_out_time = 1.25

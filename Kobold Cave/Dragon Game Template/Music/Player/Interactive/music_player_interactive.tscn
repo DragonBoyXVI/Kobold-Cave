@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd7kmgwoivld5"]
-
-[ext_resource type="PackedScene" uid="uid://danotxsglaoff" path="res://Dragon Game Template/Music/Player/music_player.tscn" id="1_dhlvi"]
-[ext_resource type="Script" uid="uid://70sb7nsefu04" path="res://Dragon Game Template/Music/Player/Interactive/music_player_interactive.gd" id="2_fvlru"]
-
-[node name="MusicPlayerInteractive" instance=ExtResource("1_dhlvi")]
-script = ExtResource("2_fvlru")
-stream = null

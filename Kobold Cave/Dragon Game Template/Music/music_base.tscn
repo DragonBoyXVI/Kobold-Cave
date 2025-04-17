@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://vll54w3vhs8s"]
-
-[ext_resource type="Script" uid="uid://cfm6duq7dkm0f" path="res://Dragon Game Template/Music/music_base.gd" id="1_v42hb"]
-
-[node name="MusicBase" type="Node"]
-physics_interpolation_mode = 2
-auto_translate_mode = 2
-script = ExtResource("1_v42hb")

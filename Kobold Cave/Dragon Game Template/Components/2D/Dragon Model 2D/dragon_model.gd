@@ -48,7 +48,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	return warnings
 
-func _ready() -> void:
+func _init() -> void:
 	
 	if ( Engine.is_editor_hint() ):
 		
