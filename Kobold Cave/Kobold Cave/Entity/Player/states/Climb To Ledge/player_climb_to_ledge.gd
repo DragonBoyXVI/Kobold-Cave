@@ -66,7 +66,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	# get the position of the player smushed up to the wall
 	var wall_position: Vector2 = grab_info.grab_position
 	var player_size: Rect2 = player_shape.shape.get_rect()
-	const size_offset: float = 0.5
+	const size_offset: float = 0.8
 	
 	var new_position: Vector2 = Vector2( wall_position.x, grab_info.grab_position.y )
 	new_position.y += size_offset * player_size.size.y
