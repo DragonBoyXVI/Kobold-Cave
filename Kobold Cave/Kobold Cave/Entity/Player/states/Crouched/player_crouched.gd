@@ -117,10 +117,10 @@ func update_animation() -> void:
 	var dir: float = Input.get_axis( &"Move Left", &"Move Right" )
 	if ( is_zero_approx( dir ) ):
 		
-		model.animation_player.play( ANIM_IDLE )
+		model.animation_player.play( Player.ANIM_IDLE_CROUCHED )
 	else:
 		
-		model.animation_player.play( ANIM_RUN )
+		model.animation_player.play( Player.ANIM_RUN_CROUCHED )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

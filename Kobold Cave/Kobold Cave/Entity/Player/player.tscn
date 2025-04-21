@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=26 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="3_cilv7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c8yqebyrtbrt4" path="res://Dragon Game Template/Icons/temperature.png" id="9_0t3dc"]
 [ext_resource type="PackedScene" uid="uid://bbmfun1dvs7bd" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.tscn" id="9_v25kg"]
 [ext_resource type="PackedScene" uid="uid://doe6toohpuk3t" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.tscn" id="10_ox5nn"]
+[ext_resource type="Script" uid="uid://bc225csx60ypu" path="res://Kobold Cave/Entity/Player/states/HitStun/player_hit_stun.gd" id="11_65dp7"]
 [ext_resource type="PackedScene" uid="uid://cv04tdlilp0fm" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.tscn" id="11_ypnxr"]
 [ext_resource type="PackedScene" uid="uid://br8lw72ghspj6" path="res://Kobold Cave/Entity/Player/states/Climb To Ledge/player_climb_to_ledge.tscn" id="12_v02m0"]
 [ext_resource type="PackedScene" uid="uid://c8x5xrtyya5nj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.tscn" id="14_er2h2"]
@@ -26,7 +27,7 @@ size = Vector2(50, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 58)
 
-[sub_resource type="Resource" id="Resource_ox5nn"]
+[sub_resource type="Resource" id="Resource_65dp7"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -44,6 +45,7 @@ size = Vector2(80, 4)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "hitbox", "state_machine", "_i_frame_timer", "health_node", "model")]
 z_index = 1
 collision_layer = 2
+velocity = Vector2(0, 3500)
 script = ExtResource("2_0u77g")
 bomb_thrower = NodePath("BombThrower")
 hitbox = NodePath("Hitbox2D")
@@ -95,6 +97,20 @@ player_shape = NodePath("../../ShapeStanding")
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 
+[node name="PlayerHitStun" type="Node" parent="StateMachine" node_paths=PackedStringArray("stun_timer", "player", "model")]
+script = ExtResource("11_65dp7")
+stun_timer = NodePath("Timer")
+player = NodePath("../..")
+model = NodePath("../../PlayerModel")
+default_enter_args = Dictionary[StringName, Variant]({
+&"Stun Time": 0.5
+})
+metadata/_custom_type_script = "uid://bc225csx60ypu"
+
+[node name="Timer" type="Timer" parent="StateMachine/PlayerHitStun"]
+process_callback = 0
+one_shot = true
+
 [node name="ShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -60)
 shape = SubResource("RectangleShape2D_v02m0")
@@ -111,7 +127,7 @@ position = Vector2(0, -80)
 texture = ExtResource("9_0t3dc")
 
 [node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_ox5nn")
+health = SubResource("Resource_65dp7")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]

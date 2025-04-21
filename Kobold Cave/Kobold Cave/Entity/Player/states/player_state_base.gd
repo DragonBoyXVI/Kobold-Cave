@@ -30,12 +30,6 @@ const SLOW_SLOW := 0.05
 var slow: float = SLOW_NORMAL
 
 
-const ANIM_RESET := &"RESET"
-const ANIM_RUN := &"Run"
-const ANIM_IDLE := &"Idle"
-const ANIM_FALL := &"Fall"
-
-
 func enter( args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	super( args )
 	

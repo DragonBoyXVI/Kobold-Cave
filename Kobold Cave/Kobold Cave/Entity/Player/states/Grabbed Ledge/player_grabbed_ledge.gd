@@ -77,17 +77,6 @@ func _unhandled_input( event: InputEvent ) -> void:
 		else:
 			
 			input_faces_away = Input.is_action_pressed( &"Move Right" )
-		#
-		#if ( input_faces_away ):
-			#
-			#var offset: float = TILE_SIZE.x * 2.0
-			#if ( current_grab.grab_to_the_right ):
-				#
-				#offset *= -1.0
-			##camera_focal.global_position.x = current_grab.grab_position.x + offset
-		#else:pass
-			#
-			##camera_focal.global_position = current_grab.grab_position
-		#
+		
 		get_window().set_input_as_handled()
 		return

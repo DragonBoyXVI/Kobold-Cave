@@ -6,6 +6,21 @@ class_name Player
 ## yuyg
 
 
+const ANIM_RESET := &"RESET"
+
+const ANIM_RUN := &"Run"
+const ANIM_IDLE := &"Idle"
+
+const ANIM_RUN_CROUCHED := &"RunCrouched"
+const ANIM_IDLE_CROUCHED := &"IdleCrouched"
+
+const ANIM_FALL := &"Fall"
+const ANIM_JUMP := &"Jump"
+
+const ANIM_HURT := &"Hurt"
+const ANIM_DEAD := &"Dead"
+
+
 @export var bomb_thrower: BombThrower
 @export var hitbox: Hitbox2D
 @export var state_machine: StateMachine
@@ -142,6 +157,10 @@ func _pre_hurt( damage: Damage ) -> void:
 	print( damage.to_string() )
 
 func _hurt( damage: Damage ) -> void:
+	
+	if ( health_node.health.current > 0 ):
+		
+		state_machine.change_state( PlayerHitStun.STATE_NAME )
 	
 	start_i_frames()
 	

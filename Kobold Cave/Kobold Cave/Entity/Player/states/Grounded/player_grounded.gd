@@ -48,6 +48,9 @@ func _physics_process( delta: float ) -> void:
 			
 			cyote_timer.start()
 			PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
+	elif ( not cyote_timer.is_stopped() ):
+		
+		cyote_timer.stop()
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
@@ -100,10 +103,10 @@ func update_model_direction() -> void:
 	if ( dir != 0.0 ):
 		
 		model.scale.x = dir
-		model.animation_player.play( ANIM_RUN )
+		model.animation_player.play( Player.ANIM_RUN )
 	else:
 		
-		model.animation_player.play( ANIM_IDLE )
+		model.animation_player.play( Player.ANIM_IDLE )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
