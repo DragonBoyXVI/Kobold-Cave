@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://c2sv5wtxoty01"]
 
-[ext_resource type="Script" uid="uid://v71k03e0i5jk" path="res://Dragon Game Template/Components/2D/Dragon Model 2D/dragon_model.gd" id="1_5gqdx"]
+[ext_resource type="Script" uid="uid://c83ci55po4j3f" path="res://Kobold Cave/Components/2D/Kobold Model/kobold_model.gd" id="1_tsjoc"]
 [ext_resource type="Texture2D" uid="uid://ciuy1um4m51hr" path="res://Kobold Cave/Entity/Player/Images/001-003-001-004.png" id="7_b6lmn"]
 [ext_resource type="Texture2D" uid="uid://b4cwb1ij6osme" path="res://Kobold Cave/Entity/Player/Images/001-003-001-006.png" id="8_200e5"]
 [ext_resource type="Texture2D" uid="uid://dq7g257n5nlgl" path="res://Kobold Cave/Entity/Player/Images/001-003-001-003.png" id="8_fx66a"]
@@ -1295,11 +1295,13 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="PlayerModel" type="Node2D" node_paths=PackedStringArray("animation_player", "root")]
+[node name="PlayerModel" type="Node2D" node_paths=PackedStringArray("footstep_mark", "animation_player", "root")]
 editor_description = "A model for animation. i dont like having game stuff tied to animation."
-script = ExtResource("1_5gqdx")
+script = ExtResource("1_tsjoc")
+footstep_mark = NodePath("FootStepMark")
 animation_player = NodePath("AnimationPlayer")
 root = NodePath("Root")
+metadata/_custom_type_script = "uid://c83ci55po4j3f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

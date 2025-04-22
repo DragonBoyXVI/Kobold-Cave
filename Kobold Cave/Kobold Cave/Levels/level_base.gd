@@ -1,4 +1,4 @@
-
+@tool
 extends Node2D
 class_name Level
 ## The area where a game loop takes place
@@ -8,7 +8,19 @@ class_name Level
 
 ## where to respawn the player
 @export var respawn_point: Marker2D
+## the floor used to play footsteps
+@export var tilemap_floor: TileMapLayer
 
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings := PackedStringArray()
+	
+	if ( not tilemap_floor ):
+		
+		const text := "Unique footstep sounds won't play without a floor!"
+		warnings.append( text )
+	
+	return warnings
 
 func _ready() -> void:
 	
@@ -22,6 +34,8 @@ func _ready() -> void:
 	KoboldRadio.player_hitstun.connect( _on_radio_player_hitstun, CONNECT_DEFERRED )
 	KoboldRadio.player_reset_needed.connect( _on_radio_player_needs_reset )
 	KoboldRadio.level_set_spawn.connect( _on_radio_new_spawn )
+	
+	KoboldRadio.play_footstep.connect( _on_radio_play_footstep )
 	
 	MainCamera2D.set_follow_coord( get_spawn_position() )
 	MainCamera2D.set_zoom_tween( Vector2.ONE, 0.25 )
@@ -70,3 +84,21 @@ func _on_radio_player_needs_reset( player: Player ) -> void:
 func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
 	
 	respawn_point = new_spawn
+
+func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
+	
+	if ( tilemap_floor ):
+		
+		var coords: Vector2i = tilemap_floor.local_to_map( tilemap_floor.to_local( footstep_pos ) )
+		var data: TileData = tilemap_floor.get_cell_tile_data( coords )
+		
+		var sound: AudioStream
+		const data_floor_sound := "Footstep Sound"
+		if ( data.has_custom_data( data_floor_sound ) ):
+			
+			sound = data.get_custom_data( data_floor_sound )
+		else:
+			
+			sound = preload( "uid://b6bja1q8f8v6v" )
+		
+		KoboldUtility.play_sound_with_location( sound, footstep_pos, get_window() )

@@ -11,9 +11,9 @@ const ARG_STUN_TIME := &"Stun Time"
 
 
 func _init() -> void:
-	super()
 	
 	default_enter_args[ ARG_STUN_TIME ] = 0.5
+	super()
 
 func _ready() -> void:
 	super()
