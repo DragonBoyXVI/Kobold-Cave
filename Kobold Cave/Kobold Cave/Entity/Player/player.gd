@@ -26,9 +26,6 @@ const ANIM_DEAD := &"Dead"
 @export var state_machine: StateMachine
 
 
-var _flashing_lights: bool
-
-
 func _input( event: InputEvent ) -> void:
 	
 	if ( event is InputEventKey and event.is_pressed() ):
@@ -102,67 +99,19 @@ func _ready() -> void:
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
 
 
-var _i_frame_tween: Tween
-@export var _i_frame_timer: Timer
-func start_i_frames() -> void:
-	
-	hitbox.disable.call_deferred()
-	_i_frame_timer.start()
-	
-	if ( _i_frame_tween ):
-		
-		_i_frame_tween.kill()
-	
-	var tween := create_tween()
-	tween.set_loops(  )
-	tween.set_ignore_time_scale()
-	
-	if ( _flashing_lights ):
-		
-		tween.tween_callback( hide ).set_delay( 0.125 )
-		tween.tween_callback( show ).set_delay( 0.125 )
-	else:
-		
-		tween.tween_property( self, ^"modulate", Color.TRANSPARENT, 0.250 )
-		tween.tween_property( self, ^"modulate", Color.WHITE, 0.250 )
-	
-	_i_frame_tween = tween
-
-func end_i_frames() -> void:
-	
-	if ( _i_frame_tween ):
-		
-		_i_frame_tween.kill()
-		_i_frame_tween = null
-	
-	hitbox.enable.call_deferred()
-	
-	show()
-	modulate = Color.WHITE
-
-
 func out_of_bounds() -> void:
 	
 	KoboldRadio.player_reset_needed.emit( self )
 	# the wolrd pausing causes this to happen twice
 	#await get_tree().create_timer( 0.5 ).timeout
-	
-	if ( _i_frame_timer.is_stopped() ):
-		
-		health_node.recive_event( Damage.new( 1 ) )
+	health_node.recive_event( Damage.new( 1 ) )
 
-
-func _pre_hurt( damage: Damage ) -> void:
-	
-	print( damage.to_string() )
 
 func _hurt( damage: Damage ) -> void:
 	
 	if ( health_node.health.current > 0 ):
 		
 		state_machine.change_state( PlayerHitStun.STATE_NAME )
-	
-	start_i_frames()
 	
 	var cam_effect := CameraShake2D.new()
 	cam_effect.duration_max = 0.25
@@ -171,8 +120,6 @@ func _hurt( damage: Damage ) -> void:
 	MainCamera2D.add_effect( cam_effect )
 	
 	KoboldRadio.player_hitstun.emit( damage )
-	
-	print( "took: ", damage.amount, " HP: ", health_node.health.current )
 
 func _death() -> void:
 	
@@ -189,19 +136,9 @@ func _death() -> void:
 	model.scale.y = 0.1
 
 
-func _settings_update( recived_data: SettingsFile ) -> void:
-	
-	_flashing_lights = recived_data.flashing_lights
-
-
 func _on_tree_paused( paused: bool ) -> void:
 	
 	if ( not paused ): return
 	
 	modulate.a = maxf( 0.5, modulate.a )
 	show()
-
-
-func _on_i_frames_timer_timeout() -> void:
-	
-	end_i_frames()

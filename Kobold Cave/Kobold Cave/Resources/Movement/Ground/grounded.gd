@@ -52,9 +52,13 @@ func logic_walk( body: CharacterBody2D, delta: float, direction: float ) -> void
 	
 	var speed_target: float = ground_speed * direction
 	var speed_delta: float = delta
-	if ( direction_dir == velocity_dir ):
+	var accel_type: float = direction_dir * velocity_dir
+	if ( accel_type == 1.0 ):
 		
 		speed_delta *= ground_accel
+	elif ( accel_type == -1.0 ):
+		
+		speed_delta *= ( ground_accel + ground_decel )
 	else:
 		
 		speed_delta *= ground_decel
