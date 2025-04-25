@@ -28,7 +28,7 @@ size = Vector2(50, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 58)
 
-[sub_resource type="Resource" id="Resource_72db5"]
+[sub_resource type="Resource" id="Resource_v02m0"]
 resource_local_to_scene = true
 script = ExtResource("16_g8os4")
 ignore_max = true
@@ -127,7 +127,7 @@ position = Vector2(0, -80)
 texture = ExtResource("9_0t3dc")
 
 [node name="NodeHealth" parent="." instance=ExtResource("14_er2h2")]
-health = SubResource("Resource_72db5")
+health = SubResource("Resource_v02m0")
 armour = ExtResource("16_84pue")
 
 [node name="Hitbox2D" parent="." node_paths=PackedStringArray("event_recivers") instance=ExtResource("17_2ulmg")]

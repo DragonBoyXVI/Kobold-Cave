@@ -22,7 +22,7 @@ const ARG_GRAB_TIME := &"Grab Time"
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	model.animation_player.play( Player.ANIM_FALL )
+	model.animation_player.play( Player.ANIM_JUMP if player.velocity.y < 0 else Player.ANIM_FALL )
 	
 	grab_timer.start( args[ ARG_GRAB_TIME ] )
 	stuck_timer.start()
@@ -36,6 +36,7 @@ func _leave() -> void:
 	
 	model.root.scale = Vector2.ONE
 	model.rotation = 0.0
+	model.animation_player.speed_scale = 1.0
 
 func _process( _delta: float ) -> void:
 	
@@ -54,6 +55,21 @@ func _process( _delta: float ) -> void:
 	
 	var rotate_amount: float = player.velocity.x / movement.air_terminal_velocity
 	model.rotation = rotate_max * rotate_amount
+	
+	# anim
+	if ( model.animation_player.current_animation == Player.ANIM_FALL ):
+		if ( player.velocity.y < 0 ):
+			
+			model.animation_player.play( Player.ANIM_JUMP )
+			model.animation_player.speed_scale = 1.0
+		else:
+			
+			var fall_speed: float = player.velocity.length_squared() / movement.air_terminal_squared
+			model.animation_player.speed_scale = fall_speed * 5.0
+	elif( model.animation_player.current_animation == Player.ANIM_JUMP ):
+		if ( player.velocity.y > 0 ):
+			
+			model.animation_player.play( Player.ANIM_FALL )
 
 func _physics_process( delta: float ) -> void:
 	
