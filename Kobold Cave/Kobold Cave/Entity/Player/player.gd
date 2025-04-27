@@ -103,7 +103,7 @@ func out_of_bounds() -> void:
 	
 	KoboldRadio.player_reset_needed.emit( self )
 	# the wolrd pausing causes this to happen twice
-	#await get_tree().create_timer( 0.5 ).timeout
+	await get_tree().create_timer( 0.25 ).timeout
 	health_node.recive_event( Damage.new( 1 ) )
 
 

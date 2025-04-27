@@ -28,7 +28,7 @@ func _enter( _args: Dictionary ) -> void:
 	update_model_direction()
 	
 	const snd: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-	KoboldUtility.play_sound_with_location( snd, player.position, get_window() )
+	KoboldUtility.play_sound_with_location( snd, player.position )
 
 func _leave() -> void:
 	

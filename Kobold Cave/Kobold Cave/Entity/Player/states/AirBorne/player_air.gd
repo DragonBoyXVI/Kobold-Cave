@@ -57,15 +57,12 @@ func _process( _delta: float ) -> void:
 	model.rotation = rotate_max * rotate_amount
 	
 	# anim
+	var fall_speed: float = player.velocity.length_squared() / movement.air_terminal_squared
+	model.animation_player.speed_scale = fall_speed * 5.0
 	if ( model.animation_player.current_animation == Player.ANIM_FALL ):
 		if ( player.velocity.y < 0 ):
 			
 			model.animation_player.play( Player.ANIM_JUMP )
-			model.animation_player.speed_scale = 1.0
-		else:
-			
-			var fall_speed: float = player.velocity.length_squared() / movement.air_terminal_squared
-			model.animation_player.speed_scale = fall_speed * 5.0
 	elif( model.animation_player.current_animation == Player.ANIM_JUMP ):
 		if ( player.velocity.y > 0 ):
 			

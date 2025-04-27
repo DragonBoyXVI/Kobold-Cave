@@ -101,4 +101,4 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 			
 			sound = preload( "uid://b6bja1q8f8v6v" )
 		
-		KoboldUtility.play_sound_with_location( sound, footstep_pos, get_window() )
+		KoboldUtility.play_sound_with_location( sound, footstep_pos )
