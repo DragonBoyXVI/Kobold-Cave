@@ -11,6 +11,7 @@ class_name Bomb
 
 func _init() -> void:
 	
+	
 	tree_exited.connect( _on_tree_exited )
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://jhp4a7c1ahg8"]
 
 [ext_resource type="Script" uid="uid://cp1mrpekc3h6g" path="res://Kobold Cave/Bomb/bomb.gd" id="1_84bg3"]
-[ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="1_xx25p"]
+[ext_resource type="Texture2D" uid="uid://dx6tphh0mfmck" path="res://Kobold Cave/Bomb/001-000.png" id="2_gdduf"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="3_tiw5t"]
 [ext_resource type="Resource" uid="uid://du3ox11s21dld" path="res://Kobold Cave/Saved Resources/Hitbox masks/bomb_mask.tres" id="4_gdduf"]
 [ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="5_l28rg"]
@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://b6t2e5o2hx8yc" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqese"]
-radius = 64.0
+radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wn477"]
-radius = 48.0
+radius = 20.0
 
 [node name="Bomb" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
 collision_layer = 2
@@ -21,7 +21,7 @@ script = ExtResource("1_84bg3")
 hitbox = NodePath("Hitbox2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xx25p")
+texture = ExtResource("2_gdduf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oqese")

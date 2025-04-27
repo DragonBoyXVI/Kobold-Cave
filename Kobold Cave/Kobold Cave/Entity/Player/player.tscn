@@ -141,7 +141,7 @@ debug_color = Color(0, 0, 1, 0.4)
 
 [node name="BombThrower" parent="." node_paths=PackedStringArray("cooldown_timer") instance=ExtResource("20_7lm0b")]
 position = Vector2(0, -80)
-throw_radius = 112.0
+throw_radius = 68.0
 cooldown_timer = NodePath("Timer")
 starts_empty = true
 

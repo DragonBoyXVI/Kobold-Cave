@@ -53,6 +53,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
+movie_writer/movie_file="C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/movie.avi"
 naming/script_name_casing=2
 
 [editor_plugins]

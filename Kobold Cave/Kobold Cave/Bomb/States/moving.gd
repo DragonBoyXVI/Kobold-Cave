@@ -14,6 +14,7 @@ func _ready() -> void:
 func _enter( _args: Dictionary ) -> void:
 	
 	timer.start()
+	sprite.rotation = TAU * randf()
 
 func _leave() -> void:
 	
