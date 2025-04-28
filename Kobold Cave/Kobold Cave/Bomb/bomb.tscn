@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b6t2e5o2hx8yc" path="res://Kobold Cave/Bomb/States/exploding.gd" id="7_fn1d5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqese"]
-radius = 26.0
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wn477"]
 radius = 20.0
@@ -47,16 +47,22 @@ process_callback = 0
 wait_time = 30.0
 one_shot = true
 
-[node name="Exploding" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite", "timer")]
+[node name="Exploding" type="Node" parent="StateMachine" node_paths=PackedStringArray("bomb", "sprite", "timer", "shake_timer")]
 script = ExtResource("7_fn1d5")
 bomb = NodePath("../..")
 sprite = NodePath("../../Sprite2D")
 timer = NodePath("Timer")
+shake_timer = NodePath("ShakeTimer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Exploding"]
 process_callback = 0
 wait_time = 3.0
 one_shot = true
 
+[node name="ShakeTimer" type="Timer" parent="StateMachine/Exploding"]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="recived_event" from="Hitbox2D" to="." method="_on_hitbox_2d_recived_event"]
 [connection signal="timeout" from="StateMachine/Exploding/Timer" to="StateMachine/Exploding" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Exploding/ShakeTimer" to="StateMachine/Exploding" method="_on_shake_timer_timeout"]
