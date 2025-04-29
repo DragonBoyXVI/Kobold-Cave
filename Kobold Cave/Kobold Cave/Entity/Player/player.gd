@@ -11,7 +11,8 @@ const ANIM_RESET := &"RESET"
 const ANIM_RUN := &"Run"
 const ANIM_IDLE := &"Idle"
 
-const ANIM_RUN_CROUCHED := &"RunCrouched"
+const ANIM_RUN_CROUCHED_FORWARD := &"RunCrouchedForward"
+const ANIM_RUN_CROUCHED_BACKWARD := &"RunCrouchedBackward"
 const ANIM_IDLE_CROUCHED := &"IdleCrouched"
 
 const ANIM_FALL := &"Fall"

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_0twss")
-ground_speed = 800.0
+ground_speed = 500.0
 ground_accel = 5000.0
 ground_decel = 5500.0
 ground_jump = 800.0

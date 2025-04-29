@@ -20,7 +20,6 @@ var _toggle_crouch := true
 
 func _enter( _args: Dictionary ) -> void:
 	
-	model.scale.y = 0.5
 	update_animation()
 	
 	if ( standing_shape and crouched_shape ):
@@ -29,8 +28,6 @@ func _enter( _args: Dictionary ) -> void:
 		standing_shape.set_deferred( &"disabled", true )
 
 func _leave() -> void:
-	
-	model.scale.y = 1.0
 	
 	uncrouch_timer.stop()
 	
@@ -56,6 +53,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( get_window().is_input_handled() ): return
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
+		if ( event.is_echo() ): return
 		
 		update_animation()
 		
@@ -115,12 +113,20 @@ func _unhandled_input( event: InputEvent ) -> void:
 func update_animation() -> void:
 	
 	var dir: float = Input.get_axis( &"Move Left", &"Move Right" )
+	
+	model.animation_player.play( Player.ANIM_RESET )
+	model.animation_player.advance( 0.0 )
 	if ( is_zero_approx( dir ) ):
 		
 		model.animation_player.play( Player.ANIM_IDLE_CROUCHED )
 	else:
 		
-		model.animation_player.play( Player.ANIM_RUN_CROUCHED )
+		if ( signf( model.scale.x ) == sign( dir ) ):
+			
+			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD )
+		else:
+			
+			model.animation_player.play( Player.ANIM_RUN_CROUCHED_BACKWARD )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

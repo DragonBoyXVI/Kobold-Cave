@@ -40,6 +40,12 @@ func enter( args: Dictionary[ StringName, Variant ] = {} ) -> void:
 			
 			slow = SLOW_SLOW
 
+func leave() -> void:
+	
+	model.animation_player.play( Player.ANIM_RESET )
+	model.animation_player.advance( 0.0 )
+	super()
+
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()

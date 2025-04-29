@@ -18,8 +18,9 @@ size = Vector2(256, 640)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud3vi"]
 size = Vector2(256, 88)
 
-[node name="Test World" type="Node2D"]
+[node name="Test World" type="Node2D" node_paths=PackedStringArray("tilemap_floor")]
 script = ExtResource("1_rbnmu")
+tilemap_floor = NodePath("TileMapLayer")
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_ty4y6")]

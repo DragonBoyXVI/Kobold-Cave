@@ -60,8 +60,10 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( get_window().is_input_handled() ): return
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
+		if ( event.is_echo() ): return
 		
 		update_model_direction()
+		
 		get_window().set_input_as_handled()
 		return
 	
@@ -103,6 +105,9 @@ func _unhandled_input( event: InputEvent ) -> void:
 func update_model_direction() -> void:
 	
 	var dir: float = signf( Input.get_axis( &"Move Left", &"Move Right" ) )
+	
+	model.animation_player.play( Player.ANIM_RESET )
+	model.animation_player.advance( 0.0 )
 	if ( dir != 0.0 ):
 		
 		model.scale.x = dir

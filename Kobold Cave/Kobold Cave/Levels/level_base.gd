@@ -92,6 +92,8 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 		var coords: Vector2i = tilemap_floor.local_to_map( tilemap_floor.to_local( footstep_pos ) )
 		var data: TileData = tilemap_floor.get_cell_tile_data( coords )
 		
+		if ( not data ): return
+		
 		var sound: AudioStream
 		const data_floor_sound := "Footstep Sound"
 		if ( data.has_custom_data( data_floor_sound ) ):
@@ -102,3 +104,8 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 			sound = preload( "uid://b6bja1q8f8v6v" )
 		
 		KoboldUtility.play_sound_with_location( sound, footstep_pos )
+	else:
+		
+		# default case
+		const snd: AudioStream = preload( "res://Dragon Game Template/Audio/merp.wav" )
+		KoboldUtility.play_sound_with_location( snd, footstep_pos )
