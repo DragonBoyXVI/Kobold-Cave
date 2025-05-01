@@ -50,6 +50,7 @@ func _physics_process( delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
+	if ( event.is_echo() ): return
 	if ( get_window().is_input_handled() ): return
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
@@ -114,8 +115,8 @@ func update_animation() -> void:
 	
 	var dir: float = Input.get_axis( &"Move Left", &"Move Right" )
 	
-	model.animation_player.play( Player.ANIM_RESET )
-	model.animation_player.advance( 0.0 )
+	#model.animation_player.play( Player.ANIM_RESET )
+	#model.animation_player.advance( 0.0 )
 	if ( is_zero_approx( dir ) ):
 		
 		model.animation_player.play( Player.ANIM_IDLE_CROUCHED )
@@ -126,7 +127,8 @@ func update_animation() -> void:
 			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD )
 		else:
 			
-			model.animation_player.play( Player.ANIM_RUN_CROUCHED_BACKWARD )
+			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD, -1.0, -1.0, false )
+			#model.animation_player.play( Player.ANIM_RUN_CROUCHED_BACKWARD )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

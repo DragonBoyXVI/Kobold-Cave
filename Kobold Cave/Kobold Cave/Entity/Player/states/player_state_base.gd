@@ -75,6 +75,7 @@ func _ready() -> void:
 		_on_settings_updated( Settings.data )
 
 func _unhandled_input( event: InputEvent ) -> void:
+	if ( event.is_echo() ): return
 	
 	if ( event.is_action( &"Slow" ) ):
 		

@@ -108,6 +108,7 @@ func _physics_process( _delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
+	if ( event.is_echo() ): return
 	var window := get_window()
 	if ( window.is_input_handled() ): return
 	

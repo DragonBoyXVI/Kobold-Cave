@@ -25,7 +25,10 @@ func _ready() -> void:
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	# hurt anim
+	model.animation_player.play( Player.ANIM_HURT )
+	model.animation_player.seek( randf(), true )
+	model.animation_player.pause()
+	
 	stun_timer.start( args[ ARG_STUN_TIME ] )
 
 func _leave() -> void:
@@ -46,4 +49,4 @@ func _physics_process( delta: float ) -> void:
 
 func _on_stun_timer_timeout() -> void:
 	
-	request_state( PlayerAir.STATE_NAME )
+	request_state( PlayerAir.STATE_NAME if player.is_on_floor() else PlayerGrounded.STATE_NAME )

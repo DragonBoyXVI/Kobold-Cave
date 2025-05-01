@@ -94,6 +94,9 @@ func _physics_process( delta: float ) -> void:
 			movement.logic_apply_jump( player )
 			return
 		
+		const snd: AudioStream = preload( "uid://b6bja1q8f8v6v" )
+		KoboldUtility.play_sound_with_location( snd, player.position )
+		
 		if ( Input.is_action_pressed( &"Crouch" ) ):
 			
 			request_state( PlayerCrouched.STATE_NAME )
@@ -103,6 +106,7 @@ func _physics_process( delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
+	if ( event.is_echo() ): return
 	if ( get_window().is_input_handled() ): return
 	
 	if ( event.is_action_pressed( &"Jump" ) ):

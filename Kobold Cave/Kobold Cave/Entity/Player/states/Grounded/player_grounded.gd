@@ -26,9 +26,6 @@ func _enter( _args: Dictionary ) -> void:
 	
 	player.velocity.y = 1.0
 	update_model_direction()
-	
-	const snd: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-	KoboldUtility.play_sound_with_location( snd, player.position )
 
 func _leave() -> void:
 	
@@ -57,6 +54,7 @@ func _physics_process( delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
+	if ( event.is_echo() ): return
 	if ( get_window().is_input_handled() ): return
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):

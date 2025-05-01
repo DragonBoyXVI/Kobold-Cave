@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=14 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="8_x5arx"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
+[ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_ud3vi"]
 [ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="13_jvck6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
@@ -83,3 +84,6 @@ texture = ExtResource("3_gjs3b")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-48, -331)
 shape = SubResource("RectangleShape2D_ud3vi")
+
+[node name="Wolf" parent="." instance=ExtResource("10_ud3vi")]
+position = Vector2(758, -450)

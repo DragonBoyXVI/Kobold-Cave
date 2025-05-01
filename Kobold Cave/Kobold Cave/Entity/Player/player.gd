@@ -18,7 +18,7 @@ const ANIM_IDLE_CROUCHED := &"IdleCrouched"
 const ANIM_FALL := &"Fall"
 const ANIM_JUMP := &"Jump"
 
-const ANIM_HURT := &"Hurt"
+const ANIM_HURT := &"Stun"
 const ANIM_DEAD := &"Dead"
 
 
@@ -107,6 +107,18 @@ func out_of_bounds() -> void:
 	await get_tree().create_timer( 0.25 ).timeout
 	health_node.recive_event( Damage.new( 1 ) )
 
+
+var _was_hurt_this_frame: bool = false
+func _pre_hurt( damage: Damage ) -> void:
+	
+	if ( _was_hurt_this_frame ):
+		
+		damage.amount = 0
+	else:
+		
+		_was_hurt_this_frame = true
+		set_deferred( &"_was_hurt_this_frame", false )
+		return
 
 func _hurt( damage: Damage ) -> void:
 	
