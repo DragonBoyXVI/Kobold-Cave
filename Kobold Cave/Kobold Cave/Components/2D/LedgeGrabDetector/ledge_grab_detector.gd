@@ -101,6 +101,10 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int,
 		grab_info.grab_to_the_right = ( grab_info.grab_position.x > position_ref.global_position.x )
 		
 		var tile_size: Vector2 = tile_map.tile_set.tile_size
+		const game_tiles: TileSet = preload( "uid://b8dql8ixu6yvr" )
+		if ( tile_map.tile_set == game_tiles ):
+			
+			tile_size *= 0.8
 		if ( grab_info.grab_to_the_right ):
 			
 			grab_info.grab_position += tile_size * Vector2( -0.5, -0.5 )

@@ -21,6 +21,9 @@ const ANIM_JUMP := &"Jump"
 const ANIM_HURT := &"Stun"
 const ANIM_DEAD := &"Dead"
 
+const ANIM_LEDGE_HANG := &"LedgeHang"
+const ANIM_LEDGE_JUMP := &"LedgeJump"
+
 
 @export var bomb_thrower: BombThrower
 @export var hitbox: Hitbox2D
@@ -71,6 +74,10 @@ func _input( event: InputEvent ) -> void:
 			KEY_2:
 				
 				Engine.time_scale = 1.0
+			
+			KEY_3:
+				
+				Engine.time_scale = 0.0
 			
 			KEY_F1:
 				

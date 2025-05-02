@@ -61,7 +61,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 		model.scale.x = -1.0
 	
 	# play a ledge scrable anim here
-	
+	model.animation_player.play( Player.ANIM_LEDGE_HANG )
 	
 	# get the position of the player smushed up to the wall
 	var wall_position: Vector2 = grab_info.grab_position
@@ -85,7 +85,10 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	movement_tween.set_ease( Tween.EASE_OUT )
 	movement_tween.set_trans( Tween.TRANS_CIRC )
 	
-	movement_tween.tween_property( player, ^"position", new_position, 0.2 )
+	const max_time: float = 0.2
+	const distance_divisor: float = pow( 80.0, 2.0 )
+	var distance_factor: float = 1.0 - ( ledge_grabber.global_position.distance_squared_to( wall_position ) / distance_divisor )
+	movement_tween.tween_property( player, ^"position", new_position, max_time * distance_factor )
 	
 	movement_tween.finished.connect( _on_move_tween_finished.bind( grab_info ) )
 

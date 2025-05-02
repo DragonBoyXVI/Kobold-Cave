@@ -21,6 +21,7 @@ func _enter( args: Dictionary ) -> void:
 	current_grab = args[ ARG_GRAB_INFO ]
 	
 	#camera_focal.global_position = current_grab.grab_position
+	model.animation_player.play( Player.ANIM_LEDGE_HANG )
 	
 	if ( current_grab.grab_to_the_right ):
 		
@@ -43,6 +44,8 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
 		if ( input_faces_away ):
+			
+			model.scale.x *= -1.0
 			
 			var dir: float
 			if ( current_grab.grab_to_the_right ):
@@ -78,6 +81,8 @@ func _unhandled_input( event: InputEvent ) -> void:
 		else:
 			
 			input_faces_away = Input.is_action_pressed( &"Move Right" )
+		
+		model.animation_player.play( Player.ANIM_LEDGE_JUMP if input_faces_away else Player.ANIM_LEDGE_HANG )
 		
 		get_window().set_input_as_handled()
 		return

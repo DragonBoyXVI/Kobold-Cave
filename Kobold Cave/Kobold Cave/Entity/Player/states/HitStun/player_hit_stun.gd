@@ -49,4 +49,4 @@ func _physics_process( delta: float ) -> void:
 
 func _on_stun_timer_timeout() -> void:
 	
-	request_state( PlayerAir.STATE_NAME if player.is_on_floor() else PlayerGrounded.STATE_NAME )
+	request_state( PlayerGrounded.STATE_NAME if player.is_on_floor() else PlayerAir.STATE_NAME )
