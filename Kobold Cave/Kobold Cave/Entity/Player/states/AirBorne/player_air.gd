@@ -103,6 +103,17 @@ func _physics_process( delta: float ) -> void:
 		else:
 			
 			request_state( PlayerGrounded.STATE_NAME )
+	else:
+		
+		if ( grab_timer.is_stopped() ):
+			if ( ledge_grabber.can_process() ):
+				if ( player.velocity.y < 0.0 ):
+					
+					ledge_grabber.disable.call_deferred()
+			else:
+				if ( player.velocity.y > 0.0 ):
+					
+					ledge_grabber.enable.call_deferred()
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )

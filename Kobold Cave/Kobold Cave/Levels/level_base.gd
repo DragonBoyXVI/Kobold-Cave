@@ -9,7 +9,11 @@ class_name Level
 ## where to respawn the player
 @export var respawn_point: Marker2D
 ## the floor used to play footsteps
-@export var tilemap_floor: TileMapLayer
+@export var tilemap_floor: TileMapLayer: 
+	set( new ):
+		
+		tilemap_floor = new
+		update_configuration_warnings()
 
 
 func _get_configuration_warnings() -> PackedStringArray:

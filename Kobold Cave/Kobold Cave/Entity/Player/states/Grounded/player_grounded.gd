@@ -108,7 +108,7 @@ func update_model_direction() -> void:
 	model.animation_player.advance( 0.0 )
 	if ( dir != 0.0 ):
 		
-		model.scale.x = dir
+		player.set_facing_direction( dir > 0.0 )
 		model.animation_player.play( Player.ANIM_RUN )
 	else:
 		

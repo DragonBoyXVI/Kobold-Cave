@@ -8,21 +8,28 @@ class_name Entity
 
 signal enabled
 signal disabled
+signal facing_changed( facing_right: bool )
 
 
 @export var health_node: NodeHealth
 @export var model: DragonModel2D
 
 
+var _is_facing_right: bool = true
+
+
 func _init() -> void:
 	
 	collision_layer = 0b10
-
-func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):
 		
 		child_entered_tree.connect( _util_child_entered_tree )
+		return
+
+func _ready() -> void:
+	
+	if ( Engine.is_editor_hint() ):
 		return
 	
 	Settings.updated.connect( _on_settings_updated )
@@ -51,6 +58,26 @@ func _property_get_revert( property: StringName ) -> Variant:
 		&"collision_layer": return 0b10
 	
 	return null
+
+
+## used to set the facing direction of the entity
+func set_facing_direction( facing_right: bool ) -> void:
+	
+	_is_facing_right = facing_right
+	facing_changed.emit( facing_right )
+	
+	if ( model ):
+		
+		model.scale.x = 1.0 if _is_facing_right else -1.0
+	
+	_facing_changed( facing_right )
+
+func get_facing_direction() -> bool:
+	return _is_facing_right
+
+## virtual
+func _facing_changed( _facing_right: bool ) -> void:
+	pass
 
 
 func out_of_bounds() -> void:

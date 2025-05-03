@@ -53,12 +53,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	var grab_info: LedgeGrabInfo = args[ ARG_GRAB_INFO ]
 	
 	player.velocity = Vector2.ZERO
-	if ( grab_info.grab_to_the_right ):
-		
-		model.scale.x = 1.0
-	else:
-		
-		model.scale.x = -1.0
+	player.set_facing_direction( grab_info.grab_to_the_right )
 	
 	# play a ledge scrable anim here
 	model.animation_player.play( Player.ANIM_LEDGE_HANG )
@@ -85,9 +80,9 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	movement_tween.set_ease( Tween.EASE_OUT )
 	movement_tween.set_trans( Tween.TRANS_CIRC )
 	
-	const max_time: float = 0.2
-	const distance_divisor: float = pow( 80.0, 2.0 )
-	var distance_factor: float = 1.0 - ( ledge_grabber.global_position.distance_squared_to( wall_position ) / distance_divisor )
+	const max_time: float = 0.4
+	const distance_divisor: float = pow( 128.0, 2.0 )
+	var distance_factor: float = ( ledge_grabber.global_position.distance_squared_to( wall_position ) / distance_divisor )
 	movement_tween.tween_property( player, ^"position", new_position, max_time * distance_factor )
 	
 	movement_tween.finished.connect( _on_move_tween_finished.bind( grab_info ) )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dwiu0froolirj"]
+[gd_scene load_steps=15 format=4 uid="uid://dwiu0froolirj"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_ks1i0"]
 [ext_resource type="TileSet" uid="uid://b8dql8ixu6yvr" path="res://Kobold Cave/Saved Resources/Tile Sets/Game TileSet/game_tiles.tres" id="2_di7y6"]
@@ -10,15 +10,19 @@
 [ext_resource type="Script" uid="uid://colxx5hl8mqt0" path="res://Kobold Cave/Components/2D/Trigger Response/Enemy Spawns/enemy_spawner.gd" id="7_21jon"]
 [ext_resource type="Texture2D" uid="uid://bolir76nd2dbc" path="res://Kobold Cave/Saved Resources/gradient_texture_deathpit.tres" id="8_bxjkn"]
 [ext_resource type="PackedScene" uid="uid://car8lov7qvebp" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.tscn" id="8_wes77"]
+[ext_resource type="PackedScene" uid="uid://cn8dbjksgpxgc" path="res://Kobold Cave/Components/2D/Level Boundry/level_boundry.tscn" id="11_tip8l"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tip8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh1kt"]
 size = Vector2(2144, 1056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x26mn"]
-size = Vector2(1152, 640)
+size = Vector2(1248, 640)
 
-[node name="LevelDrillBottom" type="Node2D"]
+[node name="LevelDrillBottom" type="Node2D" node_paths=PackedStringArray("tilemap_floor")]
 script = ExtResource("1_ks1i0")
+tilemap_floor = NodePath("Floor")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
 metadata/_edit_group_ = true
 
@@ -34,6 +38,12 @@ tile_map_data = PackedByteArray("AAD//wEABAAAAAEABAAAAAEABAAAAAAABAD7//z/BAACAAA
 tile_set = ExtResource("2_di7y6")
 
 [node name="Player" parent="." instance=ExtResource("3_j6ke1")]
+
+[node name="LevelBoundry" parent="." instance=ExtResource("11_tip8l")]
+position = Vector2(0, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundry"]
+shape = SubResource("WorldBoundaryShape2D_tip8l")
 
 [node name="Spawn" type="Node2D" parent="."]
 
@@ -93,8 +103,8 @@ metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
 
 [node name="SprPit" type="Sprite2D" parent="Spawn"]
 z_index = -1
-position = Vector2(-1024, 435.2)
-scale = Vector2(2304, 25.6)
+position = Vector2(-576, 435.2)
+scale = Vector2(3200, 25.6)
 texture = ExtResource("8_bxjkn")
 
 [node name="Label" type="Label" parent="Spawn"]
@@ -119,7 +129,7 @@ run_enter = true
 metadata/_custom_type_script = "uid://wk6s0gw6kcut"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftRoom/AreaTrigger2D"]
-position = Vector2(160, 192)
+position = Vector2(208, 192)
 shape = SubResource("RectangleShape2D_x26mn")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="LeftRoom/AreaTrigger2D" node_paths=PackedStringArray("bounds_enter")]
