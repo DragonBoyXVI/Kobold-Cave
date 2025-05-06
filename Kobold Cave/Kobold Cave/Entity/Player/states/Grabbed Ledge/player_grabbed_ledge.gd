@@ -21,7 +21,7 @@ func _enter( args: Dictionary ) -> void:
 	current_grab = args[ ARG_GRAB_INFO ]
 	
 	#camera_focal.global_position = current_grab.grab_position
-	model.animation_player.play( Player.ANIM_LEDGE_HANG )
+	update_animation()
 	
 	if ( current_grab.grab_to_the_right ):
 		
@@ -75,14 +75,19 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
 		
-		if ( current_grab.grab_to_the_right ):
-			
-			input_faces_away = Input.is_action_pressed( &"Move Left" )
-		else:
-			
-			input_faces_away = Input.is_action_pressed( &"Move Right" )
-		
-		model.animation_player.play( Player.ANIM_LEDGE_JUMP if input_faces_away else Player.ANIM_LEDGE_HANG )
+		update_animation()
 		
 		get_window().set_input_as_handled()
 		return
+
+
+func update_animation() -> void:
+	
+	if ( current_grab.grab_to_the_right ):
+		
+		input_faces_away = Input.is_action_pressed( &"Move Left" )
+	else:
+		
+		input_faces_away = Input.is_action_pressed( &"Move Right" )
+	
+	model.animation_player.play( Player.ANIM_LEDGE_JUMP if input_faces_away else Player.ANIM_LEDGE_HANG )

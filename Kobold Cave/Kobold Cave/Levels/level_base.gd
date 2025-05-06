@@ -91,6 +91,9 @@ func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
 
 func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 	
+	var sound: AudioStream = preload( "uid://b6bja1q8f8v6v" )
+	var sound_pitch: float = randf_range( 0.95, 1.05 )
+	
 	if ( tilemap_floor ):
 		
 		var coords: Vector2i = tilemap_floor.local_to_map( tilemap_floor.to_local( footstep_pos ) )
@@ -98,18 +101,10 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 		
 		if ( not data ): return
 		
-		var sound: AudioStream
 		const data_floor_sound := "Footstep Sound"
 		if ( data.has_custom_data( data_floor_sound ) ):
 			
 			sound = data.get_custom_data( data_floor_sound )
-		else:
-			
-			sound = preload( "uid://b6bja1q8f8v6v" )
-		
-		KoboldUtility.play_sound_with_location( sound, footstep_pos )
-	else:
-		
-		# default case
-		const snd: AudioStream = preload( "res://Dragon Game Template/Audio/merp.wav" )
-		KoboldUtility.play_sound_with_location( snd, footstep_pos )
+	
+	var player := KoboldUtility.play_sound_with_location( sound, footstep_pos )
+	player.pitch_scale = sound_pitch

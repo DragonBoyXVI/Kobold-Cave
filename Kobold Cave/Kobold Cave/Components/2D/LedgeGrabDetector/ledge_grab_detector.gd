@@ -138,6 +138,7 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int,
 	var direct_state := get_world_2d().direct_space_state
 	
 	var ray_query := PhysicsRayQueryParameters2D.new()
+	ray_query.hit_from_inside = true
 	ray_query.from = position_ref.global_position
 	ray_query.collision_mask = 0b1
 	
@@ -152,7 +153,7 @@ func _on_body_shape_entered( body_rid: RID, body: Node2D, body_shape_index: int,
 	
 	# peek over
 	const peek_length := Vector2( 48.0, 0 )
-	ray_query.from = grab_info.grab_position#peek_height_ref.global_position
+	ray_query.from = grab_info.grab_position + Vector2.UP
 	ray_query.to = ray_query.from + ( peek_length * ( 1.0 if grab_info.grab_to_the_right else -1.0 ) )
 	result = direct_state.intersect_ray( ray_query )
 	if ( not result.is_empty() ):
