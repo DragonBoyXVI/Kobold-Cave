@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b5uovsjcen7yj"]
+[gd_scene load_steps=19 format=4 uid="uid://b5uovsjcen7yj"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_eru8r"]
 [ext_resource type="TileSet" uid="uid://b8dql8ixu6yvr" path="res://Kobold Cave/Saved Resources/Tile Sets/Game TileSet/game_tiles.tres" id="2_dxojv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://r6dfw2tyyfff" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Boundry/camera_bound.gd" id="11_iqu8w"]
 [ext_resource type="Script" uid="uid://ccjwnrvy2ghsa" path="res://Kobold Cave/Components/2D/Trigger Response/Set Respawn/set_respawn.gd" id="12_iqu8w"]
 [ext_resource type="Script" uid="uid://ccq3bxklty4a6" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd" id="13_c4h7k"]
+[ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="14_j5oxq"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="14_ll1iq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_66xk2"]
@@ -93,8 +94,8 @@ metadata/_custom_type_script = "uid://dbf8r7wqq34yj"
 
 [node name="SprPitInit" type="Sprite2D" parent="SpawnRoom"]
 z_index = -1
-position = Vector2(-1248, 288)
-scale = Vector2(1280, 64)
+position = Vector2(-928, 288)
+scale = Vector2(1920, 64)
 texture = ExtResource("9_8g8jn")
 
 [node name="SmallRoom" type="Node2D" parent="."]
@@ -109,7 +110,7 @@ shape = SubResource("RectangleShape2D_c4h7k")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="SmallRoom/TriggerBase" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("11_iqu8w")
-bounds_enter = [NodePath("")]
+bounds_enter = [null]
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
@@ -150,7 +151,7 @@ shape = SubResource("RectangleShape2D_iqu8w")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="LargeRoom/TriggerBase" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("11_iqu8w")
-bounds_enter = [NodePath(""), NodePath("")]
+bounds_enter = [null, null]
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 
 [node name="TriggerCameraZoom" type="Node2D" parent="LargeRoom/TriggerBase"]
@@ -180,3 +181,18 @@ position = Vector2(3840, 928)
 
 [node name="GoalFlag" parent="LargeRoom" instance=ExtResource("14_ll1iq")]
 position = Vector2(6656, 800)
+
+[node name="Wolf" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
+position = Vector2(2304, 896)
+
+[node name="Wolf2" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
+position = Vector2(3648, 704)
+
+[node name="Wolf3" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
+position = Vector2(5728, 704)
+
+[node name="Wolf4" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
+position = Vector2(3712, -416)
+
+[node name="Wolf5" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
+position = Vector2(224, -608)

@@ -7,6 +7,8 @@ class_name SaveFile
 ## flags for what secrets exist
 enum SECRETS {
 	
+	NO_SECRET = 0
+	
 }
 ## flags for what secrets have been collected
 var secrets_collected: int = 0

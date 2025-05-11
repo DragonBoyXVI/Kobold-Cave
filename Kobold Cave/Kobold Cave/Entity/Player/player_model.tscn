@@ -4512,7 +4512,7 @@ tracks/24/path = NodePath("%Root/..")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0.5, 0.8),
+"times": PackedFloat32Array(0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],

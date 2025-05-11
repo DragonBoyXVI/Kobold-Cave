@@ -67,6 +67,10 @@ func _input( event: InputEvent ) -> void:
 				
 				bomb_thrower.refill()
 			
+			KEY_5:
+				
+				global_position = get_global_mouse_position()
+			
 			KEY_1:
 				
 				Engine.time_scale = 0.05

@@ -117,7 +117,7 @@ func player_enter( player: Player ) -> void:
 	
 	_player_enter( player )
 	
-	if ( disable_tick_time & 1 ):
+	if ( disable_tick_time & 0b1 ):
 		
 		tick_logic()
 
@@ -127,7 +127,7 @@ func player_leave( player: Player ) -> void:
 	
 	_player_leave( player )
 	
-	if ( disable_tick_time & 2 ):
+	if ( disable_tick_time & 0b10 ):
 		
 		tick_logic()
 
