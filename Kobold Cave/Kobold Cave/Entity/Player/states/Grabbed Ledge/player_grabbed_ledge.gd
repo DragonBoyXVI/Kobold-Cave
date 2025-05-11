@@ -21,7 +21,6 @@ func _enter( args: Dictionary ) -> void:
 	current_grab = args[ ARG_GRAB_INFO ]
 	
 	#camera_focal.global_position = current_grab.grab_position
-	update_animation()
 	
 	if ( current_grab.grab_to_the_right ):
 		
@@ -29,6 +28,8 @@ func _enter( args: Dictionary ) -> void:
 	else:
 		
 		input_faces_away = Input.is_action_pressed( &"Move Right" )
+	
+	update_animation()
 
 func _physics_process( _delta: float ) -> void:
 	

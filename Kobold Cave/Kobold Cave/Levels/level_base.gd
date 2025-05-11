@@ -70,11 +70,12 @@ func get_spawn_position() -> Vector2:
 func _on_radio_goal_touched() -> void:
 	
 	pause()
+	DragonControler.can_toggle_pause = false
 
 func _on_radio_player_hitstun( damage: Damage ) -> void:
 	
 	pause()
-	await get_tree().create_timer( damage.amount / 5.0 ).timeout
+	await get_tree().create_timer( damage.amount / 5.0, false, false , true ).timeout
 	unpause()
 
 func _on_radio_player_needs_reset( player: Player ) -> void:

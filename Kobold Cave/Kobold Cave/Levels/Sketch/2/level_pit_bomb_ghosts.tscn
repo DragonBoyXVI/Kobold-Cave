@@ -73,88 +73,77 @@ position = Vector2(1792, 576)
 scale = Vector2(5632, 25.6)
 texture = ExtResource("4_ei58l")
 
-[node name="SpikeTrap" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3328, -256)
 rotation = 1.5708
 tile_length = 1
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap2" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap2" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3328, -1024)
 rotation = 1.5708
 tile_length = 4
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap4" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap4" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3328, -1536)
 rotation = 1.5708
 tile_length = 2
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap3" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap3" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3200, -1280)
 rotation = -1.5708
 tile_length = 2
 state = false
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap6" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap6" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3200, -512)
 rotation = -1.5708
 tile_length = 4
 state = false
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap7" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap7" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(1664, -1152)
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap8" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap8" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3712, -128)
 rotation = -1.5708
 tile_length = 4
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
 [node name="SpikeTrap9" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3200, 512)
 tile_length = 5
 
-[node name="SpikeTrap10" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap10" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3712, -896)
 rotation = -1.5708
 tile_length = 1
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap11" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap11" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3712, -1152)
 rotation = -1.5708
 tile_length = 1
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap12" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap12" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3840, -1280)
 rotation = 1.5708
 tile_length = 1
 state = false
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
-[node name="SpikeTrap13" parent="." node_paths=PackedStringArray("state_timer") instance=ExtResource("8_dfnk7")]
+[node name="SpikeTrap13" parent="." instance=ExtResource("8_dfnk7")]
 position = Vector2(3840, -1024)
 rotation = 1.5708
 tile_length = 1
 state = false
 state_flips = true
-state_timer = NodePath("../SpikeTimer")
 
 [node name="LevelBoundry" parent="." instance=ExtResource("6_gniwd")]
 position = Vector2(0, 640)

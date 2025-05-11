@@ -89,6 +89,7 @@ func tick_logic() -> void:
 func editor_is_enter_callable() -> bool:
 	
 	var parent := get_parent()
+	if ( not parent ): return true
 	if ( not parent.is_node_ready() ): return true
 	if ( parent is AreaTrigger2D ):
 		
@@ -100,6 +101,7 @@ func editor_is_enter_callable() -> bool:
 func editor_is_leave_callable() -> bool:
 	
 	var parent := get_parent()
+	if ( not parent ): return true
 	if ( not parent.is_node_ready() ): return true
 	if ( parent is AreaTrigger2D ):
 		

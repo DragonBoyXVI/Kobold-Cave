@@ -8,16 +8,17 @@ signal tree_paused( is_paused: bool )
 
 var _pause_on_lost_focus: bool
 
+var can_toggle_pause: bool = true
+
 func _input( event: InputEvent ) -> void:
+	
+	if ( event.is_echo() ): return
 	
 	#region pause the game
 	
 	if ( event.is_action_pressed( &"Pause" ) ):
 		
-		var tree := get_tree()
-		
-		tree.paused = !tree.paused
-		tree_paused.emit( tree.paused )
+		toggle_pause_state.call_deferred()
 		
 		get_viewport().set_input_as_handled()
 		return
@@ -30,11 +31,7 @@ func _notification( what: int ) -> void:
 		
 		if ( _pause_on_lost_focus and not get_tree().paused ):
 			
-			var input := InputEventAction.new()
-			input.action = &"Pause"
-			input.pressed = true
-			
-			Input.parse_input_event( input )
+			toggle_pause_state.call_deferred()
 
 func _ready() -> void:
 	
@@ -42,6 +39,16 @@ func _ready() -> void:
 	if ( Settings.data ):
 		
 		_on_settings_updated( Settings.data )
+
+
+func toggle_pause_state() -> void:
+	
+	if ( not can_toggle_pause ): return
+	
+	var tree := get_tree()
+	
+	tree.paused = !tree.paused
+	tree_paused.emit( tree.paused )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

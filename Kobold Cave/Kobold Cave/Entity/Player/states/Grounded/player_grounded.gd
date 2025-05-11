@@ -81,7 +81,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		dir.x = model.scale.x
 		dir.y -= 0.2
 		
-		player.bomb_thrower.throw_bomb( dir.normalized(), player.get_real_velocity() )
+		player.bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
 		
 		get_window().set_input_as_handled()
 		return

@@ -38,10 +38,11 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 		state_flips = value
 		update_configuration_warnings()
 @export var state_timer: Timer :
-	set( value ):
+	set( new ):
 		
-		state_timer = value
+		state_timer = new
 		update_configuration_warnings()
+
 
 var _tween: Tween
 
@@ -51,7 +52,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	if ( state_flips and not state_timer ):
 		
-		const text := "Connect a timer for state flipping"
+		const text := "Timer needed to flip states"
 		warnings.append( text )
 	
 	return warnings
@@ -63,13 +64,13 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	if ( state_timer ):
+		
+		state_timer.timeout.connect( _on_state_timer_timeout )
+	
 	if ( not state ):
 		
 		spikes_go_down()
-	
-	if ( state_flips and state_timer ):
-		
-		state_timer.timeout.connect( _on_state_timer_timeout )
 
 
 func _new_tween() -> Tween:
