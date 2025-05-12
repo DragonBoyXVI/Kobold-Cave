@@ -204,7 +204,7 @@ shape = SubResource("RectangleShape2D_gh6cs")
 
 [node name="TriggerCameraBounds" type="Node2D" parent="BigRoom/TriggerBase" node_paths=PackedStringArray("bounds_enter")]
 script = ExtResource("5_qh1kt")
-bounds_enter = [NodePath("../../CamRightTop")]
+bounds_enter = [NodePath("../../CamRightTop"), NodePath("../../../Spawn/CamLeftBottom")]
 parent_respect_leave = false
 metadata/_custom_type_script = "uid://r6dfw2tyyfff"
 

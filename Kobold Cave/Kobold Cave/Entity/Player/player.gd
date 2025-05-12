@@ -71,6 +71,12 @@ func _input( event: InputEvent ) -> void:
 				
 				global_position = get_global_mouse_position()
 			
+			KEY_4:
+				
+				if ( event.is_echo() ): return
+				set_process_input( false )
+				get_tree().reload_current_scene.call_deferred()
+			
 			KEY_1:
 				
 				Engine.time_scale = 0.05

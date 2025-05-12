@@ -13,7 +13,7 @@ static var in_level_trans := false
 ## hoad soundmanager doesn't use positional nodes for audio
 static func play_sound_with_location( sound: AudioStream, pos: Vector2, hearable_range := 1000.0 ) -> AudioStreamPlayer:
 	
-	var ear_position: Vector2 =MainCamera2D.global_position
+	var ear_position: Vector2 = MainCamera2D.global_position
 	
 	var sound_range: float = pow( hearable_range, 2.0 )
 	var sound_volume: float = 1.0 - ( ear_position.distance_squared_to( pos ) / sound_range )

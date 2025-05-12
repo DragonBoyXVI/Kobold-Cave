@@ -74,10 +74,10 @@ func get_busy_player_with_resource(resource: AudioStream) -> AudioStreamPlayer:
 func mark_player_as_available(player: AudioStreamPlayer) -> void:
 	if busy_players.has(player):
 		busy_players.erase(player)
-
-	if available_players.size() >= default_pool_size:
-		player.queue_free()
-	elif not available_players.has(player):
+	
+	#if available_players.size() >= default_pool_size:
+	#	player.queue_free()
+	if not available_players.has(player):
 		available_players.append(player)
 
 

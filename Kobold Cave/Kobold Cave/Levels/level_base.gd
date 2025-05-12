@@ -91,9 +91,9 @@ func _on_radio_new_spawn( new_spawn: Marker2D ) -> void:
 	respawn_point = new_spawn
 
 func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
+	const default_sound: AudioStream = preload( "uid://0grxdom76h0q" )
 	
-	var sound: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-	var sound_pitch: float = randf_range( 0.95, 1.05 )
+	var sound: AudioStream = default_sound
 	
 	if ( tilemap_floor ):
 		
@@ -107,5 +107,4 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 			
 			sound = data.get_custom_data( data_floor_sound )
 	
-	var player := KoboldUtility.play_sound_with_location( sound, footstep_pos )
-	player.pitch_scale = sound_pitch
+	KoboldUtility.play_sound_with_location( sound, footstep_pos )
