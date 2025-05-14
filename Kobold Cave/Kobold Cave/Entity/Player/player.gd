@@ -69,6 +69,7 @@ func _input( event: InputEvent ) -> void:
 			
 			KEY_5:
 				
+				velocity = Vector2.ZERO
 				global_position = get_global_mouse_position()
 			
 			KEY_4:
