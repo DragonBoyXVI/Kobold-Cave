@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://cxs2jq6fb5kfy" path="res://Kobold Cave/Components/2D/IFramesTimer2D/i_frames_timer.gd" id="21_v02m0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v02m0"]
-size = Vector2(50, 122)
+size = Vector2(52, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r432o"]
 size = Vector2(76, 58)

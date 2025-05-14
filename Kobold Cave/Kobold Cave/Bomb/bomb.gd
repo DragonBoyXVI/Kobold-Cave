@@ -99,6 +99,7 @@ func _on_state_machine_entered_state( state_id: int ) -> void:
 			
 			timer_flying.time_left = -1.0
 			# yeah this is good practice to teach myself yeah
+			# actually this could be moved to the leave func
 			timer_flying.set_block_signals( true )
 		
 		timer_explode = get_tree().create_timer( TIME_FUSE_LIT, false, true )
