@@ -10,9 +10,10 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eef0y"]
 
-[node name="LevelWakeUpRoom" type="Node2D" node_paths=PackedStringArray("respawn_point")]
+[node name="LevelWakeUpRoom" type="Node2D" node_paths=PackedStringArray("respawn_point", "tilemap_floor")]
 script = ExtResource("1_ywvch")
 respawn_point = NodePath("SpawnInit")
+tilemap_floor = NodePath("Floor")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
 metadata/_edit_group_ = true
 

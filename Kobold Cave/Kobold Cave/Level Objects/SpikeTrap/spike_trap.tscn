@@ -20,11 +20,11 @@ size = Vector2(384, 128)
 texture_repeat = 2
 script = ExtResource("1_02ldl")
 tile_length = 3
+state = true
 sprite_spikes = NodePath("SpriteSpikes")
 sprite_ghost = NodePath("SpriteGhost")
 collison_shape = NodePath("Hurtbox2D/CollisionShape2D")
 hurtbox = NodePath("Hurtbox2D")
-state = true
 
 [node name="SpriteSpikes" type="Sprite2D" parent="."]
 position = Vector2(0, -128)

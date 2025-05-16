@@ -12,11 +12,6 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 		tile_length = maxi( 1, value )
 		reposition_sprites()
 
-@export var sprite_spikes: Sprite2D
-@export var sprite_ghost: Sprite2D
-@export var collison_shape: CollisionShape2D
-@export var hurtbox: Hurtbox2D
-
 
 @export var state: bool:
 	set( new_state ):
@@ -43,6 +38,12 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 		state_timer = new
 		update_configuration_warnings()
 
+@export_group( "Innards" )
+@export var sprite_spikes: Sprite2D
+@export var sprite_ghost: Sprite2D
+@export var collison_shape: CollisionShape2D
+@export var hurtbox: Hurtbox2D
+
 
 var _tween: Tween
 
@@ -53,6 +54,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ( state_flips and not state_timer ):
 		
 		const text := "Timer needed to flip states"
+		warnings.append( text )
+	
+	if ( state_timer and not state_flips ):
+		
+		const text := "Timer provided but this trap doesnt flip"
 		warnings.append( text )
 	
 	return warnings
