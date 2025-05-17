@@ -23,6 +23,7 @@ static func _static_init() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	await Engine.get_main_loop().physics_frame
 	if ( not Settings.is_node_ready() ):
 		await Settings.ready
 	

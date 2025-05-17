@@ -35,6 +35,7 @@ func _init() -> void:
 	
 	
 	state_machine.state_entered.connect( _on_state_machine_entered_state )
+	state_machine.state_left.connect( _on_state_machine_left_state )
 
 func _ready() -> void:
 	
@@ -95,13 +96,6 @@ func _on_state_machine_entered_state( state_id: int ) -> void:
 		timer_flying.timeout.connect( _on_flying_timer_timeout )
 	elif( state_id == STATE_LIT ):
 		
-		if ( timer_flying ):
-			
-			timer_flying.time_left = -1.0
-			# yeah this is good practice to teach myself yeah
-			# actually this could be moved to the leave func
-			timer_flying.set_block_signals( true )
-		
 		timer_explode = get_tree().create_timer( TIME_FUSE_LIT, false, true )
 		timer_explode.timeout.connect( _on_explode_timer_timeout )
 		
@@ -110,6 +104,14 @@ func _on_state_machine_entered_state( state_id: int ) -> void:
 		
 		timer_shake = get_tree().create_timer( TIME_START_SHAKE )
 		timer_shake.timeout.connect( _on_shake_timer_timeout )
+
+func _on_state_machine_left_state( state_id: int ) -> void:
+	
+	if ( state_id == STATE_FLYING ):
+		if ( timer_flying ):
+			
+			timer_flying.set_block_signals( true )
+			timer_flying = null
 
 
 func _on_flying_timer_timeout() -> void:

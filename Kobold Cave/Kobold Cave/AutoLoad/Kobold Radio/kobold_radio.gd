@@ -37,3 +37,16 @@ signal level_clear_next_pressed
 
 ## emitted when a footstep is to be player
 signal play_footstep( step_position: Vector2 )
+
+
+#region Save game manager
+
+## emitted when a game file is loaded
+signal game_save_file_loaded( file: SaveFile )
+## emitted when a game file is saved
+signal game_save_file_saved
+
+## emitted when a new secret is found
+signal game_save_secret_found( flag: SaveFile.SECRETS )
+
+#endregion

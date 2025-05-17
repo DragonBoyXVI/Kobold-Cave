@@ -6,6 +6,12 @@ class_name SpikeTrap
 const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 
 
+enum {
+	STATE_UP,
+	STATE_DOWN
+}
+
+
 @export var tile_length: int = 1 :
 	set( value ):
 		
@@ -36,6 +42,9 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 	set( new ):
 		
 		state_timer = new
+		if ( new ):
+			
+			state_flips = true
 		update_configuration_warnings()
 
 @export_group( "Innards" )
@@ -46,6 +55,11 @@ const TILE_SIZE: Vector2 = Vector2( 128.0, 128.0 )
 
 
 var _tween: Tween
+
+
+var state_machine: StateMachineLite = StateMachineLite.new()
+var timer_up: SceneTreeTimer
+var timer_down: SceneTreeTimer
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -62,6 +76,13 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append( text )
 	
 	return warnings
+
+func _init() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		
+		child_entered_tree.connect( _util_child_entered_tree )
+		return
 
 func _ready() -> void:
 	
@@ -174,6 +195,12 @@ func _on_state_timer_timeout() -> void:
 		spikes_go_up()
 	
 	state = not state
+
+func _util_child_entered_tree( node: Node ) -> void:
+	
+	if ( node is Timer and not state_timer ):
+		
+		state_timer = node
 
 
 func _on_hurtbox_2d_body_entered( body: Node2D ) -> void:

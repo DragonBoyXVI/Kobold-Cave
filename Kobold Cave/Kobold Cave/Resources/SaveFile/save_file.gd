@@ -7,7 +7,10 @@ class_name SaveFile
 ## flags for what secrets exist
 enum SECRETS {
 	
-	NO_SECRET = 0
+	NO_SECRET = 0,
+	
+	LV_1_BOMB_ROOM = 1<<1,
+	LV_1_ROOM_ABOVE_SPAWN = 1<<2,
 	
 }
 ## flags for what secrets have been collected
