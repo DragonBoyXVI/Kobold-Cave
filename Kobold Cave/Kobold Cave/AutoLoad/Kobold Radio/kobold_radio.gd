@@ -31,9 +31,6 @@ signal room_unpause
 
 ## used when a new spawn point should be set
 signal level_set_spawn( spawn_marker: Marker2D )
-## emitted when the "next" button is pressed on the
-## level clear screen
-signal level_clear_next_pressed
 
 ## emitted when a footstep is to be player
 signal play_footstep( step_position: Vector2 )

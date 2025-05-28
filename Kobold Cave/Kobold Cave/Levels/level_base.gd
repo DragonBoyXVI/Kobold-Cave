@@ -102,7 +102,7 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 		
 		if ( not data ): return
 		
-		const data_floor_sound := "Footstep Sound"
+		const data_floor_sound := "Footstep"
 		if ( data.has_custom_data( data_floor_sound ) ):
 			
 			sound = data.get_custom_data( data_floor_sound )

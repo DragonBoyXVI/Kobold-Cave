@@ -1,6 +1,9 @@
 
-extends Node
-## game manager
+extends Object
+class_name GameManager
+## manages some game elements
+##
+## ditto
 
 
 enum GAME_MODE {
@@ -14,31 +17,34 @@ enum GAME_MODE {
 var current_game_mode: GAME_MODE
 
 
-func _ready() -> void:
+static func advance() -> void:
 	
-	KoboldRadio.level_clear_next_pressed.connect( _radio_on_level_clear_next_pressed )
+	# swicth here
+	story_advance()
 
 
 #region story
 
 const story_levels: PackedStringArray = [
 	#"res://test_world.tscn",
-	"uid://oqjluqp5ko3j",
-	"res://Kobold Cave/Levels/Sketch/0/level_wake_room.tscn",
-	"res://Kobold Cave/Levels/Sketch/1/level_show_off_bombs.tscn",
-	"res://Kobold Cave/Levels/Sketch/2/level_pit_bomb_ghosts.tscn",
-	"res://Kobold Cave/Levels/Sketch/3/level_climb_the_drill.tscn",
-	"res://Kobold Cave/Levels/Sketch/4/level_gtfo.tscn"
+	"uid://oqjluqp5ko3j", # wake up room
+	
+	"uid://b5uovsjcen7yj",
+	"uid://dwiu0froolirj",
+	"uid://dxaekk8ttmo1l",
+	"",
+	"",
+	
 ]
-var story_position: int = -1
+static var story_position: int = -1
 
-func story_advance() -> void:
+static func story_advance() -> void:
 	story_position += 1
 	
 	if ( story_position < story_levels.size() ):
 		
 		await GUI.fade_out()
-		get_tree().change_scene_to_file( story_levels[ story_position ] )
+		Engine.get_main_loop().change_scene_to_file( story_levels[ story_position ] )
 		KoboldUtility.in_level_trans = true
 		KoboldRadio.room_pause.emit()
 		await GUI.fade_in(  )
@@ -48,12 +54,7 @@ func story_advance() -> void:
 	else:
 		
 		# story beaten
-		get_tree().quit()
+		Engine.get_main_loop().quit()
 
 
 #endregion story
-
-
-func _radio_on_level_clear_next_pressed() -> void:
-	
-	story_advance()

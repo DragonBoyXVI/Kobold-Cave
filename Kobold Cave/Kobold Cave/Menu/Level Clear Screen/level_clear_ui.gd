@@ -34,4 +34,4 @@ func _on_next_button_pressed() -> void:
 	
 	hide()
 	active = false
-	KoboldRadio.level_clear_next_pressed.emit()
+	GameManager.advance()
