@@ -1,8 +1,8 @@
 @icon( "res://Dragon Game Template/Icons/2D/hitbox_2d.png" )
 @tool
 extends Area2D
-class_name Hitbox2D
-## A node that can get hit by [Hurtbox2D] and send info to a
+class_name ObjHitbox2D
+## A node that can get hit by [ObjHurtbox2D] and send info to a
 ## [NodeHealth].
 ##
 ## Simply sends the data to all connected [NodeHealth]s and doesn't
@@ -13,13 +13,9 @@ class_name Hitbox2D
 signal enabled
 ## emitted when this is disabled
 signal disabled
-## emitted when this gets an event from a hurtbox,
-## before sending it to the [NodeHealth]
+## emitted when this gets an event from a hurtbox
 signal recived_event( event: HurtboxEvent )
 
-
-## all the health objects we wish to recive the data
-@export var event_recivers: Array[ NodeHealth ] = []
 ## the team mask we use. If empty, all hurtboxes hit this.
 @export var team_mask: TeamMask
 
@@ -27,7 +23,7 @@ signal recived_event( event: HurtboxEvent )
 const SHAPE_COLOR: Color = Color( 0.0, 0.0, 1.0, 0.4 )
 
 
-func _ready() -> void:
+func _init() -> void:
 	
 	if ( Engine.is_editor_hint() ):
 		
@@ -52,12 +48,8 @@ func disable() -> void:
 ## called by a hurtbox when it hits this
 func hit( event: HurtboxEvent ) -> void:
 	
-	recived_event.emit( event )
 	_hit( event )
-	
-	for node: NodeHealth in event_recivers:
-		
-		node.recive_event( event )
+	recived_event.emit( event )
 
 
 ## virtual for how to disable this

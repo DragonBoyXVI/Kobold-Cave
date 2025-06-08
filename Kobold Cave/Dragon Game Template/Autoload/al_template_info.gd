@@ -1,11 +1,15 @@
-extends Node
+extends Object
+class_name DragonTemplateCredits
 ## This only serves to provide template info
+##
+## provides some credits to those who worked on the dragon
+## template =3
 
 
 ## Template name
 const name_template := "DragonGameTemplate"
 ## Template version
-const version := "v2.5.1"
+const version := "v2.6.0"
 
 ## my stupid ass
 const author := "DragonBoyXVI"

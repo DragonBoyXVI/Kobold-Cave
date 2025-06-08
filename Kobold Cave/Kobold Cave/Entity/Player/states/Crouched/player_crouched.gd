@@ -11,12 +11,16 @@ const STATE_NAME := &"PlayerCrouched"
 @export var standing_shape: CollisionShape2D
 @export var crouched_shape: CollisionShape2D
 
+@export var uncrouch_time: float = 0.1
 
-@onready var uncrouch_timer := %UncrouchTimer as Timer
+
+var _uncrouch_timer: SceneTreeTimer
 
 
-var _toggle_crouch := true
-
+func _init() -> void:
+	super()
+	
+	use_slow = true
 
 func _enter( _args: Dictionary ) -> void:
 	
@@ -29,7 +33,7 @@ func _enter( _args: Dictionary ) -> void:
 
 func _leave() -> void:
 	
-	uncrouch_timer.stop()
+	_uncrouch_timer = stop_timer( _uncrouch_timer )
 	
 	if ( standing_shape and crouched_shape ):
 		
@@ -67,13 +71,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 			
 			if ( _toggle_crouch ):
 				
-				uncrouch_timer.start()
+				_uncrouch_timer = create_physics_tree_timer( uncrouch_time, _on_uncrouch_timer_timeout )
 			else:
 				
-				uncrouch_timer.stop()
+				_uncrouch_timer = stop_timer( _uncrouch_timer )
 		else:
 			
-			uncrouch_timer.start()
+			_uncrouch_timer = create_physics_tree_timer( uncrouch_time, _on_uncrouch_timer_timeout )
 		
 		get_window().set_input_as_handled()
 		return
@@ -114,6 +118,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 func update_animation() -> void:
 	
 	var dir: float = Input.get_axis( &"Move Left", &"Move Right" )
+	var is_dir_right: bool = dir > 0.0
 	
 	#model.animation_player.play( Player.ANIM_RESET )
 	#model.animation_player.advance( 0.0 )
@@ -122,7 +127,7 @@ func update_animation() -> void:
 		model.animation_player.play( Player.ANIM_IDLE_CROUCHED )
 	else:
 		
-		if ( signf( model.scale.x ) == sign( dir ) ):
+		if ( model.is_facing_right == is_dir_right ):
 			
 			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD )
 		else:
@@ -131,10 +136,6 @@ func update_animation() -> void:
 			#model.animation_player.play( Player.ANIM_RUN_CROUCHED_BACKWARD )
 
 
-func _on_settings_updated( recived_data: SettingsFile ) -> void:
-	super( recived_data )
-	
-	_toggle_crouch = recived_data.toggle_crouch
 
 
 func _on_uncrouch_timer_timeout() -> void:

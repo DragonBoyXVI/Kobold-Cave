@@ -36,8 +36,7 @@ func create_explosion( params: ExplosionParameters ) -> void:
 	add_explosion_drawing( params )
 	PartManager.spawn_particles( params.position, PartManager.EXPLOSION_DUST )
 	const sound: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-	SoundManager.stop_sound( sound )
-	KoboldUtility.play_sound_with_location( sound, params.position, 1800.0 )
+	DragonSound.in_world.play_sound_2d( sound, params.position )
 	
 	# shake camera
 	var cam_distance := params.position.distance_squared_to( MainCamera2D.position )
@@ -75,7 +74,7 @@ func create_explosion( params: ExplosionParameters ) -> void:
 			
 			var direction: Vector2 = ( collider.position - params.position ).normalized()
 			collider.velocity += direction * params.push
-		elif( collider is Hitbox2D ):
+		elif( collider is ObjHitbox2D ):
 			
 			collider.hit( params.damage.duplicate() )
 		elif( collider is TileMapLayer ):

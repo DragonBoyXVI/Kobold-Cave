@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SettingChanger" load_steps=2 format=3 uid="uid://dwgs2bk688404"]
+
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="1_b8xsk"]
+
+[resource]
+script = ExtResource("1_b8xsk")
+setting_emit_update = true
+setting_type = 1
+setting_name = &"frame_rate_unlimited"
+setting_flags = 1
+metadata/_custom_type_script = "uid://tv7ikviowbfm"

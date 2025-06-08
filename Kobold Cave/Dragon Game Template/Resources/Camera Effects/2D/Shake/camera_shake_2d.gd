@@ -23,14 +23,9 @@ static func _static_init() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
+	# kill race condition
 	await Engine.get_main_loop().physics_frame
-	if ( not Settings.is_node_ready() ):
-		await Settings.ready
-	
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	Settings.connect_changed_callback( _on_settings_updated )
 
 static func _on_settings_updated( recived_data: SettingsFile ) -> void:
 	

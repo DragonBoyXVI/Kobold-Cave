@@ -26,17 +26,12 @@ buses/default_bus_layout="res://Dragon Game Template/default_bus_layout.tres"
 
 [autoload]
 
-DragonRadio="*res://Dragon Game Template/Autoload/DragonRadio/dragon_radio.tscn"
+DragonRadio="*res://Dragon Game Template/Autoload/DragonRadio/dragon_radio.gd"
 KoboldRadio="*res://Kobold Cave/AutoLoad/Kobold Radio/kobold_radio.gd"
-Settings="*res://Dragon Game Template/Autoload/Settings/settings.gd"
 MainCamera2D="*res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.tscn"
 GUI="*res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn"
-TimeManager="*res://Dragon Game Template/Autoload/Time Manager/time_manager.tscn"
-DragonControler="*res://Dragon Game Template/Autoload/Dragon Controler/dragon_controler.tscn"
-_InfoDragonTemplate="*res://Dragon Game Template/Autoload/al_template_info.gd"
 PartManager="*res://Kobold Cave/AutoLoad/Part Manager/part_manager.gd"
 ExplosionServer="*res://Kobold Cave/AutoLoad/ExplosionServer/explosion_server.gd"
-SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [debug]
 
@@ -54,10 +49,6 @@ window/stretch/mode="canvas_items"
 
 movie_writer/movie_file="C:/Users/Drago/OneDrive/Documents/GitHub/Kobold-Cave/Kobold Cave/movie.avi"
 naming/script_name_casing=2
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [gui]
 

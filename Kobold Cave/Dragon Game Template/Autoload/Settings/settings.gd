@@ -1,7 +1,6 @@
 extends Node
-## Manages settings data
-##
-## Manages settings and makes them globally acessable
+## Holds a [SettingsFile] resource, and emits
+## signals when changes are made
 
 
 ## Emited when settings are to be applied
@@ -138,7 +137,6 @@ func _update_engine_fps( recived_data: SettingsFile ) -> void:
 		Engine.max_fps = recived_data.frame_rate
 		enable_setting_widgets( &"frame_rate", true )
 	
-	get_tree().set_deferred( &"physics_interpolation", recived_data.physics_interpolation_enabled )
 	Engine.physics_ticks_per_second = recived_data.physics_rate
 
 func _update_window_scaling( recived_data: SettingsFile ) -> void:
@@ -168,10 +166,10 @@ func _update_audio_settings( recived_data: SettingsFile ) -> void:
 	
 	pass
 
-func _update_translation( recived_data: SettingsFile ) -> void:
-	const locales: PackedStringArray = [ "en", "es", "ja", "zh", "ru", "de", "pt" ]
+func _update_translation( _recived_data: SettingsFile ) -> void:
+	const _locales: PackedStringArray = [ "en", "es", "ja", ]#"zh", "ru", "de", "pt" ]
 	
-	if ( recived_data.translation < locales.size() ):
-		TranslationServer.set_locale( locales[ recived_data.translation ] )
+	#if ( recived_data.translation < locales.size() ):
+		#TranslationServer.set_locale( locales[ recived_data.translation ] )
 	
 	pass

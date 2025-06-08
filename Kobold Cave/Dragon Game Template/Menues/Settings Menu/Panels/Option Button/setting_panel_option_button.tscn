@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dctechcn62i5r"]
+
+[ext_resource type="Script" uid="uid://ctyi0dgvf8d83" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/setting_panel_option_button.gd" id="1_43ph8"]
+[ext_resource type="Script" uid="uid://d0f7ilaoon454" path="res://Dragon Game Template/Components/Control/Menu Focus Sorter/menu_focus_sorter.gd" id="2_43ph8"]
+
+[node name="SettingPanelOptionButton" type="PanelContainer" node_paths=PackedStringArray("default_button", "option_button", "focus_node")]
+offset_right = 470.0
+offset_bottom = 144.0
+script = ExtResource("1_43ph8")
+item_name_keys = PackedStringArray()
+item_desc_key = PackedStringArray()
+default_button = NodePath("MarginContainer/MenuFocusSorter/Button")
+option_button = NodePath("MarginContainer/MenuFocusSorter/MenuFocusSorter/OptionButton")
+focus_node = NodePath("MarginContainer/MenuFocusSorter")
+metadata/_custom_type_script = "uid://chv5nbllmt187"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+script = ExtResource("2_43ph8")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="MarginContainer/MenuFocusSorter"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_43ph8")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="Label" type="Label" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "OptionSetting: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter"]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Example Item"
+popup/item_0/id = 0
+
+[node name="Button" type="Button" parent="MarginContainer/MenuFocusSorter"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "key_default"

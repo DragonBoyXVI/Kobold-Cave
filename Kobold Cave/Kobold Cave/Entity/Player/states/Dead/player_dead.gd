@@ -12,8 +12,6 @@ func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):
 		return
-	
-	player.health_node.revived.connect( _on_revived )
 
 func _physics_process( delta: float ) -> void:
 	

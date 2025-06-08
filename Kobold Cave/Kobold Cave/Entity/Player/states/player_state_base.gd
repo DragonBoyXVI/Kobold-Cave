@@ -8,6 +8,10 @@ class_name PlayerState
 
 const movement: MovementGround = preload( "uid://c08ur33jqim3p" )
 
+
+static var _toggle_crouch: bool = false
+
+
 ## if true, the slow value is updated when needed.[br]
 ## (you still need to use the slow value in code)
 @export var use_slow: bool = false
@@ -17,7 +21,7 @@ const movement: MovementGround = preload( "uid://c08ur33jqim3p" )
 		update_configuration_warnings.call_deferred()
 		
 		player = new_player
-@export var model: DragonModel2D :
+@export var model: KoboldModel2D :
 	set( new_model ):
 		update_configuration_warnings.call_deferred()
 		
@@ -47,6 +51,13 @@ func leave() -> void:
 	super()
 
 
+static func _static_init() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	Settings.connect_changed_callback( _on_static_settings_updated )
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	
@@ -68,11 +79,7 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
-	Settings.loaded.connect( _on_settings_updated )
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	#Settings.connect_changed_callback( _on_settings_updated )
 
 func _unhandled_input( event: InputEvent ) -> void:
 	if ( event.is_echo() ): return
@@ -88,5 +95,22 @@ func _unhandled_input( event: InputEvent ) -> void:
 		return
 
 
-func _on_settings_updated( _recived_data: SettingsFile ) -> void:
-	pass
+func create_physics_tree_timer( time: float, callback: Callable = Callable(), callback_flags: int = 0 ) -> SceneTreeTimer:
+	
+	var timer := get_tree().create_timer( time, false, true )
+	
+	if ( callback.is_valid() ):
+		timer.timeout.connect( callback, callback_flags )
+	
+	return timer
+
+func stop_timer( timer: SceneTreeTimer ) -> Object:
+	
+	if ( timer ):
+		timer.set_block_signals( true )
+	return null
+
+
+static func _on_static_settings_updated( recived_data: SettingsFile ) -> void:
+	
+	_toggle_crouch = recived_data.toggle_crouch

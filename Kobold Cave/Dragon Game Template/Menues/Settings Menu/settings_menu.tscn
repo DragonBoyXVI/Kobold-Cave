@@ -1,0 +1,202 @@
+[gd_scene load_steps=20 format=3 uid="uid://djsu05jet2yg8"]
+
+[ext_resource type="Script" uid="uid://87g7dseenekw" path="res://Dragon Game Template/Menues/Settings Menu/settings_menu.gd" id="1_ojx8r"]
+[ext_resource type="Script" uid="uid://ctjfcee2y2fxx" path="res://Dragon Game Template/Components/Control/Better Scroll Box/better_scroll_box.gd" id="2_k0gog"]
+[ext_resource type="Script" uid="uid://d0f7ilaoon454" path="res://Dragon Game Template/Components/Control/Menu Focus Sorter/menu_focus_sorter.gd" id="3_ras8q"]
+[ext_resource type="PackedScene" uid="uid://bfghtvmviosua" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/FPS Slider/setting_fps.tscn" id="4_k0gog"]
+[ext_resource type="PackedScene" uid="uid://g15d8crhdrnb" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Physics Slider/setting_physics.tscn" id="5_ras8q"]
+[ext_resource type="PackedScene" uid="uid://rwelchhw8pkr" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Window Mode/setting_window_mode.tscn" id="6_6cn3w"]
+[ext_resource type="PackedScene" uid="uid://ctjx7dsijvtxw" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Window Scaling/setting_window_scaling.tscn" id="6_ojx8r"]
+[ext_resource type="PackedScene" uid="uid://br04judipu05m" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/Particles Enabled/settings_particles.tscn" id="6_wpous"]
+[ext_resource type="PackedScene" uid="uid://bcg1u7piucvbf" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Volume/setting_master_volume.tscn" id="7_7ubtj"]
+[ext_resource type="PackedScene" uid="uid://1xk0aah0hdat" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/physics interpolation/setting_physics_interpolation.tscn" id="7_bejr1"]
+[ext_resource type="PackedScene" uid="uid://o03yqeyvpovp" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Translation/setting_translation.tscn" id="7_kh5vo"]
+[ext_resource type="PackedScene" uid="uid://df7b2m8yat8l1" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Volume/setting_music_volume.tscn" id="8_35csr"]
+[ext_resource type="PackedScene" uid="uid://0ag83j4eld4h" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Camera Shake/setting_camera_shake.tscn" id="8_dnb43"]
+[ext_resource type="PackedScene" uid="uid://cislkk7bbwbkw" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Volume/setting_sfx_volume.tscn" id="8_p3xgv"]
+[ext_resource type="PackedScene" uid="uid://ds5q83hp4i6g3" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/Volume/setting_voice_volume.tscn" id="10_pq7ix"]
+[ext_resource type="PackedScene" uid="uid://dmeihixi6mxtl" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/Play Music When Paused/setting_music_when_paused.tscn" id="11_pq7ix"]
+[ext_resource type="PackedScene" uid="uid://to324iwtbf73" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/Flashing Lights/setting_flashing_lights.tscn" id="15_7h6gc"]
+[ext_resource type="PackedScene" uid="uid://fre4aafsxlr0" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/Show Blood/setting_blood.tscn" id="16_6cn3w"]
+[ext_resource type="PackedScene" uid="uid://7powpm0jp33a" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/Show Nudity/setting_nudes.tscn" id="17_dnb43"]
+
+[node name="ObjSettingsMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 1
+script = ExtResource("1_ojx8r")
+tab_translation_keys = PackedStringArray("key_display")
+metadata/_custom_type_script = "uid://6fxsuswnlvit"
+
+[node name="Game" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+follow_focus = true
+script = ExtResource("2_k0gog")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Game"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="Game/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+vertical = true
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="Display" type="ScrollContainer" parent="."]
+layout_mode = 2
+follow_focus = true
+script = ExtResource("2_k0gog")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Display"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="Display/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+vertical = true
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="SettingFPS" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("4_k0gog")]
+layout_mode = 2
+
+[node name="SettingPhysics" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("5_ras8q")]
+layout_mode = 2
+
+[node name="SettingWindowMode" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("6_6cn3w")]
+layout_mode = 2
+
+[node name="SettingWindowScaling" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("6_ojx8r")]
+layout_mode = 2
+
+[node name="SettingCameraShake" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("8_dnb43")]
+layout_mode = 2
+
+[node name="SettingsParticles" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("6_wpous")]
+layout_mode = 2
+
+[node name="SettingPhysicsInterpolation" parent="Display/MarginContainer/MenuFocusSorter" instance=ExtResource("7_bejr1")]
+layout_mode = 2
+
+[node name="Audio" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+follow_focus = true
+script = ExtResource("2_k0gog")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="Audio/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+vertical = true
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="VolumeTopRow" type="BoxContainer" parent="Audio/MarginContainer/MenuFocusSorter"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="SettingMasterVolume" parent="Audio/MarginContainer/MenuFocusSorter/VolumeTopRow" instance=ExtResource("7_7ubtj")]
+layout_mode = 2
+
+[node name="SettingMusicVolume" parent="Audio/MarginContainer/MenuFocusSorter/VolumeTopRow" instance=ExtResource("8_35csr")]
+layout_mode = 2
+
+[node name="VolumeBottomRow" type="BoxContainer" parent="Audio/MarginContainer/MenuFocusSorter"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="SettingSFXVolume" parent="Audio/MarginContainer/MenuFocusSorter/VolumeBottomRow" instance=ExtResource("8_p3xgv")]
+layout_mode = 2
+
+[node name="SettingVoiceVolume" parent="Audio/MarginContainer/MenuFocusSorter/VolumeBottomRow" instance=ExtResource("10_pq7ix")]
+layout_mode = 2
+
+[node name="SettingMusicWhenPaused" parent="Audio/MarginContainer/MenuFocusSorter" instance=ExtResource("11_pq7ix")]
+layout_mode = 2
+
+[node name="Accessibility" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+follow_focus = true
+script = ExtResource("2_k0gog")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Accessibility"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="Accessibility/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+vertical = true
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="SettingTranslation" parent="Accessibility/MarginContainer/MenuFocusSorter" instance=ExtResource("7_kh5vo")]
+layout_mode = 2
+
+[node name="SettingFlashingLights" parent="Accessibility/MarginContainer/MenuFocusSorter" instance=ExtResource("15_7h6gc")]
+layout_mode = 2
+
+[node name="SettingBlood" parent="Accessibility/MarginContainer/MenuFocusSorter" instance=ExtResource("16_6cn3w")]
+layout_mode = 2
+
+[node name="SettingNudes" parent="Accessibility/MarginContainer/MenuFocusSorter" instance=ExtResource("17_dnb43")]
+layout_mode = 2
+
+[node name="Controls" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+follow_focus = true
+script = ExtResource("2_k0gog")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="Controls/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+vertical = true
+script = ExtResource("3_ras8q")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"

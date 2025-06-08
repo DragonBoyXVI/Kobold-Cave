@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DamageProfile" load_steps=4 format=3 uid="uid://cbj24wyxib1wr"]
+
+[ext_resource type="Resource" uid="uid://3hh6isr61bfi" path="res://Kobold Cave/Entity/Player/player_armour.tres" id="1_dv7al"]
+[ext_resource type="Resource" uid="uid://cyfyp43i4ff3t" path="res://Kobold Cave/Entity/Player/player_hp.tres" id="2_m4c7u"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="3_mcw30"]
+
+[resource]
+script = ExtResource("3_mcw30")
+health = ExtResource("2_m4c7u")
+armour = ExtResource("1_dv7al")
+metadata/_custom_type_script = "uid://beulvh6j82778"

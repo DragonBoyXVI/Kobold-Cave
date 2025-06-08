@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfghtvmviosua"]
+
+[ext_resource type="PackedScene" uid="uid://c4xopb2ne3si4" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/setting_panel_h_slider.tscn" id="1_it3ki"]
+[ext_resource type="Script" uid="uid://dl2m04ugkhrts" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/FPS Slider/setting_fps.gd" id="2_mim0q"]
+[ext_resource type="Resource" uid="uid://dwgs2bk688404" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/FPS Slider/unlimited_setting.tres" id="3_nbecs"]
+[ext_resource type="Texture2D" uid="uid://b0qkvpwkcis2x" path="res://Dragon Game Template/Icons/scalie_resource.png" id="3_pydy8"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="4_nbecs"]
+
+[sub_resource type="Resource" id="Resource_466vj"]
+script = ExtResource("4_nbecs")
+setting_emit_update = true
+setting_type = 2
+setting_name = &"frame_rate"
+setting_flags = 1
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingFPS" node_paths=PackedStringArray("unlimited_button", "focus_node") instance=ExtResource("1_it3ki")]
+script = ExtResource("2_mim0q")
+unlimited_setting_changer = ExtResource("3_nbecs")
+unlimited_button = NodePath("MarginContainer/VBoxContainer/ContainerButtons/CheckBox")
+focus_node = NodePath("MarginContainer/VBoxContainer")
+setting_changer = SubResource("Resource_466vj")
+description_text = "- REPLACE ME
+Changes how often a frame is drawn, higher values look smoother.
+Turn on unlimited to remove the FPS Cap."
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="0"]
+text = "key_frame_rate"
+
+[node name="SpinBox" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="1"]
+min_value = 8.0
+max_value = 300.0
+value = 60.0
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer" index="1"]
+min_value = 8.0
+max_value = 300.0
+value = 60.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="CheckBox" type="CheckButton" parent="MarginContainer/VBoxContainer/ContainerButtons" index="1"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("3_pydy8")
+text = "key_frame_rate_unlimited"

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cexjk7tmwwg2q"]
-
-[ext_resource type="Script" uid="uid://d2p3epqxyo8a6" path="res://Dragon Game Template/Autoload/Dragon Controler/dragon_controler.gd" id="1_q0xt4"]
-
-[node name="DragonControler" type="Node"]
-process_mode = 3
-physics_interpolation_mode = 2
-auto_translate_mode = 2
-script = ExtResource("1_q0xt4")

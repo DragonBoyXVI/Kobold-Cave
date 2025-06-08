@@ -8,14 +8,19 @@ class_name Entity
 
 signal enabled
 signal disabled
-signal facing_changed( facing_right: bool )
 
 
-@export var health_node: NodeHealth
-@export var model: DragonModel2D
+@export var damage_profile: DamageProfile
+@export var hitbox: ObjHitbox2D
+@export var model: KoboldModel2D
+@export var state_machine: StateMachine
 
 
-var _is_facing_right: bool = true
+var is_facing_right: bool = true :
+	set( new ):
+		
+		is_facing_right = new
+		model.set_facing_right( new )
 
 
 func _init() -> void:
@@ -32,18 +37,25 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	Settings.connect_changed_callback( _on_settings_updated )
 	
-	if ( health_node ):
+	if ( damage_profile ):
 		
-		health_node.pre_hurt.connect( _on_node_health_pre_hurt )
-		health_node.hurt.connect( _on_node_health_hurt )
-		health_node.pre_healed.connect( _on_node_health_pre_healed )
-		health_node.healed.connect( _on_node_health_healed )
-		health_node.died.connect( _on_node_health_died )
+		damage_profile.took_damage.connect( _on_hurt )
+		damage_profile.took_heal.connect( _on_heal )
+		damage_profile.died.connect( _on_died )
+	
+	if ( hitbox ):
+		
+		hitbox.recived_event.connect( _on_hitbox_recived_event )
+	
+	#if ( health_node ):
+		#
+		#health_node.pre_hurt.connect( _on_node_health_pre_hurt )
+		#health_node.hurt.connect( _on_node_health_hurt )
+		#health_node.pre_healed.connect( _on_node_health_pre_healed )
+		#health_node.healed.connect( _on_node_health_healed )
+		#health_node.died.connect( _on_node_health_died )
 
 func _property_can_revert( property: StringName ) -> bool:
 	const revertable: PackedStringArray = [
@@ -59,21 +71,6 @@ func _property_get_revert( property: StringName ) -> Variant:
 	
 	return null
 
-
-## used to set the facing direction of the entity
-func set_facing_direction( facing_right: bool ) -> void:
-	
-	_is_facing_right = facing_right
-	facing_changed.emit( facing_right )
-	
-	if ( model ):
-		
-		model.scale.x = 1.0 if _is_facing_right else -1.0
-	
-	_facing_changed( facing_right )
-
-func get_facing_direction() -> bool:
-	return _is_facing_right
 
 ## virtual
 func _facing_changed( _facing_right: bool ) -> void:
@@ -106,49 +103,27 @@ func _disable() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 
 
-func _on_node_health_pre_hurt( damage: Damage ) -> void:
+func _on_hurt( damage: Damage ) -> void:
 	
 	model.flash_color( damage.to_color(), damage.amount / 5.0 )
-	_pre_hurt( damage )
 
-func _on_node_health_hurt( damage: Damage ) -> void:
+func _on_heal( heal: Heal ) -> void:
 	
-	_hurt( damage )
+	model.flash_color( heal.to_color(), heal.amount )
 
-func _on_node_health_pre_healed( heal: Heal ) -> void:
-	
-	model.flash_color( heal.to_color(), heal.amount / 1.25 )
-	_pre_healed( heal )
-
-func _on_node_health_healed( heal: Heal ) -> void:
-	
-	_healed( heal )
-
-func _on_node_health_died() -> void:
-	
-	_death()
-
-
-## virtual
-func _pre_hurt( _damage: Damage ) -> void:
-	pass
-
-## virtual
-func _hurt( _damage: Damage ) -> void:
-	pass
-
-## virtual
-func _pre_healed( _heal: Heal ) -> void:
-	pass
-
-## virtual
-func _healed( _heal: Heal ) -> void:
-	pass
-
-## virtual
-func _death() -> void:
+func _on_died() -> void:
 	
 	queue_free()
+
+
+func _on_hitbox_recived_event( event: HurtboxEvent ) -> void:
+	
+	if ( event is Damage ):
+		
+		damage_profile.take_damage( event )
+	elif ( event is Heal ):
+		
+		damage_profile.take_heal( event )
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:
@@ -162,9 +137,12 @@ func _settings_update( _recived_data: SettingsFile ) -> void:
 
 func _util_child_entered_tree( node: Node ) -> void:
 	
-	if ( node is DragonModel2D and not model ):
+	if ( node is KoboldModel2D and not model ):
 		
 		model = node
-	elif ( node is NodeHealth and not health_node ):
+	elif ( node is ObjHitbox2D and not hitbox ):
 		
-		health_node = node
+		hitbox = node
+	elif ( node is StateMachine and not state_machine ):
+		
+		state_machine = node

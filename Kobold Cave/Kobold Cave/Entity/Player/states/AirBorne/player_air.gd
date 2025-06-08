@@ -12,27 +12,43 @@ const STATE_NAME := &"PlayerAir"
 @export var ledge_grabber: LedgeGrabDetector
 @export var bomb_thrower: BombThrower
 
-@onready var jump_timer := %jumpTimer as Timer
-@onready var stuck_timer := %StuckTimer as Timer
-@onready var grab_timer: Timer = %GrabTimer
+## how long the jump input is saved for when you press jump
+@export var jump_time: float = 0.25
+## if you fall for too long, you'll automatically be reset
+@export var stuck_time: float = 30.0
 
 
 const ARG_GRAB_TIME := &"Grab Time"
 
 
+var _jump_timer: SceneTreeTimer
+var _stuck_timer: SceneTreeTimer
+var _grab_timer: SceneTreeTimer
+
+var is_jump_stored: bool = false
+var is_grab_ready: bool = false
+
+
+func _init() -> void:
+	
+	use_slow = true
+	_internal_default_args[ ARG_GRAB_TIME ] = 0.5
+	super()
+
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	model.animation_player.play( Player.ANIM_JUMP if player.velocity.y < 0 else Player.ANIM_FALL )
 	
-	grab_timer.start( args[ ARG_GRAB_TIME ] )
-	stuck_timer.start()
+	_grab_timer = create_physics_tree_timer( args[ ARG_GRAB_TIME ] )
+	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
 
 func _leave() -> void:
 	
 	ledge_grabber.disable.call_deferred()
-	jump_timer.stop()
-	stuck_timer.stop()
-	grab_timer.stop()
+	
+	_jump_timer = stop_timer( _jump_timer )
+	_stuck_timer = stop_timer( _stuck_timer )
+	_grab_timer = stop_timer( _grab_timer )
 	
 	model.root.scale = Vector2.ONE
 	model.rotation = 0.0
@@ -89,13 +105,13 @@ func _physics_process( delta: float ) -> void:
 		
 		PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 		
-		if ( not jump_timer.is_stopped() ):
+		if ( is_jump_stored ):
 			
 			movement.logic_apply_jump( player )
 			return
 		
 		const snd: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-		KoboldUtility.play_sound_with_location( snd, player.position )
+		DragonSound.in_world.play_sound_2d( snd, player.global_position )
 		
 		if ( Input.is_action_pressed( &"Crouch" ) ):
 			
@@ -105,7 +121,7 @@ func _physics_process( delta: float ) -> void:
 			request_state( PlayerGrounded.STATE_NAME )
 	else:
 		
-		if ( grab_timer.is_stopped() ):
+		if ( is_grab_ready ):
 			if ( ledge_grabber.can_process() ):
 				if ( player.velocity.y < 0.0 ):
 					
@@ -122,7 +138,8 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
-		jump_timer.start()
+		_jump_timer = create_physics_tree_timer( jump_time, _on_jump_timer_timeout )
+		is_jump_stored = true
 		
 		get_window().set_input_as_handled()
 		return
@@ -139,11 +156,17 @@ func _unhandled_input( event: InputEvent ) -> void:
 		return
 
 
+func _on_jump_timer_timeout() -> void:
+	
+	is_jump_stored = false
+
 func _on_stuck_timer_timeout() -> void:
 	
 	push_warning( "Falling forever are we?" )
 	KoboldRadio.player_reset_needed.emit( player )
+	
+	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
 
 func _on_grab_timer_timeout() -> void:
 	
-	ledge_grabber.enable.call_deferred()
+	is_grab_ready = true

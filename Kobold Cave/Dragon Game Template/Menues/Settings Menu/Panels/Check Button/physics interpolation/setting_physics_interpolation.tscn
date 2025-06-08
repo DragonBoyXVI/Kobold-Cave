@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1xk0aah0hdat"]
+
+[ext_resource type="PackedScene" uid="uid://cjbgh4wdluuom" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/panel_check_button.tscn" id="1_vyfat"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_6shig"]
+
+[sub_resource type="Resource" id="Resource_ol1mk"]
+script = ExtResource("2_6shig")
+setting_emit_update = true
+setting_type = 1
+setting_name = &"physics_interpolation"
+setting_flags = 1
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingPhysicsInterpolation" instance=ExtResource("1_vyfat")]
+setting_changer = SubResource("Resource_ol1mk")
+description_text = "-- REPLACE ME
+Changes the phyics interpolation property in the scene tree. This makes physics objects move smoother."
+
+[node name="CheckButton" parent="MarginContainer/MenuFocusSorter" index="0"]
+text = "key_physics_interpolation"

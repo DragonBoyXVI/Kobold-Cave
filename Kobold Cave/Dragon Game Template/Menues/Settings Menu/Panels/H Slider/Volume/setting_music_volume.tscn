@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://df7b2m8yat8l1"]
+
+[ext_resource type="PackedScene" uid="uid://c4xopb2ne3si4" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/setting_panel_h_slider.tscn" id="1_bslsk"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_gyyup"]
+
+[sub_resource type="Resource" id="Resource_bslsk"]
+script = ExtResource("2_gyyup")
+setting_emit_update = true
+setting_type = 3
+setting_name = &"volume_music"
+setting_flags = 4
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingMusicVolume" instance=ExtResource("1_bslsk")]
+setting_changer = SubResource("Resource_bslsk")
+description_text = "-- REPLACE ME
+Volume of ingame music"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="0"]
+text = "key_music_volume"
+
+[node name="SpinBox" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="1"]
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer" index="1"]
+max_value = 1.0
+step = 0.01
+value = 0.5
+tick_count = 5
+ticks_on_borders = true

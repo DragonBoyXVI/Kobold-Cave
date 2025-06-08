@@ -2,6 +2,8 @@
 @tool
 extends Node2D
 class_name DragonModel2D
+## idfk uh ill thinka somthin
+##
 ## A model node meant to make animation easier
 ##
 ## A DragonModel seeks to make animation easier by seperating the model
@@ -12,25 +14,23 @@ class_name DragonModel2D
 ## This creates a big divide between animation and events tied to it.
 
 ## The animation player this uses
-@export var animation_player: AnimationPlayer :
+@export var animation_player: AnimationPlayer : 
 	set( new_player ):
+		update_configuration_warnings.call_deferred()
 		
 		animation_player = new_player
-		if ( root ):
+		if ( root ): 
 			
 			animation_player.root_node = animation_player.get_path_to( root )
-		
-		update_configuration_warnings()
 ## The model container
 @export var root: Node2D :
 	set( new_root ):
+		update_configuration_warnings.call_deferred()
 		
 		root = new_root
 		if ( animation_player ):
 			
-			animation_player.root_node = animation_player.get_path_to( new_root )
-		
-		update_configuration_warnings()
+			animation_player.root_node = animation_player.get_path_to( root )
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -38,12 +38,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	if ( not animation_player ):
 		
-		const text := "No [AnimationPlayer] assigned!"
+		const text := "No animation player to use."
 		warnings.append( text )
 	
 	if ( not root ):
 		
-		const text := "No root node assigned, an empty child [Node2D] is recommended."
+		const text := "The model has no root!"
 		warnings.append( text )
 	
 	return warnings
@@ -53,12 +53,12 @@ func _init() -> void:
 	if ( Engine.is_editor_hint() ):
 		
 		child_entered_tree.connect( _util_on_child_entered_tree )
-		return
+		return 
 
 
 var _color_tween: Tween
 ## Flashes the model with a color.[br]
-## this affects the [DragonModel2D] node, not the root
+## this affects the root node
 func flash_color( color: Color, time: float = 0.125 ) -> void:
 	
 	# kill old tween
@@ -66,26 +66,13 @@ func flash_color( color: Color, time: float = 0.125 ) -> void:
 		_color_tween.kill()
 	
 	modulate = color
-	var tween := create_tween()
+	var tween := root.create_tween()
 	tween.set_trans( Tween.TRANS_LINEAR )
 	tween.set_ease( Tween.EASE_IN )
 	
-	tween.tween_property( self, ^"modulate", Color.WHITE, time )
+	tween.tween_property( root, ^"modulate", Color.WHITE, time )
 	
 	_color_tween = tween
-
-## instantly resets animation nodes[br]
-## plays the RESET animation and advances it to force an update
-func animation_reset() -> void:
-	
-	animation_player.play( &"RESET" )
-	animation_player.advance( 0.0 )
-
-## reset the player and play an anim
-func reset_and_play( anim: StringName ) -> void:
-	
-	animation_reset()
-	animation_player.play( anim )
 
 
 func _util_on_child_entered_tree( node: Node ) -> void:
@@ -95,5 +82,5 @@ func _util_on_child_entered_tree( node: Node ) -> void:
 		animation_player = node
 	elif ( node is Node2D and not root ):
 		
-		node.name = &"Root"
 		root = node
+		node.name = &"Root"

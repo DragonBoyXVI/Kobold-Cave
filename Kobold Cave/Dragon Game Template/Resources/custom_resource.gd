@@ -1,9 +1,10 @@
 @icon( "res://Dragon Game Template/Icons/scalie_resource.png" )
 extends Resource
-class_name ScalieResource
+#class_name ScalieResource
 ## Base class for any resource used by the DragonTemplate
 ##
 ## This base class is used for all resources used by the DragonTemplate.[br]
+## Functionality moved to the [Element] resource
 
 
 func _to_string() -> String:
@@ -34,15 +35,7 @@ enum ELEMENT_BITS {
 	
 }
 
-## Array that holds the colors for the elements
-const ELEMENT_COLOR: PackedColorArray = [
-	Color.ORANGE_RED, ## Fire
-	Color.AQUA, ## Ice
-	Color.LAWN_GREEN, ## Life
-	Color.WEB_PURPLE, ## Poison
-	Color.YELLOW ## Electricity
-	
-]
+
 
 
 

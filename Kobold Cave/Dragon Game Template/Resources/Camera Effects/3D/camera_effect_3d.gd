@@ -1,4 +1,5 @@
-extends ScalieResource
+@icon( "res://Dragon Game Template/Icons/scalie_resource.png" )
+extends CameraEffectBase
 class_name CameraEffect3D
 ## Base class for all camera3D effects
 ##

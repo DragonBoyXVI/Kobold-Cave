@@ -14,6 +14,12 @@ signal state_left( state: StateBehaviour )
 signal state_entered( state: StateBehaviour )
 
 
+## does nothing except turn off the no initial state warning
+@export var starts_in_no_state: bool = false :
+	set( value ):
+		
+		starts_in_no_state = value
+		update_configuration_warnings()
 ## the state we enter when readied
 @export var initial_state: StateBehaviour :
 	set( state ):
@@ -30,24 +36,18 @@ var stored_states: Dictionary[ StringName, StateBehaviour ] = {}
 ## the current state. To change this, use [annotation StateMachine.change_state]
 var current_state: StateBehaviour
 
-## the state this requests when we want to return to the 
-## parent state machine
-var top_state: StateBehaviour :
-	set( value ):
-		
-		if ( top_state == value ): return
-		
-		notify_property_list_changed.call_deferred()
-		update_configuration_warnings.call_deferred()
-		
-		top_state = value
 
-
-func _ready() -> void:
+func _init() -> void:
+	super()
 	
 	if ( Engine.is_editor_hint() ): 
 		
 		child_order_changed.connect( update_configuration_warnings )
+		return
+
+func _ready() -> void:
+	
+	if ( Engine.is_editor_hint() ): 
 		return
 	
 	# poll children
@@ -96,7 +96,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append( text )
 	
 	
-	if ( initial_state ):
+	if ( starts_in_no_state ):
+		
+		pass
+	elif ( initial_state ):
 		
 		if ( not children.has( initial_state ) ):
 			
@@ -112,56 +115,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 		const text := "No initial state set.\nSelect a child [StateBehaviour] to be the initial state."
 		warnings.append( text )
 	
-	if ( get_parent() is StateMachine ):
-		
-		if ( not top_state ):
-			
-			const text := "Set a top state for the parent to return to."
-			warnings.append( text )
-		elif ( top_state in children ):
-			
-			const text := "Top state cannot be a child of this [StateMachine]"
-			warnings.append( text )
-			
-			top_state = null
-	else:
-		
-		top_state = null
-	
 	return warnings
 
-func _get_property_list() -> Array[ Dictionary ]:
-	var properties: Array[ Dictionary ] = []
-	
-	if ( get_parent() is StateMachine ):
-		
-		properties.append( {
-			"name": "request_top_state",
-			"type": TYPE_OBJECT,
-			"hint": PROPERTY_HINT_NODE_TYPE,
-			"hint_string": "StateMachine"
-		} )
-	
-	return properties
-
-func _property_can_revert( property: StringName ) -> bool:
-	const revertable: PackedStringArray = [
-		"initial_state",
-		"request_top_state",
-	]
-	
-	return revertable.has( property )
-
-func _property_get_revert( property: StringName ) -> Variant:
-	
-	match property:
-		&"initial_state": return null
-		&"request_top_state": return null
-	
-	return null
 
 
-func _enter( _args: Dictionary ) -> void:
+func _enter( _args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	if ( initial_state ):
 		
@@ -193,19 +151,26 @@ func add_state( state_to_add: StateBehaviour ) -> void:
 	state_to_add.disable()
 	
 	# connect reqeust signal
-	if ( state_to_add.defer_change ):
-		
-		state_to_add.state_change_requested.connect( _on_child_state_change_requested, CONNECT_DEFERRED )
-		state_to_add.state_top_requested.connect( _on_child_request_top_state, CONNECT_DEFERRED )
-	else:
-		
-		state_to_add.state_change_requested.connect( _on_child_state_change_requested )
-		state_to_add.state_top_requested.connect( _on_child_request_top_state )
+	var signal_flags: int = 0
+	if ( state_to_add.defer_change ): signal_flags |= CONNECT_DEFERRED
 	
-	pass
+	state_to_add.state_change_requested.connect( _on_child_state_change_requested, signal_flags )
 
 ## Use this to change states
 func change_state( state_name: StringName, args: Dictionary[ StringName, Variant ] = {} ) -> void:
+	
+	# dont enter a state youre already in
+	if ( not current_state and state_name == NO_STATE ): return
+	
+	# no state override
+	if ( state_name == NO_STATE ):
+		
+		current_state.leave()
+		state_left.emit( current_state )
+		current_state.disable()
+		current_state = null
+		
+		return
 	
 	# double check we have this state
 	if ( stored_states.has( state_name ) ):
@@ -231,8 +196,6 @@ func change_state( state_name: StringName, args: Dictionary[ StringName, Variant
 	else:
 		
 		push_error( state_name, ": Does not exist!" )
-	
-	pass
 
 
 ## return true if this machine has a state
@@ -248,10 +211,6 @@ func is_in_state( state_name: StringName ) -> bool:
 	return state_name == current_state.name
 
 
-func _on_child_state_change_requested( state_name: StringName, args: Dictionary[ StringName, Variant ] ) -> void:
+func _on_child_state_change_requested( state_name: StringName, args: Dictionary[ StringName, Variant ] = {} ) -> void:
 	
 	change_state( state_name, args )
-
-func _on_child_request_top_state(  ) -> void:
-	
-	request_state( top_state.name )

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnq4sc0morxxn"]
 
-[ext_resource type="Script" uid="uid://bdys8aejuu7u2" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.gd" id="1_8rvp6"]
+[ext_resource type="Script" uid="uid://bv3j7pgpf74rm" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.gd" id="1_8rvp6"]
 
-[node name="Hurtbox2D" type="Area2D"]
+[node name="ObjHurtbox2D" type="Area2D"]
 editor_description = "This looks for and applies its event to any hitbox 2d it hits.
 
 Please note that this emits a duplicate of the event, not the original."

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://rwelchhw8pkr"]
+
+[ext_resource type="PackedScene" uid="uid://dctechcn62i5r" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/setting_panel_option_button.tscn" id="1_1r0rn"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_p5ooh"]
+
+[sub_resource type="Resource" id="Resource_3t672"]
+script = ExtResource("2_p5ooh")
+setting_emit_update = true
+setting_type = 2
+setting_name = &"window_mode"
+setting_flags = 2
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingWindowMode" instance=ExtResource("1_1r0rn")]
+setting_changer = SubResource("Resource_3t672")
+description_text = "-- REPLACE ME
+What mode the window is in, dosnt respond to window button presses.
+Current Mode: %s"
+
+[node name="Label" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter" index="0"]
+text = "key_window_mode"
+
+[node name="OptionButton" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter" index="1"]
+item_count = 4
+popup/item_0/text = "Windowed"
+popup/item_1/text = "Maximized"
+popup/item_1/id = 3
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 4
+popup/item_3/text = "Exclusive Fullscreen"
+popup/item_3/id = 5

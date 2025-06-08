@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjbgh4wdluuom"]
+
+[ext_resource type="Script" uid="uid://cvp5ddwmthq4a" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/panel_check_button.gd" id="1_5eiqh"]
+[ext_resource type="Script" uid="uid://d0f7ilaoon454" path="res://Dragon Game Template/Components/Control/Menu Focus Sorter/menu_focus_sorter.gd" id="2_wraq6"]
+
+[node name="PanelCheckButton" type="PanelContainer" node_paths=PackedStringArray("check_button", "focus_node")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5eiqh")
+check_button = NodePath("MarginContainer/MenuFocusSorter/CheckButton")
+focus_node = NodePath("MarginContainer/MenuFocusSorter/CheckButton")
+metadata/_custom_type_script = "uid://chv5nbllmt187"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuFocusSorter" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_wraq6")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/MenuFocusSorter"]
+layout_mode = 2
+text = "Option-"

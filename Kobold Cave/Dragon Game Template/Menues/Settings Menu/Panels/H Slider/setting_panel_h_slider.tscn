@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xopb2ne3si4"]
+
+[ext_resource type="Script" uid="uid://b2nud3a1mk4rv" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/setting_panel_h_slider.gd" id="1_1cy7i"]
+[ext_resource type="Script" uid="uid://d0f7ilaoon454" path="res://Dragon Game Template/Components/Control/Menu Focus Sorter/menu_focus_sorter.gd" id="1_fp00j"]
+
+[node name="SettingPanelHSlider" type="PanelContainer" node_paths=PackedStringArray("slider", "spin_box", "default_button", "focus_node")]
+offset_right = 306.0
+offset_bottom = 171.0
+script = ExtResource("1_1cy7i")
+slider = NodePath("MarginContainer/VBoxContainer/HSlider")
+spin_box = NodePath("MarginContainer/VBoxContainer/ContainerTopRow/SpinBox")
+default_button = NodePath("MarginContainer/VBoxContainer/ContainerButtons/Button")
+focus_node = NodePath("MarginContainer/VBoxContainer/HSlider")
+metadata/_custom_type_script = "uid://chv5nbllmt187"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+focus_mode = 2
+alignment = 1
+vertical = true
+script = ExtResource("1_fp00j")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="ContainerTopRow" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("1_fp00j")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContainerTopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Setting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ContainerTopRow"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="ContainerButtons" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("1_fp00j")
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/ContainerButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "key_default"

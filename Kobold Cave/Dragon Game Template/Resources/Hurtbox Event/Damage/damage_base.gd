@@ -13,7 +13,7 @@ class_name Damage
 ## armour uses this to reduce its effectiveness
 @export var peirce: int
 ## armour also uses this, with other stuff
-@export var element := ELEMENT.NONE
+@export var element: Element
 
 
 func _to_string() -> String:
@@ -23,32 +23,26 @@ func _to_string() -> String:
 
 func _to_color() -> Color:
 	
-	if ( element == ELEMENT.NONE ): return Color.RED
-	
-	return ELEMENT_COLOR[ element ]
+	# wip
+	return Color.RED
 
-func _init( amt := 0, elem := ELEMENT.NONE, peir := 0 ) -> void:
+func _init( amt: int = 0, prc: int = 0, elem: Element = null ) -> void:
 	
 	amount = amt
-	peirce = peir
+	peirce = prc
 	element = elem
 
-func apply( node_health: NodeHealth ) -> void:
-	
-	if ( health_is_healed_by_this( node_health.health ) ):
-		
-		node_health.recive_event( to_heal() )
-		return
-	
-	node_health.pre_hurt.emit( self )
-	
-	node_health.apply_armour( self )
-	_calculate( node_health )
-	
-	var did_damage := _damage( node_health )
-	if ( did_damage ):
-		
-		node_health.hurt.emit( self )
+## used to calculate damage before elemental bonus is applied
+func pre_calculate( _profile: DamageProfile ) -> void:
+	pass
+
+## used to calculate damage before armour is applied
+func calculate( _profile: DamageProfile ) -> void:
+	pass
+
+## used to calculate damage after armour is applied
+func post_calculate( _profile: DamageProfile ) -> void:
+	pass
 
 
 ## used to turn this into a heal object
@@ -56,41 +50,7 @@ func to_heal() -> Heal:
 	
 	return _to_heal()
 
-## used to tell if this should heal a [Health] resource
-func health_is_healed_by_this( health: Health ) -> bool:
-	
-	return _health_is_healed_by_this( health )
-
-
-## virtual[br]
-## used so the damage object can modify itself before
-## doing damage and after armour has affected it.
-func _calculate( _health_node: NodeHealth ) -> void:
-	
-	pass
-
-## virtual[br]
-## called when this heals instead of damages
+## Virtual[br]
 func _to_heal() -> Heal:
 	
-	return Heal.new( amount )
-
-## virtual[br]
-## used to test if this heals the health instead of damage it.
-func _health_is_healed_by_this( health: Health ) -> bool:
-	
-	if ( element == ELEMENT.NONE ): return false
-	
-	return ( health.element_heal_flag & 1 << element )
-
-## virtual[br]
-## used to actually do damage to the node.[br]
-## should return true if damage was actually done.
-func _damage( node_health: NodeHealth ) -> bool:
-	
-	if ( amount > 0 ):
-		
-		node_health.health.current -= amount
-		return true
-	
-	return false
+	return Heal.new()

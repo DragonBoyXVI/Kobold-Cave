@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://vqbq1nsfhp5w"]
+
+[ext_resource type="Script" uid="uid://davtnjcjfdslj" path="res://Dragon Game Template/Menues/Settings Menu/Setting Description Box/setting_description_box.gd" id="1_l6vpj"]
+[ext_resource type="Script" uid="uid://ctjfcee2y2fxx" path="res://Dragon Game Template/Components/Control/Better Scroll Box/better_scroll_box.gd" id="1_rir0y"]
+
+[node name="SettingDescriptionBox" type="PanelContainer" node_paths=PackedStringArray("label")]
+offset_right = 980.0
+offset_bottom = 366.0
+size_flags_vertical = 3
+script = ExtResource("1_l6vpj")
+label = NodePath("BetterScrollContainer/MarginContainer/Label")
+
+[node name="BetterScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+script = ExtResource("1_rir0y")
+metadata/_custom_type_script = "uid://ctjfcee2y2fxx"
+
+[node name="MarginContainer" type="MarginContainer" parent="BetterScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BetterScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TEXT FOR MEEE WAOOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://to324iwtbf73"]
+
+[ext_resource type="PackedScene" uid="uid://cjbgh4wdluuom" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/panel_check_button.tscn" id="1_rf0ge"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_ed4gj"]
+
+[sub_resource type="Resource" id="Resource_vk0nt"]
+script = ExtResource("2_ed4gj")
+setting_emit_update = true
+setting_type = 1
+setting_name = &"flashing_lights"
+setting_flags = 0
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingFlashingLights" instance=ExtResource("1_rf0ge")]
+setting_changer = SubResource("Resource_vk0nt")
+description_text = "-- REPLACE ME
+If true, flashing lights are used.
+Turn off of you are prone to seizures"
+
+[node name="CheckButton" parent="MarginContainer/MenuFocusSorter" index="0"]
+text = "key_flashing_lights"

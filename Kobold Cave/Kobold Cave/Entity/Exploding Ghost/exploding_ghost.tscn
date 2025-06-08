@@ -1,29 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://car8lov7qvebp"]
+[gd_scene load_steps=13 format=3 uid="uid://car8lov7qvebp"]
 
 [ext_resource type="Script" uid="uid://chqesjqvwm64a" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd" id="1_5aatd"]
 [ext_resource type="Resource" uid="uid://vltf7hy6w3im" path="res://Kobold Cave/Entity/Exploding Ghost/movement.tres" id="2_56hmm"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="2_srrlq"]
-[ext_resource type="Script" uid="uid://bvrqhrw7vp6qj" path="res://Dragon Game Template/Components/Multi/Node Health/node_health.gd" id="3_2q3f0"]
-[ext_resource type="Script" uid="uid://bp718wotfrc6m" path="res://Dragon Game Template/Resources/Health/health.gd" id="4_2s2sw"]
-[ext_resource type="Script" uid="uid://bin8onstxmkgx" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.gd" id="5_hho2b"]
+[ext_resource type="Script" uid="uid://b2yb87wtchkvm" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.gd" id="5_hho2b"]
 [ext_resource type="Resource" uid="uid://dtqt8suvkv3jo" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="6_1imle"]
 [ext_resource type="Script" uid="uid://brqtkn8s5qbpr" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd" id="7_pvdyc"]
-[ext_resource type="Script" uid="uid://cjxpiamvofga" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="8_56hmm"]
+[ext_resource type="Script" uid="uid://bxopwjxq6c6rj" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="8_56hmm"]
 [ext_resource type="Script" uid="uid://c0rmwjvuwixkx" path="res://Kobold Cave/Entity/Exploding Ghost/States/follow_player.gd" id="9_pvdyc"]
 [ext_resource type="Script" uid="uid://ychislssk3xx" path="res://Kobold Cave/Entity/Exploding Ghost/States/no_ai.gd" id="10_56hmm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvdyc"]
 radius = 1024.0
-
-[sub_resource type="Resource" id="Resource_cc0xt"]
-resource_local_to_scene = true
-script = ExtResource("4_2s2sw")
-ignore_max = true
-maximum = 1
-current = 1
-percent = 1.0
-element_heal_flag = 4
-metadata/_custom_type_script = "uid://bp718wotfrc6m"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0pik"]
 radius = 48.0
@@ -36,7 +24,7 @@ collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_5aatd")
 bomb_thrower = NodePath("BombThrower")
-health_node = NodePath("NodeHealth")
+health_node = NodePath("")
 model = NodePath("PlayerModel")
 metadata/_custom_type_script = "uid://bhncwprp3y7lj"
 metadata/_edit_group_ = true
@@ -55,19 +43,12 @@ debug_color = Color(0.881151, 0.142134, 0.74623, 0.42)
 modulate = Color(0.737255, 0.737255, 0.737255, 0.392157)
 position = Vector2(0, 32)
 
-[node name="NodeHealth" type="Node" parent="."]
-script = ExtResource("3_2q3f0")
-health = SubResource("Resource_cc0xt")
-metadata/_custom_type_script = "uid://bvrqhrw7vp6qj"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w0pik")
 
-[node name="Hitbox2D" type="Area2D" parent="." node_paths=PackedStringArray("event_recivers")]
+[node name="Hitbox2D" type="Area2D" parent="."]
 script = ExtResource("5_hho2b")
-event_recivers = [NodePath("../NodeHealth")]
 team_mask = ExtResource("6_1imle")
-metadata/_custom_type_script = "uid://bin8onstxmkgx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("CircleShape2D_je6jb")
@@ -82,15 +63,11 @@ metadata/_custom_type_script = "uid://brqtkn8s5qbpr"
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_56hmm")
 initial_state = NodePath("NoAi")
-metadata/_custom_type_script = "uid://cjxpiamvofga"
 
 [node name="FollowPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("9_pvdyc")
 ghost = NodePath("../..")
 movement = ExtResource("2_56hmm")
-default_enter_args = Dictionary[StringName, Variant]({
-&"Player": null
-})
 
 [node name="NoAi" type="Node" parent="StateMachine" node_paths=PackedStringArray("ghost")]
 script = ExtResource("10_56hmm")

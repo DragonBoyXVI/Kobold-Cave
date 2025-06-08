@@ -42,7 +42,7 @@ func _ready() -> void:
 	KoboldRadio.play_footstep.connect( _on_radio_play_footstep )
 	
 	MainCamera2D.set_follow_coord( get_spawn_position() )
-	MainCamera2D.set_zoom_tween( Vector2.ONE, 0.25 )
+	KoboldUtility.set_camera_zoom_tween( Vector2.ONE, 0.25 )
 	
 	if ( KoboldUtility.in_level_trans ):
 		
@@ -70,7 +70,7 @@ func get_spawn_position() -> Vector2:
 func _on_radio_goal_touched() -> void:
 	
 	pause()
-	DragonControler.can_toggle_pause = false
+	DragonPauser.is_togglable = false
 
 func _on_radio_player_hitstun( damage: Damage ) -> void:
 	
@@ -107,4 +107,4 @@ func _on_radio_play_footstep( footstep_pos: Vector2 ) -> void:
 			
 			sound = data.get_custom_data( data_floor_sound )
 	
-	KoboldUtility.play_sound_with_location( sound, footstep_pos )
+	DragonSound.in_world.play_sound_2d( sound, footstep_pos )

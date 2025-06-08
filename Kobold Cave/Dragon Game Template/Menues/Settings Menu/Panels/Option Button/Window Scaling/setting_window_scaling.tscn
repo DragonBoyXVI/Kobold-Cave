@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctjx7dsijvtxw"]
+
+[ext_resource type="PackedScene" uid="uid://dctechcn62i5r" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/setting_panel_option_button.tscn" id="1_6rwix"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_yglt7"]
+[ext_resource type="Texture2D" uid="uid://btpefe55404xh" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Window Scaling/texture_disabled.tres" id="3_yglt7"]
+[ext_resource type="Texture2D" uid="uid://cwn8fmerctji0" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Window Scaling/texture_viewport.tres" id="4_551vq"]
+[ext_resource type="Texture2D" uid="uid://c6mffsyvvn3qw" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Option Button/Window Scaling/texture_canvas.tres" id="5_551vq"]
+
+[sub_resource type="Resource" id="Resource_551vq"]
+script = ExtResource("2_yglt7")
+setting_emit_update = true
+setting_type = 2
+setting_name = &"window_scaling"
+setting_flags = 2
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingWindowScaling" instance=ExtResource("1_6rwix")]
+item_name_keys = PackedStringArray()
+item_desc_key = PackedStringArray("--No scaling, instead the ingame camera is resized.", "--Content is rendered as the windows size. Looks nicer but is more expensive", "-Content is rendered at its base scale then stretched to fit the winow. Cheapest scaling mode.")
+setting_changer = SubResource("Resource_551vq")
+description_text = "- REPACE ME
+Changes how the game is scaled up.
+%s"
+
+[node name="Label" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter" index="0"]
+text = "key_window_scaling"
+
+[node name="OptionButton" parent="MarginContainer/MenuFocusSorter/MenuFocusSorter" index="1"]
+item_count = 3
+popup/item_0/text = "key_default"
+popup/item_0/icon = ExtResource("3_yglt7")
+popup/item_1/text = "Canvas"
+popup/item_1/icon = ExtResource("5_551vq")
+popup/item_1/id = 1
+popup/item_2/text = "Viewport"
+popup/item_2/icon = ExtResource("4_551vq")
+popup/item_2/id = 2

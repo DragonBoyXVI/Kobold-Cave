@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ag83j4eld4h"]
+
+[ext_resource type="PackedScene" uid="uid://c4xopb2ne3si4" path="res://Dragon Game Template/Menues/Settings Menu/Panels/H Slider/setting_panel_h_slider.tscn" id="1_lelgj"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_idx4h"]
+
+[sub_resource type="Resource" id="Resource_7e3i7"]
+script = ExtResource("2_idx4h")
+setting_emit_update = true
+setting_type = 3
+setting_name = &"camera_shake_strength"
+setting_flags = 16
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingCameraShake" instance=ExtResource("1_lelgj")]
+setting_changer = SubResource("Resource_7e3i7")
+description_text = "-- REPLACE ME
+Changes how strong the camera shake is"
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="0"]
+text = "key_camera_shake"
+
+[node name="SpinBox" parent="MarginContainer/VBoxContainer/ContainerTopRow" index="1"]
+max_value = 1.0
+step = 0.01
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer" index="1"]
+max_value = 1.0
+step = 0.01
+tick_count = 5
+ticks_on_borders = true

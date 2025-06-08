@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmwh2bj21418l"]
+[gd_scene load_steps=4 format=3 uid="uid://cmwh2bj21418l"]
 
-[ext_resource type="Script" uid="uid://d4el1iv15a3jj" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.gd" id="1_1p56u"]
-[ext_resource type="PackedScene" uid="uid://cksnwnxdury7g" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.tscn" id="2_3emqc"]
-[ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/state_behaviour_base.tscn" id="4_yf44x"]
-[ext_resource type="Script" uid="uid://c2ol8t44gsjkj" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_node.gd" id="5_rhb5r"]
+[ext_resource type="Script" uid="uid://bukqcoybdjdv0" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_dynamic.gd" id="1_1p56u"]
+[ext_resource type="Script" uid="uid://bxopwjxq6c6rj" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="2_48b5a"]
+[ext_resource type="Script" uid="uid://d08txyh2pyybm" path="res://Dragon Game Template/Autoload/Camera 2D Dynamic/States/follow_node.gd" id="5_rhb5r"]
 
-[node name="MainCamera2D" type="Camera2D"]
-process_priority = 167814208
-process_physics_priority = 167814208
+[node name="MainCamera2D" type="Camera2D" node_paths=PackedStringArray("state_machine")]
 editor_description = "Main camera that can follow nodes or look at a point. Can be disabled in autoload."
 light_mask = 0
 position_smoothing_enabled = true
@@ -16,18 +13,21 @@ rotation_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("1_1p56u")
+state_machine = NodePath("StateMachine")
 metadata/_edit_group_ = true
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_3emqc")]
-initial_state = NodePath("NoBehaviour")
-default_enter_args = Dictionary[StringName, Variant]({})
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_48b5a")
+starts_in_no_state = true
+metadata/_custom_type_script = "uid://bxopwjxq6c6rj"
 
-[node name="FollowNode" parent="StateMachine" node_paths=PackedStringArray("camera") instance=ExtResource("4_yf44x")]
+[node name="FollowNode" type="Node" parent="StateMachine" node_paths=PackedStringArray("camera")]
 script = ExtResource("5_rhb5r")
 camera = NodePath("../..")
-default_enter_args = Dictionary[StringName, Variant]({
-&"Node": null
+default_args = Dictionary[StringName, Variant]({
+&"Follow Node": null
 })
+metadata/_custom_type_script = "uid://d08txyh2pyybm"
 
-[node name="NoBehaviour" parent="StateMachine" instance=ExtResource("4_yf44x")]
-default_enter_args = Dictionary[StringName, Variant]({})
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

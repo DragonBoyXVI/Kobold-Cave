@@ -14,7 +14,7 @@ const SHAKE_STRENGTH: float = 16.0
 const ROTATION_DIVISOR: float = 256.0
 
 
-@export var hitbox: Hitbox2D
+@export var hitbox: ObjHitbox2D
 @export var visual: Node2D
 
 

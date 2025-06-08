@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://x4yva1rx55jo"]
-
-[ext_resource type="Script" uid="uid://ckr7lj33xa2qm" path="res://Dragon Game Template/Autoload/Time Manager/time_manager.gd" id="1_oochr"]
-
-[node name="TimeManager" type="Node"]
-physics_interpolation_mode = 2
-auto_translate_mode = 2
-script = ExtResource("1_oochr")

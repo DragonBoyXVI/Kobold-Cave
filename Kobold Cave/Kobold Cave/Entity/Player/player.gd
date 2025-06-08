@@ -26,8 +26,6 @@ const ANIM_LEDGE_JUMP := &"LedgeJump"
 
 
 @export var bomb_thrower: BombThrower
-@export var hitbox: Hitbox2D
-@export var state_machine: StateMachine
 
 
 func _input( event: InputEvent ) -> void:
@@ -47,17 +45,6 @@ func _input( event: InputEvent ) -> void:
 				
 				velocity.y -= 2_000.0
 			
-			KEY_0:
-				
-				health_node.recive_event( Heal.new( 1 ) )
-			
-			KEY_9:
-				
-				health_node.recive_event( Heal.new( 5 ) )
-			
-			KEY_8:
-				
-				health_node.health.current = 5
 			
 			KEY_7:
 				
@@ -112,9 +99,9 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
-	DragonControler.tree_paused.connect( _on_tree_paused, CONNECT_DEFERRED )
+	damage_profile.health.set_percent( 1.0 )
 	
-	KoboldRadio.ui_connect_health.emit( health_node.health )
+	#KoboldRadio.ui_connect_health.emit( health_node.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
 
 
@@ -123,7 +110,7 @@ func out_of_bounds() -> void:
 	KoboldRadio.player_reset_needed.emit( self )
 	# the wolrd pausing causes this to happen twice
 	await get_tree().create_timer( 0.25 ).timeout
-	health_node.recive_event( Damage.new( 1 ) )
+	#health_node.recive_event( Damage.new( 1 ) )
 
 
 var _was_hurt_this_frame: bool = false
@@ -140,9 +127,9 @@ func _pre_hurt( damage: Damage ) -> void:
 
 func _hurt( damage: Damage ) -> void:
 	
-	if ( health_node.health.current > 0 ):
-		
-		state_machine.change_state( PlayerHitStun.STATE_NAME )
+	#if ( health_node.health.current > 0 ):
+		#
+		#state_machine.change_state( PlayerHitStun.STATE_NAME )
 	
 	var cam_effect := CameraShake2D.new()
 	cam_effect.duration_max = 0.25

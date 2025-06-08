@@ -1,6 +1,6 @@
 @icon( "res://Dragon Game Template/Icons/mass.png" )
 @tool
-extends ScalieResource
+extends Resource
 class_name Mass
 ## Class for handling object mass
 ##

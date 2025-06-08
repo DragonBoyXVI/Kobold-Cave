@@ -1,0 +1,6 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://cwn8fmerctji0"]
+
+[ext_resource type="Gradient" uid="uid://d3sm8b1gvqdp4" path="res://Dragon Game Template/Saved Resources/gradient_5point_bw.tres" id="1_bt43w"]
+
+[resource]
+gradient = ExtResource("1_bt43w")

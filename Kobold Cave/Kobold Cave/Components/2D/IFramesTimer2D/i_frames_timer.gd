@@ -5,15 +5,15 @@ class_name IFramesTimer
 ##
 ## Ditto
 
-## health node used to trigger this.
+## profile used to trigger this.
 ## changing this at runtime does nothing
-@export var health_node: NodeHealth:
+@export var profile: DamageProfile:
 	set( new ):
 		
-		health_node = new
+		profile = new
 		update_configuration_warnings()
 ## hitbox to disable
-@export var hitbox: Hitbox2D:
+@export var hitbox: ObjHitbox2D:
 	set( new ):
 		
 		hitbox = new
@@ -22,16 +22,17 @@ class_name IFramesTimer
 @export var visual_node: Node2D
 
 
-var _flashing_lights: bool = true
+static var _flashing_lights: bool = true
+
 var _tween: Tween
 
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	
-	if ( not health_node ):
+	if ( not profile ):
 		
-		const text := "Needs a health node to function"
+		const text := "Needs a profile to function"
 		warnings.append( text )
 	
 	if ( not hitbox ):
@@ -40,6 +41,13 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append( text )
 	
 	return warnings
+
+static func _static_init() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	Settings.connect_changed_callback( _on_static_settings_updated )
 
 func _init() -> void:
 	
@@ -56,16 +64,10 @@ func _ready() -> void:
 	if ( Engine.is_editor_hint() ):
 		return
 	
-	if ( not health_node.is_node_ready() ):
-		await health_node.ready
-	health_node.hurt.connect( _on_health_node_hurt )
-	
-	if ( Settings.data ):
-		_on_settings_updated( Settings.data )
-	Settings.updated.connect( _on_settings_updated )
+	profile.took_damage.connect( _on_profile_took_damage )
 
 
-func _on_health_node_hurt( _damage: Damage ) -> void:
+func _on_profile_took_damage( _damage: Damage ) -> void:
 	
 	hitbox.disable.call_deferred()
 	start()
@@ -101,6 +103,6 @@ func _on_timeout() -> void:
 	visual_node.show()
 
 
-func _on_settings_updated( recived_data: SettingsFile ) -> void:
+static func _on_static_settings_updated( recived_data: SettingsFile ) -> void:
 	
 	_flashing_lights = recived_data.flashing_lights

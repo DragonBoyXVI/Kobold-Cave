@@ -1,11 +1,9 @@
 @icon( "res://Dragon Game Template/Icons/3D/hitbox_3d.png" )
 extends Area3D
-class_name Hitbox3D
-## A node that can get hit by [Hurtbox3D] and send info to a
-## [NodeHealth].
+class_name ObjHitbox3D
+## A node that can get hit by [ObjHurtbox3D] and send info
 ##
-## Simply sends the data to all connected [NodeHealth]s and doesn't
-## touch the passed data.
+## ditto
 
 
 ## emitted when this is enabled
@@ -17,8 +15,6 @@ signal disabled
 signal recived_event( event: HurtboxEvent )
 
 
-## all the health objects we wish to recive the data
-@export var event_recivers: Array[ NodeHealth ] = []
 ## the team mask we use. If empty, all hurtboxes hit this.
 @export var team_mask: TeamMask
 
@@ -40,12 +36,8 @@ func disable() -> void:
 ## called by a hurtbox when it hits this
 func hit( event: HurtboxEvent ) -> void:
 	
-	recived_event.emit( event )
 	_hit( event )
-	
-	for node: NodeHealth in event_recivers:
-		
-		node.recive_event( event )
+	recived_event.emit( event )
 
 
 ## virtual for how to disable this

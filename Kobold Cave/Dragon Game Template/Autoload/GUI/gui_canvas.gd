@@ -8,11 +8,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	
-	Settings.loaded.connect( _on_settings_updated )
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	Settings.connect_changed_callback( _on_settings_updated )
 
 func _input( event: InputEvent ) -> void:
 	
@@ -58,31 +54,6 @@ func remove_gui_element( removed_gui: Control, free_it: bool = false ) -> void:
 		
 		removed_gui.queue_free()
 
-
-@onready var fade_rect: ColorRect = $FadeRect
-func fade_out( fade_time: float = 1.25, fade_color: Color = Color.BLACK ) -> void:
-	
-	KoboldUtility.in_level_trans = true
-	KoboldRadio.room_pause.emit()
-	fade_rect.show()
-	var tween := create_tween()
-	tween.set_ignore_time_scale()
-	
-	tween.tween_property( fade_rect, ^"color", fade_color, fade_time )
-	await tween.finished
-	return
-
-func fade_in( fade_time: float = 1.25 ) -> void:
-	
-	var tween := create_tween()
-	tween.set_ignore_time_scale()
-	
-	tween.tween_property( fade_rect, ^"color", Color( Color.BLACK, 0.0 ), fade_time )
-	await tween.finished
-	fade_rect.hide()
-	KoboldUtility.in_level_trans = false
-	KoboldRadio.room_unpause.emit()
-	return
 
 
 func _on_settings_updated( recived_data: SettingsFile ) -> void:

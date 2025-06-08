@@ -51,7 +51,7 @@ enum {
 @export var sprite_spikes: Sprite2D
 @export var sprite_ghost: Sprite2D
 @export var collison_shape: CollisionShape2D
-@export var hurtbox: Hurtbox2D
+@export var hurtbox: ObjHurtbox2D
 
 
 var _tween: Tween

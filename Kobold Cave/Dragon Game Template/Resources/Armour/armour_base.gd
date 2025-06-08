@@ -1,6 +1,6 @@
 @icon( "res://Dragon Game Template/Icons/Armor/armour.png" )
-extends ScalieResource
-class_name BaseArmour
+extends Resource
+class_name Armour
 ## A basic armour object.
 ##
 ## An armour resource interacts with [Damage] resources to reduce
@@ -8,33 +8,17 @@ class_name BaseArmour
 
 
 ## reduces all damage, effected by the peirce property
-@export var value: int
-## same a regular value but for elements. not affected bt peirce.
-@export var element_value: Array[ int ] = [ 0, 0, 0, 0, 0 ]
+@export var defence: int
 
 
 func _to_string() -> String:
 	
-	const text := "BaseArmour, not meant to be used directly."
+	const text := "Armour"
 	return text
 
 
-## used to apply the armor to the [BaseDamage],
-## used [NodeHealth] as a ref for calculations.
-func apply( health_node: NodeHealth, damage: Damage ) -> ArmourDamageInfo:
-	var info := ArmourDamageInfo.new()
+## used to apply the armor to the [Damage],
+## the [DamageProfile] is used as refrence
+func apply( _profile: DamageProfile, damage: Damage ) -> void:
 	
-	_apply( info, health_node, damage )
-	return info
-
-
-## virtual[br]
-## this function changes the [Damage] object, reducing its damage
-## based on whatever you want.[br]
-## be sure to log stuff into the info, incase you have something
-## that uses it
-func _apply( info: ArmourDamageInfo, _health_node: NodeHealth, _damage: Damage ) -> void:
-	
-	info.messages.append( "Apply method was not implimented!" )
-	push_error( "Not implimented: Armour._apply()\n", self )
-	pass
+	damage.amount -= maxi( 0, defence - damage.peirce )

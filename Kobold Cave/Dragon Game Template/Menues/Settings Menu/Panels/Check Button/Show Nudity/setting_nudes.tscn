@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7powpm0jp33a"]
+
+[ext_resource type="PackedScene" uid="uid://cjbgh4wdluuom" path="res://Dragon Game Template/Menues/Settings Menu/Panels/Check Button/panel_check_button.tscn" id="1_rp5x6"]
+[ext_resource type="Script" uid="uid://tv7ikviowbfm" path="res://Dragon Game Template/Resources/SettingChanger/setting_changer.gd" id="2_j7iu3"]
+
+[sub_resource type="Resource" id="Resource_t5rtm"]
+script = ExtResource("2_j7iu3")
+setting_emit_update = true
+setting_type = 1
+setting_name = &"show_nudity"
+setting_flags = 0
+metadata/_custom_type_script = "uid://tv7ikviowbfm"
+
+[node name="SettingNudes" instance=ExtResource("1_rp5x6")]
+setting_changer = SubResource("Resource_t5rtm")
+description_text = "-- Replace ME
+If checked, non-sexual nudity will be shown"
+
+[node name="CheckButton" parent="MarginContainer/MenuFocusSorter" index="0"]
+text = "key_show_nudity"

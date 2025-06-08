@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://f0y5yutdgyx2"]
+[gd_scene load_steps=2 format=3 uid="uid://f0y5yutdgyx2"]
 
-[ext_resource type="PackedScene" uid="uid://b53q2bsxhf3y1" path="res://Dragon Game Template/Components/Multi/State/Behaviour/state_behaviour_base.tscn" id="1_suotg"]
 [ext_resource type="Script" uid="uid://cy1as8rmmy6rp" path="res://Kobold Cave/Entity/Player/states/player_state_base.gd" id="2_k2186"]
 
-[node name="PlayerStateBase" instance=ExtResource("1_suotg")]
+[node name="PlayerStateBase" type="Node"]
+editor_description = "This looks for and applies its event to any hitbox 2d it hits.
+
+Please note that this emits a duplicate of the event, not the original."
 script = ExtResource("2_k2186")
-use_slow = false
-movement_stats = null
-default_enter_args = Dictionary[StringName, Variant]({})
+metadata/_custom_type_script = "uid://4cmmoobnbxhk"

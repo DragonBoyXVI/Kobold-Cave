@@ -1,6 +1,6 @@
 @icon( "res://Dragon Game Template/Icons/temperature.png" )
 @tool
-extends ScalieResource
+extends Resource
 class_name Temperature
 ## Class for heat
 ##

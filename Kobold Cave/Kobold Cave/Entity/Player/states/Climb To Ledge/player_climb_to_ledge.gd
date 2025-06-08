@@ -6,6 +6,7 @@ class_name PlayerClimbToLedge
 ## ditto
 
 const STATE_NAME := &"PlayerClimbToLedge"
+
 const ARG_GRAB_INFO := &"Grab Info"
 
 
