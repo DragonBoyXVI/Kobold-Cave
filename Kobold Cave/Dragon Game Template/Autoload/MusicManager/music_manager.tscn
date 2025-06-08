@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://lj6cp3y5iu67"]
-
-[ext_resource type="Script" uid="uid://ire7i6tsotwm" path="res://Dragon Game Template/Autoload/MusicManager/music_manager.gd" id="1_12sr2"]
-
-[node name="MusicManager" type="Node"]
-editor_description = "Global music manger, handles songs created via scenes."
-script = ExtResource("1_12sr2")
