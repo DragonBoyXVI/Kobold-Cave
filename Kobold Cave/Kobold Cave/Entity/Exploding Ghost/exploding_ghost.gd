@@ -6,14 +6,22 @@ class_name ExplodingGhost
 @export var bomb_thrower: BombThrower
 
 
+func _ready() -> void:
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	var death_timer := get_tree().create_timer( 30.0, false, true )
+	death_timer.timeout.connect( _on_life_timer_timeout )
+
+
 func _death() -> void:
 	
-	const bombs_to_throw: int = 4
-	const circle_degrees: float = deg_to_rad( 360.0 )
+	const bombs_to_throw: int = 5#4
 	
 	for index: int in bombs_to_throw:
 		
-		var throw_angle: float = ( index / float( bombs_to_throw ) ) * circle_degrees
+		var throw_angle: float = ( index / float( bombs_to_throw ) ) * TAU
 		bomb_thrower.throw_bomb( Vector2.from_angle( throw_angle ) )
 	
 	queue_free()
@@ -21,5 +29,4 @@ func _death() -> void:
 
 func _on_life_timer_timeout() -> void:
 	
-	var damage := Damage.new( 555 )
-	health_node.recive_event( damage )
+	damage_profile.take_damage( Damage.new( 55555 ) )

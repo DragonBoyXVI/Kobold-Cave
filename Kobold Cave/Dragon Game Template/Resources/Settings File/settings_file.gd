@@ -38,6 +38,8 @@ var color_blind_enabled: bool = false
 #@export var overwrite_right_mb_as_back: bool = false
 ## if true, pressing crouch will make you crouch. press again to stand
 @export var toggle_crouch: bool = false
+## if set to 1, ui is placed on the bottom, 0 for the top
+@export var ui_placement: int = 0
 
 @export_group( "Display" )
 ## Game display fps, "_process"

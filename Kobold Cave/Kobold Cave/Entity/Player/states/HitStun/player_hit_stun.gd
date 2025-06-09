@@ -7,7 +7,7 @@ const STATE_NAME := &"PlayerHitStun"
 const ARG_STUN_TIME := &"Stun Time"
 
 
-@export var stun_timer: Timer
+var _stun_timer: SceneTreeTimer
 
 
 func _init() -> void:
@@ -15,13 +15,6 @@ func _init() -> void:
 	_internal_default_args[ ARG_STUN_TIME ] = 0.5
 	super()
 
-func _ready() -> void:
-	super()
-	
-	if ( Engine.is_editor_hint() ):
-		return
-	
-	stun_timer.timeout.connect( _on_stun_timer_timeout )
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
@@ -29,11 +22,11 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	model.animation_player.seek( randf(), true )
 	model.animation_player.pause()
 	
-	stun_timer.start( args[ ARG_STUN_TIME ] )
+	_stun_timer = create_physics_tree_timer( args[ ARG_STUN_TIME ], _on_stun_timer_timeout )
 
 func _leave() -> void:
 	
-	stun_timer.stop()
+	_stun_timer = stop_timer( _stun_timer )
 
 func _physics_process( delta: float ) -> void:
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=24 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="Resource" uid="uid://cbj24wyxib1wr" path="res://Kobold Cave/Entity/Player/player_profile.tres" id="2_vy06j"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cqh14eenc4rn" path="res://Kobold Cave/Entity/Player/states/Crouched/player_crouched.gd" id="8_e1amb"]
 [ext_resource type="Texture2D" uid="uid://c8yqebyrtbrt4" path="res://Dragon Game Template/Icons/temperature.png" id="9_0t3dc"]
 [ext_resource type="Script" uid="uid://dlholshr6cr34" path="res://Kobold Cave/Entity/Player/states/Dead/player_dead.gd" id="9_mhp3n"]
+[ext_resource type="Script" uid="uid://b42fob81pjatk" path="res://Kobold Cave/Entity/Player/states/Grabbed Ledge/player_grabbed_ledge.gd" id="11_ox5nn"]
+[ext_resource type="Script" uid="uid://bc225csx60ypu" path="res://Kobold Cave/Entity/Player/states/HitStun/player_hit_stun.gd" id="12_65dp7"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="17_2ulmg"]
 [ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres" id="18_ikaeu"]
 [ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn" id="19_65dp7"]
@@ -96,6 +98,21 @@ player_shape = NodePath("../../ShapeStanding")
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 metadata/_custom_type_script = "uid://ba1ix2caf42bf"
+
+[node name="PlayerGrabbedLedge" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "model")]
+script = ExtResource("11_ox5nn")
+player = NodePath("../..")
+model = NodePath("../../PlayerModel")
+metadata/_custom_type_script = "uid://b42fob81pjatk"
+
+[node name="PlayerHitStun" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "model")]
+script = ExtResource("12_65dp7")
+player = NodePath("../..")
+model = NodePath("../../PlayerModel")
+default_args = Dictionary[StringName, Variant]({
+&"Stun Time": 0.5
+})
+metadata/_custom_type_script = "uid://bc225csx60ypu"
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -60)

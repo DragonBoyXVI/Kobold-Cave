@@ -46,7 +46,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		if ( input_faces_away ):
 			
-			model.scale.x *= -1.0
+			player.is_facing_right = not player.is_facing_right
 			
 			var dir: float
 			if ( current_grab.grab_to_the_right ):

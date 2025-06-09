@@ -1,14 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://car8lov7qvebp"]
+[gd_scene load_steps=17 format=3 uid="uid://car8lov7qvebp"]
 
 [ext_resource type="Script" uid="uid://chqesjqvwm64a" path="res://Kobold Cave/Entity/Exploding Ghost/exploding_ghost.gd" id="1_5aatd"]
 [ext_resource type="Resource" uid="uid://vltf7hy6w3im" path="res://Kobold Cave/Entity/Exploding Ghost/movement.tres" id="2_56hmm"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="2_srrlq"]
+[ext_resource type="Script" uid="uid://dryxco62r7pex" path="res://Dragon Game Template/Resources/Health/health.gd" id="2_w0pik"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="3_je6jb"]
 [ext_resource type="Script" uid="uid://b2yb87wtchkvm" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.gd" id="5_hho2b"]
-[ext_resource type="Resource" uid="uid://dtqt8suvkv3jo" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="6_1imle"]
+[ext_resource type="Resource" uid="uid://bfmei1y1pn8ra" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="6_1imle"]
 [ext_resource type="Script" uid="uid://brqtkn8s5qbpr" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.gd" id="7_pvdyc"]
 [ext_resource type="Script" uid="uid://bxopwjxq6c6rj" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="8_56hmm"]
 [ext_resource type="Script" uid="uid://c0rmwjvuwixkx" path="res://Kobold Cave/Entity/Exploding Ghost/States/follow_player.gd" id="9_pvdyc"]
 [ext_resource type="Script" uid="uid://ychislssk3xx" path="res://Kobold Cave/Entity/Exploding Ghost/States/no_ai.gd" id="10_56hmm"]
+
+[sub_resource type="Resource" id="Resource_u4lqx"]
+resource_local_to_scene = true
+script = ExtResource("2_w0pik")
+ignore_max = true
+maximum = 1
+current = 1
+
+[sub_resource type="Resource" id="Resource_logsp"]
+script = ExtResource("3_je6jb")
+health = SubResource("Resource_u4lqx")
+metadata/_custom_type_script = "uid://beulvh6j82778"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvdyc"]
 radius = 1024.0
@@ -19,13 +33,15 @@ radius = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_je6jb"]
 radius = 64.0
 
-[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "health_node", "model")]
+[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "hitbox", "model", "state_machine")]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_5aatd")
 bomb_thrower = NodePath("BombThrower")
-health_node = NodePath("")
+damage_profile = SubResource("Resource_logsp")
+hitbox = NodePath("Hitbox2D")
 model = NodePath("PlayerModel")
+state_machine = NodePath("StateMachine")
 metadata/_custom_type_script = "uid://bhncwprp3y7lj"
 metadata/_edit_group_ = true
 
@@ -74,12 +90,5 @@ script = ExtResource("10_56hmm")
 ghost = NodePath("../..")
 movement = ExtResource("2_56hmm")
 
-[node name="LifeTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 25.0
-one_shot = true
-autostart = true
-
 [connection signal="body_entered" from="AreaSeePlayer" to="StateMachine/NoAi" method="_on_area_see_player_body_entered"]
 [connection signal="body_exited" from="AreaSeePlayer" to="StateMachine/FollowPlayer" method="_on_area_see_player_body_exited"]
-[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

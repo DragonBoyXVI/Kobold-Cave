@@ -39,7 +39,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	model.animation_player.play( Player.ANIM_JUMP if player.velocity.y < 0 else Player.ANIM_FALL )
 	
-	_grab_timer = create_physics_tree_timer( args[ ARG_GRAB_TIME ] )
+	_grab_timer = create_physics_tree_timer( args[ ARG_GRAB_TIME ], _on_grab_timer_timeout )
 	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
 
 func _leave() -> void:

@@ -54,7 +54,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	var grab_info: LedgeGrabInfo = args[ ARG_GRAB_INFO ]
 	
 	player.velocity = Vector2.ZERO
-	player.set_facing_direction( grab_info.grab_to_the_right )
+	player.is_facing_right = grab_info.grab_to_the_right
 	
 	# play a ledge scrable anim here
 	model.animation_player.play( Player.ANIM_LEDGE_HANG )

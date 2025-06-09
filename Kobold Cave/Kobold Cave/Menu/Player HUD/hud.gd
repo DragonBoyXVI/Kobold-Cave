@@ -34,10 +34,7 @@ func _ready() -> void:
 		child_entered_tree.connect( _util_on_child_entered_tree )
 		return
 	
-	Settings.updated.connect( _on_settings_updated )
-	if ( Settings.data ):
-		
-		_on_settings_updated( Settings.data )
+	Settings.connect_changed_callback( _on_settings_updated )
 
 
 func place_ui( new_place: int ) -> void:

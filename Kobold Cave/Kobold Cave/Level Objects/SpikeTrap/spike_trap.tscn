@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://21k8p6ysegm4" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.gd" id="1_02ldl"]
 [ext_resource type="Texture2D" uid="uid://dwqkrttbf7gqx" path="res://icon.svg" id="2_id601"]
 [ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="3_qveay"]
-[ext_resource type="Script" uid="uid://c5gadi8o0xx0i" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="4_a3cu1"]
+[ext_resource type="Script" uid="uid://ohabvrkeqjwj" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="4_a3cu1"]
 
-[sub_resource type="Resource" id="Resource_vvx0l"]
+[sub_resource type="Resource" id="Resource_qveay"]
 script = ExtResource("4_a3cu1")
 amount = 1
-peirce = 1
-element = 5
-metadata/_custom_type_script = "uid://c5gadi8o0xx0i"
+peirce = 0
+metadata/_custom_type_script = "uid://ohabvrkeqjwj"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qveay"]
 resource_local_to_scene = true
@@ -43,7 +42,7 @@ region_rect = Rect2(0, 0, 384, 128)
 
 [node name="Hurtbox2D" parent="." instance=ExtResource("3_qveay")]
 collision_mask = 6
-event = SubResource("Resource_vvx0l")
+event = SubResource("Resource_qveay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(192, -64)

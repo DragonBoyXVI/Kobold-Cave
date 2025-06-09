@@ -1,8 +1,9 @@
-
+@tool
 extends StateBehaviour
 class_name StateWolfAir
 
-const STATE_NAME := &"Airborne"
+
+const STATE_NAME := &"StateWolfAir"
 
 
 @export var wolf: Wolf

@@ -1,11 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdnubucseh6ix"]
+[gd_scene load_steps=20 format=3 uid="uid://cdnubucseh6ix"]
 
+[ext_resource type="Script" uid="uid://dryxco62r7pex" path="res://Dragon Game Template/Resources/Health/health.gd" id="2_6it0c"]
 [ext_resource type="Script" uid="uid://dt6t6t4lcx3tb" path="res://Kobold Cave/Entity/Wolf/wolf.gd" id="2_c5c4t"]
 [ext_resource type="PackedScene" uid="uid://c2sv5wtxoty01" path="res://Kobold Cave/Entity/Player/player_model.tscn" id="3_6feir"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="3_hhi7x"]
+[ext_resource type="Script" uid="uid://bxopwjxq6c6rj" path="res://Dragon Game Template/Components/Multi/State/Behaviour/State Machine/state_machine.gd" id="3_pixc8"]
+[ext_resource type="Script" uid="uid://wbv0erih5ley" path="res://Kobold Cave/Entity/Wolf/States/airborne.gd" id="4_spoty"]
+[ext_resource type="Resource" uid="uid://djnktmxppw1h1" path="res://Kobold Cave/Entity/Wolf/movement.tres" id="5_0nt8x"]
+[ext_resource type="Script" uid="uid://byqxxd23k7oda" path="res://Kobold Cave/Entity/Wolf/States/idle.gd" id="6_0nt8x"]
 [ext_resource type="PackedScene" uid="uid://dlqiqpp6c50k6" path="res://Dragon Game Template/Components/2D/Hitbox 2D/hitbox_2d.tscn" id="6_5fft6"]
-[ext_resource type="Resource" uid="uid://dtqt8suvkv3jo" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="7_cgkj6"]
+[ext_resource type="Script" uid="uid://bad3padtw4h4x" path="res://Kobold Cave/Entity/Wolf/States/march_foreward.gd" id="7_c2hh1"]
+[ext_resource type="Resource" uid="uid://bfmei1y1pn8ra" path="res://Kobold Cave/Saved Resources/Hitbox masks/enemy_mask.tres" id="7_cgkj6"]
 [ext_resource type="PackedScene" uid="uid://dnq4sc0morxxn" path="res://Dragon Game Template/Components/2D/Hurtbox 2D/hurtbox_2d.tscn" id="13_q6r7d"]
 [ext_resource type="Script" uid="uid://ohabvrkeqjwj" path="res://Dragon Game Template/Resources/Hurtbox Event/Damage/damage_base.gd" id="14_j1f21"]
+
+[sub_resource type="Resource" id="Resource_31t16"]
+resource_local_to_scene = true
+script = ExtResource("2_6it0c")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_xsimp"]
+script = ExtResource("3_hhi7x")
+health = SubResource("Resource_31t16")
+metadata/_custom_type_script = "uid://beulvh6j82778"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13x5"]
 size = Vector2(120, 68)
@@ -22,26 +41,59 @@ element = 5
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkqiw"]
 radius = 48.0
 
-[node name="Wolf" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "model")]
+[node name="Wolf" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "model", "state_machine")]
 z_index = 5
 collision_layer = 2
 script = ExtResource("2_c5c4t")
+damage_profile = SubResource("Resource_xsimp")
 hitbox = NodePath("Hitbox2D")
-model = NodePath("FlipPivot/PlayerModel")
+model = NodePath("PlayerModel")
+state_machine = NodePath("StateMachine")
 metadata/_edit_group_ = true
 
-[node name="FlipPivot" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="PlayerModel" parent="FlipPivot" instance=ExtResource("3_6feir")]
+[node name="PlayerModel" parent="." instance=ExtResource("3_6feir")]
 modulate = Color(1, 0, 0, 1)
 
-[node name="RayFloor" type="RayCast2D" parent="FlipPivot"]
+[node name="RayFloorRight" type="RayCast2D" parent="."]
 position = Vector2(60, 0)
 
-[node name="RayWall" type="RayCast2D" parent="FlipPivot"]
+[node name="RayWallRight" type="RayCast2D" parent="."]
 position = Vector2(60, -32)
 target_position = Vector2(50, 0)
+
+[node name="RayFloorLeft" type="RayCast2D" parent="."]
+position = Vector2(-60, 0)
+
+[node name="RayWallLeft" type="RayCast2D" parent="."]
+position = Vector2(-60, -32)
+target_position = Vector2(-50, 0)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_pixc8")
+initial_state = NodePath("StateWolfAir")
+metadata/_custom_type_script = "uid://bxopwjxq6c6rj"
+
+[node name="StateWolfAir" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf")]
+script = ExtResource("4_spoty")
+wolf = NodePath("../..")
+movement = ExtResource("5_0nt8x")
+metadata/_custom_type_script = "uid://wbv0erih5ley"
+
+[node name="StateWolfIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf")]
+script = ExtResource("6_0nt8x")
+wolf = NodePath("../..")
+movement = ExtResource("5_0nt8x")
+metadata/_custom_type_script = "uid://byqxxd23k7oda"
+
+[node name="StateWolfMarch" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf", "ray_floor_right", "ray_wall_right", "ray_floor_left", "ray_wall_left")]
+script = ExtResource("7_c2hh1")
+wolf = NodePath("../..")
+movement = ExtResource("5_0nt8x")
+ray_floor_right = NodePath("../../RayFloorRight")
+ray_wall_right = NodePath("../../RayWallRight")
+ray_floor_left = NodePath("../../RayFloorLeft")
+ray_wall_left = NodePath("../../RayWallLeft")
+metadata/_custom_type_script = "uid://bad3padtw4h4x"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -34)

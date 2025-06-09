@@ -1,5 +1,4 @@
-
-# no ai request for the state machine?
+@tool
 extends StateBehaviour
 
 

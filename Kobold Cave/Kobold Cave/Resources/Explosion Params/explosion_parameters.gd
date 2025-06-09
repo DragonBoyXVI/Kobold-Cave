@@ -17,7 +17,7 @@ var radius: float = 144.0 :
 ## the radius squared
 var radius_squared: float = pow( radius, 2.0 )
 ## the damage object to supply
-var damage: Damage = preload( "uid://drko8psvy2smv" )
+var damage: Damage = preload( "uid://b1l48xmw33mow" )
 ## How much push [CharacterBody2D]s are given
 var push: float = 1200.0
 ## RIDs to ignore

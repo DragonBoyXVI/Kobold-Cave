@@ -62,6 +62,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	
+	Settings.connect_changed_callback( _on_settings_updated )
+	
 	create_pool( SMALL_DUST )
 	create_pool( EXPLOSION_DUST )
 
