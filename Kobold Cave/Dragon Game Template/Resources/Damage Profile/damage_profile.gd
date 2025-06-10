@@ -6,6 +6,11 @@ class_name DamageProfile
 ## ditto
 
 
+## emitted before any damage calculation takes place
+signal pre_damage( damage: Damage )
+## emitted before any heal calculation takes place
+signal pre_heal( heal: Heal )
+
 ## emitted when this takes damage
 signal took_damage( damage: Damage )
 ## emitted when this heals
@@ -44,6 +49,8 @@ func _init() -> void:
 
 func take_damage( damage: Damage ) -> void:
 	
+	pre_damage.emit( damage )
+	
 	damage.pre_calculate( self )
 	
 	if ( element and damage.element ):
@@ -73,6 +80,8 @@ func take_damage( damage: Damage ) -> void:
 		died.emit()
 
 func take_heal( heal: Heal ) -> void:
+	
+	pre_heal.emit( heal )
 	
 	if ( heal.amount <= 0 ): 
 		

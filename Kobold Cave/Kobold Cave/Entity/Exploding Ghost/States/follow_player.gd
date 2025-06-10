@@ -24,7 +24,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 
 func _physics_process( delta: float ) -> void:
 	
-	if ( not player ): 
+	if ( not is_instance_valid( player ) ): 
 		
 		request_state( &"NoAi" )
 		return
@@ -32,10 +32,10 @@ func _physics_process( delta: float ) -> void:
 	movement.logic_fly_to_point( ghost, delta, player.global_position )
 	ghost.move_and_slide()
 	
-	if ( ghost.position.distance_squared_to( player.global_position ) < explode_dis ):
+	if ( ghost.global_position.distance_squared_to( player.global_position ) < explode_dis ):
 		
 		var damage := Damage.new( 555 )
-		ghost.health_node.recive_event( damage )
+		ghost.damage_profile.take_damage( damage )
 
 
 func _on_area_see_player_body_exited( body: Node2D ) -> void:

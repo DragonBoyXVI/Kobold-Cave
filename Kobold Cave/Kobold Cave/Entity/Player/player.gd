@@ -30,6 +30,8 @@ const ANIM_LEDGE_JUMP := &"LedgeJump"
 
 func _input( event: InputEvent ) -> void:
 	
+	if ( not KoboldUtility.debug_mode ): return
+	
 	if ( event is InputEventKey and event.is_pressed() ):
 		match event.keycode:
 			
@@ -45,6 +47,17 @@ func _input( event: InputEvent ) -> void:
 				
 				velocity.y -= 2_000.0
 			
+			KEY_0:
+				
+				damage_profile.take_heal( Heal.new( 1 ) )
+			
+			KEY_9:
+				
+				damage_profile.take_heal( Heal.new( 5 ) )
+			
+			KEY_8:
+				
+				damage_profile.health.set_percent( 1.0 )
 			
 			KEY_7:
 				
@@ -86,7 +99,6 @@ func _input( event: InputEvent ) -> void:
 				
 				var params := ExplosionParameters.new()
 				params.position = get_global_mouse_position()
-				params.radius *= randf() * 2.0
 				ExplosionServer.create_explosion( params )
 
 func _exit_tree() -> void:
@@ -100,8 +112,9 @@ func _ready() -> void:
 		return
 	
 	damage_profile.health.set_percent( 1.0 )
+	damage_profile.pre_damage.connect( _on_pre_hurt )
 	
-	#KoboldRadio.ui_connect_health.emit( health_node.health )
+	KoboldRadio.ui_connect_health.emit( damage_profile.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
 
 
@@ -110,26 +123,27 @@ func out_of_bounds() -> void:
 	KoboldRadio.player_reset_needed.emit( self )
 	# the wolrd pausing causes this to happen twice
 	await get_tree().create_timer( 0.25 ).timeout
-	#health_node.recive_event( Damage.new( 1 ) )
+	damage_profile.take_damage( Damage.new( 1, 55555 ) )
 
 
 var _was_hurt_this_frame: bool = false
-func _pre_hurt( damage: Damage ) -> void:
+func _on_pre_hurt( damage: Damage ) -> void:
 	
 	if ( _was_hurt_this_frame ):
 		
-		damage.amount = 0
+		damage.amount = -55555
 	else:
 		
 		_was_hurt_this_frame = true
 		set_deferred( &"_was_hurt_this_frame", false )
 		return
 
-func _hurt( damage: Damage ) -> void:
+func _on_hurt( damage: Damage ) -> void:
+	super( damage )
 	
-	#if ( health_node.health.current > 0 ):
-		#
-		#state_machine.change_state( PlayerHitStun.STATE_NAME )
+	if ( damage_profile.health.current > 0 ):
+		
+		state_machine.change_state( PlayerHitStun.STATE_NAME )
 	
 	var cam_effect := CameraShake2D.new()
 	cam_effect.duration_max = 0.25
@@ -139,7 +153,7 @@ func _hurt( damage: Damage ) -> void:
 	
 	KoboldRadio.player_hitstun.emit( damage )
 
-func _death() -> void:
+func _on_died() -> void:
 	
 	KoboldRadio.player_died.emit()
 	# enter a dead state here ig

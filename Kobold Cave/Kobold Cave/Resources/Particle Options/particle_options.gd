@@ -12,3 +12,5 @@ class_name ParticleOptions
 
 ## how many to spawn at game start
 @export_range( 0, 25, 1, "or_greater" ) var initial_scene_count: int = 5
+## when to start freeing nodes
+@export_range( 0, 25, 1, "or_greater" ) var ideal_count: int = 15

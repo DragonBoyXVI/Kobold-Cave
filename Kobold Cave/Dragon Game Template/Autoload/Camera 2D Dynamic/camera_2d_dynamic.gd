@@ -11,6 +11,10 @@ var active_effects: Dictionary[ int, CameraEffect2D ] = {}
 var effect_next_id := 0
 
 
+func _init() -> void:
+	
+	process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
+
 func _ready() -> void:
 	
 	Settings.connect_changed_callback( _on_settings_updated, CONNECT_DEFERRED, Settings.UPDATE.CAMERA )

@@ -23,13 +23,13 @@ func _draw_pip( pos: Vector2 ) -> void:
 
 func _on_radio_ui_connect_health( new_health: Health ) -> void:
 	
-	if ( new_health.updated.is_connected( _on_health_updated ) ):
+	if ( new_health.hp_changed.is_connected( _on_health_updated ) ):
 		return
 	
 	if ( health ):
 		
-		health.updated.disconnect( _on_health_updated )
-	new_health.updated.connect( _on_health_updated )
+		health.hp_changed.disconnect( _on_health_updated )
+	new_health.hp_changed.connect( _on_health_updated )
 	
 	health = new_health
 	_on_health_updated.call_deferred()

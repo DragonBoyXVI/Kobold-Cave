@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	hide()
 	
-	DragonControler.tree_paused.connect( _on_tree_paused )
+	DragonPauser.connect_to_pause( _on_tree_paused )
 	KoboldRadio.goal_touched.connect( _on_radio_goal_touched, CONNECT_DEFERRED )
 
 

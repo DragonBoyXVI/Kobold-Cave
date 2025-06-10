@@ -58,8 +58,8 @@ func _get_property_list() -> Array[ Dictionary ]:
 
 func _player_enter( _player: Player ) -> void:
 	
-	MainCamera2D.set_zoom_tween( enter_zoom, enter_time )
+	KoboldUtility.set_camera_zoom_tween( enter_zoom, enter_time )
 
 func _player_leave( _player: Player ) -> void:
 	
-	MainCamera2D.set_zoom_tween( leave_zoom, leave_time )
+	KoboldUtility.set_camera_zoom_tween( leave_zoom, leave_time )

@@ -57,6 +57,18 @@ func _ready() -> void:
 		#health_node.healed.connect( _on_node_health_healed )
 		#health_node.died.connect( _on_node_health_died )
 
+func _notification( what: int ) -> void:
+	
+	match what:
+		
+		NOTIFICATION_PAUSED:
+			
+			if ( Engine.is_editor_hint() ): return
+			
+			print( "paused" )
+			show.call_deferred()
+			model.set_deferred( &"modulate:a", maxf( 0.8, model.modulate.a ) )
+
 func _property_can_revert( property: StringName ) -> bool:
 	const revertable: PackedStringArray = [
 		"collision_layer",

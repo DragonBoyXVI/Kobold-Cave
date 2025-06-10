@@ -39,6 +39,11 @@ class PartPool:
 	
 	func _on_child_finished( child: CPUParticles2D ) -> void:
 		
+		if ( get_child_count() > options.ideal_count ):
+			
+			child.queue_free()
+			return
+		
 		child.restart()
 		child.hide()
 		child.process_mode = Node.PROCESS_MODE_DISABLED

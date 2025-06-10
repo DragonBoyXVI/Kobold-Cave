@@ -47,3 +47,11 @@ signal game_save_file_saved
 signal game_save_secret_found( flag: SaveFile.SECRETS )
 
 #endregion
+
+#region Screen Fader
+
+## emitted when the game needs to fade in
+signal screen_fade_in_called( time: float )
+
+## emitted when the game needs to fade out
+signal screen_fade_out_called( time: float )

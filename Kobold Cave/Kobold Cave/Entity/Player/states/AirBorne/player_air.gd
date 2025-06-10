@@ -39,6 +39,9 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
 	model.animation_player.play( Player.ANIM_JUMP if player.velocity.y < 0 else Player.ANIM_FALL )
 	
+	is_jump_stored = false
+	is_grab_ready = false
+	
 	_grab_timer = create_physics_tree_timer( args[ ARG_GRAB_TIME ], _on_grab_timer_timeout )
 	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
 
@@ -133,24 +136,28 @@ func _physics_process( delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
-	if ( event.is_echo() ): return
 	if ( get_window().is_input_handled() ): return
 	
-	if ( event.is_action_pressed( &"Jump" ) ):
-		
-		_jump_timer = create_physics_tree_timer( jump_time, _on_jump_timer_timeout )
-		is_jump_stored = true
-		
-		get_window().set_input_as_handled()
-		return
 	
-	if ( event.is_action_pressed( &"Throw" ) ):
+	if ( event.is_action( &"Throw" ) ):
 		
 		var dir := Vector2.ZERO
 		dir.x = model.scale.x
 		dir.y -= 0.8
 		
 		bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
+		
+		get_window().set_input_as_handled()
+		return
+	
+	
+	if ( event.is_echo() ): return
+	
+	
+	if ( event.is_action_pressed( &"Jump" ) ):
+		
+		_jump_timer = create_physics_tree_timer( jump_time, _on_jump_timer_timeout )
+		is_jump_stored = true
 		
 		get_window().set_input_as_handled()
 		return

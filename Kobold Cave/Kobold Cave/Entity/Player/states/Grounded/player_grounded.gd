@@ -64,8 +64,23 @@ func _physics_process( delta: float ) -> void:
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
-	if ( event.is_echo() ): return
 	if ( get_window().is_input_handled() ): return
+	
+	
+	if ( event.is_action( &"Throw" ) ):
+		
+		var dir := Vector2.ZERO
+		dir.x = model.scale.x
+		dir.y -= 0.2
+		
+		player.bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
+		
+		get_window().set_input_as_handled()
+		return
+	
+	
+	if ( event.is_echo() ): return
+	
 	
 	if ( event.is_action( &"Move Left" ) or event.is_action( &"Move Right" ) ):
 		if ( event.is_echo() ): return
@@ -81,17 +96,6 @@ func _unhandled_input( event: InputEvent ) -> void:
 		request_state( PlayerAir.STATE_NAME )
 		
 		PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
-		
-		get_window().set_input_as_handled()
-		return
-	
-	if ( event.is_action_pressed( &"Throw" ) ):
-		
-		var dir := Vector2.ZERO
-		dir.x = model.scale.x
-		dir.y -= 0.2
-		
-		player.bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
 		
 		get_window().set_input_as_handled()
 		return

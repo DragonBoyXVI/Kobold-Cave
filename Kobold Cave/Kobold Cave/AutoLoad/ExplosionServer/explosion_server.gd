@@ -2,12 +2,18 @@ extends Node2D
 ## Creates explosions in the world
 
 
+const EXPLOSION_SOUND: AudioStream = preload( "uid://b6bja1q8f8v6v" )
+
+
 const COLLISION_MASK := 0b111
 var shape: RID
 
 # preload dont fucjking work for some reason
 #const camera_shake: CameraShake2D = preload( "uid://2dryhj15dbtf" )
 var camera_shake: CameraShake2D
+
+
+var personal_sound_effect: AudioStreamPlayer2D
 
 
 func _init() -> void:
@@ -22,6 +28,11 @@ func _init() -> void:
 func _ready() -> void:
 	
 	shape = PhysicsServer2D.circle_shape_create()
+	
+	personal_sound_effect = AudioStreamPlayer2D.new()
+	personal_sound_effect.bus = &"World SFX"
+	personal_sound_effect.stream = EXPLOSION_SOUND
+	DragonSound.in_world.add_child( personal_sound_effect )
 
 func _exit_tree() -> void:
 	
@@ -33,14 +44,17 @@ func create_explosion( params: ExplosionParameters ) -> void:
 	
 	if ( not is_inside_tree() ): return
 	
+	params.set_final_radius()
+	
 	add_explosion_drawing( params )
 	PartManager.spawn_particles( params.position, PartManager.EXPLOSION_DUST )
-	const sound: AudioStream = preload( "uid://b6bja1q8f8v6v" )
-	DragonSound.in_world.play_sound_2d( sound, params.position )
+	
+	personal_sound_effect.position = params.position
+	personal_sound_effect.play()
 	
 	# shake camera
 	var cam_distance := params.position.distance_squared_to( MainCamera2D.position )
-	var shake_radius: float = params.radius_squared * 5.0
+	var shake_radius: float = pow( params.final_radius, 2.0 ) * 5.0
 	if ( cam_distance < shake_radius ):
 		
 		var ratio: float = 1.0 - ( cam_distance / shake_radius )
@@ -61,7 +75,7 @@ func create_explosion( params: ExplosionParameters ) -> void:
 	query.exclude = params.exclude
 	
 	query.shape_rid = shape
-	PhysicsServer2D.shape_set_data( shape, params.radius )
+	PhysicsServer2D.shape_set_data( shape, params.final_radius )
 	
 	# prob more performant to set terrain all at once
 	#var tile_cache: Array[ Vector2i ] = []
@@ -110,7 +124,7 @@ var next_draw_id: int = 0
 func add_explosion_drawing( params: ExplosionParameters ) -> void:
 	
 	var new := DrawExplosion.new()
-	new.radius = params.radius
+	new.radius = params.final_radius
 	new.position = params.position
 	
 	things_to_draw[ next_draw_id ] = new

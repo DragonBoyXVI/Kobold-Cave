@@ -50,7 +50,7 @@ static func story_advance() -> void:
 		await GUI.fade_in(  )
 		KoboldUtility.in_level_trans = false
 		KoboldRadio.room_unpause.emit()
-		DragonControler.can_toggle_pause = true
+		DragonPauser.is_togglable = true
 	else:
 		
 		# story beaten

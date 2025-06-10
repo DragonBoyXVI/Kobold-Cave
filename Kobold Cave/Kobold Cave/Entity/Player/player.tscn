@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cv22pcm2jgbaa"]
+[gd_scene load_steps=23 format=3 uid="uid://cv22pcm2jgbaa"]
 
 [ext_resource type="Script" uid="uid://bpqoclskvxa42" path="res://Kobold Cave/Entity/Player/player.gd" id="2_0u77g"]
 [ext_resource type="Resource" uid="uid://cbj24wyxib1wr" path="res://Kobold Cave/Entity/Player/player_profile.tres" id="2_vy06j"]
@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://cjmshqqc2q2n2" path="res://Kobold Cave/Saved Resources/Hitbox masks/player_mask.tres" id="18_ikaeu"]
 [ext_resource type="PackedScene" uid="uid://dr6hf8b1jeeet" path="res://Kobold Cave/Components/2D/LedgeGrabDetector/ledge_grab_detector.tscn" id="19_65dp7"]
 [ext_resource type="PackedScene" uid="uid://b1ibt3fjhtfvd" path="res://Kobold Cave/Components/2D/Bomb Thrower/bomb_thrower.tscn" id="20_7lm0b"]
-[ext_resource type="Texture2D" uid="uid://c3a2ywqitkbyp" path="res://Kobold Cave/mudlick_example.png" id="20_65dp7"]
 [ext_resource type="Script" uid="uid://cxs2jq6fb5kfy" path="res://Kobold Cave/Components/2D/IFramesTimer2D/i_frames_timer.gd" id="21_v02m0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v02m0"]
@@ -45,11 +44,6 @@ state_machine = NodePath("StateMachine")
 metadata/_edit_group_ = true
 
 [node name="PlayerModel" parent="." instance=ExtResource("4_hijn5")]
-
-[node name="MudlickExample" type="Sprite2D" parent="PlayerModel"]
-visible = false
-texture = ExtResource("20_65dp7")
-offset = Vector2(0, -285)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_7fkhh")

@@ -6,6 +6,9 @@ class_name KoboldUtility
 ## Provides some useful methods to be used throughout the game
 
 
+static var debug_mode: bool = true
+
+
 ## is true if the game manager is loading a scene
 static var in_level_trans := false
 
