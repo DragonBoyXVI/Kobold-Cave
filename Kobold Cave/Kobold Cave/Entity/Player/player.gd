@@ -6,25 +6,6 @@ class_name Player
 ## yuyg
 
 
-const ANIM_RESET := &"RESET"
-
-const ANIM_RUN := &"Run"
-const ANIM_IDLE := &"Idle"
-
-const ANIM_RUN_CROUCHED_FORWARD := &"RunCrouchedForward"
-const ANIM_RUN_CROUCHED_BACKWARD := &"RunCrouchedBackward"
-const ANIM_IDLE_CROUCHED := &"IdleCrouched"
-
-const ANIM_FALL := &"Fall"
-const ANIM_JUMP := &"Jump"
-
-const ANIM_HURT := &"Stun"
-const ANIM_DEAD := &"Dead"
-
-const ANIM_LEDGE_HANG := &"LedgeHang"
-const ANIM_LEDGE_JUMP := &"LedgeJump"
-
-
 @export var bomb_thrower: BombThrower
 
 
@@ -100,6 +81,29 @@ func _input( event: InputEvent ) -> void:
 				var params := ExplosionParameters.new()
 				params.position = get_global_mouse_position()
 				ExplosionServer.create_explosion( params )
+			
+			KEY_F3:
+				
+				const TIMES: int = 25
+				for _i in TIMES:
+					
+					var params := ExplosionParameters.new()
+					ExplosionServer.create_explosion( params )
+			
+			KEY_F4:
+				
+				var params := ExplosionParameters.new()
+				params.damage = Damage.new( -55555 )
+				params.position = get_global_mouse_position()
+				ExplosionServer.create_explosion( params )
+			
+			KEY_F5:
+				
+				const BOMB: PackedScene = preload( "res://Kobold Cave/Bomb/bomb.tscn" )
+				var bomb: Node2D = BOMB.instantiate()
+				bomb.position = get_global_mouse_position()
+				
+				get_tree().current_scene.add_child.call_deferred( bomb )
 
 func _exit_tree() -> void:
 	
@@ -116,6 +120,23 @@ func _ready() -> void:
 	
 	KoboldRadio.ui_connect_health.emit( damage_profile.health )
 	KoboldRadio.ui_connect_bombs.emit( bomb_thrower )
+
+func _notification( what: int ) -> void:
+	
+	match what:
+		
+		NOTIFICATION_UNPAUSED:
+			
+			if ( StopWatch.is_started ):
+				
+				StopWatch.unpause()
+			else:
+				
+				StopWatch.start()
+		
+		NOTIFICATION_PAUSED:
+			
+			StopWatch.pause()
 
 
 func out_of_bounds() -> void:

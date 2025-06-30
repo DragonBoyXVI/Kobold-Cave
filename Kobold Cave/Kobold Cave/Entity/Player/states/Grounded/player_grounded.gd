@@ -8,11 +8,8 @@ class_name PlayerGrounded
 const STATE_NAME := &"PlayerGrounded"
 
 
-@export var cyote_time: float = 0.2
-@export var crouch_time: float = 0.1
-
-var _cyote_timer: SceneTreeTimer
-var _crouch_timer: SceneTreeTimer
+@export var cyote_timer: Timer
+@export var crouch_timer: Timer
 
 var is_in_cyote: bool = false
 var is_crouching: bool = false
@@ -30,6 +27,15 @@ func _init() -> void:
 	
 	use_slow = true
 
+func  _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	cyote_timer.timeout.connect( _on_cyote_timer_timeout )
+	crouch_timer.timeout.connect( _on_crouch_timer_timeout )
+
 func _enter( _args: Dictionary ) -> void:
 	
 	player.velocity.y = 1.0
@@ -37,8 +43,8 @@ func _enter( _args: Dictionary ) -> void:
 
 func _leave() -> void:
 	
-	_cyote_timer = stop_timer( _cyote_timer )
-	_crouch_timer = stop_timer( _crouch_timer )
+	cyote_timer.stop()
+	crouch_timer.stop()
 
 func _physics_process( delta: float ) -> void:
 	
@@ -54,13 +60,13 @@ func _physics_process( delta: float ) -> void:
 			request_state( PlayerAir.STATE_NAME )
 		elif( not is_in_cyote ):
 			
-			_cyote_timer = create_physics_tree_timer( cyote_time, _on_cyote_timer_timeout )
+			cyote_timer.start()
 			is_in_cyote = true
 			PartManager.spawn_particles( player.position, PartManager.SMALL_DUST )
 	elif ( is_in_cyote ):
 		
 		is_in_cyote = false
-		_cyote_timer = stop_timer( _cyote_timer )
+		cyote_timer.stop()
 
 func _unhandled_input( event: InputEvent ) -> void:
 	super( event )
@@ -70,7 +76,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( event.is_action( &"Throw" ) ):
 		
 		var dir := Vector2.ZERO
-		dir.x = model.scale.x
+		dir.x = 1.0 if player.is_facing_right else -1.0
 		dir.y -= 0.2
 		
 		player.bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
@@ -104,11 +110,11 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		if ( event.is_pressed() ):
 			
-			_crouch_timer = create_physics_tree_timer( crouch_time, _on_crouch_timer_timeout )
+			crouch_timer.start()
 			is_crouching = true
 		elif ( not _toggle_crouch ):
 			
-			_crouch_timer = stop_timer( _crouch_timer )
+			crouch_timer.stop()
 			is_crouching = false
 		
 		get_window().set_input_as_handled()
@@ -120,15 +126,15 @@ func update_model_direction() -> void:
 	
 	var dir: float = signf( Input.get_axis( &"Move Left", &"Move Right" ) )
 	
-	model.animation_player.play( Player.ANIM_RESET )
+	model.animation_player.play( KoboldModel2D.ANIM_RESET )
 	model.animation_player.advance( 0.0 )
 	if ( dir != 0.0 ):
 		
 		player.is_facing_right = dir > 0.0
-		model.animation_player.play( Player.ANIM_RUN )
+		model.animation_player.play( KoboldModel2D.ANIM_RUN )
 	else:
 		
-		model.animation_player.play( Player.ANIM_IDLE )
+		model.animation_player.play( KoboldModel2D.ANIM_IDLE )
 
 
 func _on_cyote_timer_timeout() -> void:

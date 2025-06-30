@@ -16,8 +16,6 @@ static var current_file: SaveFile
 
 static func _static_init() -> void:
 	
-	print( "i ran" )
-	
 	if ( Engine.is_editor_hint() ):
 		return
 	
@@ -27,12 +25,6 @@ static func _static_init() -> void:
 	
 	KoboldRadio.game_save_file_loaded.connect( print.bind( "Game loaded!" ) )
 	KoboldRadio.game_save_file_saved.connect( print.bind( "Game saved!" ) )
-	
-	var tree: SceneTree = Engine.get_main_loop()
-	var world: World2D = ( tree.current_scene as Node2D ).get_world_2d()
-	print( world.direct_space_state )
-	
-	load_file()
 
 
 ## load a game file[br]
@@ -50,6 +42,9 @@ static func load_file( file_path: String = SAVE_FILE_PATH ) -> void:
 	else:
 		
 		current_file = SaveFile.new()
+	
+	if not ( KoboldRadio and KoboldRadio.is_node_ready() ): 
+		await Engine.get_main_loop().physics_frame
 	
 	KoboldRadio.game_save_file_loaded.emit( current_file )
 

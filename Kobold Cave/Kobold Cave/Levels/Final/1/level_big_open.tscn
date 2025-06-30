@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b5uovsjcen7yj"]
+[gd_scene load_steps=31 format=4 uid="uid://b5uovsjcen7yj"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_eru8r"]
 [ext_resource type="TileSet" uid="uid://b8dql8ixu6yvr" path="res://Kobold Cave/Saved Resources/Tile Sets/Game TileSet/game_tiles.tres" id="2_dxojv"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://ccq3bxklty4a6" path="res://Kobold Cave/Components/2D/Trigger Response/Camera Zoom/cam_zoom.gd" id="13_c4h7k"]
 [ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="14_j5oxq"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="14_ll1iq"]
+[ext_resource type="Script" uid="uid://dryxco62r7pex" path="res://Dragon Game Template/Resources/Health/health.gd" id="15_v35ok"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="16_n7vuy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_66xk2"]
 
@@ -26,8 +28,74 @@ size = Vector2(800, 481)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqu8w"]
 size = Vector2(234, 448)
 
+[sub_resource type="Resource" id="Resource_n0v8k"]
+resource_local_to_scene = true
+script = ExtResource("15_v35ok")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_ts58i"]
+resource_local_to_scene = true
+script = ExtResource("16_n7vuy")
+health = SubResource("Resource_n0v8k")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
+[sub_resource type="Resource" id="Resource_6idwh"]
+resource_local_to_scene = true
+script = ExtResource("15_v35ok")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_edvue"]
+resource_local_to_scene = true
+script = ExtResource("16_n7vuy")
+health = SubResource("Resource_6idwh")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
+[sub_resource type="Resource" id="Resource_d5tqh"]
+resource_local_to_scene = true
+script = ExtResource("15_v35ok")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_u3ed7"]
+resource_local_to_scene = true
+script = ExtResource("16_n7vuy")
+health = SubResource("Resource_d5tqh")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
+[sub_resource type="Resource" id="Resource_rrb84"]
+resource_local_to_scene = true
+script = ExtResource("15_v35ok")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_05aay"]
+resource_local_to_scene = true
+script = ExtResource("16_n7vuy")
+health = SubResource("Resource_rrb84")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
+[sub_resource type="Resource" id="Resource_b4f0f"]
+resource_local_to_scene = true
+script = ExtResource("15_v35ok")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_6sinf"]
+resource_local_to_scene = true
+script = ExtResource("16_n7vuy")
+health = SubResource("Resource_b4f0f")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
 [node name="LevelBigOpen" type="Node2D" node_paths=PackedStringArray("respawn_point", "tilemap_floor")]
 script = ExtResource("1_eru8r")
+level_id = 0
 respawn_point = NodePath("SpawnRoom/SpawnInit")
 tilemap_floor = NodePath("Floor")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
@@ -48,7 +116,7 @@ tile_map_data = PackedByteArray("AAABAAEABAABAAAABAAAAAEABAACAAAAAQD//wEABAADAAE
 tile_set = ExtResource("2_dxojv")
 
 [node name="Fake" type="TileMapLayer" parent="Floor"]
-z_index = 2
+z_index = 5
 tile_map_data = PackedByteArray("AAAEAAQABAACAAAABgAEAAUABAACAAAABgAEAAYABAACAAAABwADAAYABAAFAAEAAAADAAUABAACAAEAAAADAAQABAACAAEAAAACAAQABAACAAEAAAACAAUABAACAAEAAAACAAYABAACAAEAAAAEAAMABAADAAEAAFADAAMABAACAAAAAAABAAMABAACAAEAAAABAAQABAAGAAAAAQABAAUABAAFAAEAAgABAAYABAACAAEAAAABAAcABAACAAEAAAACAAcABAACAAEAAAADAAcABAACAAEAAAAEAAcABAAAAAIABQACAAMABAAAAAIAAGA=")
 tile_set = ExtResource("2_dxojv")
 collision_enabled = false
@@ -191,15 +259,20 @@ position = Vector2(6656, 800)
 
 [node name="Wolf" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
 position = Vector2(2304, 896)
+damage_profile = SubResource("Resource_ts58i")
 
 [node name="Wolf2" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
-position = Vector2(3648, 704)
+position = Vector2(3874.95, 766.194)
+damage_profile = SubResource("Resource_edvue")
 
 [node name="Wolf3" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
-position = Vector2(5728, 704)
+position = Vector2(5766.03, 650.654)
+damage_profile = SubResource("Resource_u3ed7")
 
 [node name="Wolf4" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
-position = Vector2(3712, -416)
+position = Vector2(3757.55, -600.768)
+damage_profile = SubResource("Resource_05aay")
 
 [node name="Wolf5" parent="LargeRoom" instance=ExtResource("14_j5oxq")]
-position = Vector2(224, -608)
+position = Vector2(324.106, -892.642)
+damage_profile = SubResource("Resource_6sinf")

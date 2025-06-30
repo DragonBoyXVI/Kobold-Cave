@@ -65,9 +65,10 @@ func _notification( what: int ) -> void:
 			
 			if ( Engine.is_editor_hint() ): return
 			
-			print( "paused" )
-			show.call_deferred()
-			model.set_deferred( &"modulate:a", maxf( 0.8, model.modulate.a ) )
+			# ensures that this runs after any tweens
+			#await get_tree().process_frame
+			model.show()
+			model.modulate.a = maxf( 0.8, model.modulate.a )
 
 func _property_can_revert( property: StringName ) -> bool:
 	const revertable: PackedStringArray = [

@@ -32,6 +32,7 @@ MainCamera2D="*res://Dragon Game Template/Autoload/Camera 2D Dynamic/camera_2d_d
 GUI="*res://Dragon Game Template/Autoload/GUI/gui_canvas.tscn"
 PartManager="*res://Kobold Cave/AutoLoad/Part Manager/part_manager.gd"
 ExplosionServer="*res://Kobold Cave/AutoLoad/ExplosionServer/explosion_server.gd"
+StopWatch="*res://Kobold Cave/AutoLoad/StopWatch/stop_watch.gd"
 
 [debug]
 
@@ -252,7 +253,6 @@ locale/translations=PackedStringArray("res://Dragon Game Template/Translation/Pa
 
 [physics]
 
-2d/run_on_separate_thread=true
 3d/run_on_separate_thread=true
 3d/physics_engine="Dummy"
 

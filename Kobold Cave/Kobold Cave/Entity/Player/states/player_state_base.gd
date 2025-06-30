@@ -46,7 +46,7 @@ func enter( args: Dictionary[ StringName, Variant ] = {} ) -> void:
 
 func leave() -> void:
 	
-	model.animation_player.play( Player.ANIM_RESET )
+	model.animation_player.play( KoboldModel2D.ANIM_RESET )
 	model.animation_player.advance( 0.0 )
 	super()
 
@@ -93,22 +93,6 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		get_window().set_input_as_handled()
 		return
-
-
-func create_physics_tree_timer( time: float, callback: Callable = Callable(), callback_flags: int = 0 ) -> SceneTreeTimer:
-	
-	var timer := get_tree().create_timer( time, false, true )
-	
-	if ( callback.is_valid() ):
-		timer.timeout.connect( callback, callback_flags )
-	
-	return timer
-
-func stop_timer( timer: SceneTreeTimer ) -> Object:
-	
-	if ( timer ):
-		timer.set_block_signals( true )
-	return null
 
 
 static func _on_static_settings_updated( recived_data: SettingsFile ) -> void:

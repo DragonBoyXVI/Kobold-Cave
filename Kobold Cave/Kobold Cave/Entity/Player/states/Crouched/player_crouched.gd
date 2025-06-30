@@ -11,16 +11,20 @@ const STATE_NAME := &"PlayerCrouched"
 @export var standing_shape: CollisionShape2D
 @export var crouched_shape: CollisionShape2D
 
-@export var uncrouch_time: float = 0.1
-
-
-var _uncrouch_timer: SceneTreeTimer
+@export var uncrouch_timer: Timer
 
 
 func _init() -> void:
 	super()
 	
 	use_slow = true
+
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ): return
+	
+	uncrouch_timer.timeout.connect( _on_uncrouch_timer_timeout )
 
 func _enter( _args: Dictionary ) -> void:
 	
@@ -33,7 +37,7 @@ func _enter( _args: Dictionary ) -> void:
 
 func _leave() -> void:
 	
-	_uncrouch_timer = stop_timer( _uncrouch_timer )
+	uncrouch_timer.stop()
 	
 	if ( standing_shape and crouched_shape ):
 		
@@ -82,13 +86,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 			
 			if ( _toggle_crouch ):
 				
-				_uncrouch_timer = create_physics_tree_timer( uncrouch_time, _on_uncrouch_timer_timeout )
+				uncrouch_timer.start()
 			else:
 				
-				_uncrouch_timer = stop_timer( _uncrouch_timer )
+				uncrouch_timer.stop()
 		else:
 			
-			_uncrouch_timer = create_physics_tree_timer( uncrouch_time, _on_uncrouch_timer_timeout )
+			uncrouch_timer.start()
 		
 		get_window().set_input_as_handled()
 		return
@@ -128,15 +132,15 @@ func update_animation() -> void:
 	#model.animation_player.advance( 0.0 )
 	if ( is_zero_approx( dir ) ):
 		
-		model.animation_player.play( Player.ANIM_IDLE_CROUCHED )
+		model.animation_player.play( KoboldModel2D.ANIM_IDLE_CROUCHED )
 	else:
 		
 		if ( model.is_facing_right == is_dir_right ):
 			
-			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD )
+			model.animation_player.play( KoboldModel2D.ANIM_RUN_CROUCHED_FORWARD )
 		else:
 			
-			model.animation_player.play( Player.ANIM_RUN_CROUCHED_FORWARD, -1.0, -1.0, false )
+			model.animation_player.play( KoboldModel2D.ANIM_RUN_CROUCHED_FORWARD, -1.0, -1.0, false )
 			#model.animation_player.play( Player.ANIM_RUN_CROUCHED_BACKWARD )
 
 

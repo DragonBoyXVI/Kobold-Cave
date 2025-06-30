@@ -48,7 +48,7 @@ var color_blind_enabled: bool = false
 @export var frame_rate_unlimited := false
 ## How often the physics engines step, "_physics_process"[br]
 ## i wouldnt blame you for hiding this one =p
-@export var physics_rate: int = 30
+@export var physics_rate: int = 60
 ## sets the physics interpolation variable in the [SceneTree]
 @export var physics_interpolation := false
 ## First setting you have to refrence yourself[br]

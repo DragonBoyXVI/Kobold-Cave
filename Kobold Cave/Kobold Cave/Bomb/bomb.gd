@@ -33,7 +33,6 @@ var timer_shake: SceneTreeTimer
 
 func _init() -> void:
 	
-	
 	state_machine.state_entered.connect( _on_state_machine_entered_state )
 	state_machine.state_left.connect( _on_state_machine_left_state )
 
@@ -76,7 +75,7 @@ func explode() -> void:
 	
 	hitbox.disable.call_deferred()
 	
-	await get_tree().physics_frame
+	#await get_tree().physics_frame
 	var params := ExplosionParameters.new()
 	params.radius = 160.0
 	params.position = global_position

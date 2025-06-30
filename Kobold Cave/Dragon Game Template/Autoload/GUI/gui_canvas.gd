@@ -11,6 +11,7 @@ extends CanvasLayer
 func _ready() -> void:
 	
 	fade_rect.color.a = 0.0
+	fade_rect.hide()
 	Settings.connect_changed_callback( _on_settings_updated )
 
 func _input( event: InputEvent ) -> void:
@@ -28,38 +29,9 @@ func _input( event: InputEvent ) -> void:
 		return
 
 
-## Start gui process
-func enable() -> void:
-	
-	process_mode = PROCESS_MODE_ALWAYS
-
-## stop gui process
-func disable() -> void:
-	
-	process_mode = PROCESS_MODE_DISABLED
-
-
-## adds a gui element to GUI. add an index to set the child order
-func add_gui_element( new_gui: Control, index: int = 0 ) -> void:
-	
-	gui_root.add_child( new_gui )
-	
-	if ( index ):
-		
-		gui_root.move_child( new_gui, index )
-
-## removed a gui element, set free it to true to also queue_free the node
-func remove_gui_element( removed_gui: Control, free_it: bool = false ) -> void:
-	
-	gui_root.remove_child( removed_gui )
-	
-	if ( free_it ):
-		
-		removed_gui.queue_free()
-
-
 func fade_out( time: float = 0.25 ) -> void:
 	
+	fade_rect.show()
 	var tween := create_tween()
 	tween.set_ignore_time_scale( true )
 	tween.set_pause_mode( Tween.TWEEN_PAUSE_PROCESS )
@@ -76,6 +48,7 @@ func fade_in( time: float = 0.25 ) -> void:
 	
 	tween.tween_property( fade_rect, ^"color:a", 0.0, time )
 	await tween.finished
+	fade_rect.hide()
 	return
 
 

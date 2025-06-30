@@ -7,8 +7,8 @@ class_name PlayerGrabbedLedge
 
 const STATE_NAME := &"PlayerGrabbedLedge"
 
-const TILE_SIZE := Vector2( 128.0, 128.0 )
-const PLAYER_OFFSET := Vector2( 100.0, 105.0 )
+#const TILE_SIZE := Vector2( 128.0, 128.0 )
+#const PLAYER_OFFSET := Vector2( 100.0, 105.0 )
 const ARG_GRAB_INFO := &"Grab Info"
 
 var current_grab: LedgeGrabInfo
@@ -91,4 +91,4 @@ func update_animation() -> void:
 		
 		input_faces_away = Input.is_action_pressed( &"Move Right" )
 	
-	model.animation_player.play( Player.ANIM_LEDGE_JUMP if input_faces_away else Player.ANIM_LEDGE_HANG )
+	model.animation_player.play( KoboldModel2D.ANIM_LEDGE_JUMP if input_faces_away else KoboldModel2D.ANIM_LEDGE_HANG )

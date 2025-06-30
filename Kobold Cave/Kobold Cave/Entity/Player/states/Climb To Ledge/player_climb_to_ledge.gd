@@ -57,7 +57,7 @@ func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	player.is_facing_right = grab_info.grab_to_the_right
 	
 	# play a ledge scrable anim here
-	model.animation_player.play( Player.ANIM_LEDGE_HANG )
+	model.animation_player.play( KoboldModel2D.ANIM_LEDGE_HANG )
 	
 	# get the position of the player smushed up to the wall
 	var wall_position: Vector2 = grab_info.grab_position
@@ -121,9 +121,9 @@ func _unhandled_input( event: InputEvent ) -> void:
 
 
 func _change_is_valid( state: StateBehaviour ) -> bool:
-	if ( not super( state ) ): return false
+	if ( not _exit_valid ): return false
 	
-	return _exit_valid
+	return super( state )
 
 
 func _on_ledge_grabber_found_ledge( grab_info: LedgeGrabInfo ) -> void:

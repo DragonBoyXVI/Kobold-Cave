@@ -22,6 +22,7 @@ maximum = 2
 current = 2
 
 [sub_resource type="Resource" id="Resource_xsimp"]
+resource_local_to_scene = true
 script = ExtResource("3_hhi7x")
 health = SubResource("Resource_31t16")
 metadata/_custom_type_script = "uid://beulvh6j82778"
@@ -79,11 +80,20 @@ wolf = NodePath("../..")
 movement = ExtResource("5_0nt8x")
 metadata/_custom_type_script = "uid://wbv0erih5ley"
 
-[node name="StateWolfIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf")]
+[node name="StateWolfIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf", "wait_timer")]
 script = ExtResource("6_0nt8x")
 wolf = NodePath("../..")
 movement = ExtResource("5_0nt8x")
+wait_timer = NodePath("Timer")
+default_args = Dictionary[StringName, Variant]({
+&"Flip on Leave": false,
+&"Wait Time Mult": 1.0
+})
 metadata/_custom_type_script = "uid://byqxxd23k7oda"
+
+[node name="Timer" type="Timer" parent="StateMachine/StateWolfIdle"]
+process_callback = 0
+one_shot = true
 
 [node name="StateWolfMarch" type="Node" parent="StateMachine" node_paths=PackedStringArray("wolf", "ray_floor_right", "ray_wall_right", "ray_floor_left", "ray_wall_left")]
 script = ExtResource("7_c2hh1")

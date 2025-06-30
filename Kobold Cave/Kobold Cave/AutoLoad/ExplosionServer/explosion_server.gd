@@ -15,6 +15,9 @@ var camera_shake: CameraShake2D
 
 var personal_sound_effect: AudioStreamPlayer2D
 
+var explosion_queue: Array[ ExplosionParameters ]
+const EXPLOSIONS_PER_FRAME: int = 5
+
 
 func _init() -> void:
 	
@@ -42,7 +45,10 @@ func _exit_tree() -> void:
 ## supply a params object to create an explosion
 func create_explosion( params: ExplosionParameters ) -> void:
 	
-	if ( not is_inside_tree() ): return
+	explosion_queue.push_back.call_deferred( params )
+
+func _process_explosion( params: ExplosionParameters ) -> void:
+	
 	
 	params.set_final_radius()
 	
@@ -62,9 +68,6 @@ func create_explosion( params: ExplosionParameters ) -> void:
 		effect.shake_strength *= ratio
 		effect.duration_max *= ratio
 		MainCamera2D.add_effect( effect )
-	
-	if ( not Engine.is_in_physics_frame() ):
-		await get_tree().physics_frame
 	
 	# use a shape cast to detect everything it hits
 	var physics_state := get_world_2d().direct_space_state
@@ -142,6 +145,15 @@ func _process( delta: float ) -> void:
 			if ( thing.current_time > thing.max_time ):
 				
 				_free_drawing.call_deferred( id )
+
+func _physics_process( _delta: float) -> void:
+	
+	for index: int in mini( EXPLOSIONS_PER_FRAME, explosion_queue.size() ):
+		
+		var params: ExplosionParameters = explosion_queue[ index ]
+		_process_explosion( params )
+		
+		explosion_queue.erase.call_deferred( params )
 
 func _draw() -> void:
 	

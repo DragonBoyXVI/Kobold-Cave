@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TeamMask" load_steps=2 format=3 uid="uid://du3ox11s21dld"]
 
-[ext_resource type="Script" uid="uid://bpp6lw40n886x" path="res://Dragon Game Template/Resources/Team Mask/team_mask.gd" id="1_q0dv3"]
+[ext_resource type="Script" uid="uid://p71cffrd78gk" path="res://Dragon Game Template/Resources/Team Mask/team_mask.gd" id="1_q0dv3"]
 
 [resource]
 script = ExtResource("1_q0dv3")

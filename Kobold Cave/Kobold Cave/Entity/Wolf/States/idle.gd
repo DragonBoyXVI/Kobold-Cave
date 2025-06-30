@@ -4,6 +4,9 @@ class_name StateWolfIdle
 
 const STATE_NAME := &"StateWolfIdle"
 
+const ARG_FLIP_ON_LEAVE := &"Flip on Leave"
+const ARG_WAIT_TIME_MULT := &"Wait Time Mult"
+
 
 @export var wolf: Wolf
 @export var movement: MovementGround
@@ -13,23 +16,39 @@ const STATE_NAME := &"StateWolfIdle"
 
 var flip_on_leave: bool = false
 
-var _wait_timer: SceneTreeTimer
+@export var wait_timer: Timer
 
+
+func _init() -> void:
+	
+	_internal_default_args[ ARG_FLIP_ON_LEAVE ] = false
+	_internal_default_args[ ARG_WAIT_TIME_MULT ] = 1.0
+	super()
+
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	wait_timer.timeout.connect( _on_wait_timer_timeout )
 
 func _enter( args: Dictionary ) -> void:
 	
-	const arg_flip := &"Flip on Leave"
-	flip_on_leave = args[ arg_flip ]
+	flip_on_leave = args[ ARG_FLIP_ON_LEAVE ]
 	
-	_wait_timer = get_tree().create_timer( randfn( wait_time, wait_rand_dist ), false, true )
-	_wait_timer.timeout.connect( _on_wait_timer_timeout )
+	wolf.model.animation_player.play( KoboldModel2D.ANIM_IDLE )
+	
+	wait_timer.start( randfn( wait_time, wait_rand_dist ) * args[ ARG_WAIT_TIME_MULT ] )
 
 func _leave() -> void:
 	
-	if ( _wait_timer ):
+	if ( flip_on_leave ):
 		
-		_wait_timer.set_block_signals( true )
-		_wait_timer = null
+		wolf.is_facing_right = not wolf.is_facing_right
+		flip_on_leave = false
+	
+	wait_timer.stop()
 
 func _physics_process( delta: float ) -> void:
 	
@@ -44,10 +63,5 @@ func _physics_process( delta: float ) -> void:
 
 
 func _on_wait_timer_timeout() -> void:
-	
-	if ( flip_on_leave ):
-		
-		wolf.is_facing_right = not wolf.is_facing_right
-		flip_on_leave = false
 	
 	request_state( StateWolfMarch.STATE_NAME )

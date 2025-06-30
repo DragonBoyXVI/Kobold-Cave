@@ -20,6 +20,7 @@ maximum = 1
 current = 1
 
 [sub_resource type="Resource" id="Resource_logsp"]
+resource_local_to_scene = true
 script = ExtResource("3_je6jb")
 health = SubResource("Resource_u4lqx")
 metadata/_custom_type_script = "uid://beulvh6j82778"
@@ -33,11 +34,13 @@ radius = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_je6jb"]
 radius = 64.0
 
-[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "hitbox", "model", "state_machine")]
+[node name="ExplodingGhost" type="CharacterBody2D" node_paths=PackedStringArray("bomb_thrower", "lifespan_timer", "hitbox", "model", "state_machine")]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_5aatd")
+auto_detonate = null
 bomb_thrower = NodePath("BombThrower")
+lifespan_timer = NodePath("LifespanTimer")
 damage_profile = SubResource("Resource_logsp")
 hitbox = NodePath("Hitbox2D")
 model = NodePath("PlayerModel")
@@ -89,6 +92,12 @@ movement = ExtResource("2_56hmm")
 script = ExtResource("10_56hmm")
 ghost = NodePath("../..")
 movement = ExtResource("2_56hmm")
+
+[node name="LifespanTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="AreaSeePlayer" to="StateMachine/NoAi" method="_on_area_see_player_body_entered"]
 [connection signal="body_exited" from="AreaSeePlayer" to="StateMachine/FollowPlayer" method="_on_area_see_player_body_exited"]

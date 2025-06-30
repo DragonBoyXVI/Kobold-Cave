@@ -5,13 +5,9 @@ class_name PlayerDead
 const STATE_NAME := &"PlayerDead"
 
 
-# play an anim in enter
-
-func _ready() -> void:
-	super()
+func _enter( _args: Dictionary ) -> void:
 	
-	if ( Engine.is_editor_hint() ):
-		return
+	model.animation_player.play( KoboldModel2D.ANIM_DEAD )
 
 func _physics_process( delta: float ) -> void:
 	

@@ -6,6 +6,8 @@ class_name Level
 ## ditto
 
 
+## the level this saves to in the [SaveFile]
+@export var level_id := SaveFile.LEVEL.NONE
 ## where to respawn the player
 @export var respawn_point: Marker2D
 ## the floor used to play footsteps
@@ -15,6 +17,12 @@ class_name Level
 		tilemap_floor = new
 		update_configuration_warnings()
 
+
+static func _static_init() -> void:
+	
+	if ( Engine.is_editor_hint() ): return
+	
+	SaveGameManager.load_file()
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
@@ -70,7 +78,12 @@ func get_spawn_position() -> Vector2:
 func _on_radio_goal_touched() -> void:
 	
 	pause()
-	DragonPauser.is_togglable = false
+	StopWatch.stop()
+	
+	var was_best := SaveGameManager.current_file.level_set_time_best( level_id, StopWatch.elapsed_time )
+	KoboldRadio.ui_display_time.emit( level_id, was_best )
+	
+	SaveGameManager.save_file()
 
 func _on_radio_player_hitstun( damage: Damage ) -> void:
 	

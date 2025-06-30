@@ -50,33 +50,68 @@ script = ExtResource("7_7fkhh")
 initial_state = NodePath("PlayerAir")
 metadata/_custom_type_script = "uid://bxopwjxq6c6rj"
 
-[node name="PlayerAir" type="Node" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "bomb_thrower", "player", "model")]
+[node name="PlayerAir" type="Node" parent="StateMachine" node_paths=PackedStringArray("ledge_grabber", "bomb_thrower", "jump_timer", "stuck_timer", "grab_timer", "player", "model")]
 script = ExtResource("6_7fkhh")
 ledge_grabber = NodePath("../../LedgeGrabDetector")
 bomb_thrower = NodePath("../../BombThrower")
+jump_timer = NodePath("JumpTimer")
+stuck_timer = NodePath("StuckTimer")
+grab_timer = NodePath("GrabTimer")
 use_slow = true
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 default_args = Dictionary[StringName, Variant]({
-&"Grab Time": 0.5
+&"Grab Time": 0.1
 })
 metadata/_custom_type_script = "uid://ci6j81es2s7ii"
 
-[node name="PlayerGrounded" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "model")]
+[node name="JumpTimer" type="Timer" parent="StateMachine/PlayerAir"]
+process_callback = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="GrabTimer" type="Timer" parent="StateMachine/PlayerAir"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="StuckTimer" type="Timer" parent="StateMachine/PlayerAir"]
+process_callback = 0
+wait_time = 35.0
+
+[node name="PlayerGrounded" type="Node" parent="StateMachine" node_paths=PackedStringArray("cyote_timer", "crouch_timer", "player", "model")]
 script = ExtResource("7_f2wwi")
+cyote_timer = NodePath("CyoteTimer")
+crouch_timer = NodePath("CrouchTimer")
 use_slow = true
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 metadata/_custom_type_script = "uid://d21obyo7yqhqe"
 
-[node name="PlayerCrouched" type="Node" parent="StateMachine" node_paths=PackedStringArray("standing_shape", "crouched_shape", "player", "model")]
+[node name="CyoteTimer" type="Timer" parent="StateMachine/PlayerGrounded"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="CrouchTimer" type="Timer" parent="StateMachine/PlayerGrounded"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="PlayerCrouched" type="Node" parent="StateMachine" node_paths=PackedStringArray("standing_shape", "crouched_shape", "uncrouch_timer", "player", "model")]
 script = ExtResource("8_e1amb")
 standing_shape = NodePath("../../ShapeStanding")
 crouched_shape = NodePath("../../ShapeCrouching")
+uncrouch_timer = NodePath("UncrouchTimer")
 use_slow = true
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 metadata/_custom_type_script = "uid://cqh14eenc4rn"
+
+[node name="UncrouchTimer" type="Timer" parent="StateMachine/PlayerCrouched"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
 
 [node name="PlayerDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "model")]
 script = ExtResource("9_mhp3n")
@@ -99,14 +134,19 @@ player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 metadata/_custom_type_script = "uid://b42fob81pjatk"
 
-[node name="PlayerHitStun" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "model")]
+[node name="PlayerHitStun" type="Node" parent="StateMachine" node_paths=PackedStringArray("stun_timer", "player", "model")]
 script = ExtResource("12_65dp7")
+stun_timer = NodePath("StunTimer")
 player = NodePath("../..")
 model = NodePath("../../PlayerModel")
 default_args = Dictionary[StringName, Variant]({
 &"Stun Time": 0.5
 })
 metadata/_custom_type_script = "uid://bc225csx60ypu"
+
+[node name="StunTimer" type="Timer" parent="StateMachine/PlayerHitStun"]
+process_callback = 0
+one_shot = true
 
 [node name="ShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -60)

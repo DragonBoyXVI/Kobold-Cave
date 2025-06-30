@@ -32,6 +32,9 @@ signal room_unpause
 ## used when a new spawn point should be set
 signal level_set_spawn( spawn_marker: Marker2D )
 
+## used to signal the ui to display time info
+signal ui_display_time( level_id: SaveFile.LEVEL, was_best_time: bool )
+
 ## emitted when a footstep is to be player
 signal play_footstep( step_position: Vector2 )
 
@@ -47,11 +50,3 @@ signal game_save_file_saved
 signal game_save_secret_found( flag: SaveFile.SECRETS )
 
 #endregion
-
-#region Screen Fader
-
-## emitted when the game needs to fade in
-signal screen_fade_in_called( time: float )
-
-## emitted when the game needs to fade out
-signal screen_fade_out_called( time: float )

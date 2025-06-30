@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqc6s2gu0o6lh"]
+[gd_scene load_steps=5 format=3 uid="uid://bqc6s2gu0o6lh"]
 
 [ext_resource type="Script" uid="uid://b8lyjgkj7k8q8" path="res://Kobold Cave/Menu/Level Clear Screen/level_clear_ui.gd" id="1_hyvse"]
+[ext_resource type="Script" uid="uid://d0f7ilaoon454" path="res://Dragon Game Template/Components/Control/Menu Focus Sorter/menu_focus_sorter.gd" id="2_nq8mv"]
 
-[node name="LevelClearUI" type="Control" node_paths=PackedStringArray("focus_me")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7cps"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq8mv"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="LevelClearUI" type="Control" node_paths=PackedStringArray("pb_container", "pb_record_label", "pb_time_label", "current_time_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,111 +18,121 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_hyvse")
-focus_me = NodePath("ButtonContainer/MarginContainer/VBoxContainer/NextButton")
+pb_container = NodePath("VBoxContainer/HBoxContainer/PBContainer")
+pb_record_label = NodePath("VBoxContainer/HBoxContainer/PBContainer/MarginContainer/VBoxContainer/NewRecordLabel")
+pb_time_label = NodePath("VBoxContainer/HBoxContainer/PBContainer/MarginContainer/VBoxContainer/PBTimeLabel")
+current_time_label = NodePath("VBoxContainer/HBoxContainer/CurrentTimeContainer/MarginContainer/VBoxContainer/TimeLabel")
+pb_panel_normal = SubResource("StyleBoxFlat_y7cps")
+pb_panel_best = SubResource("StyleBoxFlat_nq8mv")
 
-[node name="WinLabel" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.0972222
-offset_bottom = -26.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WinLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "- Level Cleared!"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="PBContainer" type="PanelContainer" parent="."]
+[node name="ButtonContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="FocusSorter" type="BoxContainer" parent="VBoxContainer/ButtonContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+script = ExtResource("2_nq8mv")
+auto_focus = true
+metadata/_custom_type_script = "uid://d0f7ilaoon454"
+
+[node name="NextButton" type="Button" parent="VBoxContainer/ButtonContainer/MarginContainer/FocusSorter"]
+layout_mode = 2
+text = "- Next"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PBContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 256)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.644444
-anchor_right = 0.2
-anchor_bottom = 1.0
-offset_right = 45.0
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="PBContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PBContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PBContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PBContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
-[node name="NewRecordLabel" type="Label" parent="PBContainer/MarginContainer/VBoxContainer"]
+[node name="NewRecordLabel" type="Label" parent="VBoxContainer/HBoxContainer/PBContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "- New Record!"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="PBContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PBContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 35
-text = "- Personal Best:
-00:00.00"
+text = "- Personal Best:"
 horizontal_alignment = 1
 
-[node name="CurrentTimeContainer" type="PanelContainer" parent="."]
+[node name="PBTimeLabel" type="Label" parent="VBoxContainer/HBoxContainer/PBContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="CurrentTimeContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 256)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.644444
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -38.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CurrentTimeContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CurrentTimeContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CurrentTimeContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/CurrentTimeContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
-[node name="Label" type="Label" parent="CurrentTimeContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CurrentTimeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 35
-text = "- Current Time:
-00:00.00"
+text = "- Current Time:"
 horizontal_alignment = 1
 
-[node name="ButtonContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ButtonContainer"]
+[node name="TimeLabel" type="Label" parent="VBoxContainer/HBoxContainer/CurrentTimeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "00:00.00"
+horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="NextButton" type="Button" parent="ButtonContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "- Next"
-
-[connection signal="pressed" from="ButtonContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/MarginContainer/FocusSorter/NextButton" to="." method="_on_next_button_pressed"]

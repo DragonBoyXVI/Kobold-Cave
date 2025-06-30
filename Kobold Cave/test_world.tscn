@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dk0accw08uxn8"]
+[gd_scene load_steps=18 format=4 uid="uid://dk0accw08uxn8"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_rbnmu"]
 [ext_resource type="PackedScene" uid="uid://cv22pcm2jgbaa" path="res://Kobold Cave/Entity/Player/player.tscn" id="1_ty4y6"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="9_m10ai"]
 [ext_resource type="PackedScene" uid="uid://cbccbby1k133q" path="res://Kobold Cave/Components/2D/Camera Boundry/camera_boundry.tscn" id="9_w82gg"]
 [ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="10_ud3vi"]
+[ext_resource type="Script" uid="uid://dryxco62r7pex" path="res://Dragon Game Template/Resources/Health/health.gd" id="11_ivea3"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="12_jvck6"]
 [ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="13_jvck6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh156"]
@@ -18,6 +20,19 @@ size = Vector2(256, 640)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud3vi"]
 size = Vector2(256, 88)
+
+[sub_resource type="Resource" id="Resource_07jwy"]
+resource_local_to_scene = true
+script = ExtResource("11_ivea3")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_urhrq"]
+resource_local_to_scene = true
+script = ExtResource("12_jvck6")
+health = SubResource("Resource_07jwy")
+metadata/_custom_type_script = "uid://beulvh6j82778"
 
 [node name="Test World" type="Node2D" node_paths=PackedStringArray("tilemap_floor")]
 script = ExtResource("1_rbnmu")
@@ -87,3 +102,4 @@ shape = SubResource("RectangleShape2D_ud3vi")
 
 [node name="Wolf" parent="." instance=ExtResource("10_ud3vi")]
 position = Vector2(758, -450)
+damage_profile = SubResource("Resource_urhrq")

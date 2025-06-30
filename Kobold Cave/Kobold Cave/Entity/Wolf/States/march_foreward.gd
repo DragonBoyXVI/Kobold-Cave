@@ -15,6 +15,10 @@ const STATE_NAME := &"StateWolfMarch"
 @export var ray_wall_left: RayCast2D
 
 
+func _enter( _args: Dictionary ) -> void:
+	
+	wolf.model.animation_player.play( KoboldModel2D.ANIM_RUN )
+
 func _physics_process( delta: float ) -> void:
 	
 	var dir: float = 1.0 if wolf.is_facing_right else -1.0
@@ -30,4 +34,6 @@ func _physics_process( delta: float ) -> void:
 	
 	if ( ray_wall.is_colliding() or not ray_floor.is_colliding() ):
 		
-		request_state( StateWolfIdle.STATE_NAME, { &"Flip on Leave": true } )
+		request_state( StateWolfIdle.STATE_NAME, { 
+			StateWolfIdle.ARG_FLIP_ON_LEAVE: true 
+		} )

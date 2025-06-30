@@ -3,6 +3,23 @@ extends DragonModel2D
 class_name KoboldModel2D
 
 
+const ANIM_RUN := &"Run"
+const ANIM_IDLE := &"Idle"
+
+const ANIM_RUN_CROUCHED_FORWARD := &"RunCrouchedForward"
+const ANIM_RUN_CROUCHED_BACKWARD := &"RunCrouchedBackward"
+const ANIM_IDLE_CROUCHED := &"IdleCrouched"
+
+const ANIM_FALL := &"Fall"
+const ANIM_JUMP := &"Jump"
+
+const ANIM_HURT := &"Stun"
+const ANIM_DEAD := &"Dead"
+
+const ANIM_LEDGE_HANG := &"LedgeHang"
+const ANIM_LEDGE_JUMP := &"LedgeJump"
+
+
 @export var footstep_mark: Marker2D:
 	set( new ):
 		

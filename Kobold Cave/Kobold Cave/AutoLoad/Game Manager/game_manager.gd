@@ -47,9 +47,10 @@ static func story_advance() -> void:
 		Engine.get_main_loop().change_scene_to_file( story_levels[ story_position ] )
 		KoboldUtility.in_level_trans = true
 		KoboldRadio.room_pause.emit()
+		DragonPauser.is_togglable = false
 		await GUI.fade_in(  )
-		KoboldUtility.in_level_trans = false
 		KoboldRadio.room_unpause.emit()
+		KoboldUtility.in_level_trans = false
 		DragonPauser.is_togglable = true
 	else:
 		

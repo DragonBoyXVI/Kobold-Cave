@@ -6,6 +6,8 @@ class_name MenuFocusSorter
 ## ditto
 
 
+## if true, this grabs focus when it becomes visible
+@export var auto_focus: bool = false
 ## first item in this menu, gets focused when the container gets focus
 var _first_borne: Control
 
@@ -16,6 +18,7 @@ func _init() -> void:
 		return
 	
 	focus_mode = Control.FOCUS_ALL
+	visibility_changed.connect( _on_visibility_changed )
 	focus_entered.connect( _on_focus_entered )
 	child_order_changed.connect( _on_child_order_changed )
 
@@ -80,6 +83,13 @@ func _on_child_order_changed() -> void:
 	_child_sort_pending = false
 	
 	set_children_focus()
+
+func _on_visibility_changed() -> void:
+	
+	if ( auto_focus ):
+		if ( is_visible_in_tree() ):
+			
+			grab_focus.call_deferred()
 
 func _on_focus_entered() -> void:
 	

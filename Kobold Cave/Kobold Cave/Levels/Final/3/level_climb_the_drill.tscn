@@ -18,6 +18,7 @@ size = Vector2(1152, 128)
 
 [node name="LevelClimbTheDrill" type="Node2D" node_paths=PackedStringArray("tilemap_floor")]
 script = ExtResource("1_af4u0")
+level_id = 2
 tilemap_floor = NodePath("Floor")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
 metadata/_edit_group_ = true

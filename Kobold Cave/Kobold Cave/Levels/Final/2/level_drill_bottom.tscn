@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dwiu0froolirj"]
+[gd_scene load_steps=29 format=4 uid="uid://dwiu0froolirj"]
 
 [ext_resource type="Script" uid="uid://beh5jj3cug0u3" path="res://Kobold Cave/Levels/level_base.gd" id="1_ks1i0"]
 [ext_resource type="TileSet" uid="uid://b8dql8ixu6yvr" path="res://Kobold Cave/Saved Resources/Tile Sets/Game TileSet/game_tiles.tres" id="2_di7y6"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cwk6n2uejntni" path="res://Kobold Cave/Level Objects/Bomb Pile/bomb_pile.tscn" id="12_kuicb"]
 [ext_resource type="PackedScene" uid="uid://dau8a8o301pvi" path="res://Kobold Cave/Level Objects/SpikeTrap/spike_trap.tscn" id="13_op3iw"]
 [ext_resource type="PackedScene" uid="uid://cdnubucseh6ix" path="res://Kobold Cave/Entity/Wolf/wolf.tscn" id="14_hbwtp"]
+[ext_resource type="Script" uid="uid://dryxco62r7pex" path="res://Dragon Game Template/Resources/Health/health.gd" id="16_2tvpf"]
 [ext_resource type="PackedScene" uid="uid://diy121fampbk4" path="res://Kobold Cave/Level Objects/Goal Flag/goal_flag.tscn" id="16_5skm4"]
+[ext_resource type="Script" uid="uid://beulvh6j82778" path="res://Dragon Game Template/Resources/Damage Profile/damage_profile.gd" id="17_rm13w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tip8l"]
 
@@ -28,6 +30,32 @@ size = Vector2(1248, 640)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh6cs"]
 size = Vector2(2784, 3136)
 
+[sub_resource type="Resource" id="Resource_cbl0q"]
+resource_local_to_scene = true
+script = ExtResource("16_2tvpf")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_64vg2"]
+resource_local_to_scene = true
+script = ExtResource("17_rm13w")
+health = SubResource("Resource_cbl0q")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
+[sub_resource type="Resource" id="Resource_0tpbu"]
+resource_local_to_scene = true
+script = ExtResource("16_2tvpf")
+ignore_max = true
+maximum = 2
+current = 2
+
+[sub_resource type="Resource" id="Resource_fprr4"]
+resource_local_to_scene = true
+script = ExtResource("17_rm13w")
+health = SubResource("Resource_0tpbu")
+metadata/_custom_type_script = "uid://beulvh6j82778"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwtp"]
 size = Vector2(1792, 608)
 
@@ -36,6 +64,7 @@ size = Vector2(2560, 1664)
 
 [node name="LevelDrillBottom" type="Node2D" node_paths=PackedStringArray("tilemap_floor")]
 script = ExtResource("1_ks1i0")
+level_id = 1
 tilemap_floor = NodePath("Floor")
 metadata/_custom_type_script = "uid://beh5jj3cug0u3"
 metadata/_edit_group_ = true
@@ -257,9 +286,11 @@ autostart = true
 
 [node name="Wolf" parent="BigRoom" instance=ExtResource("14_hbwtp")]
 position = Vector2(2048, 0)
+damage_profile = SubResource("Resource_64vg2")
 
 [node name="Wolf2" parent="BigRoom" instance=ExtResource("14_hbwtp")]
 position = Vector2(1664, -1664)
+damage_profile = SubResource("Resource_fprr4")
 
 [node name="SpikeTrap5" parent="BigRoom" node_paths=PackedStringArray("state_timer") instance=ExtResource("13_op3iw")]
 position = Vector2(64, -1120)

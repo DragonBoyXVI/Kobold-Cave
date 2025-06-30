@@ -8,22 +8,16 @@ class_name PlayerAir
 
 const STATE_NAME := &"PlayerAir"
 
+const ARG_GRAB_TIME := &"Grab Time"
+
 
 @export var ledge_grabber: LedgeGrabDetector
 @export var bomb_thrower: BombThrower
 
-## how long the jump input is saved for when you press jump
-@export var jump_time: float = 0.25
-## if you fall for too long, you'll automatically be reset
-@export var stuck_time: float = 30.0
+@export var jump_timer: Timer
+@export var stuck_timer: Timer
+@export var grab_timer: Timer
 
-
-const ARG_GRAB_TIME := &"Grab Time"
-
-
-var _jump_timer: SceneTreeTimer
-var _stuck_timer: SceneTreeTimer
-var _grab_timer: SceneTreeTimer
 
 var is_jump_stored: bool = false
 var is_grab_ready: bool = false
@@ -32,26 +26,36 @@ var is_grab_ready: bool = false
 func _init() -> void:
 	
 	use_slow = true
-	_internal_default_args[ ARG_GRAB_TIME ] = 0.5
+	_internal_default_args[ ARG_GRAB_TIME ] = -1.0
 	super()
+
+func _ready() -> void:
+	super()
+	
+	if ( Engine.is_editor_hint() ):
+		return
+	
+	jump_timer.timeout.connect( _on_jump_timer_timeout )
+	stuck_timer.timeout.connect( _on_stuck_timer_timeout )
+	grab_timer.timeout.connect( _on_grab_timer_timeout )
 
 func _enter( args: Dictionary[ StringName, Variant ] ) -> void:
 	
-	model.animation_player.play( Player.ANIM_JUMP if player.velocity.y < 0 else Player.ANIM_FALL )
+	model.animation_player.play( KoboldModel2D.ANIM_JUMP if player.velocity.y < 0 else KoboldModel2D.ANIM_FALL )
 	
 	is_jump_stored = false
 	is_grab_ready = false
 	
-	_grab_timer = create_physics_tree_timer( args[ ARG_GRAB_TIME ], _on_grab_timer_timeout )
-	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
+	grab_timer.start( args[ ARG_GRAB_TIME ] )
+	stuck_timer.start()
 
 func _leave() -> void:
 	
 	ledge_grabber.disable.call_deferred()
 	
-	_jump_timer = stop_timer( _jump_timer )
-	_stuck_timer = stop_timer( _stuck_timer )
-	_grab_timer = stop_timer( _grab_timer )
+	jump_timer.stop()
+	stuck_timer.stop()
+	grab_timer.stop()
 	
 	model.root.scale = Vector2.ONE
 	model.rotation = 0.0
@@ -78,14 +82,14 @@ func _process( _delta: float ) -> void:
 	# anim
 	var fall_speed: float = player.velocity.length_squared() / movement.air_terminal_squared
 	model.animation_player.speed_scale = fall_speed * 5.0
-	if ( model.animation_player.current_animation == Player.ANIM_FALL ):
+	if ( model.animation_player.current_animation == KoboldModel2D.ANIM_FALL ):
 		if ( player.velocity.y < 0 ):
 			
-			model.animation_player.play( Player.ANIM_JUMP )
-	elif( model.animation_player.current_animation == Player.ANIM_JUMP ):
+			model.animation_player.play( KoboldModel2D.ANIM_JUMP )
+	elif( model.animation_player.current_animation == KoboldModel2D.ANIM_JUMP ):
 		if ( player.velocity.y > 0 ):
 			
-			model.animation_player.play( Player.ANIM_FALL )
+			model.animation_player.play( KoboldModel2D.ANIM_FALL )
 
 func _physics_process( delta: float ) -> void:
 	
@@ -142,7 +146,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	if ( event.is_action( &"Throw" ) ):
 		
 		var dir := Vector2.ZERO
-		dir.x = model.scale.x
+		dir.x = 1.0 if player.is_facing_right else -1.0
 		dir.y -= 0.8
 		
 		bomb_thrower.throw_bomb( dir.normalized(), player.velocity )
@@ -156,7 +160,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 	
 	if ( event.is_action_pressed( &"Jump" ) ):
 		
-		_jump_timer = create_physics_tree_timer( jump_time, _on_jump_timer_timeout )
+		jump_timer.start()
 		is_jump_stored = true
 		
 		get_window().set_input_as_handled()
@@ -171,8 +175,6 @@ func _on_stuck_timer_timeout() -> void:
 	
 	push_warning( "Falling forever are we?" )
 	KoboldRadio.player_reset_needed.emit( player )
-	
-	_stuck_timer = create_physics_tree_timer( stuck_time, _on_stuck_timer_timeout )
 
 func _on_grab_timer_timeout() -> void:
 	

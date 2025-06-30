@@ -13,6 +13,10 @@ class_name DragonModel2D
 ## while the model worries about its own.[br]
 ## This creates a big divide between animation and events tied to it.
 
+
+const ANIM_RESET := &"RESET"
+
+
 ## The animation player this uses
 @export var animation_player: AnimationPlayer : 
 	set( new_player ):

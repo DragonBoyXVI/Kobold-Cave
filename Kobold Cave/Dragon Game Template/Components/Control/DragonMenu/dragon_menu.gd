@@ -99,29 +99,6 @@ func _notification( what: int ) -> void:
 				await ready
 			
 			set_tabs_translation()
-		
-		NOTIFICATION_PAUSED:
-			
-			if ( Engine.is_editor_hint() ):
-				return
-			
-			DragonUIAnimations.fade_control( self, false )
-		
-		NOTIFICATION_UNPAUSED:
-			
-			if ( Engine.is_editor_hint() ):
-				return
-			
-			DragonUIAnimations.fade_control( self, true )
-			
-			if ( child_has_focus ):
-				
-				if ( focused_child ):
-					
-					focused_child.grab_focus.call_deferred()
-				else:
-					
-					grab_tab_bar_focus.call_deferred()
 
 
 ## sets focus to this tab bar
